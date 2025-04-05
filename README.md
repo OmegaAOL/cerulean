@@ -31,9 +31,14 @@ TL:DR; What Cerulean does with passwords is normal and commonplace in the indust
 
 I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
 
-# Open-source
+# Open-source details and how to compile
 
 The project is open-source, but licensed under the GPL3 - any forks will have to credit both me and the project as being the originator of theirs.
+
+This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. I am not sure if Microsoft still maintains compilation options for .NET 2, but AFAIK Visual Studio 2017 had the option.
+I am unsure about later versions.
+
+Curl and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
 
 # Thank you!
 
