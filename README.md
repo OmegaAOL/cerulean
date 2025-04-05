@@ -2,7 +2,7 @@
 
 This is the repository for the Cerulean Bluesky client, currently in the alpha stage and unusable. It is written in C# and uses 
 the .NET Framework 2. This enables the executable (without any dependencies) to run on Windows 98. To interface with the Bluesky
-API it uses curl-OpenSSL, which I have gotten to ![run on Windows 98 and above.](https://github.com/OmegaAOL/curl-windows98) 
+API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](https://github.com/OmegaAOL/curl-windows98) 
 
 ![alt text](https://i.imgur.com/bzciwrw.png)
 
@@ -12,5 +12,5 @@ A few menus like the login screen (and its accompanying functions) and the About
 been started yet, except for the menu bat, and can be accessed by (for now) pressing "Configure TOTP Authentication" on the 
 login screen. The majority of time I spent on this project was troubleshooting compatibility, mostiy with Windows 98.
 
-You cannot login. ![LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) and my Windows 98 build of libcurl are in the binaries, but they don't seem to be working with *any* version
+You cannot login. [LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) and my Windows 98 build of libcurl are in the binaries, but they don't seem to be working with *any* version
 of Windows at the moment. As soon as I get them to work, you will be able to login to your Bluesky account
