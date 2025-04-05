@@ -18,7 +18,7 @@ of Windows at the moment. As soon as I get them to work, you will be able to log
 # Security
 
 Like many, many other programs ([Chrome](https://www.askcybersecurity.com/where-are-my-saved-passwords-in-chrome/) and [Firefox](https://stackoverflow.com/questions/37685932/where-in-the-filesystem-does-firefox-store-saved-passwords)
-being two of the most major), Cerulean stores your login data unencrypted. If you check "Remember Me" in the login window, your data is saved in *HKEY_CURRENT_USER\Software\Ceruelean\LoginDetails* in two seperate entries. This is
+being two of the most major), Cerulean stores your login data unencrypted. If you check "Remember Me" in the login window, your data is saved in *HKEY_CURRENT_USER\Software\Cerulean\LoginDetails* in two seperate entries. This is
 neither abnormal nor a breach of protocol, and you can delete your login data either by logging in again but with "Remember Me" unchecked (which wipes your login data), or going to Account > Delete My Login Data in the Menu Bar.
 Again, I would like to remind you that this is neither an uncommon nor proportionally more insecure way of storing login data, and it is much more rewarding (and easier) to steal your Google Chrome LoginData.db file than to fish through
 the registry to steal the logins of one account.
