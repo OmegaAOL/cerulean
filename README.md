@@ -29,7 +29,7 @@ TL:DR; What Cerulean does with passwords is normal and commonplace in the indust
 
 # Usability
 
-I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (scripting to post, local TOTP login)
+I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
 
 # Thank you!
 
