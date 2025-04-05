@@ -6,10 +6,6 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 
 ![alt text](https://i.imgur.com/bzciwrw.png)
 
-# Open-source
-
-The project is open-source, but licensed under the GPL3 - any forks will have to credit both me and the project as being the originator of theirs.
-
 # What's present and what works
 
 A few menus like the login screen (and its accompanying functions) and the About screen have been finished. The main window hasn't
@@ -34,6 +30,10 @@ TL:DR; What Cerulean does with passwords is normal and commonplace in the indust
 # Usability
 
 I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
+
+# Open-source
+
+The project is open-source, but licensed under the GPL3 - any forks will have to credit both me and the project as being the originator of theirs.
 
 # Thank you!
 
