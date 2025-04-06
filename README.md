@@ -9,8 +9,7 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 # What's present and what works
 
 A few menus like the login screen (and its accompanying functions) and the About screen have been finished. The main window hasn't
-been started yet, except for the menu bar, and can be accessed by (for now) pressing "Configure TOTP Authentication" on the 
-login screen. The majority of time I spent on this project was troubleshooting compatibility, mostiy with Windows 98.
+been started yet, except for the menu bar. The majority of time I spent on this project was troubleshooting compatibility, mostiy with Windows 98.
 
 You can login and send a (text) post to Bluesky. 
 
