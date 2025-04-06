@@ -9,11 +9,10 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 # What's present and what works
 
 A few menus like the login screen (and its accompanying functions) and the About screen have been finished. The main window hasn't
-been started yet, except for the menu bat, and can be accessed by (for now) pressing "Configure TOTP Authentication" on the 
+been started yet, except for the menu bar, and can be accessed by (for now) pressing "Configure TOTP Authentication" on the 
 login screen. The majority of time I spent on this project was troubleshooting compatibility, mostiy with Windows 98.
 
-You cannot login. [LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) and my Windows 98 build of libcurl are in the binaries, but they don't seem to be working with *any* version
-of Windows at the moment. As soon as I get them to work, you will be able to login to your Bluesky account using Cerulean.
+You can login and send a (text) post to Bluesky. 
 
 # Security
 
