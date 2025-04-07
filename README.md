@@ -11,7 +11,8 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 A few menus like the login screen (and its accompanying functions) and the About screen have been finished. The main window hasn't
 been started yet, except for the menu bar. The majority of time I spent on this project was troubleshooting compatibility, mostiy with Windows 98.
 
-You can login and send a (text) post to Bluesky. 
+You can login and send a (text) post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
+You can set a digital signature for your posts in Tools -> Options. Newlines break it, so keep your signatures to one line for now.
 
 # Security
 
