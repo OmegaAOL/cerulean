@@ -1,0 +1,84 @@
+D:\Visual Studio Projects\Cerulean\Cerulean\bin\Debug\Cerulean.exe
+D:\Visual Studio Projects\Cerulean\Cerulean\bin\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.Properties.Resources.resources
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.CeruleanArt.resources
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.csproj.GenerateResource.Cache
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.exe
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Cerulean\Cerulean\bin\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Cerulean\Cerulean\bin\Debug\Cerulean.application
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.application
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.Form1.resources
+D:\Visual Studio Projects\Cerulean\Cerulean\bin\Debug\Cerulean.exe.config
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\Cerulean\Cerulean\obj\x86\Debug\Cerulean.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\bin\Debug\Cerulean.exe.config
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\bin\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\bin\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\bin\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\bin\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.Form1.resources
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.Properties.Resources.resources
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.CeruleanArt.resources
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.csproj.GenerateResource.Cache
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\Ceruleanvs10\Cerulean\obj\x86\Debug\Cerulean.csprojResolveAssemblyReference.cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.csprojResolveAssemblyReference.cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.csproj.GenerateResource.Cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Properties.Resources.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.CeruleanArt.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\bin\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\bin\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\bin\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\bin\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.csprojResolveAssemblyReference.cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.ChangePDS.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.Form1.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.Properties.Resources.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.CeruleanArt.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.csproj.GenerateResource.Cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10-netfx2 - win98compatible\Cerulean\obj\x86\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Menu_About.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Menu_ChangePDS.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Menu_Settings.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Menu_Login.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Menu_Main.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\bin\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\bin\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\bin\Debug\Cerulean.exe
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\bin\Debug\Cerulean.pdb
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.csprojResolveAssemblyReference.cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.Menu_About.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.Menu_ChangePDS.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.Menu_Login.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.Menu_Main.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.Properties.Resources.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.CeruleanArt.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.Menu_Settings.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.csproj.GenerateResource.Cache
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.exe.manifest
+D:\Visual Studio Projects\Ceruleanvs10-netfx2.backup2\Cerulean\obj\x86\Debug\Cerulean.application
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\Cerulean.exe.config
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\LibCurlNet.dll
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Menu_Tweet.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Icons_Classic.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.Icons_Aero.resources
