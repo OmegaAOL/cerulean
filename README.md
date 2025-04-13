@@ -39,6 +39,10 @@ I am unsure about later versions.
 
 Curl and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
 
+# Credits
+
+[Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/)
+
 # Thank you!
 
 If you made it this far, thank you. I do not have a donation option at the moment, but I will put one up eventually as the app becomes usable. Please consider donating if you can.
