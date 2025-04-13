@@ -43,12 +43,12 @@ Curl and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
 
 Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Find newer versions for new projects.
 
-- [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/)
-- [Marco Minerva, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero)
-- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json)
-- [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html)
-- [cURL](https://curl.se/download/)
-- [Microsoft, Windows Vista Icons / Windows 98 Icons / .NET Framework 2.0 SP0 / C#](https://www.microsoft.com)
+- [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET 2.0 only, there is an [updated fork](https://github.com/masroore/CurlSharp)
+- [Marco Minerva, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET 2.0 and .NET 4.x
+- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - .NET 2.0 - .NET Core 9
+- [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html) - Windows 98+ build [here](https://github.com/OmegaAOL/openssl-windows98)
+- [cURL](https://curl.se/download/) - Windows 98+ build [here](https://github.com/OmegaAOL/curl-windows98)
+- [Microsoft, Windows Vista Icons / Windows 98 Icons](https://www.microsoft.com)
 
 
 # Thank you!
