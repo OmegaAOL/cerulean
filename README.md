@@ -45,7 +45,7 @@ Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Fi
 
 - [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/)
 - [Marco Minerva, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero)
-- [JamesNK, Newtonsoft.Json](https://www.newtonsoft.com/json)
+- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json)
 - [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html)
 - [cURL](https://curl.se/download/)
 - [Microsoft, Windows Vista Icons / Windows 98 Icons / .NET Framework 2.0 SP0 / C#](https://www.microsoft.com)
