@@ -25,7 +25,7 @@ namespace Cerulean
         {
             if ((RegKit.read("\\API", "betaSetting_firstRun")) != "complete")
             {
-                RegKit.write("\\API", "PDSHost", "https://bsky.social");
+                RegKit.write("\\API", "PDSHost", Global.defaultPDSHost);
                 RegKit.write("\\API", "betaSetting_firstRun", "complete");
             }
 

@@ -15,8 +15,16 @@ namespace Cerulean
         {
             using (RegistryKey regkey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Cerulean" + subdir))  
             {        
-                string value = (string)regkey.GetValue(entry);
-                return (value);              
+                object value = regkey.GetValue(entry);
+                if (value != null)
+                {
+                    string valueStr = value.ToString();
+                    return (valueStr);
+                }
+                else
+                {
+                    return ("0");
+                }
             }
         }
 

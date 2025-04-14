@@ -19,12 +19,11 @@ namespace Cerulean
             this.MaximumSize = this.Size;
             MaximizeBox = false;
         }
+
         private void Menu_Main_Load(object sender, EventArgs e)
         {
             CenterToParent();
         }
-
-
 
         private void menuItemOptions_Click(object sender, EventArgs e)
         {
@@ -48,7 +47,7 @@ namespace Cerulean
         {
 
             Global.skyWorker = new BackgroundWorker(); // initializes a BackgroundWorker to run the background method SkyBridge.tweet on thread skythread
-            Global.skyWorker.DoWork += (s, e) => SkyBridge.Tweet(quickPostBox.Text, 0);
+            Global.skyWorker.DoWork += (s, e) => SkyBridge.QuickTweet(quickPostBox.Text);
             Global.skyWorker.RunWorkerAsync();
 
         }
@@ -58,6 +57,59 @@ namespace Cerulean
             this.Close();
         }
 
+        private void searchBox_Enter(object sender, EventArgs e)
+        {
+            if (searchBox.Text == "Search Bluesky"){
+                searchBox.ForeColor = Color.Black;
+                searchBox.Text = String.Empty;
+            }
+        }
+
+        private void searchBox_keyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Global.skyWorker = new BackgroundWorker(); // initializes a BackgroundWorker to run the background method SkyBridge.tweet on thread skythread
+                Global.skyWorker.DoWork += (s, ev) => MessageBox.Show("SEARCH:\n\n" + SkyBridge.Search(searchBox.Text));
+                Global.skyWorker.RunWorkerAsync(); 
+            }
+        }
+
+        private void searchBox_Leave(object sender, EventArgs e)
+        {
+            searchBox.ForeColor = Color.DarkGray;
+            searchBox.Text = "Search Bluesky";
+        }
+
+        private void menuItemRefreshToken_Click(object sender, EventArgs e)
+        {
+            SkyBridge.StartTokenRefresher(false);
+        }
+
+        private void menuItemDM_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemReload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemLock_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemLogout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_Main_Close(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
     }
 }
