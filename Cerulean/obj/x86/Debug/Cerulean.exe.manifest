@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cerulean.exe" size="498176">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cerulean.exe" size="506880">
       <assemblyIdentity name="Cerulean" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>uzhul72Nx3ONJV3dopgWXUMKPhw=</dsig:DigestValue>
+        <dsig:DigestValue>KlQoaD0zdGay+GXcmSt1hRKn8Fg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_About));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.par1 = new System.Windows.Forms.Label();
-            this.followSNKButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.followOmegaButton = new System.Windows.Forms.Button();
+            this.postAbtCerulean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,35 +54,35 @@
             this.par1.TabIndex = 1;
             this.par1.Text = resources.GetString("par1.Text");
             // 
-            // followSNKButton
+            // followOmegaButton
             // 
-            this.followSNKButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.followSNKButton.Location = new System.Drawing.Point(683, 352);
-            this.followSNKButton.Name = "followSNKButton";
-            this.followSNKButton.Size = new System.Drawing.Size(85, 23);
-            this.followSNKButton.TabIndex = 2;
-            this.followSNKButton.Text = "Follow me!";
-            this.followSNKButton.UseVisualStyleBackColor = true;
-            this.followSNKButton.Click += new System.EventHandler(this.followSNKButton_Click);
+            this.followOmegaButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.followOmegaButton.Location = new System.Drawing.Point(683, 352);
+            this.followOmegaButton.Name = "followOmegaButton";
+            this.followOmegaButton.Size = new System.Drawing.Size(85, 23);
+            this.followOmegaButton.TabIndex = 2;
+            this.followOmegaButton.Text = "Follow me!";
+            this.followOmegaButton.UseVisualStyleBackColor = true;
+            this.followOmegaButton.Click += new System.EventHandler(this.followOmegaButton_Click);
             // 
-            // button1
+            // postAbtCerulean
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(551, 352);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Post about Cerulean";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.postAbtCerulean.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.postAbtCerulean.Location = new System.Drawing.Point(551, 352);
+            this.postAbtCerulean.Name = "postAbtCerulean";
+            this.postAbtCerulean.Size = new System.Drawing.Size(126, 23);
+            this.postAbtCerulean.TabIndex = 3;
+            this.postAbtCerulean.Text = "Post about Cerulean";
+            this.postAbtCerulean.UseVisualStyleBackColor = true;
+            this.postAbtCerulean.Click += new System.EventHandler(this.postAbtCerulean_Click);
             // 
             // Menu_About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 387);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.followSNKButton);
+            this.Controls.Add(this.postAbtCerulean);
+            this.Controls.Add(this.followOmegaButton);
             this.Controls.Add(this.par1);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -98,8 +98,8 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label par1;
-        private System.Windows.Forms.Button followSNKButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button followOmegaButton;
+        private System.Windows.Forms.Button postAbtCerulean;
 
     }
 }

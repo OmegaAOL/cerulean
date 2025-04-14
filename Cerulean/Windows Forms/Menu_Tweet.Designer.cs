@@ -33,7 +33,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tweetButton = new System.Windows.Forms.Button();
             this.draftButton = new System.Windows.Forms.Button();
-            this.chainButton = new System.Windows.Forms.Button();
+            this.mediaUploadButton = new System.Windows.Forms.Button();
             this.tweetBox = new System.Windows.Forms.TextBox();
             this.enableDSCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -76,15 +76,16 @@
             this.draftButton.UseVisualStyleBackColor = true;
             this.draftButton.Click += new System.EventHandler(this.draftButton_Click);
             // 
-            // chainButton
+            // mediaUploadButton
             // 
-            this.chainButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chainButton.Location = new System.Drawing.Point(15, 225);
-            this.chainButton.Name = "chainButton";
-            this.chainButton.Size = new System.Drawing.Size(95, 23);
-            this.chainButton.TabIndex = 5;
-            this.chainButton.Text = "Upload media";
-            this.chainButton.UseVisualStyleBackColor = true;
+            this.mediaUploadButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.mediaUploadButton.Location = new System.Drawing.Point(15, 225);
+            this.mediaUploadButton.Name = "mediaUploadButton";
+            this.mediaUploadButton.Size = new System.Drawing.Size(95, 23);
+            this.mediaUploadButton.TabIndex = 5;
+            this.mediaUploadButton.Text = "Upload media";
+            this.mediaUploadButton.UseVisualStyleBackColor = true;
+            this.mediaUploadButton.Click += new System.EventHandler(this.mediaUploadButton_Click);
             // 
             // tweetBox
             // 
@@ -113,7 +114,7 @@
             this.ClientSize = new System.Drawing.Size(462, 270);
             this.Controls.Add(this.enableDSCheckBox);
             this.Controls.Add(this.tweetBox);
-            this.Controls.Add(this.chainButton);
+            this.Controls.Add(this.mediaUploadButton);
             this.Controls.Add(this.draftButton);
             this.Controls.Add(this.tweetButton);
             this.Controls.Add(this.progressBar1);
@@ -132,7 +133,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button tweetButton;
         private System.Windows.Forms.Button draftButton;
-        private System.Windows.Forms.Button chainButton;
+        private System.Windows.Forms.Button mediaUploadButton;
         private System.Windows.Forms.TextBox tweetBox;
         private System.Windows.Forms.CheckBox enableDSCheckBox;
     }

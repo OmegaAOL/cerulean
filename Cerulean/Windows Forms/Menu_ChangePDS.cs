@@ -29,7 +29,7 @@ namespace Cerulean
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            RegKit.write("\\API", "PDSHost", "https://bsky.social");
+            RegKit.write("\\API", "PDSHost", Global.defaultPDSHost);
             settingsLabel.Text = "PDS host reset to default";
             pdshostbox.Text = RegKit.read("\\API", "PDSHost");
             settingsLabel.ForeColor = Color.Blue;
