@@ -9,7 +9,7 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 # What's present and what works
 
 You can login and send a (text) post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
-You can set a digital signature for your posts in Tools -> Options. Newlines break it, so keep your signatures to one line for now.
+You can set a digital signature for your posts in Tools -> Options.
 You can search for other posts on Bluesky, but not in human-readable format.
 
 # Security
