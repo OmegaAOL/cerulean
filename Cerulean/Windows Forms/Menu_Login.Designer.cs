@@ -175,6 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(600, 346);
             this.Controls.Add(this.rememberMeBox);
             this.Controls.Add(this.passwordBox);
@@ -191,6 +192,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_Login";
             this.Text = "Cerulean Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_Login_Close);
             this.Load += new System.EventHandler(this.Menu_Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

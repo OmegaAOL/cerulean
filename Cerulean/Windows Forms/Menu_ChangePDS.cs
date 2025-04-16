@@ -17,6 +17,7 @@ namespace Cerulean
         private void Menu_ChangePDS_Load(object sender, EventArgs e)
         {
             CenterToParent();
+            this.AcceptButton = applyButton;
             pdshostbox.Text = RegKit.read("\\API", "PDSHost");
         }
 

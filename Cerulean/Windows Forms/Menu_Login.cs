@@ -21,28 +21,29 @@ namespace Cerulean
 
         private void Menu_Login_Load(object sender, EventArgs e)
         {
-            this.AcceptButton = loginButton;     
+            CenterToParent();
+            this.AcceptButton = loginButton;
         }
 
-        private void connFailed()
+        private void connFailed(string headertext, string descriptortext)
         {
             timeOutBar.MarqueeAnimationSpeed = 0;
             timeOutBar.Style = ProgressBarStyle.Continuous;
-            header.Text = "Connection failed";
+            header.Text = headertext;
+            descriptor.Text = descriptortext;
             header.ForeColor = Color.Red;
-            descriptor.Text = "Cerulean cannot connect to Bluesky. Check if you are connected to the Internet, or check your PDS Host.";
             timeOutBar.Value = 0;
             loginButton.Enabled = true;
         }
-        
+
         private void loginButton_Click(object sender, EventArgs ev)
         {
             loginButton.Enabled = false;
-            
-            Global.handle = handleBox.Text.Trim();
-            Global.password = passwordBox.Text.Trim();
 
-            if (Global.handle == String.Empty || Global.password == String.Empty) // Checks for empty handle/password field
+            Global.handle = handleBox.Text.Trim();
+            string password = passwordBox.Text.Trim();
+
+            if (Global.handle == String.Empty || password == String.Empty) // Checks for empty handle/password field
             {
                 header.Text = "Input Error";
                 header.ForeColor = Color.Red;
@@ -60,13 +61,13 @@ namespace Cerulean
                 header.ForeColor = Color.Blue;
                 descriptor.Text = "Cerulean is connecting to the specified PDS host. If authentication fails, check PDS settings and login details.";
 
-                Global.skyWorker = new BackgroundWorker(); // initializes a BackgroundWorker to run the background method SkyBridge.auth
-                Global.skyWorker.DoWork += (s, e) => e.Result = SkyBridge.Auth();
-                Global.skyWorker.RunWorkerCompleted += (s, e) =>
+                SkyBridge.SkyWorker(
+                (s, evt) => evt.Result = SkyBridge.Auth(password),
+                (s, evt) =>
                 {
                     try
                     {
-                        JObject reply = JObject.Parse((string)e.Result); // using Newtonsoft.Json to parse the API response
+                        JObject reply = JObject.Parse((string)evt.Result); // using Newtonsoft.Json to parse the API response
 
                         //MessageBox.Show((string)e.Result); // Uncomment for debugging Bluesky's response
 
@@ -79,19 +80,15 @@ namespace Cerulean
                             timeOutBar.MarqueeAnimationSpeed = 0; // stops the Marquee progress bar
                             timeOutBar.Style = ProgressBarStyle.Continuous;
 
-                            header.Text = "Connected"; // Changes header to Connected
-                            header.ForeColor = Color.Green;
-                            descriptor.Text = "Connected and authenticated with Bluesky servers.";
-
                             var mainmenu = new Menu_Main(); // switches from login to main menu
                             loginButton.Enabled = true;
                             this.Hide();
                             mainmenu.Show();
 
-                            if (rememberMeBox.Checked)
+                            if (rememberMeBox.Checked) // writes values to registry
                             {
                                 RegKit.write("\\LoginData", "handle", Global.handle);
-                                RegKit.write("\\LoginData", "password", Global.password);
+                                RegKit.write("\\LoginData", "password", password);
 
                             }
 
@@ -102,47 +99,44 @@ namespace Cerulean
                             }
                         }
 
-                        else if (!reply.ContainsKey("accessJwt")) // if accessJwt didn't exist
+                        else // if accessJwt isn't present, signifying connection and a valid JSON response but no token (meaning invalid details)
                         {
-                            connFailed();
-                        }
+                            string headertext = "Invalid login details";
+                            string descriptortext = "The login credentials you have provided are invalid. If you used your email to log in, use your handle instead.";
+                            connFailed(headertext, descriptortext);
 
-                        //this.Hide();
-                        //this.Close();
+                        }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         string result = String.Empty;
-                        connFailed();
+                        string headertext = "Connection failed";
+                        string descriptortext = "Cerulean cannot connect to Bluesky. Check if you are connected to the Internet, or check your PDS Host.";
+                        connFailed(headertext, descriptortext);
 
-                        if (e.Result.ToString() != String.Empty){
-                            result = e.Result.ToString();
+                        if (evt.Result.ToString() != String.Empty)
+                        {
+                            result = evt.Result.ToString();
                         }
 
-                        if (e.Result.ToString() == String.Empty)
+                        if (evt.Result.ToString() == String.Empty)
                         {
                             result = "Nothing to parse. Your specified PDS host server is down.";
                         }
 
-                        MessageBox.Show("Exception has occured in Cerulean:\n\nEXCEPTION: " + ex.Message + "\n\nPARSETEXT: " + result + "\n\nThis is most likely because of custom " +
-                            "or invalid PDS settings. First reset your PDS host to default (find by clicking Change PDS Host). If that doesn't work, raise an issue on GitHub, along " + 
-                            "with a screenshot of this message." + 
-                            "\n\nIF ANYONE TOLD YOU TO CHANGE THE PDS HOST AND PROVIDED YOU WITH ONE TO CHANGE TO, CHANGE YOUR BLUESKY PASSWORD AND DELETE ALL APP PASSWORDS NOW. " +
-                            "YOUR ACCOUNT MAY BE COMPROMISED.");                        
+                        MessageBox.Show(Global.cantConnect);
                     }
-
-                };
-
-                Global.skyWorker.RunWorkerAsync();
+                }
+                );
             }
 
         }
 
         private void setupTotpButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature will be added in a later version of Cerulean.\nNote that Bluesky does not support TOTP authentication, so " + 
+            MessageBox.Show("This feature will be added in a later version of Cerulean.\nNote that Bluesky does not support TOTP authentication, so " +
                 "until it does you can use Cerulean's own implenentation.\n\nRecommended TOTP programs are:\nKeePass 2, KeePassXC (Desktop)\nAuthy, Google Authenticator " +
-                "(Mobile)\n\nTOTP authentication will only be available in the .NET Framework 4.6 build of Cerulean."); 
+                "(Mobile)\n\nTOTP authentication will only be available in the .NET Framework 4.6 build of Cerulean.");
 
         }
 
@@ -155,6 +149,11 @@ namespace Cerulean
         private void timeOutBar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Menu_Login_Close(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
     }

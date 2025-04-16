@@ -4,14 +4,14 @@
   <description asmv2:publisher="Cerulean" asmv2:product="Cerulean" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Cerulean.exe.manifest" size="5761">
+    <dependentAssembly dependencyType="install" codebase="Cerulean.exe.manifest" size="6423">
       <assemblyIdentity name="Cerulean.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lGRtIjNkwmN0ncBjbw/fmlncvgE=</dsig:DigestValue>
+        <dsig:DigestValue>e2ome26AvCz4BnlKVPzgi5yed5M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

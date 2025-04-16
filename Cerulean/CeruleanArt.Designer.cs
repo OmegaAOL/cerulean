@@ -63,16 +63,6 @@ namespace Cerulean {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _600widelesstrans {
-            get {
-                object obj = ResourceManager.GetObject("_600widelesstrans", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap banner_600wide {
             get {
                 object obj = ResourceManager.GetObject("banner_600wide", resourceCulture);
