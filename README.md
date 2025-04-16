@@ -26,7 +26,7 @@ I would like to remind you that this is neither an uncommon nor proportionally m
 the registry to steal the logins of one account.
 
 - This is why **I recommend you use an app password** - they can be easily managed and deleted if your account is compromised, and they are randomly-generated unique strings.
-- *A password database that's encrypted with random data in your Windows install is planned, but definitely not a priority atm.*
+- *A password database that's encrypted with random data in your Windows install is planned, but definitely not a priority right now.*
 
 TL:DR; What Cerulean does with passwords is normal and commonplace in the industry. There is no need to worry, but if you are concerned you may use an app password (recommended) or uncheck "Remember Me" (not recommended).
 
