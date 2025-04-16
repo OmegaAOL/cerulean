@@ -72,8 +72,10 @@
             this.menuItem21 = new System.Windows.Forms.MenuItem();
             this.menuItemOptions = new System.Windows.Forms.MenuItem();
             this.menuItem22 = new System.Windows.Forms.MenuItem();
-            this.menuItem31 = new System.Windows.Forms.MenuItem();
-            this.menuItem32 = new System.Windows.Forms.MenuItem();
+            this.menuItemGotoCeruleanCom = new System.Windows.Forms.MenuItem();
+            this.menuItemGotoGitRepo = new System.Windows.Forms.MenuItem();
+            this.menuItem17 = new System.Windows.Forms.MenuItem();
+            this.menuItemBugGitFile = new System.Windows.Forms.MenuItem();
             this.menuItem33 = new System.Windows.Forms.MenuItem();
             this.menuItemAbout = new System.Windows.Forms.MenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -90,12 +92,10 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.panel2 = new Cerulean.BorderPanel();
             this.panel3 = new Cerulean.BorderPanel();
-            this.panel1 = new Cerulean.BorderPanel();
+            this.panel2 = new Cerulean.BorderPanel();
             this.statusStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -312,7 +312,6 @@
             this.menuItemLock.Index = 0;
             this.menuItemLock.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
             this.menuItemLock.Text = "Lock...";
-            this.menuItemLock.Click += new System.EventHandler(this.menuItemLock_Click);
             // 
             // menuItemLogout
             // 
@@ -386,30 +385,45 @@
             // 
             this.menuItem22.Index = 6;
             this.menuItem22.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem31,
-            this.menuItem32,
+            this.menuItemGotoCeruleanCom,
+            this.menuItemGotoGitRepo,
+            this.menuItem17,
+            this.menuItemBugGitFile,
             this.menuItem33,
             this.menuItemAbout});
             this.menuItem22.Text = "&Help";
             // 
-            // menuItem31
+            // menuItemGotoCeruleanCom
             // 
-            this.menuItem31.Index = 0;
-            this.menuItem31.Text = "Cerulean Website...";
+            this.menuItemGotoCeruleanCom.Index = 0;
+            this.menuItemGotoCeruleanCom.Text = "Cerulean Website...";
+            this.menuItemGotoCeruleanCom.Click += new System.EventHandler(this.menuItemGotoCeruleanCom_Click);
             // 
-            // menuItem32
+            // menuItemGotoGitRepo
             // 
-            this.menuItem32.Index = 1;
-            this.menuItem32.Text = "Cerulean on GitHub...";
+            this.menuItemGotoGitRepo.Index = 1;
+            this.menuItemGotoGitRepo.Text = "Cerulean on GitHub...";
+            this.menuItemGotoGitRepo.Click += new System.EventHandler(this.menuItemGotoGitRepo_Click);
+            // 
+            // menuItem17
+            // 
+            this.menuItem17.Index = 2;
+            this.menuItem17.Text = "-";
+            // 
+            // menuItemBugGitFile
+            // 
+            this.menuItemBugGitFile.Index = 3;
+            this.menuItemBugGitFile.Text = "Report a bug on GitHub...";
+            this.menuItemBugGitFile.Click += new System.EventHandler(this.menuItemBugGitFile_Click);
             // 
             // menuItem33
             // 
-            this.menuItem33.Index = 2;
+            this.menuItem33.Index = 4;
             this.menuItem33.Text = "-";
             // 
             // menuItemAbout
             // 
-            this.menuItemAbout.Index = 3;
+            this.menuItemAbout.Index = 5;
             this.menuItemAbout.Text = "About Cerulean";
             this.menuItemAbout.Click += new System.EventHandler(this.menuItemAbout_Click);
             // 
@@ -420,7 +434,7 @@
             this.toolStripProgressBar1,
             this.toolStripStatusLabel1,
             this.handleLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 687);
+            this.statusStrip.Location = new System.Drawing.Point(0, 696);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1350, 22);
             this.statusStrip.TabIndex = 0;
@@ -461,14 +475,14 @@
             // 
             this.quickPostBox.Location = new System.Drawing.Point(276, 648);
             this.quickPostBox.Name = "quickPostBox";
-            this.quickPostBox.Size = new System.Drawing.Size(924, 20);
+            this.quickPostBox.Size = new System.Drawing.Size(937, 20);
             this.quickPostBox.TabIndex = 3;
             // 
             // quickPostButton
             // 
             this.quickPostButton.BackColor = System.Drawing.SystemColors.Control;
             this.quickPostButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.quickPostButton.Location = new System.Drawing.Point(1218, 646);
+            this.quickPostButton.Location = new System.Drawing.Point(1229, 646);
             this.quickPostButton.Name = "quickPostButton";
             this.quickPostButton.Size = new System.Drawing.Size(94, 23);
             this.quickPostButton.TabIndex = 4;
@@ -485,7 +499,6 @@
             this.toolStripButton3,
             this.toolStripButton6,
             this.toolStripSeparator2,
-            this.toolStripButton4,
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -539,18 +552,9 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = global::Cerulean.Icons_Aero.imageres_59_10;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Black;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton4.Text = "Lock";
-            this.toolStripButton4.Click += new System.EventHandler(this.menuItemLock_Click);
-            // 
             // toolStripButton5
             // 
-            this.toolStripButton5.Image = global::Cerulean.Icons_Aero.imageres_101_13;
+            this.toolStripButton5.Image = global::Cerulean.Icons_Aero.imageres_59_10;
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Black;
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(70, 22);
@@ -570,41 +574,31 @@
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_keyDown);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel2.Location = new System.Drawing.Point(31, 38);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(210, 630);
-            this.panel2.TabIndex = 9;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel3.Location = new System.Drawing.Point(812, 38);
+            this.panel3.Location = new System.Drawing.Point(276, 38);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(500, 589);
+            this.panel3.Size = new System.Drawing.Size(1047, 589);
             this.panel3.TabIndex = 10;
             // 
-            // panel1
+            // panel2
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Location = new System.Drawing.Point(276, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 589);
-            this.panel1.TabIndex = 8;
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.Location = new System.Drawing.Point(27, 38);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(218, 639);
+            this.panel2.TabIndex = 9;
             // 
             // Menu_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1350, 709);
+            this.ClientSize = new System.Drawing.Size(1350, 718);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.quickPostButton);
@@ -657,7 +651,7 @@
         private System.Windows.Forms.MenuItem menuItem29;
         private System.Windows.Forms.MenuItem menuItem21;
         private System.Windows.Forms.MenuItem menuItem22;
-        private System.Windows.Forms.MenuItem menuItem31;
+        private System.Windows.Forms.MenuItem menuItemGotoCeruleanCom;
         private System.Windows.Forms.MenuItem menuItem30;
         private System.Windows.Forms.MenuItem menuItemRefreshToken;
         private System.Windows.Forms.MenuItem menuItemLogout;
@@ -667,7 +661,7 @@
         private System.Windows.Forms.MenuItem menuItem41;
         private System.Windows.Forms.MenuItem menuItem42;
         private System.Windows.Forms.MenuItem menuItemOptions;
-        private System.Windows.Forms.MenuItem menuItem32;
+        private System.Windows.Forms.MenuItem menuItemGotoGitRepo;
         private System.Windows.Forms.MenuItem menuItem33;
         private System.Windows.Forms.MenuItem menuItemAbout;
         private System.Windows.Forms.StatusStrip statusStrip;
@@ -684,7 +678,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -692,6 +685,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private BorderPanel panel2;
         private BorderPanel panel3;
-        private BorderPanel panel1;
+        private System.Windows.Forms.MenuItem menuItemBugGitFile;
+        private System.Windows.Forms.MenuItem menuItem17;
     }
 }

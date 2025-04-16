@@ -11,8 +11,54 @@ namespace Cerulean
     public static class SkyBridge // Packages convoluted libcurlnet commands into nice, little, preordained functions to call for Cerulean.
     {
         private static System.Threading.Timer refreshTimer;
-              
-        public static void StartTokenRefresher (bool automatic) // function to start the process of token refreshing
+        private static BackgroundWorker skyWorker;
+
+        public static void SkyWorker(DoWorkEventHandler workHandler, RunWorkerCompletedEventHandler completedHandler)
+        {
+
+            // Dispose and null any existing worker
+            if (skyWorker != null)
+            {
+                skyWorker.Dispose();
+                skyWorker = null;
+            }
+
+            // Create and configure a new BackgroundWorker
+            skyWorker = new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true
+            };
+
+            skyWorker.DoWork += workHandler;
+            skyWorker.RunWorkerCompleted += (s, evt) =>
+            {
+                completedHandler(s, evt);
+
+                // Optional cleanup after the run
+                skyWorker.Dispose();
+                skyWorker = null;
+            };
+
+            skyWorker.RunWorkerAsync();
+        }
+
+        private static bool CheckForConnect(string toParse)
+        {
+            // MessageBox.Show(toParse); // DEBUG
+            try
+            {
+                JObject obj = JObject.Parse(toParse);
+                return true;
+            }
+
+            catch
+            {
+                MessageBox.Show(Global.cantConnect);
+                return false;
+            }
+        }
+
+        public static void StartTokenRefresher(bool automatic) // function to start the process of token refreshing
         {
             if (automatic) // uses the timer to refresh every 5 minutes
             {
@@ -21,11 +67,16 @@ namespace Cerulean
 
             else // instantly manually refreshes using skyWorker
             {
-                Global.skyWorker = new BackgroundWorker();
-                Global.skyWorker.DoWork += (s, e) => RefreshAccessToken(null);
-                Global.skyWorker.RunWorkerCompleted += (s, e) => MessageBox.Show("Manual refresh complete");
-                Global.skyWorker.RunWorkerAsync();
+                SkyBridge.SkyWorker(
+                (s, evt) => RefreshAccessToken(null),
+                (s, evt) => { }
+                );
             }
+        }
+
+        public static void EndTokenRefresher()
+        {
+            refreshTimer.Dispose();
         }
 
         private static void RefreshAccessToken(object state) // function that actually gers refresh
@@ -36,14 +87,32 @@ namespace Cerulean
             string header2 = "Accept: application/json";
 
             string serverRefreshResponse = Post(endPoint, postFields, header1, header2);
-            MessageBox.Show("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
+            //MessageBox.Show("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
 
-            JObject obj = JObject.Parse(serverRefreshResponse);
-            Global.token = (string)obj["accessJwt"];
-            Global.refreshToken = (string)obj["refreshJwt"];
+            try
+            {
+                JObject refreshbody = JObject.Parse(serverRefreshResponse);
+                if (refreshbody.ContainsKey("refreshJwt")) // checking if accessJwt exists in the response
+                {
+                    Global.token = (string)refreshbody["accessJwt"];
+                    Global.refreshToken = (string)refreshbody["refreshJwt"];
+                    MessageBox.Show("Reauthenticated with Bluesky successfully.");
+                }
+
+                else
+                {
+                    MessageBox.Show(Global.cantConnect);
+                }
+            }
+
+            catch
+            {
+                MessageBox.Show(Global.cantConnect);
+            }
+
             //Global.reloadCount++; // Timer debug
             //MessageBox.Show("[DEBUG] RELOADED TIMES: " + Global.reloadCount);
-        }        
+        }
 
         public static string DateToBsky() // Gets ISO 8601 + RFC 3339 compatible local date and time for certain Bluesky functions.
         {
@@ -51,9 +120,9 @@ namespace Cerulean
             return BskyDate;
         }
 
-        
+
         public static string Post(string endPoint, string postFields, string header1, string header2) // Handles all POST requests Cerulean makes to the API.
-        {   
+        {
             string postResponse = String.Empty;
             string url = (RegKit.read("\\API", "PDSHost") + "/xrpc/" + endPoint);
 
@@ -74,16 +143,16 @@ namespace Cerulean
             easy.SetOpt(CURLoption.CURLOPT_HTTPHEADER, header);
             easy.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
             easy.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-            easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);      
+            easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
             easy.SetOpt(CURLoption.CURLOPT_POST, true);
             easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, postFields);
-                
+
             try
             {
-                easy.Perform(); 
+                easy.Perform();
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Please wait some time before posting again. Rapid-fire posting is not supported currently as there is no post queue.\n\nException: " + ex.Message);
             }
@@ -91,7 +160,7 @@ namespace Cerulean
             easy.Cleanup(); // Clean up residue
             Curl.GlobalCleanup();
 
-            return postResponse;           
+            return postResponse;
         }
 
         public static string Get(string endPoint, string getParam, string header1, string header2) // Handles all GET requests Cerulean makes to the API.
@@ -132,15 +201,15 @@ namespace Cerulean
             easy.Cleanup(); // Clean up residue
             Curl.GlobalCleanup();
 
-            return getResponse;   
+            return getResponse;
         }
-        
-        public static string Auth()
+
+        public static string Auth(string password) // Logs in, returns accessJwt and refreshJwt
         {
             var postJson = new JObject();
             postJson["identifier"] = Global.handle;
-            postJson["password"] = Global.password;
-            
+            postJson["password"] = password;
+
             string endPoint = "com.atproto.server.createSession";
             string postFields = postJson.ToString(Formatting.None);
             string header1 = "Content-Type: application/json";
@@ -153,13 +222,13 @@ namespace Cerulean
 
         }
 
-        public static string Tweet(string tweetContent)
+        public static string Tweet(string tweetContent) // Tweets with user-settable settings
         {
             if (byte.Parse(RegKit.read("\\UserSettings", "DSForComposer")) == 1) // digital signature
             {
                 tweetContent += (" " + RegKit.read("\\UserSettings", "DigitalSignature"));
             }
-            
+
             var record = new JObject();
             record["text"] = tweetContent;
             record["createdAt"] = DateToBsky();
@@ -168,18 +237,18 @@ namespace Cerulean
             postJson["repo"] = Global.handle;
             postJson["collection"] = "app.bsky.feed.post";
             postJson["record"] = record;
-                        
+
             string endPoint = "com.atproto.repo.createRecord";
             string postFields = postJson.ToString(Formatting.None);
             string header1 = "Authorization: Bearer " + Global.token;
             string header2 = "Content-Type: application/json";
 
-            Post(endPoint, postFields, header1, header2);
+            CheckForConnect(Post(endPoint, postFields, header1, header2));
 
             return tweetContent;
         }
 
-        public static string QuickTweet(string tweetContent)
+        public static string QuickTweet(string tweetContent) // Tweets using set Quick Post settings
         {
             if (byte.Parse(RegKit.read("\\UserSettings", "DSForQuickPost")) == 1) // digital signature
             {
@@ -200,17 +269,36 @@ namespace Cerulean
             string header1 = "Authorization: Bearer " + Global.token;
             string header2 = "Content-Type: application/json";
 
-            Post(endPoint, postFields, header1, header2);
+            CheckForConnect(Post(endPoint, postFields, header1, header2));
 
             return tweetContent;
         }
 
-        public static string Search(string query)
+        public static string Search(string query) // Searches for posts
         {
             query = query.Replace(" ", "%20");
-            
+
             string endPoint = "app.bsky.feed.searchPosts";
-            string getParam = "q=" + query;        
+            string getParam = "q=" + query;
+            string header1 = "Authorization: Bearer " + Global.token;
+            string header2 = "Content-Type: application/json";
+
+            return Get(endPoint, getParam, header1, header2);
+        }
+
+        public static string Timeline()
+        {
+            string endPoint = "app.bsky.feed.getTimeline";
+            string getParam = String.Format("algorithm=reverse-chronological");
+            string header1 = "Authorization: Bearer " + Global.token;
+            string header2 = "Content-Type: application/json";
+
+            return Get(endPoint, getParam, header1, header2);
+        }
+
+        public static string Feed(string plc, string feed){
+            string endPoint = "app.bsky.feed.getFeed";
+            string getParam = String.Format("feed=at://did:plc:{0}/app.bsky.feed.generator/{1}", plc, feed);
             string header1 = "Authorization: Bearer " + Global.token;
             string header2 = "Content-Type: application/json";
 

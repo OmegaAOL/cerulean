@@ -117,22 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="par1.Text" xml:space="preserve">
-    <value>Cerulean is maintained by me, OmegaAOL (semmalnk.bsky.social). It uses almost completely original code, but has taken design inspiration from a
-number of projects. Notable projects that Cerulean has taken design inspiration from are Naticord (patricktbp) and TweetDeck (Twitter Inc.).
-
-There is no donation method right now, but I may add one in the future if usage picks up.
-
-I would like to hear from any users on legacy operating systems (98 to XP). Please email me at hackersword666@gmail.com if you can.
-Cerulean is built with legacy platforms in mind as well as modern platforms, but since the bulk of testing is done on a Windows 10 machine
-I cannot personally iron out all the bugs that you might experience on, say, Windows 2000. I hope you understand.
-
-I HIGHLY recommend that you use an app password. Your login data is stored unencrypted in the Windows Registry. Several other programs, some
-incredibly major in the computing world (e.g. Firefox) store user login data in unencrypted, easily accessible, copyable files. This is not a Cerulean-only
-drawback, so I beg you not to raise an issue. It will be addressed soon.
-
-Thank you for using (dealing with) my program! </value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -86,6 +86,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WebSocket4Net.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsFormsAero, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\WindowsFormsAero.dll</HintPath>
@@ -99,16 +103,23 @@
     <Compile Include="C# Class Files\MessageBoxes.cs" />
     <Compile Include="C# Class Files\SkyBridge.cs" />
     <Compile Include="C# Class Files\RegKit.cs" />
+    <Compile Include="C# Class Files\WebsocketTest.cs" />
     <Compile Include="C# Class Files\WinVerKit.cs" />
+    <Compile Include="Icons_Aero.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons_Aero.resx</DependentUpon>
+    </Compile>
     <Compile Include="Icons_Classic.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons_Classic.resx</DependentUpon>
     </Compile>
-    <Compile Include="Icons_Aero.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Icons_Aero.resx</DependentUpon>
+    <Compile Include="Windows Forms\Menu_FeedSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_FeedSelector.Designer.cs">
+      <DependentUpon>Menu_FeedSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows Forms\Menu_About.cs">
       <SubType>Form</SubType>
@@ -160,8 +171,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Icons_Aero.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Icons_Aero.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Icons_Aero.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\Menu_FeedSelector.resx">
+      <DependentUpon>Menu_FeedSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\Menu_About.resx">
       <DependentUpon>Menu_About.cs</DependentUpon>
@@ -200,7 +214,6 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Cerulean_TemporaryKey.pfx" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

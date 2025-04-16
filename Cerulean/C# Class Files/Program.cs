@@ -36,6 +36,7 @@ namespace Cerulean
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             betaSettings();
+            AeroChecker.IsAeroThemeActive();
             windowsOldWarning(WinVerKit.windowsNT5PlusChecker());
 
             Application.Run(new Menu_Login());

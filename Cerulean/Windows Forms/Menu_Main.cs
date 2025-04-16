@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing;
 using WindowsFormsAero;
+using Cerulean.Windows_Forms;
 
 namespace Cerulean
 {
@@ -23,6 +25,7 @@ namespace Cerulean
         private void Menu_Main_Load(object sender, EventArgs e)
         {
             CenterToParent();
+            this.AcceptButton = quickPostButton;
         }
 
         private void menuItemOptions_Click(object sender, EventArgs e)
@@ -45,10 +48,11 @@ namespace Cerulean
 
         private void quickPostButton_Click(object sender, EventArgs ev)
         {
-
-            Global.skyWorker = new BackgroundWorker(); // initializes a BackgroundWorker to run the background method SkyBridge.tweet on thread skythread
-            Global.skyWorker.DoWork += (s, e) => SkyBridge.QuickTweet(quickPostBox.Text);
-            Global.skyWorker.RunWorkerAsync();
+            quickPostButton.Enabled = false;
+            SkyBridge.SkyWorker(
+                 (s, evt) => SkyBridge.QuickTweet(quickPostBox.Text),
+                 (s, evt) => quickPostButton.Enabled = true
+                );
 
         }
 
@@ -59,7 +63,8 @@ namespace Cerulean
 
         private void searchBox_Enter(object sender, EventArgs e)
         {
-            if (searchBox.Text == "Search Bluesky"){
+            if (searchBox.Text == "Search Bluesky")
+            {
                 searchBox.ForeColor = Color.Black;
                 searchBox.Text = String.Empty;
             }
@@ -69,9 +74,10 @@ namespace Cerulean
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Global.skyWorker = new BackgroundWorker(); // initializes a BackgroundWorker to run the background method SkyBridge.tweet on thread skythread
-                Global.skyWorker.DoWork += (s, ev) => MessageBox.Show("SEARCH:\n\n" + SkyBridge.Search(searchBox.Text));
-                Global.skyWorker.RunWorkerAsync(); 
+                SkyBridge.SkyWorker(
+                 (s, evt) => MessageBox.Show("SEARCH:\n\n" + SkyBridge.Search(searchBox.Text)),
+                 (s, evt) => { }
+                );
             }
         }
 
@@ -93,22 +99,41 @@ namespace Cerulean
 
         private void menuItemReload_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void menuItemLock_Click(object sender, EventArgs e)
-        {
-
+            var feedmenu = new Menu_FeedSelector();
+            feedmenu.Show();
         }
 
         private void menuItemLogout_Click(object sender, EventArgs e)
         {
-
+            Global.token = String.Empty;
+            Global.refreshToken = String.Empty;
+            RegKit.write("\\LoginData", "handle", String.Empty);
+            RegKit.write("\\LoginData", "password", String.Empty);
+            SkyBridge.EndTokenRefresher();
+            //Global.skyWorker.CancelAsync();
+            var loginmenu = new Menu_Login(); // switches 
+            this.Hide();
+            loginmenu.Show();
         }
 
         private void Menu_Main_Close(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void menuItemGotoGitRepo_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://github.com/OmegaAOL/cerulean");
+        }
+
+        private void menuItemGotoCeruleanCom_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://ceruleanweb.neocities.org/");
+        }
+
+        private void menuItemBugGitFile_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/OmegaAOL/cerulean/issues/new");
         }
 
     }

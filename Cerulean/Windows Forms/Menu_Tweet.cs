@@ -23,8 +23,15 @@ namespace Cerulean
             }
         }
 
+        private void Menu_Tweet_Load(object sender, EventArgs e)
+        {
+            CenterToParent();
+            this.AcceptButton = tweetButton;
+        }
+
         public void tweetButton_Click(object sender, EventArgs ev)
         {
+            tweetButton.Enabled = false;
             if (enableDSCheckBox.Checked)
             {
                 RegKit.write("\\UserSettings", "DSForComposer", 1);
@@ -34,14 +41,17 @@ namespace Cerulean
             {
                 RegKit.write("\\UserSettings", "DSForComposer", 0);
             }
-                 
-            Global.skyWorker = new BackgroundWorker(); // initializes a BackgroundWorker to run the background method SkyBridge.tweet on new thread
-            Global.skyWorker.DoWork += (s, e) => e.Result = SkyBridge.Tweet(tweetBox.Text);
-            Global.skyWorker.RunWorkerCompleted += (s, e) =>
-            {
-                MessageBox.Show("You have posted: \"" + (string)e.Result + "\" to Bluesky.");
-            };
-            Global.skyWorker.RunWorkerAsync();
+
+            SkyBridge.SkyWorker(
+                (s, evt) =>
+                {
+                    SkyBridge.Tweet(tweetBox.Text);
+                },
+                (s, evt) =>
+                {
+                    tweetButton.Enabled = true;
+                }
+            );
         }
 
         private void draftButton_Click(object sender, EventArgs e)
@@ -58,5 +68,6 @@ namespace Cerulean
         {
 
         }
+
     }
 }
