@@ -1,4 +1,4 @@
-# Cerulean for Bluesky
+# Cerulean 
 
 Check out the new website! https://ceruleanweb.neocities.org/
 
