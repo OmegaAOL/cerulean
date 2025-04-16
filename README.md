@@ -42,7 +42,7 @@ This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0.
 it should theoretically still work as of Visual Studio 2022. If you are unable to build Cerulean:
 
 - FIRST, redownload the source code (get rid of messed up options from newer Visual Studios reading the solution), enable .NET Framework 2.0 in Windows Features,
-  and download Visual Studio 2010 Express (free) or Professional (paid, or sail the sea), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
+  download Visual Studio 2010 Express (free) or Professional (paid, or sail the sea), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
 - SECOND, if and ONLY IF you've tried the above and it still doesn't work, file an issue.
 
 Curl and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
