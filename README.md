@@ -10,10 +10,10 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 
 # What's present and what works
 
-You can login and send a (text) post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
-You can set a digital signature for your posts in Tools -> Options.
-You can search for other posts on Bluesky, but you will receive a pure JSON result - difficult to parse.
-You can get your main "Following" feed, and get custom feeds with the Feed Selector, but - like Search - the result is pure JSON for now.
+- You can login and send a (text) post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
+- You can set a digital signature for your posts in Tools -> Options.
+- You can search for other posts on Bluesky, but you will receive a pure JSON result - difficult to parse.
+- You can get your main "Following" feed, and get custom feeds with the Feed Selector, but - like Search - the result is pure JSON for now.
 
 # A note on security
 
