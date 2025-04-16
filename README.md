@@ -15,7 +15,7 @@ You can set a digital signature for your posts in Tools -> Options.
 You can search for other posts on Bluesky, but you will receive a pure JSON result - difficult to parse.
 You can get your main "Following" feed, and get custom feeds with the Feed Selector, but - like Search - the result is pure JSON for now.
 
-# Security
+# A note on security
 
 Like many, many other programs ([Chrome](https://www.askcybersecurity.com/where-are-my-saved-passwords-in-chrome/) and [Firefox](https://stackoverflow.com/questions/37685932/where-in-the-filesystem-does-firefox-store-saved-passwords)
 being two of the most major), Cerulean stores your login data unencrypted. If you check "Remember Me" in the login window, your data is saved in *HKEY_CURRENT_USER\Software\Cerulean\LoginDetails* in two seperate entries. This is
@@ -30,7 +30,7 @@ the registry to steal the logins of one account.
 
 TL:DR; What Cerulean does with passwords is normal and commonplace in the industry. There is no need to worry, but if you are concerned you may use an app password (recommended) or uncheck "Remember Me" (not recommended).
 
-# Usability
+# Future roadmap
 
 I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
 
