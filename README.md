@@ -1,5 +1,7 @@
 # Cerulean 
 
+Check out the new website! https://ceruleanweb.neocities.org/
+
 This is the repository for the open-source Cerulean Bluesky client, currently in the alpha stage and barely usable. It is written in C# and uses 
 the .NET Framework 2. This enables the executable (without any dependencies) to run on Windows 98. To interface with the Bluesky
 API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](https://github.com/OmegaAOL/curl-windows98) 
