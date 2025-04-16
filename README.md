@@ -38,8 +38,12 @@ I plan to develop Cerulean into a full client that has all the features of Blues
 
 The project is open-source, but licensed under the GPL3 - any forks will have to credit both me and the project as being the originator of theirs.
 
-This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. I am not sure if Microsoft still maintains compilation options for .NET 2, but AFAIK Visual Studio 2017 had the option.
-I am unsure about later versions.
+This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. If you have installed the development kit for NET Framework 2.0/3.5 along with Visual Studio,
+it should theoretically still work as of Visual Studio 2022. If you are unable to build Cerulean:
+
+- FIRST, redownload the source code (get rid of messed up options from newer Visual Studios reading the solution), enable .NET Framework 2.0 in Windows Features,
+  and download Visual Studio 2010 Express (free) or Professional (paid, or sail the sea), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
+- SECOND, if and ONLY IF you've tried the above and it still doesn't work, file an issue.
 
 Curl and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
 
