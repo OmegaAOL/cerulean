@@ -63,6 +63,7 @@ namespace Cerulean
 
         private void searchBox_Enter(object sender, EventArgs e)
         {
+            this.AcceptButton = null;
             if (searchBox.Text == "Search Bluesky")
             {
                 searchBox.ForeColor = Color.Black;
@@ -78,11 +79,15 @@ namespace Cerulean
                  (s, evt) => MessageBox.Show("SEARCH:\n\n" + SkyBridge.Search(searchBox.Text)),
                  (s, evt) => { }
                 );
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
         private void searchBox_Leave(object sender, EventArgs e)
         {
+            this.AcceptButton = quickPostButton;
             searchBox.ForeColor = Color.DarkGray;
             searchBox.Text = "Search Bluesky";
         }
@@ -94,7 +99,7 @@ namespace Cerulean
 
         private void menuItemDM_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(Global.notImplemented);
         }
 
         private void menuItemReload_Click(object sender, EventArgs e)

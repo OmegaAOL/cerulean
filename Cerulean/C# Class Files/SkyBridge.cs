@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Cerulean
 {
-    public static class SkyBridge // Packages convoluted libcurlnet commands into nice, little, preordained functions to call for Cerulean.
+    public static class SkyBridge // Cerulean API.
     {
         private static System.Threading.Timer refreshTimer;
         private static BackgroundWorker skyWorker;
@@ -79,7 +79,7 @@ namespace Cerulean
             refreshTimer.Dispose();
         }
 
-        private static void RefreshAccessToken(object state) // function that actually gers refresh
+        private static void RefreshAccessToken(object state) // function that actually gets refresh
         {
             string endPoint = "com.atproto.server.refreshSession";
             string postFields = String.Empty;
@@ -154,7 +154,9 @@ namespace Cerulean
 
             catch (Exception ex)
             {
-                MessageBox.Show("Please wait some time before posting again. Rapid-fire posting is not supported currently as there is no post queue.\n\nException: " + ex.Message);
+                MessageBox.Show("POST Exception: " + ex.Message + "\n\nCerulean is a fully static program, so object instances are not created upon code execution - " +
+                    "rather, the same function variables are used for multiple processes and by more than one thread. If actions occur simultaenously, this leads to " +
+                    "protected memory exceptions thrown.\n\nObjects will be introduced in future releases.");
             }
 
             easy.Cleanup(); // Clean up residue
@@ -195,7 +197,9 @@ namespace Cerulean
 
             catch (Exception ex)
             {
-                MessageBox.Show("Exception: " + ex.Message);
+                MessageBox.Show("GET Exception: " + ex.Message + "\n\nCerulean is a fully static program, so object instances are not created upon code execution - " +
+                    "rather, the same function variables are used for multiple processes and by more than one thread. If actions occur simultaenously, this leads to " + 
+                    "protected memory exceptions thrown.\n\nObjects will be introduced in future releases.");
             }
 
             easy.Cleanup(); // Clean up residue

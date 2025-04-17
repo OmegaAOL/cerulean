@@ -23,7 +23,7 @@ namespace Cerulean
         private void followOmegaButton_Click(object sender, EventArgs e)
         {
             followOmegaButton.Enabled = false;
-            MessageBox.Show("Not implemented");
+            MessageBox.Show(Global.notImplemented);
         }
 
         private void postAbtCerulean_Click(object sender, EventArgs ev)
@@ -42,7 +42,7 @@ namespace Cerulean
         private void donateButton_Click(object sender, EventArgs e)
         {
             donateButton.Enabled = false;
-            MessageBox.Show("Not implemented");
+            MessageBox.Show(Global.notImplemented);
         }
     }
 }
