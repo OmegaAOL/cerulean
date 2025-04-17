@@ -82,6 +82,7 @@
             // 
             // buttonCustomFeed
             // 
+            this.buttonCustomFeed.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonCustomFeed.Location = new System.Drawing.Point(210, 126);
             this.buttonCustomFeed.Name = "buttonCustomFeed";
             this.buttonCustomFeed.Size = new System.Drawing.Size(75, 23);
@@ -92,6 +93,7 @@
             // 
             // buttonFollowingFeed
             // 
+            this.buttonFollowingFeed.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonFollowingFeed.Location = new System.Drawing.Point(129, 126);
             this.buttonFollowingFeed.Name = "buttonFollowingFeed";
             this.buttonFollowingFeed.Size = new System.Drawing.Size(75, 23);

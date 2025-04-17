@@ -70,6 +70,7 @@
             // 
             // donateButton
             // 
+            this.donateButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.donateButton.Location = new System.Drawing.Point(692, 352);
             this.donateButton.Name = "donateButton";
             this.donateButton.Size = new System.Drawing.Size(85, 23);
