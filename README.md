@@ -1,6 +1,7 @@
 # Cerulean 
 
-**Cerulean has been put on hold while I help develop amykaname/skype-discord-client. It will resume afterwards."
+**Cerulean has been put on hold while I help develop amykaname/skype-discord-client. It will resume afterwards, with Cerulean's SkyBridge built into the
+Skype Discord Client and the legacy Cerulean frontend sticking around for Windows 98.**
 
 Check out the new website! https://ceruleanweb.neocities.org/
 
