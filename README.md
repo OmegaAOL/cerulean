@@ -1,5 +1,7 @@
 # Cerulean 
 
+**Cerulean has been put on hold while I help develop amykaname/skype-discord-client. It will resume afterwards."
+
 Check out the new website! https://ceruleanweb.neocities.org/
 
 This is the repository for the open-source Cerulean Bluesky client, currently in the alpha stage and barely usable. It is written in C# and uses 
