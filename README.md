@@ -1,8 +1,5 @@
 # Cerulean 
 
-**Cerulean has been put on hold while I help develop amykaname/skype-discord-client. It will resume afterwards, with Cerulean's SkyBridge built into the
-Skype Discord Client and the Cerulean frontend sticking around for Windows 98-2000 / people who don't want to use the client.**
-
 Check out the new website! https://ceruleanweb.neocities.org/
 
 This is the repository for the open-source Cerulean Bluesky client, currently in the alpha stage and barely usable. It is written in C# and uses 
@@ -13,10 +10,13 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 
 # What's present and what works
 
-- You can login and send a (text) post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
+- You can login and send a post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
+- You can paste and upload images to use in your post.
 - You can set a digital signature for your posts in Tools -> Options.
-- You can search for other posts on Bluesky, but you will receive a pure JSON result - difficult to parse.
-- You can get your main "Following" feed, and get custom feeds with the Feed Selector, but - like Search - the result is pure JSON for now.
+- You can reset your password by going to Login -> Forgot Password.
+- You can connect to non-Bluesky PDS hosts.
+- You can search for other posts on Bluesky. Results are saved to a text file.
+- You can get your main "Following" feed, and get custom feeds with the Feed Selector. Results are saved to a text file.
 
 # A note on security
 
