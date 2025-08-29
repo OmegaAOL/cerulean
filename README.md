@@ -1,5 +1,7 @@
 # Cerulean for Bluesky
 
+<img width="1412" height="817" alt="image" src="https://github.com/user-attachments/assets/7ff743a7-adcb-4ab4-86b9-5bfd800565fb" />
+
 Check out the new website! https://ceruleanweb.neocities.org/
 
 This is the repository for the open-source Cerulean Bluesky client, currently in the alpha stage and barely usable. It is written in C# and uses 
