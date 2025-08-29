@@ -8,15 +8,31 @@ API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](
 
 ![alt text](https://i.imgur.com/bzciwrw.png)
 
-# What's present and what works
+# What works (so far)
 
-- You can login and send a post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
-- You can paste and upload images to use in your post.
-- You can set a digital signature for your posts in Tools -> Options.
-- You can reset your password by going to Login -> Forgot Password.
-- You can connect to non-Bluesky PDS hosts.
-- You can search for other posts on Bluesky. Results are saved to a text file.
-- You can get your main "Following" feed, and get custom feeds with the Feed Selector. Results are saved to a text file.
+- Logging in, resetting password, changing PDS host
+- Creating posts, reposts (also undoing reposts), quote posts
+- Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
+- Liking and unliking posts
+- Viewing your timeline & your other feeds
+- Searching for profiles and viewing profile information
+- Viewing images and avatars
+
+# What needs to be fixed
+
+- Spawning new anonymous threads. Basically: Don't click buttons too fast/spam-click
+- Uploading images to posts
+- Creating account
+- Reporting users and posts, blocking users
+- Viewing notifications
+
+# What needs to be added 
+
+- Viewing all posts of a particular user
+- Viewing threads (use more -> open in browser for this rn)
+- Starter packs
+- Chat
+- Lists
 
 # A note on security
 
