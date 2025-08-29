@@ -2,7 +2,7 @@
 
 <img width="1412" height="817" alt="image" src="https://github.com/user-attachments/assets/7ff743a7-adcb-4ab4-86b9-5bfd800565fb" />
 
-*Screenshot of Cerulean Beta 0.2.0 on ([Reunion7](https://www.reunion7.com)*
+*Screenshot of Cerulean Beta 0.2.0 on [Reunion7](https://www.reunion7.com)*
 
 This is the repository for the open-source Cerulean Bluesky client, currently in the alpha stage and barely usable. It is written in C# and uses 
 the .NET Framework 2. This enables the executable (without any dependencies) to run on Windows 98. To interface with the Bluesky
