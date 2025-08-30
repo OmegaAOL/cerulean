@@ -12,7 +12,7 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 # What works (so far)
 
 - Logging in, resetting password, changing PDS host
-- Encryption of handle and password (AES-256)
+- Encryption of handle and password (AES-256 on legacy Windows, DPAPI on Windows 2000 and up)
 - Creating posts, reposts (also undoing reposts), quote posts
 - Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
 - Liking and unliking posts
