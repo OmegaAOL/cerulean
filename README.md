@@ -38,7 +38,7 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 
 # Security
 
-Cerulean stores your handle and password in the registry using AES-256-CBC.
+Cerulean stores your handle and password in the registry using AES-256-CBC. This is more than safe enough for the forseeable future.
 
 # Future roadmap
 
