@@ -12,7 +12,7 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 # What works (so far)
 
 - Logging in, resetting password, changing PDS host
-- Encryption of handle and password with 3DES. 3DES is used instead of AES for backwards compatibility with Windows 9x/2000
+- Encryption of handle and password (AES-256)
 - Creating posts, reposts (also undoing reposts), quote posts
 - Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
 - Liking and unliking posts
