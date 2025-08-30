@@ -12,6 +12,7 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 # What works (so far)
 
 - Logging in, resetting password, changing PDS host
+- Encryption of handle and password with TripleDES
 - Creating posts, reposts (also undoing reposts), quote posts
 - Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
 - Liking and unliking posts
