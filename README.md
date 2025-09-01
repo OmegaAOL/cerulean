@@ -19,6 +19,7 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 - Viewing your timeline & your other feeds
 - Searching for profiles and viewing profile information
 - Viewing images and avatars
+- Deleting posts
 
 # What needs to be fixed
 
