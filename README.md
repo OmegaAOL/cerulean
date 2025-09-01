@@ -61,7 +61,7 @@ This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0.
 
 - FIRST, enable .NET Framework 2.0 in Windows Features, download Visual Studio 2010 Express (free) or Professional (paid, or pirate it), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
 - SECOND, if and ONLY IF you've tried the above and it still doesn't work, file an issue.
-- 
+
 cURL and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
 
 The source code is meant to be readable and easily changable, not to be as small as possible. This also means there is a lot of commented-out (or *dead*) code that I may comment in/out at times. **Do not remove dead code!**
