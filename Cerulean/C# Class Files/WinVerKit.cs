@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+
 namespace Cerulean
 {
     public static class WinVerKit // WinVerKit, OmegaAOL. Gets varying Windows version information, including if system is 2000+ or Legacy.
@@ -15,32 +16,22 @@ namespace Cerulean
 
         public static string winVersion(byte infoType)
         {
-            if (infoType == 1)
+            switch (infoType)
             {
-                return Environment.OSVersion.Platform.ToString();
-            }
-
-            if (infoType == 2)
-            {
-                return Environment.OSVersion.Version.ToString();
-            }
-
-            if (infoType == 3)
-            {
-                return Environment.OSVersion.ServicePack.ToString();
-            }
-
-            if (infoType == 4)
-            {
-                return Environment.OSVersion.VersionString;
-            }
-
-            else
-            {
-                return null;
+                case 1:
+                    return Environment.OSVersion.Platform.ToString();
+                case 2:
+                    return Environment.OSVersion.Version.ToString();
+                case 3:
+                    return Environment.OSVersion.ServicePack.ToString();
+                case 4:
+                    return Environment.OSVersion.VersionString;
+                default:
+                    return null;
             }
         }
     }
+
     public static class AeroChecker
     {
         [DllImport("dwmapi.dll", PreserveSig = false)]
@@ -55,19 +46,23 @@ namespace Cerulean
             [Out] System.Text.StringBuilder pszSizeBuff,
             int cchMaxSizeChars);
 
+        private static void NoAero()
+        {
+            CeruleanBox.Display("Your system does not have the Aero theme. Cerulean is Aero-first so it may not look as intended on your system.");
+        }
+
         public static void IsAeroThemeActive()
         {
-            string noaero = "Your system does not have the Aero theme. Cerulean is Aero-first so it may not look as intended on your system.";
             if (Environment.OSVersion.Version.Major < 6)
             {
-                MessageBox.Show(noaero);
+                NoAero();
             }
 
             try
             {
                 if (!DwmIsCompositionEnabled())
                 {
-                    MessageBox.Show(noaero);
+                    NoAero();
                 }
 
                 var themeName = new System.Text.StringBuilder(260);
@@ -77,13 +72,13 @@ namespace Cerulean
 
                 if (!(themeName.ToString().ToLower().Contains("aero")))
                 {
-                    MessageBox.Show(noaero);
+                    NoAero();
                 }
 
             }
             catch
             {
-                MessageBox.Show(noaero);
+                NoAero();
             }
         }
     }

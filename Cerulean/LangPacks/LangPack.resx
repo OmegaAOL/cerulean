@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ABOUT_BUTTON_DONATE" xml:space="preserve">
+    <value>Donate!</value>
+  </data>
+  <data name="ABOUT_BUTTON_FOLLOW_MAINTAINER" xml:space="preserve">
+    <value>Follow me</value>
+  </data>
+  <data name="ABOUT_BUTTON_POST_CERULEAN" xml:space="preserve">
+    <value>Post about Cerulean</value>
+  </data>
+  <data name="ABOUT_LABEL_DESCRIPTION" xml:space="preserve">
+    <value>Hello, and thanks for using my client! It's currently in the beta stage, which means a fair chunk of stuff
+is incomplete or unimplemented. I would appreciate it if you contacted me about potential
+new features I could add or things I could change.
+
+This client is meant to replace Bluesky completely. As the official app and wesbite use the public 
+API, everything possible with the app is also possible in a third-party client. I want to add all Bluesky's 
+features (and more) to this client.
+
+Contact: gigggity@proton.me / gigggity.bsky.social
+
+Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of Bluesky Social, PBC.</value>
+  </data>
+  <data name="ABOUT_WINTITLE" xml:space="preserve">
+    <value>About Cerulean</value>
+  </data>
+  <data name="CBOX_WINTITLE" xml:space="preserve">
+    <value>Cerulean</value>
+  </data>
+  <data name="FEEDSEL_BUTTON_SELECT_FEED" xml:space="preserve">
+    <value>Select Feed</value>
+  </data>
+  <data name="FEEDSEL_BUTTON_TIMELINE" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="FEEDSEL_CBOX_SELECTFEED" xml:space="preserve">
+    <value>Please select a feed to view.</value>
+  </data>
+  <data name="FEEDSEL_LABEL_DESCRIPTION" xml:space="preserve">
+    <value>You may choose a feed to view, or choose "Timeline" to view your timeline.</value>
+  </data>
+  <data name="FEEDSEL_LIST_DESCRIPTION" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="FEEDSEL_LIST_FEED" xml:space="preserve">
+    <value>Feed</value>
+  </data>
+  <data name="FEEDSEL_LIST_NO_NAME" xml:space="preserve">
+    <value>No feed name</value>
+  </data>
+  <data name="FEEDSEL_WINTITLE" xml:space="preserve">
+    <value>Feed Selector</value>
+  </data>
+  <data name="GLOBAL_BUTTON_APPLY" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="GLOBAL_BUTTON_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="GLOBAL_BUTTON_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="GLOBAL_BUTTON_PING_SERVER" xml:space="preserve">
+    <value>Check server status</value>
+  </data>
+  <data name="GLOBAL_BUTTON_RESET" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="GLOBAL_INFOLABEL_EMPTY_FIELDS" xml:space="preserve">
+    <value>Fill all fields</value>
+  </data>
+  <data name="IMGVIEWER_WINTITLE" xml:space="preserve">
+    <value>Image viewer</value>
+  </data>
+  <data name="LOGIN_BUTTON_CHANGEPDS" xml:space="preserve">
+    <value>Change PDS Host</value>
+  </data>
+  <data name="LOGIN_BUTTON_FORGOTPASS" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="LOGIN_BUTTON_LOGIN" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LOGIN_CHECKBOX_REMEMBER_CREDENTIALS" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="LOGIN_LABEL_HANDLE" xml:space="preserve">
+    <value>Bluesky handle</value>
+  </data>
+  <data name="LOGIN_LABEL_PASSWORD" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LOGIN_LINKLABEL_NEWACCOUNT" xml:space="preserve">
+    <value>Create a new account?</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_CONNECTING_TO_PDS" xml:space="preserve">
+    <value>Connecting to PDS host</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_CONNECTING_TO_PDS_SUB" xml:space="preserve">
+    <value>Cerulean is connecting to Bluesky. If authentication fails, check PDS host and login details.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_DEFAULT" xml:space="preserve">
+    <value>Welcome to Cerulean.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_DEFAULT_SUB" xml:space="preserve">
+    <value>Please sign in with your Bluesky account. App password is recommended.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_EMPTY_FIELD_SUB" xml:space="preserve">
+    <value>Make sure that both the handle and password fields are filled.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_INVALID_DEBUGCODE" xml:space="preserve">
+    <value>Invalid debug code</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_INVALID_DEBUGCODE_SUB" xml:space="preserve">
+    <value>The debug code that you have entered is invalid.</value>
+  </data>
+  <data name="LOGIN_WINTITLE" xml:space="preserve">
+    <value>Cerulean Login</value>
+  </data>
+  <data name="MAIN_BUTTON_POST" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="MAIN_CBOX_ABSENT_DM" xml:space="preserve">
+    <value>Direct Messaging</value>
+  </data>
+  <data name="MAIN_QTBOX_PLACEHOLDER" xml:space="preserve">
+    <value>What's happening?</value>
+  </data>
+  <data name="MAIN_SEARCHBOX_PLACEHOLDER" xml:space="preserve">
+    <value>Search Bluesky</value>
+  </data>
+  <data name="MAIN_SEARCHLIST_FAILED" xml:space="preserve">
+    <value>Failed to load results</value>
+  </data>
+  <data name="MAIN_SEARCHLIST_NORESULT" xml:space="preserve">
+    <value>No profiles found</value>
+  </data>
+  <data name="MAIN_SEARCHLIST_SEARCHING" xml:space="preserve">
+    <value>Searching for users...</value>
+  </data>
+  <data name="MAIN_TBUTTON_LOGOUT" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="MAIN_TBUTTON_NEW_DM" xml:space="preserve">
+    <value>New Direct Message</value>
+  </data>
+  <data name="MAIN_TBUTTON_NEW_POST" xml:space="preserve">
+    <value>New Post</value>
+  </data>
+  <data name="MAIN_TBUTTON_NOTIFICATIONS" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="MAIN_TBUTTON_REAUTH" xml:space="preserve">
+    <value>Reauthenticate</value>
+  </data>
+  <data name="MAIN_TBUTTON_SELECT_FEED" xml:space="preserve">
+    <value>Select Feed</value>
+  </data>
+  <data name="MAIN_TLABEL_CONNECTED" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="MAIN_TLABEL_DISCONNECTED" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="MAIN_TLABEL_HANDLE_OFFLINE" xml:space="preserve">
+    <value>DEBUG: Offline User</value>
+  </data>
+  <data name="MAIN_URL_CERULEANGITERRPATH" xml:space="preserve">
+    <value>/issues/new</value>
+  </data>
+  <data name="MAIN_URL_CERULEANGITREPO" xml:space="preserve">
+    <value>http://github.com/OmegaAOL/cerulean</value>
+  </data>
+  <data name="MAIN_URL_CERULEANWEB" xml:space="preserve">
+    <value>http://ceruleanweb.neocities.org/</value>
+  </data>
+  <data name="MAIN_WINTITLE" xml:space="preserve">
+    <value>Cerulean</value>
+  </data>
+  <data name="PDS_BUTTON_PING_SERVER" xml:space="preserve">
+    <value>Check server status</value>
+  </data>
+  <data name="PDS_CBOX_INVALID_CHAR" xml:space="preserve">
+    <value>The URL you are trying to use is invalid. Remember, no slashes or special characters at the end.</value>
+  </data>
+  <data name="PDS_CBOX_PDS_PING_ERROR" xml:space="preserve">
+    <value>Unable to determine software version of PDS server {0}. This is either not a PDS server or incompatible with Cerulean.</value>
+  </data>
+  <data name="PDS_CBOX_PDS_PING_RESULT" xml:space="preserve">
+    <value>PDS server {0}/ is online. The server is running software version {1}. This should be compatible with Cerulean.</value>
+  </data>
+  <data name="PDS_CBOX_URL_RESET" xml:space="preserve">
+    <value>The PDS host has been reset to {0}.</value>
+  </data>
+  <data name="PDS_CBOX_URL_SAVED" xml:space="preserve">
+    <value>Your custom PDS host has been saved.</value>
+  </data>
+  <data name="PDS_LABEL_DESCRIPTION" xml:space="preserve">
+    <value>A Bluesky PDS hosts your data and federates with the
+wider AT Protocol to create a social network.
+
+You may host your own PDS. To make Cerulean use your
+PDS instead of the default (https://bsky.social), change it here.
+
+There is no official support for alternative microblogging services.</value>
+  </data>
+  <data name="PDS_WINTITLE" xml:space="preserve">
+    <value>Change PDS Host</value>
+  </data>
+  <data name="RESETPW_BUTTON_SEND_EMAIL" xml:space="preserve">
+    <value>Send email</value>
+  </data>
+  <data name="RESETPW_INFOLABEL_EMAIL_INVALID" xml:space="preserve">
+    <value>Enter a valid email address</value>
+  </data>
+  <data name="RESETPW_INFOLABEL_STRONG_PASSWORD" xml:space="preserve">
+    <value>Strong password recommended</value>
+  </data>
+  <data name="RESETPW_LABEL_EMAIL" xml:space="preserve">
+    <value>Account email</value>
+  </data>
+  <data name="RESETPW_LABEL_NEW_PASSWORD" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="RESETPW_LABEL_RESET_CODE" xml:space="preserve">
+    <value>Reset code</value>
+  </data>
+  <data name="RESETPW_LABEL_STEP1" xml:space="preserve">
+    <value>1) Enter the e-mail address you used to register with Bluesky. You will 
+recieve a password reset e-mail.</value>
+  </data>
+  <data name="RESETPW_LABEL_STEP2" xml:space="preserve">
+    <value>2) Enter a new password of your choosing, along with the password
+reset code that you received in the mail:</value>
+  </data>
+  <data name="RESETPW_WINTITLE" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="TC_LABEL_DELETED" xml:space="preserve">
+    <value>deleted post</value>
+  </data>
+</root>

@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
+using Newtonsoft.Json.Linq;
+using OmegaAOL.SkyBridge;
+
+namespace Cerulean
+{
+    class WEH
+    {
+        public static void ErrThrower(bool localHandling, string title, string subtitle = "") 
+        {
+            /*if (title == "Connection failed")
+            {
+                CeruleanBox.Display(Global.cantConnect);
+            }*/
+
+            if (localHandling == false)
+            {
+                
+                
+
+                    if (subtitle != String.Empty)
+                    {
+                        title += String.Format("\nDESCRIPTION: {0}", subtitle);
+                    }
+
+                    CeruleanBox.Display("ERROR: " + title);
+                
+            }
+        }
+
+        public static string[] ErrHandler(JObject input, bool localHandling = false) // handles errors, returns true if error, returns false if no error
+        {
+            string title = String.Empty, subtitle = String.Empty;
+            string[] errtrue = new string[] { null, null, "true" };
+            string[] errfalse = new string[] { null, null, "false" };
+            
+            if (input.ContainsKey("error"))
+            {
+                if ((string)input["error"] == ("noResponse"))
+                {
+                    title = "Empty response from server";
+                    subtitle = "Blank response received from the server.";
+                }
+
+                else if ((string)input["error"] == "ExpiredToken")
+                {
+                    Auth.Refresher.Start(Auth.Refresher.Mode.Auto);
+                    return errfalse;
+                }
+
+                else if ((string)input["error"] == "AuthenticationRequired")
+                {
+                    title = "Invalid login details";
+                    subtitle = "The login credentials you have provided are invalid. If you used your email to log in, use your handle instead.";
+                }
+
+                else if ((string)input["error"] == "RateLimitExceeded")
+                {
+                    title = "Rate limit exceeded";
+                    subtitle = "The PDS is rate limiting your account. Try again later, or contact your PDS administrator.";
+                }
+
+                else if ((string)input["error"] == "AuthFactorTokenRequired")
+                {
+                    title = "Email 2FA token required; use app password";
+                    subtitle = "The server requires two-factor authentication. Cerulean does not support legacy 2FA, so use an app password instead.";
+                }
+
+                else
+                {
+                    title = (string)input["error"];
+                    if (input.ContainsKey("message"))
+                    {
+                        subtitle = (string)input["message"];
+                    }
+                    else
+                    {
+                        subtitle = "This error is unhandled by Cerulean (it's server-side). Report this on GitHub.";
+                    }
+                }
+
+                ErrThrower(localHandling, title, subtitle);
+
+                if (localHandling == true) { return new string[] { title, subtitle, null }; }
+                else { return errtrue; }
+            }
+
+            else { return errfalse; }
+        }
+    }
+}

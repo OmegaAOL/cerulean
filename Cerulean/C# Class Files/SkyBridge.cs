@@ -1,18 +1,247 @@
-﻿using System;
+﻿/*==================================================================================
+ 
+ =============================//LEGAL NOTICE\\====================================
+By using or editing this API framework, you accept the Cerulean Terms of
+Service (found at http://ceruleanweb.neocities.org/legal/terms.txt).
+This framework ("SkyBridge by OmegaAOL") falls under the Cerulean software group.
+
+ ============================//FOR DEVELOPERS\\===================================
+There are a lot of redundant methods in here. This is intentional and for ease of use
+and understanding of the library. Do not try to "simplify" it.
+This library is currently a static one. This will be changed in the future.
+ 
+===================================================================================*/
+
+using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 using SeasideResearch.LibCurlNet;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using OmegaAOL.OAuth; // DEAL WITH THIS DEPENDENCY!!!
 
-namespace Cerulean
+namespace OmegaAOL.SkyBridge
 {
-    public static class SkyBridge // Cerulean API.
+    public static class EmbedType
     {
-        private static System.Threading.Timer refreshTimer;
-        private static BackgroundWorker skyWorker;
+        public const string Image = "app.bsky.embed.images#view";
+        public const string Video = "app.bsky.embed.video#view";
+        public const string Record = "app.bsky.embed.record#view";
+    }
 
+    internal static class Variables
+    {
+        internal static string Token;
+        internal static string RefreshToken;
+        internal static string Handle;
+        public static JArray BlobArray = null;
+        public static string PDSHost;
+    }
+
+    internal static class Display
+    {
+        public static void Text(string text)
+        {
+            MessageBox.Show(text);
+        }
+    }
+
+    internal static class Tools // local tools for Skybridge tasks
+    {
+        private static JObject KeyChecker(string key, JObject obj)
+        {
+            JObject keyError = new JObject();
+            keyError["error"] = "keyNotPresent";
+            if (obj.ContainsKey(key) || obj.ContainsKey("error"))
+            {
+                return obj;
+            }
+
+            else
+            {
+                return keyError;
+            }
+        }
+
+        public static string DateToBsky() // Gets ISO 8601 + RFC 3339 compatible local date and time for certain Bluesky functions.
+        {
+            string BskyDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssZ");
+            return BskyDate;
+        }
+    }
+
+    internal static class Error
+    {
+        public static void Throw(Easy easy, CURLcode code)
+        {
+            Display.Text(String.Format("cURL connection error: {0}\n\n[{1}]", easy.StrError(code), code.ToString()));
+        }
+    }
+
+    internal static class Http
+    {
+        public enum Method { Post, Get, PostRaw };
+        private static Easy CurlRequest;
+
+        static Http()
+        {
+            Curl.GlobalInit(3); // Curl.GlobalInit accepts multiple ints. 0 is no network-related stuff, 1 is SSL only, 2 is WinSock only and 3 is everything. ONLY USE 0 AND 3
+            CurlRequest = new Easy();
+            // You may also want to enable connection reuse
+            CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
+        }
+
+        public static JObject Request(string endPoint, object parameters, string header1, string header2, Method reqType, string alternateBase = null) // Handles all requests Cerulean makes to the API.
+        {
+            //CurlRequest.Reset();
+
+            bool silent = false;
+            bool curlErrorThrown = false;
+            string url, urlparameters = String.Empty;
+            StringBuilder jsonBuilder = new StringBuilder(); // the stringbuilder is because large messages are downloaded in chunks
+            JObject invalidJson = new JObject(), curlerror = new JObject(), response = new JObject();
+            string baseUrl;
+            if (alternateBase != null)
+                baseUrl = alternateBase;
+            else
+                baseUrl = Variables.PDSHost;
+            invalidJson["error"] = "Invalid response from server";
+            invalidJson["message"] = "The PDS returned a response that Cerulean cannot process.";
+
+            if (reqType == Http.Method.Get) { urlparameters = "?" + parameters; }
+            url = baseUrl + "/xrpc/" + endPoint + urlparameters;
+
+            Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData) // Downloads the server response
+            {
+                int realSize = size * nmemb;
+                jsonBuilder.Append(System.Text.Encoding.UTF8.GetString(buf, 0, realSize));
+                return realSize;
+            };
+
+            Slist header = new Slist(); // For headers
+            header.Append(header1);
+            header.Append(header2);
+
+            CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, header);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
+            CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+            CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+            //CurlRequest.SetOpt(CURLoption.CURLOPT_VERBOSE, true);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_DEBUGFUNCTION, new Easy.DebugFunction(OnDebug));
+
+            if (reqType != Method.Get)
+            {
+                CurlRequest.SetOpt(CURLoption.CURLOPT_POST, true);
+
+                if (reqType == Method.PostRaw)
+                {
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, new Easy.WriteFunction((data, size, nmemb, extraData) =>
+                    {
+                        string responsse = Encoding.UTF8.GetString(data, 0, size * nmemb);
+                        Console.WriteLine(responsse);
+                        return size * nmemb;
+                    }));
+                }
+
+                else if (reqType == Method.Post)
+                {
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_POSTFIELDS, parameters);
+                }
+            }
+
+            else if (reqType == Method.Get)
+            {
+                CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
+            }
+
+            try
+            {
+                CURLcode code = CurlRequest.Perform();
+                if (code != CURLcode.CURLE_OK)
+                {
+                    if (!silent)
+                    {
+                        Error.Throw(CurlRequest, code);
+                        curlerror["error"] = "Connection failed";
+                        curlerror["message"] = "There was an issue connecting to the server. Error code: " + code.ToString();
+                    }
+
+                    response = curlerror;
+                    curlErrorThrown = true;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                if (!silent)
+                {
+                    Display.Text(ex.Message);
+                }
+            }
+
+            try
+            {
+                if (!curlErrorThrown)
+                {
+                    response = JObject.Parse(jsonBuilder.ToString());
+                }
+                else
+                {
+                    response = curlerror;
+                }
+            }
+            catch (Exception ex) { Display.Text(ex.Message); response = invalidJson; }
+
+            try
+            {
+                //CurlRequest.Cleanup(); // Clean up residue               
+            }
+            catch { }
+
+            // Display.Text("Prereturn"); // DEBUG
+            // return JObject.Parse(response);
+            // Display.Text(response);
+
+            if (response == null)
+            {
+                response["error"] = "noResponse";
+            }
+
+            return response;
+        }
+
+        private static void OnDebug(CURLINFOTYPE infoType, string msg, object extraData)
+        {
+            // You can filter here if you don’t want everything
+            switch (infoType)
+            {
+                case CURLINFOTYPE.CURLINFO_HEADER_IN:
+                    Display.Text("<< " + msg.TrimEnd());
+                    break;
+                case CURLINFOTYPE.CURLINFO_HEADER_OUT:
+                    Display.Text(">> " + msg.TrimEnd());
+                    break;
+                case CURLINFOTYPE.CURLINFO_DATA_IN:
+                    Display.Text("Received Data: " + msg.Length + " bytes");
+                    break;
+                case CURLINFOTYPE.CURLINFO_DATA_OUT:
+                    Display.Text("Sent Data: " + msg.Length + " bytes");
+                    break;
+                default:
+                    Display.Text(infoType + ": " + msg.TrimEnd());
+                    break;
+            }
+        }
+    }
+
+    public static class Async // Backgroundworkers to simulate async in .NET 2 - 4.5. Temporary
+    {
+        public static BackgroundWorker skyWorker = null;
         public static void SkyWorker(DoWorkEventHandler workHandler, RunWorkerCompletedEventHandler completedHandler)
         {
 
@@ -36,182 +265,35 @@ namespace Cerulean
 
                 // Optional cleanup after the run
                 skyWorker.Dispose();
-                skyWorker = null;
+                //skyWorker = null;
             };
 
             skyWorker.RunWorkerAsync();
         }
 
-        private static bool CheckForConnect(string toParse)
-        {
-            // MessageBox.Show(toParse); // DEBUG
-            try
-            {
-                JObject obj = JObject.Parse(toParse);
-                return true;
-            }
+    }
 
-            catch
-            {
-                MessageBox.Show(Global.cantConnect);
-                return false;
-            }
+    public static class OAuth
+    {
+        public static void Login(string handle, string password)
+        {
+
         }
 
-        public static void StartTokenRefresher(bool automatic) // function to start the process of token refreshing
+        public static void Test()
         {
-            if (automatic) // uses the timer to refresh every 5 minutes
-            {
-                refreshTimer = new System.Threading.Timer(RefreshAccessToken, null, 300000, 300000);
-            }
-
-            else // instantly manually refreshes using skyWorker
-            {
-                SkyBridge.SkyWorker(
-                (s, evt) => RefreshAccessToken(null),
-                (s, evt) => { }
-                );
-            }
+            OmegaAOL.OAuth.OAuthFlow.Test();
         }
+    }
 
-        public static void EndTokenRefresher()
+    public static class Auth // Authentication, password reset and token refresh through the legacy (non-OAuth) authorization pipeline.
+    {
+        public static JObject Login(string handle, string password) // Logs in, returns accessJwt and refreshJwt
         {
-            refreshTimer.Dispose();
-        }
+            Variables.Handle = handle;
 
-        private static void RefreshAccessToken(object state) // function that actually gets refresh
-        {
-            string endPoint = "com.atproto.server.refreshSession";
-            string postFields = String.Empty;
-            string header1 = "Authorization: Bearer " + Global.refreshToken;
-            string header2 = "Accept: application/json";
-
-            string serverRefreshResponse = Post(endPoint, postFields, header1, header2);
-            //MessageBox.Show("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
-
-            try
-            {
-                JObject refreshbody = JObject.Parse(serverRefreshResponse);
-                if (refreshbody.ContainsKey("refreshJwt")) // checking if accessJwt exists in the response
-                {
-                    Global.token = (string)refreshbody["accessJwt"];
-                    Global.refreshToken = (string)refreshbody["refreshJwt"];
-                    MessageBox.Show("Reauthenticated with Bluesky successfully.");
-                }
-
-                else
-                {
-                    MessageBox.Show(Global.cantConnect);
-                }
-            }
-
-            catch
-            {
-                MessageBox.Show(Global.cantConnect);
-            }
-
-            //Global.reloadCount++; // Timer debug
-            //MessageBox.Show("[DEBUG] RELOADED TIMES: " + Global.reloadCount);
-        }
-
-        public static string DateToBsky() // Gets ISO 8601 + RFC 3339 compatible local date and time for certain Bluesky functions.
-        {
-            string BskyDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssZ");
-            return BskyDate;
-        }
-
-
-        public static string Post(string endPoint, string postFields, string header1, string header2) // Handles all POST requests Cerulean makes to the API.
-        {
-            string postResponse = String.Empty;
-            string url = (RegKit.read("\\API", "PDSHost") + "/xrpc/" + endPoint);
-
-            Curl.GlobalInit(3); // Curl.GlobalInit accepts multiple ints. 0 is no network-related stuff, 1 is SSL only, 2 is WinSock only and 3 is everything. ONLY USE 0 AND 3
-            Easy easy = new Easy();
-
-            Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData) // Downloads the server response
-            {
-                int realSize = size * nmemb;
-                postResponse = System.Text.Encoding.UTF8.GetString(buf, 0, realSize);
-                return realSize;
-            };
-
-            Slist header = new Slist(); // For headers
-            header.Append(header1);
-            header.Append(header2);
-
-            easy.SetOpt(CURLoption.CURLOPT_HTTPHEADER, header);
-            easy.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
-            easy.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-            easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
-            easy.SetOpt(CURLoption.CURLOPT_POST, true);
-            easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, postFields);
-
-            try
-            {
-                easy.Perform();
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("POST Exception: " + ex.Message + "\n\nCerulean is a fully static program, so object instances are not created upon code execution - " +
-                    "rather, the same function variables are used for multiple processes and by more than one thread. If actions occur simultaenously, this leads to " +
-                    "protected memory exceptions thrown.\n\nObjects will be introduced in future releases.");
-            }
-
-            easy.Cleanup(); // Clean up residue
-            Curl.GlobalCleanup();
-
-            return postResponse;
-        }
-
-        public static string Get(string endPoint, string getParam, string header1, string header2) // Handles all GET requests Cerulean makes to the API.
-        {
-            string getResponse = String.Empty;
-            string url = (RegKit.read("\\API", "PDSHost") + "/xrpc/" + endPoint + "?" + getParam);
-
-            Curl.GlobalInit(3); // Curl.GlobalInit accepts multiple ints. 0 is no network-related stuff, 1 is SSL only, 2 is WinSock only and 3 is everything. ONLY USE 0 AND 3
-            Easy easy = new Easy();
-
-            Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData) // Downloads the server response
-            {
-                int realSize = size * nmemb;
-                getResponse = System.Text.Encoding.UTF8.GetString(buf, 0, realSize);
-                return realSize;
-            };
-
-            Slist header = new Slist(); // For headers
-            header.Append(header1);
-            header.Append(header2);
-
-            easy.SetOpt(CURLoption.CURLOPT_HTTPHEADER, header);
-            easy.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
-            easy.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-            easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
-            easy.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
-
-            try
-            {
-                easy.Perform();
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("GET Exception: " + ex.Message + "\n\nCerulean is a fully static program, so object instances are not created upon code execution - " +
-                    "rather, the same function variables are used for multiple processes and by more than one thread. If actions occur simultaenously, this leads to " + 
-                    "protected memory exceptions thrown.\n\nObjects will be introduced in future releases.");
-            }
-
-            easy.Cleanup(); // Clean up residue
-            Curl.GlobalCleanup();
-
-            return getResponse;
-        }
-
-        public static string Auth(string password) // Logs in, returns accessJwt and refreshJwt
-        {
             var postJson = new JObject();
-            postJson["identifier"] = Global.handle;
+            postJson["identifier"] = handle;
             postJson["password"] = password;
 
             string endPoint = "com.atproto.server.createSession";
@@ -219,94 +301,595 @@ namespace Cerulean
             string header1 = "Content-Type: application/json";
             string header2 = String.Empty;
 
-            string authResponse = Post(endPoint, postFields, header1, header2);
-
-            StartTokenRefresher(true); // starts the 5-min-interval token refreshing method(s)
+            JObject authResponse = Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            Refresher.Start(Refresher.Mode.Auto); // starts the 5-min-interval token refreshing method(s)
             return authResponse;
-
         }
 
-        public static string Tweet(string tweetContent) // Tweets with user-settable settings
+
+        public static class Reset
         {
-            if (byte.Parse(RegKit.read("\\UserSettings", "DSForComposer")) == 1) // digital signature
+            public static JObject RequestCode(string email)
             {
-                tweetContent += (" " + RegKit.read("\\UserSettings", "DigitalSignature"));
+                var postJson = new JObject();
+                postJson["email"] = email;
+
+                string endPoint = "com.atproto.server.requestPasswordReset";
+                string postFields = postJson.ToString(Formatting.None);
+                string header1 = "Content-Type: application/json";
+                string header2 = String.Empty;
+
+                return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
             }
 
-            var record = new JObject();
-            record["text"] = tweetContent;
-            record["createdAt"] = DateToBsky();
+            public static JObject Password(string token, string newpass)
+            {
+                var postJson = new JObject();
+                postJson["token"] = token;
+                postJson["password"] = newpass;
 
+                string endPoint = "com.atproto.server.resetPassword";
+                string postFields = postJson.ToString(Formatting.None);
+                string header1 = "Content-Type: application/json";
+                string header2 = String.Empty;
+
+                return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            }
+        }
+
+        public static class Refresher // Refreshes authorization token in background
+        {
+            public enum Mode { Auto, Manual };
+            private static System.Threading.Timer refreshTimer;
+            private static bool manualRefreshTriggered = false;
+
+            public static void Start(Mode mode) // function to start the process of token refreshing
+            {
+                if (mode == Mode.Auto) // uses the timer to refresh every 5 minutes
+                {
+                    refreshTimer = new System.Threading.Timer(RefreshAccessToken, null, 300000, 300000);
+                }
+
+                else if (mode == Mode.Manual) // instantly manually refreshes using skyWorker
+                {
+                    manualRefreshTriggered = true;
+                    Async.SkyWorker(
+                    delegate { RefreshAccessToken(null) },
+                    delegate { manualRefreshTriggered = false; }
+                    );
+                }
+            }
+
+            public static void End()
+            {
+                refreshTimer.Dispose();
+            }
+
+
+            private static void RefreshAccessToken(object state) // function that actually gets refresh
+            {
+                string endPoint = "com.atproto.server.refreshSession";
+                string postFields = String.Empty;
+                string header1 = "Authorization: Bearer " + Variables.RefreshToken;
+                string header2 = "Accept: application/json";
+
+                JObject refreshBody = Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+                //WEH.ErrHandler(refreshBody);
+                //Display.Text("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
+
+
+                Variables.Token = (string)refreshBody["accessJwt"];
+                Variables.RefreshToken = (string)refreshBody["refreshJwt"];
+                if (manualRefreshTriggered == true)
+                {
+                    Display.Text("Reauthenticated with Bluesky successfully.");
+                }
+
+                //Global.reloadCount++; // Timer debug
+                //Display.Text("[DEBUG] RELOADED TIMES: " + Global.reloadCount);
+            }
+        }
+    }
+
+    public class Tweet // handles posts (skeets, tweets), reposts, replies, quote posts, etc
+    {
+        public enum Type { Normal, Image, Reply, Quote, Repost };
+
+        public class Defs
+        {
+            private const string preDef = "app.bsky.feed.defs#";
+            public const string NotFound = preDef + "notFoundPost";
+            public const string PostView = preDef + "postView";
+        }
+
+        public static class Search
+        {
+            public static JObject Full(string query) // Searches for posts
+            {
+                query = query.Replace(" ", "%20");
+
+                string endPoint = "app.bsky.feed.searchPosts";
+                string getParam = "q=" + query;
+                string header1 = "Authorization: Bearer " + Variables.Token;
+                string header2 = "Content-Type: application/json";
+
+                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            }
+        }
+
+        public static JObject Create(string text)
+        {
+            return TweetRecCreate(text, Type.Normal);
+        }
+
+        public static JObject Reply(string text, JObject parent, JObject root)
+        {
+            return TweetRecCreate(text, Type.Reply, Strip(parent), Strip(root));
+        }
+
+        public static JObject Quote(string text, JObject parent)
+        {
+            return TweetRecCreate(text, Type.Quote, Strip(parent));
+        }
+
+        public static class Repost
+        {
+            public static string Add(JObject parent)
+            {
+                JObject response = TweetRecCreate(String.Empty, Type.Repost, Strip(parent), null, "app.bsky.feed.repost");
+                return response["uri"].ToString();
+            }
+
+            public static void Remove(string uri)
+            {
+                string rkey = uri.Substring(uri.LastIndexOf('/') + 1);
+                Record.Delete("app.bsky.feed.repost", rkey);
+            }
+        }
+
+        public static class Like
+        {
+            public static string Add(JObject parent)
+            {
+                JObject response = TweetRecCreate(String.Empty, Type.Repost, Strip(parent), null, "app.bsky.feed.like");
+                return response["uri"].ToString();
+            }
+
+            public static void Remove(string uri)
+            {
+                string rkey = uri.Substring(uri.LastIndexOf('/') + 1);
+                Record.Delete("app.bsky.feed.like", rkey);
+            }
+        }
+
+        private static JObject Strip(JObject toStrip)
+        {
+            JObject stripped = new JObject();
+            stripped["uri"] = toStrip["uri"];
+            stripped["cid"] = toStrip["cid"];
+            return stripped;
+        }
+
+        private static JObject TweetRecCreate(string text, Type type, JObject parent = null, JObject root = null, string collection = "app.bsky.feed.post") // Tweets with user-settable settings
+        {
+            JObject record = TweetRecordMaker(text, type, parent, root);
+            return Record.Create(collection, record);
+        }
+
+        private static JObject TweetRecordMaker(string text, Type type, JObject parent = null, JObject root = null)
+        {
+            JObject record = new JObject();
+
+            if (type == Type.Repost)
+            {
+                record["subject"] = parent;
+                record["createdAt"] = Tools.DateToBsky();
+            }
+
+            else
+            {
+                record["$type"] = "app.bsky.feed.post";
+                record["text"] = text;
+                record["createdAt"] = Tools.DateToBsky();
+
+                if (Variables.BlobArray != null)
+                {
+                    JObject embed = new JObject();
+                    embed["$type"] = "app.bsky.embed.images";
+                    embed["images"] = Variables.BlobArray;
+                    record["embed"] = embed;
+                }
+
+                if (type == Type.Reply)
+                {
+                    JObject reply = new JObject();
+                    reply["root"] = root;
+                    reply["parent"] = parent;
+                    record["reply"] = reply;
+                }
+
+                else if (type == Type.Quote)
+                {
+                    JObject embed = new JObject();
+                    embed["$type"] = "app.bsky.embed.record";
+                    embed["record"] = parent;
+                    record["embed"] = embed;
+                }
+
+            }
+
+            // Display.Text(record.ToString()); // DEBUG
+            return record;
+        }
+    }
+
+    internal static class Record
+    {
+        public static JObject Create(string collection, JObject record)
+        {
             var postJson = new JObject();
-            postJson["repo"] = Global.handle;
-            postJson["collection"] = "app.bsky.feed.post";
+            postJson["repo"] = Variables.Handle;
+            postJson["collection"] = collection;
             postJson["record"] = record;
+
+            File.WriteAllText("tweet.txt", postJson.ToString());
 
             string endPoint = "com.atproto.repo.createRecord";
             string postFields = postJson.ToString(Formatting.None);
-            string header1 = "Authorization: Bearer " + Global.token;
+            string header1 = "Authorization: Bearer " + Variables.Token;
             string header2 = "Content-Type: application/json";
 
-            CheckForConnect(Post(endPoint, postFields, header1, header2));
-
-            return tweetContent;
+            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
         }
 
-        public static string QuickTweet(string tweetContent) // Tweets using set Quick Post settings
+        public static JObject Delete(string collection, string rkey)
         {
-            if (byte.Parse(RegKit.read("\\UserSettings", "DSForQuickPost")) == 1) // digital signature
+            var deleteJson = new JObject();
+            deleteJson["repo"] = Variables.Handle;
+            deleteJson["collection"] = collection;
+            deleteJson["rkey"] = rkey;
+
+            string endPoint = "com.atproto.repo.deleteRecord";
+            string postFields = deleteJson.ToString(Formatting.None);
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+        }
+    }
+
+    public static class Profile
+    {
+        public enum Verification { None, Verified, TrustedVerifier };
+
+        public static JObject Load(string did)
+        {
+            string endPoint = "app.bsky.actor.getProfile";
+            string getParam = "actor=" + did;
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+        }
+
+        public static class Follow
+        {
+            public static void Add(string did)
             {
-                tweetContent += (" " + RegKit.read("\\UserSettings", "DigitalSignature"));
+                JObject record = new JObject();
+                record["subject"] = did;
+                record["createdAt"] = Tools.DateToBsky();
+                Record.Create("app.bsky.graph.follow", record);
             }
 
-            var record = new JObject();
-            record["text"] = tweetContent;
-            record["createdAt"] = DateToBsky();
+            public static void Remove(string uri)
+            {
+                string rkey = uri.Substring(uri.LastIndexOf('/') + 1);
+                Record.Delete("app.bsky.graph.follow", rkey);
+            }
+        }
+
+        public static string GetDid(string handle)
+        {
+           return HandleDidFetcher("com.atproto.identity.resolveHandle", "handle", handle);
+        }
+
+        public static string GetHandle(string did)
+        {
+            return HandleDidFetcher("com.atproto.identity.resolveDid", "did", did);
+        }
+
+        private static string HandleDidFetcher(string endPoint, string tokenName, string input)
+        {
+            string getParam = tokenName + "=" + input;
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            JToken result = Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            JToken token = result.SelectToken(tokenName);
+            return token != null ? token.ToString() : String.Empty;
+        }
+
+        public static class Search
+        {
+            public static JObject Typeahead(string search)
+            {
+                int limit = 100;
+                string endPoint = "app.bsky.actor.searchActorsTypeahead";
+                string getParam = "q=" + Uri.EscapeDataString(search) + "&limit=" + limit.ToString();
+                string header1 = "Authorization: Bearer " + Variables.Token;
+                string header2 = "Content-Type: application/json";
+
+                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            }
+        }
+    }
+
+    public static class Notifications
+    {
+        public static JArray Fetch() // Gets notifications
+        {
+            int limit = 100;
+            string endPoint = "app.bsky.notification.listNotifications";
+            string getParam = "limit=" + limit.ToString();
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            return (JArray)(Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get))["notifications"];
+        }
+    }
+
+    public static class Chats
+    {
+        public static JArray ListConversations() // Gets chat convos
+        {
+            int limit = 100;
+            string endPoint = "chat.bsky.convo.listConvos";
+            string getParam = "limit=" + limit.ToString();
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+            string alternateUrl = "https://api.bsky.chat";
+
+            return (JArray)(Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get, alternateUrl))["convos"];
+        }
+    }
+
+    public static class Feeds
+    {
+        public static JObject GetRecommendations() // Searches for posts
+        {
+            string endPoint = "app.bsky.feed.getSuggestedFeeds";
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            return Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get);
+        }
+
+        public static class Load
+        {
+            public static JObject Timeline()
+            {
+                string endPoint = "app.bsky.feed.getTimeline";
+                string getParam = "algorithm=reverse-chronological";
+                string header1 = "Authorization: Bearer " + Variables.Token;
+                string header2 = "Content-Type: application/json";
+
+                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            }
+
+            public static JObject Custom(string uri)
+            {
+                string endPoint = "app.bsky.feed.getFeed";
+                string getParam = "feed=" + uri;
+                string header1 = "Authorization: Bearer " + Variables.Token;
+                string header2 = "Content-Type: application/json";
+
+                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            }
+        }
+    }
+
+    public static class PDS
+    {
+        public static string GetVersion()
+        {
+            string endPoint = "_health";
+            string postFields = String.Empty;
+            string header1 = "Content-Type: application/json";
+            string header2 = String.Empty;
+
+            JObject reply = Http.Request(endPoint, postFields, header1, header2, Http.Method.Get);
+
+            if (reply.ContainsKey("version"))
+            {
+                return ((string)reply["version"]);
+            }
+            else
+            {
+                return "error";
+            }
+        }
+    }
+
+    public static class Report
+    {
+        public class Reason
+        {
+            private const string preDef = "com.atproto.moderation.defs";
+            public const string Spam = preDef + "spam";
+            public const string Violation = preDef + "violation";
+            public const string Sexual = preDef + "sexual";
+            public const string Rude = preDef + "rude";
+            public const string Other = preDef + "other";
+            public const string Appeal = preDef + "appeal";
+        }
+
+        public enum Type { User, Tweet };
+
+        public static JObject File(Type repType, string modDef, string text, string uriOrDid, string cid = null)
+        {
+            var subj = new JObject();
+
+            if (repType == Type.Tweet)
+            {
+                subj["$type"] = "com.atproto.repo.strongRef";
+                subj["uri"] = uriOrDid;
+                subj["cid"] = cid;
+            }
+
+            else if (repType == Type.User)
+            {
+                subj["$type"] = "com.atproto.admin.defs.repoRef";
+                subj["did"] = uriOrDid;
+            }
 
             var postJson = new JObject();
-            postJson["repo"] = Global.handle;
-            postJson["collection"] = "app.bsky.feed.post";
-            postJson["record"] = record;
+            postJson["reasonType"] = modDef;
+            postJson["reason"] = text;
+            postJson["subject"] = subj;
 
-            string endPoint = "com.atproto.repo.createRecord";
+            string endPoint = "com.atproto.moderation.createReport";
             string postFields = postJson.ToString(Formatting.None);
-            string header1 = "Authorization: Bearer " + Global.token;
+            string header1 = "Authorization: Bearer " + Variables.Token;
             string header2 = "Content-Type: application/json";
 
-            CheckForConnect(Post(endPoint, postFields, header1, header2));
+            MessageBox.Show(postFields);
 
-            return tweetContent;
+            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
         }
+    }
 
-        public static string Search(string query) // Searches for posts
+    public static class Media
+    {
+        public static JObject UploadBlob(byte[] imageBytes, string mimeType = "image/png")
         {
-            query = query.Replace(" ", "%20");
+            StringBuilder responseBuilder = new StringBuilder();
 
-            string endPoint = "app.bsky.feed.searchPosts";
-            string getParam = "q=" + query;
-            string header1 = "Authorization: Bearer " + Global.token;
-            string header2 = "Content-Type: application/json";
+            Easy easy = new Easy();
+            easy.SetOpt(CURLoption.CURLOPT_URL, "https://bsky.social/xrpc/com.atproto.repo.uploadBlob");
+            easy.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
 
-            return Get(endPoint, getParam, header1, header2);
+            // POST with binary body
+            easy.SetOpt(CURLoption.CURLOPT_POST, 1);
+            easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, imageBytes);
+            easy.SetOpt(CURLoption.CURLOPT_POSTFIELDSIZE, imageBytes.Length);
+
+            // headers
+            Slist headers = new Slist();
+            headers.Append("Content-Type: " + mimeType);
+            headers.Append("Authorization: Bearer " + Variables.Token);
+            easy.SetOpt(CURLoption.CURLOPT_HTTPHEADER, headers);
+
+            // capture response
+            Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData)
+            {
+                int realSize = size * nmemb;
+                responseBuilder.Append(Encoding.UTF8.GetString(buf, 0, realSize));
+                return realSize;
+            };
+            easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+
+            // perform
+            CURLcode res = easy.Perform();
+            if (res != CURLcode.CURLE_OK)
+                throw new Exception("cURL error: " + easy.StrError(res));
+
+            return JObject.Parse(responseBuilder.ToString());
+
         }
 
-        public static string Timeline()
+        public static class Image
         {
-            string endPoint = "app.bsky.feed.getTimeline";
-            string getParam = String.Format("algorithm=reverse-chronological");
-            string header1 = "Authorization: Bearer " + Global.token;
-            string header2 = "Content-Type: application/json";
+            private static Easy CurlRequest = new Easy();
+            public static System.Drawing.Image Load(string imageUrl)
+            {
+                using (MemoryStream imageStream = new MemoryStream())
+                {
+                    Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData)
+                    {
+                        int realSize = size * nmemb;
+                        imageStream.Write(buf, 0, realSize);
+                        return realSize;
+                    };
 
-            return Get(endPoint, getParam, header1, header2);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_URL, imageUrl);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FOLLOWLOCATION, 1L); // follow redirects
+                    try
+                    {
+
+                        CURLcode result = CurlRequest.Perform();
+                        if (result != CURLcode.CURLE_OK)
+                        {
+                            Error.Throw(CurlRequest, result);
+                            return null;
+                        }
+                    }
+                    catch (Exception ex) { Display.Text(ex.Message); }
+
+                    imageStream.Position = 0; // rewind before reading
+
+                    try
+                    {
+                        return System.Drawing.Image.FromStream(imageStream);
+                    }
+                    catch (Exception ex)
+                    {
+                        Display.Text("Image decode failed: " + ex.Message);
+                        return null;
+                    }
+                }
+            }
         }
 
-        public static string Feed(string plc, string feed){
-            string endPoint = "app.bsky.feed.getFeed";
-            string getParam = String.Format("feed=at://did:plc:{0}/app.bsky.feed.generator/{1}", plc, feed);
-            string header1 = "Authorization: Bearer " + Global.token;
-            string header2 = "Content-Type: application/json";
+        public static class Video
+        {
+            private static Easy CurlRequest = new Easy();
+            public static System.Drawing.Image Load(string imageUrl)
+            {
+                using (MemoryStream imageStream = new MemoryStream())
+                {
+                    Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData)
+                    {
+                        int realSize = size * nmemb;
+                        imageStream.Write(buf, 0, realSize);
+                        return realSize;
+                    };
 
-            return Get(endPoint, getParam, header1, header2);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_URL, imageUrl);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FOLLOWLOCATION, 1L); // follow redirects
+                    try
+                    {
+
+                        CURLcode result = CurlRequest.Perform();
+                        if (result != CURLcode.CURLE_OK)
+                        {
+                            Error.Throw(CurlRequest, result);
+                            return null;
+                        }
+                    }
+                    catch (Exception ex) { Display.Text(ex.Message); }
+
+                    imageStream.Position = 0; // rewind before reading
+
+                    try
+                    {
+                        return System.Drawing.Image.FromStream(imageStream);
+                    }
+                    catch (Exception ex)
+                    {
+                        Display.Text("Image decode failed: " + ex.Message);
+                        return null;
+                    }
+                }
+            }
         }
     }
 }

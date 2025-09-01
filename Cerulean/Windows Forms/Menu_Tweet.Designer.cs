@@ -29,97 +29,120 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Tweet));
-            this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.tweetButton = new System.Windows.Forms.Button();
-            this.draftButton = new System.Windows.Forms.Button();
-            this.mediaUploadButton = new System.Windows.Forms.Button();
             this.tweetBox = new System.Windows.Forms.TextBox();
-            this.enableDSCheckBox = new System.Windows.Forms.CheckBox();
+            this.spellingCheckBox = new System.Windows.Forms.CheckBox();
+            this.ccText = new System.Windows.Forms.Label();
+            this.mediaUploadButton = new Cerulean.CeruleanButton();
+            this.draftButton = new Cerulean.CeruleanButton();
+            this.tweetButton = new Cerulean.CeruleanButton();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(435, 39);
-            this.label1.TabIndex = 1;
-            this.label1.Text = resources.GetString("label1.Text");
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(0, 254);
+            this.progressBar1.Location = new System.Drawing.Point(0, 201);
+            this.progressBar1.Maximum = 300;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(462, 16);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
-            // 
-            // tweetButton
-            // 
-            this.tweetButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.tweetButton.Location = new System.Drawing.Point(372, 225);
-            this.tweetButton.Name = "tweetButton";
-            this.tweetButton.Size = new System.Drawing.Size(75, 23);
-            this.tweetButton.TabIndex = 3;
-            this.tweetButton.Text = "Post";
-            this.tweetButton.UseVisualStyleBackColor = true;
-            this.tweetButton.Click += new System.EventHandler(this.tweetButton_Click);
-            // 
-            // draftButton
-            // 
-            this.draftButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.draftButton.Location = new System.Drawing.Point(273, 225);
-            this.draftButton.Name = "draftButton";
-            this.draftButton.Size = new System.Drawing.Size(93, 23);
-            this.draftButton.TabIndex = 4;
-            this.draftButton.Text = "Save as Draft";
-            this.draftButton.UseVisualStyleBackColor = true;
-            this.draftButton.Click += new System.EventHandler(this.draftButton_Click);
-            // 
-            // mediaUploadButton
-            // 
-            this.mediaUploadButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.mediaUploadButton.Location = new System.Drawing.Point(15, 225);
-            this.mediaUploadButton.Name = "mediaUploadButton";
-            this.mediaUploadButton.Size = new System.Drawing.Size(95, 23);
-            this.mediaUploadButton.TabIndex = 5;
-            this.mediaUploadButton.Text = "Upload media";
-            this.mediaUploadButton.UseVisualStyleBackColor = true;
-            this.mediaUploadButton.Click += new System.EventHandler(this.mediaUploadButton_Click);
             // 
             // tweetBox
             // 
-            this.tweetBox.Location = new System.Drawing.Point(15, 67);
+            this.tweetBox.BackColor = System.Drawing.SystemColors.Window;
+            this.tweetBox.Location = new System.Drawing.Point(15, 14);
             this.tweetBox.Multiline = true;
             this.tweetBox.Name = "tweetBox";
             this.tweetBox.Size = new System.Drawing.Size(432, 127);
             this.tweetBox.TabIndex = 6;
-            this.tweetBox.TextChanged += new System.EventHandler(this.tweetBox_TextChanged);
+            this.tweetBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tweetBox_KeyDown);
             // 
-            // enableDSCheckBox
+            // spellingCheckBox
             // 
-            this.enableDSCheckBox.AutoSize = true;
-            this.enableDSCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.enableDSCheckBox.Location = new System.Drawing.Point(322, 202);
-            this.enableDSCheckBox.Name = "enableDSCheckBox";
-            this.enableDSCheckBox.Size = new System.Drawing.Size(131, 18);
-            this.enableDSCheckBox.TabIndex = 7;
-            this.enableDSCheckBox.Text = "Add Digital Signature";
-            this.enableDSCheckBox.UseVisualStyleBackColor = true;
+            this.spellingCheckBox.AutoSize = true;
+            this.spellingCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.spellingCheckBox.Checked = true;
+            this.spellingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.spellingCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.spellingCheckBox.Location = new System.Drawing.Point(361, 152);
+            this.spellingCheckBox.Name = "spellingCheckBox";
+            this.spellingCheckBox.Size = new System.Drawing.Size(101, 18);
+            this.spellingCheckBox.TabIndex = 7;
+            this.spellingCheckBox.Text = "Check spelling";
+            this.spellingCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // ccText
+            // 
+            this.ccText.AutoSize = true;
+            this.ccText.BackColor = System.Drawing.Color.Transparent;
+            this.ccText.Location = new System.Drawing.Point(15, 154);
+            this.ccText.Name = "ccText";
+            this.ccText.Size = new System.Drawing.Size(95, 13);
+            this.ccText.TabIndex = 8;
+            this.ccText.Text = "300 characters left";
+            this.ccText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ccText.Click += new System.EventHandler(this.ccText_Click);
+            // 
+            // mediaUploadButton
+            // 
+            this.mediaUploadButton.AutoSize = true;
+            this.mediaUploadButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mediaUploadButton.BackColor = System.Drawing.Color.Transparent;
+            this.mediaUploadButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.mediaUploadButton.Location = new System.Drawing.Point(15, 172);
+            this.mediaUploadButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.mediaUploadButton.Name = "mediaUploadButton";
+            this.mediaUploadButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.mediaUploadButton.Size = new System.Drawing.Size(97, 23);
+            this.mediaUploadButton.TabIndex = 5;
+            this.mediaUploadButton.Text = "Upload media";
+            this.mediaUploadButton.UseVisualStyleBackColor = false;
+            this.mediaUploadButton.Click += new System.EventHandler(this.mediaUploadButton_Click);
+            // 
+            // draftButton
+            // 
+            this.draftButton.AutoSize = true;
+            this.draftButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.draftButton.BackColor = System.Drawing.Color.Transparent;
+            this.draftButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.draftButton.Location = new System.Drawing.Point(273, 172);
+            this.draftButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.draftButton.Name = "draftButton";
+            this.draftButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.draftButton.Size = new System.Drawing.Size(97, 23);
+            this.draftButton.TabIndex = 4;
+            this.draftButton.Text = "Save as Draft";
+            this.draftButton.UseVisualStyleBackColor = false;
+            this.draftButton.Click += new System.EventHandler(this.draftButton_Click);
+            // 
+            // tweetButton
+            // 
+            this.tweetButton.AutoSize = true;
+            this.tweetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tweetButton.BackColor = System.Drawing.Color.Transparent;
+            this.tweetButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.tweetButton.Location = new System.Drawing.Point(372, 172);
+            this.tweetButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.tweetButton.Name = "tweetButton";
+            this.tweetButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.tweetButton.Size = new System.Drawing.Size(75, 23);
+            this.tweetButton.TabIndex = 3;
+            this.tweetButton.Text = "Post";
+            this.tweetButton.UseVisualStyleBackColor = false;
+            this.tweetButton.Click += new System.EventHandler(this.tweetButton_Click);
             // 
             // Menu_Tweet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(462, 270);
-            this.Controls.Add(this.enableDSCheckBox);
+            this.ClientSize = new System.Drawing.Size(462, 217);
+            this.Controls.Add(this.ccText);
+            this.Controls.Add(this.spellingCheckBox);
             this.Controls.Add(this.tweetBox);
             this.Controls.Add(this.mediaUploadButton);
             this.Controls.Add(this.draftButton);
             this.Controls.Add(this.tweetButton);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_Tweet";
             this.Text = "Compose new post";
@@ -131,12 +154,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button tweetButton;
-        private System.Windows.Forms.Button draftButton;
-        private System.Windows.Forms.Button mediaUploadButton;
+        private Cerulean.CeruleanButton tweetButton;
+        private Cerulean.CeruleanButton draftButton;
+        private Cerulean.CeruleanButton mediaUploadButton;
         private System.Windows.Forms.TextBox tweetBox;
-        private System.Windows.Forms.CheckBox enableDSCheckBox;
+        private System.Windows.Forms.CheckBox spellingCheckBox;
+        private System.Windows.Forms.Label ccText;
     }
 }

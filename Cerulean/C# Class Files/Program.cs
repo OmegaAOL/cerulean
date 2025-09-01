@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**********************************************************************************
+By continuing to edit this solution or program source code, you accept the Cerulean
+Terms of Service (found at http://ceruleanweb.neocities.org/legal/terms.txt)
+***********************************************************************************/
+
+using System;
 using System.Windows.Forms;
-using System.Drawing;
-using Microsoft.Win32;
+using SeasideResearch.LibCurlNet;
 
 namespace Cerulean
 {
@@ -12,25 +15,26 @@ namespace Cerulean
         {
             if (!checkResult)
             {
-                MessageBox.Show("You are running a version of Windows that did not ship with the TrueType font Microsoft " +
-                    "Sans Serif. The system will default to another font for some cases, most likely Tahoma, and certain " +
-                    "text-related items will be misaligned and may not be usable.\n\nTo fix the issue, download and place 'micross.ttf' in the " +
-                    "C:\\WINDOWS\\FONTS folder. You may still see some Tahoma, but it's not in the places where it was misaligned.\n\nWhen the Cerulean " +
-                    "Installer is released, this will no longer be necessary.");
+                CeruleanBox.Display("You are running a 'legacy kernel' version of Windows (9x/ME/NT4). This comes with a few caveats:\n\n" +
+                "1: Fonts will probably not display properly as Microsoft Sans Serif is not installed by default on your system.\n\n2: The encryption used to save " +
+                "your handle and password is the legacy CeruleanCrypt method, and not DPAPI. This is less secure.\n\n3: Generally expect some things to be broken.");
             }
         }
 
         [STAThread]
         static void betaSettings()
         {
-            if ((RegKit.read("\\API", "betaSetting_firstRun")) != "complete")
+            if ((RegKit.Read("\\UserSettings", "FirstRun")) != "complete")
             {
-                RegKit.write("\\API", "PDSHost", Global.defaultPDSHost);
-                RegKit.write("\\API", "betaSetting_firstRun", "complete");
+                CeruleanBox.Display("Further use of this program assumes that you have read and agree to the Cerulean Terms (https://ceruleanweb.neocities.org/legal/terms.html).");
+                RegKit.Write("\\API", "PDSHost", Global.defaultPDSHost);
+                RegKit.Write("\\UserSettings", "DigitalSignature", String.Empty);
+                RegKit.Write("\\UserSettings", "FirstRun", "complete");
             }
 
         }
 
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -39,7 +43,21 @@ namespace Cerulean
             AeroChecker.IsAeroThemeActive();
             windowsOldWarning(WinVerKit.windowsNT5PlusChecker());
 
+            //try
+            //{
+            
             Application.Run(new Menu_Login());
+            //}
+            // catch (Exception ex)
+            //{
+            //    CeruleanBox.Display(ex.Message);
+            //}
+        }
+
+        private static void OnApplicationExit(object sender, EventArgs e)
+        {
+            // Clean up cURL ONCE, right before the application closes.
+            Curl.GlobalCleanup();
         }
     }
 }
