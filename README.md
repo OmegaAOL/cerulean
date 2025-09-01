@@ -1,6 +1,6 @@
 # Cerulean
 
-<img width="1412" height="817" alt="image" src="https://github.com/user-attachments/assets/7ff743a7-adcb-4ab4-86b9-5bfd800565fb" />
+<img width="1403" height="795" alt="image" src="https://github.com/user-attachments/assets/23c3183d-5a9a-464f-96d5-6cd8468b4bc2" />
 
 *Screenshot of Cerulean Beta 0.2.0 on [Reunion7](https://www.reunion7.com)*
 
