@@ -5,7 +5,7 @@
 *Screenshot of Cerulean Beta 0.2.0 on [Reunion7](https://www.reunion7.com)*
 
 This is the repository for the open-source Cerulean Bluesky client, currently in the beta stage and pretty usable. It is written in C# and uses 
-.NET Framework 2.0. It runs on Windows 98(FE) and up, but I am reasonably confident it can be backported to Windows 95.
+WinForms (fully native) + .NET Framework 2.0. It runs on Windows 98(FE) and up, but I am reasonably confident it can be backported to Windows 95.
 
 <img width="912" height="385" alt="cerulean-git-NEW" src="https://github.com/user-attachments/assets/6d494e83-05fe-4fa0-b967-ceac51333974" />
 
