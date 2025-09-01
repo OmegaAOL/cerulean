@@ -1,37 +1,44 @@
-# Cerulean 
+# Cerulean
 
-**Cerulean has been put on hold while I help develop amykaname/skype-discord-client. It will resume afterwards, with Cerulean's SkyBridge built into the
-Skype Discord Client and the Cerulean frontend sticking around for Windows 98-2000 / people who don't want to use the client.**
+<img width="1412" height="817" alt="image" src="https://github.com/user-attachments/assets/7ff743a7-adcb-4ab4-86b9-5bfd800565fb" />
 
-Check out the new website! https://ceruleanweb.neocities.org/
+*Screenshot of Cerulean Beta 0.2.0 on [Reunion7](https://www.reunion7.com)*
 
-This is the repository for the open-source Cerulean Bluesky client, currently in the alpha stage and barely usable. It is written in C# and uses 
-the .NET Framework 2. This enables the executable (without any dependencies) to run on Windows 98. To interface with the Bluesky
-API it uses curl-OpenSSL, which I have gotten to [run on Windows 98 and above.](https://github.com/OmegaAOL/curl-windows98) 
+This is the repository for the open-source Cerulean Bluesky client, currently in the beta stage and pretty usable. It is written in C# and uses 
+.NET Framework 2.0. It runs on Windows 98(FE) and up, but I am reasonably confident it can be backported to Windows 95.
 
-![alt text](https://i.imgur.com/bzciwrw.png)
+<img width="912" height="385" alt="cerulean-git-NEW" src="https://github.com/user-attachments/assets/6d494e83-05fe-4fa0-b967-ceac51333974" />
 
-# What's present and what works
+# What works (so far)
 
-- You can login and send a (text) post to Bluesky using either File -> New Post (Ctrl+T) or by using the Quick Post bar.
-- You can set a digital signature for your posts in Tools -> Options.
-- You can search for other posts on Bluesky, but you will receive a pure JSON result - difficult to parse.
-- You can get your main "Following" feed, and get custom feeds with the Feed Selector, but - like Search - the result is pure JSON for now.
+- Logging in, resetting password, changing PDS host
+- Encryption of handle and password (AES-256 on legacy Windows, DPAPI on Windows 2000 and up)
+- Creating posts, reposts (also undoing reposts), quote posts
+- Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
+- Liking and unliking posts
+- Viewing your timeline & your other feeds
+- Searching for profiles and viewing profile information
+- Viewing images and avatars
 
-# A note on security
+# What needs to be fixed
 
-Like many, many other programs ([Chrome](https://www.askcybersecurity.com/where-are-my-saved-passwords-in-chrome/) and [Firefox](https://stackoverflow.com/questions/37685932/where-in-the-filesystem-does-firefox-store-saved-passwords)
-being two of the most major), Cerulean stores your login data unencrypted. If you check "Remember Me" in the login window, your data is saved in *HKEY_CURRENT_USER\Software\Cerulean\LoginDetails* in two seperate entries. This is
-neither abnormal nor a breach of protocol, and you can delete your login data by clicking 
-"Log Out" in the program. 
+- Spawning new anonymous threads. Basically: Don't click buttons too fast/spam-click
+- Uploading images to posts
+- Creating account
+- Reporting users and posts, blocking users
+- Viewing notifications
 
-I would like to remind you that this is neither an uncommon nor proportionally more insecure way of storing login data, and it is much more rewarding (and easier) to steal your Google Chrome LoginData.db file than to fish through
-the registry to steal the logins of one account.
+# What needs to be added 
 
-- This is why **I recommend you use an app password** - they can be easily managed and deleted if your account is compromised, and they are randomly-generated unique strings.
-- *A password database that's encrypted with random data in your Windows install is planned, but definitely not a priority right now.*
+- Viewing all posts of a particular user
+- Viewing threads (use more -> open in browser for this rn)
+- Starter packs
+- Chat
+- Lists
 
-TL:DR; What Cerulean does with passwords is normal and commonplace in the industry. There is no need to worry, but if you are concerned you may use an app password (recommended) or uncheck "Remember Me" (not recommended).
+# Security
+
+Cerulean stores your handle and password in the registry using AES-256-CBC. This is more than safe enough for the forseeable future.
 
 # Future roadmap
 
@@ -39,16 +46,16 @@ I plan to develop Cerulean into a full client that has all the features of Blues
 
 # Open-source details and how to compile
 
-The project is open-source, but licensed under the GPL3 - any forks will have to credit both me and the project as being the originator of theirs.
+The project is open-source, but licensed under the GPL3 - any forks should credit both me and the Cerulean project.
 
-This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. If you have installed the development kit for NET Framework 2.0/3.5 along with Visual Studio,
-it should theoretically still work as of Visual Studio 2022. If you are unable to build Cerulean:
+This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. This *should* work in VS2022, but VS2010 is recommended due to the sheer
+performance improvement (if you've only used VS2022, try 2010, you won't believe how much better it is)
 
-- FIRST, redownload the source code (get rid of messed up options from newer Visual Studios reading the solution), enable .NET Framework 2.0 in Windows Features,
-  download Visual Studio 2010 Express (free) or Professional (paid, or sail the sea), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
+- FIRST, enable .NET Framework 2.0 in Windows Features, download Visual Studio 2010 Express (free)
+or Professional (paid, or pirate it), and make sure NET Framework 2.0 is selected in VS2010
+Cerulean Project Settings.
 - SECOND, if and ONLY IF you've tried the above and it still doesn't work, file an issue.
-
-Curl and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
+cURL and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
 
 # Credits
 
