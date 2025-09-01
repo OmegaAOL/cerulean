@@ -41,7 +41,7 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 
 Cerulean stores your handle and password encrypted in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. It is **encrypted**.
 
-On Windows 2000 and up this uses DPAPI encryption, which is basically a Windows API that encrypts text for you based on a lot of user account
+On Windows 2000 and up this uses DPAPI encryption. DPAPI is a Windows API that encrypts text for you based on a lot of user account
 information. It is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it.
 It is more than fine for you to use your real password (if you don't trust me, check and build from source!)
 
