@@ -49,6 +49,10 @@ On Windows 9x/ME/NT4 this uses AES-256, but the encryption key is partly hardcod
 DPAPI back then). This is still great for most attackers, but a dedicated attacker combing through the Cerulean source code will be able to quite
 easily decrypt your key and info. There is literally nothing that can be done about this. Recommend using app passwords for these Windows versions.
 
+Still apprehensive about DPAPI? To show you how confident I am in Cerulean's encryption, here is my handle and password (normal, not app password):
+<img width="1239" height="281" alt="image" src="https://github.com/user-attachments/assets/87b46189-ae34-4fdb-898d-88b59c4ea557" />
+
+
 # Future roadmap
 
 I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
