@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- === About Window === -->
+  <data name="ABOUT_BUTTON_DONATE" xml:space="preserve">
+    <value>Bestow thy gift!</value>
+  </data>
+  <data name="ABOUT_BUTTON_FOLLOW_MAINTAINER" xml:space="preserve">
+    <value>Attend upon me</value>
+  </data>
+  <data name="ABOUT_BUTTON_POST_CERULEAN" xml:space="preserve">
+    <value>Proclaim of Cerulean</value>
+  </data>
+  <data name="ABOUT_LABEL_DESCRIPTION" xml:space="preserve">
+    <value>Hail, and thanks for wielding mine humble client! ’Tis yet in alpha, where many a thing remaineth unfinished.  
+I would fain receive thy counsel for new wonders to craft or faults to mend.  
+
+This device seeketh to o’ertake Bluesky entire. Forasmuch as the official app and web do employ the public API, so too may a third-party vessel.  
+All features of Bluesky (and perchance more) shall I graft into this craft.  
+
+Contact: gigggity@proton.me / gigggity.bsky.social  
+
+Cerulean for Bluesky, OmegaAOL 2025. The “Bluesky” mark belongeth unto Bluesky Social, PBC.</value>
+  </data>
+  <data name="ABOUT_WINTITLE" xml:space="preserve">
+    <value>About Cerulean</value>
+  </data>
+
+  <!-- === Global Buttons === -->
+  <data name="GLOBAL_BUTTON_APPLY" xml:space="preserve">
+    <value>Put in effect</value>
+  </data>
+  <data name="GLOBAL_BUTTON_CANCEL" xml:space="preserve">
+    <value>Abandon</value>
+  </data>
+  <data name="GLOBAL_BUTTON_OK" xml:space="preserve">
+    <value>’Tis well</value>
+  </data>
+  <data name="GLOBAL_BUTTON_PING_SERVER" xml:space="preserve">
+    <value>Mark the server’s humours</value>
+  </data>
+  <data name="GLOBAL_BUTTON_RESET" xml:space="preserve">
+    <value>Restore anew</value>
+  </data>
+  <data name="GLOBAL_INFOLABEL_EMPTY_FIELDS" xml:space="preserve">
+    <value>Fill all spaces, I prithee</value>
+  </data>
+
+  <!-- === Login === -->
+  <data name="LOGIN_BUTTON_CHANGEPDS" xml:space="preserve">
+    <value>Alter thine PDS Host</value>
+  </data>
+  <data name="LOGIN_BUTTON_FORGOTPASS" xml:space="preserve">
+    <value>Hast thou mislaid thy secret word?</value>
+  </data>
+  <data name="LOGIN_BUTTON_LOGIN" xml:space="preserve">
+    <value>Enter forth</value>
+  </data>
+  <data name="LOGIN_CHECKBOX_REMEMBER_CREDENTIALS" xml:space="preserve">
+    <value>Pray, remember me</value>
+  </data>
+  <data name="LOGIN_LABEL_HANDLE" xml:space="preserve">
+    <value>Bluesky appellation</value>
+  </data>
+  <data name="LOGIN_LABEL_OFFLINEMODE" xml:space="preserve">
+    <value>DEBUG: Mode without connexion</value>
+  </data>
+  <data name="LOGIN_LABEL_OFFLINEUSER" xml:space="preserve">
+    <value>User of the shadows</value>
+  </data>
+  <data name="LOGIN_LABEL_PASSWORD" xml:space="preserve">
+    <value>Secret word</value>
+  </data>
+  <data name="LOGIN_LINKLABEL_NEWACCOUNT" xml:space="preserve">
+    <value>Dost thou seek a fresh account?</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_CONNECTING_TO_PDS" xml:space="preserve">
+    <value>Lo, connecting unto PDS host</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_CONNECTING_TO_PDS_SUB" xml:space="preserve">
+    <value>Cerulean now maketh passage unto the chosen PDS host. Should authentication falter, examine thy settings and tokens once more.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_DEFAULT" xml:space="preserve">
+    <value>Welcome, noble soul, to Cerulean.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_DEFAULT_SUB" xml:space="preserve">
+    <value>Sign in with thy Bluesky account, prithee. ’Tis well to wield an app password.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_EMPTY_FIELD_SUB" xml:space="preserve">
+    <value>Let both handle and secret word be writ, lest thou be denied.</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_INVALID_DEBUGCODE" xml:space="preserve">
+    <value>Yon debug code is false</value>
+  </data>
+  <data name="LOGIN_LOCALMSG_INVALID_DEBUGCODE_SUB" xml:space="preserve">
+    <value>The debug code thou hast entered is but a counterfeit token.</value>
+  </data>
+  <data name="LOGIN_WINTITLE" xml:space="preserve">
+    <value>Cerulean Entrance</value>
+  </data>
+
+  <!-- === PDS === -->
+  <data name="PDS_BUTTON_PING_SERVER" xml:space="preserve">
+    <value>Mark the server’s humours</value>
+  </data>
+  <data name="PDS_CBOX_INVALID_CHAR" xml:space="preserve">
+    <value>The URL thou useth is unfit. Remember, no slashes nor strange characters at the end.</value>
+  </data>
+  <data name="PDS_CBOX_PDS_PING_ERROR" xml:space="preserve">
+    <value>We cannot descry the software of PDS server {0}. ’Tis either no PDS or unmeet for Cerulean.</value>
+  </data>
+  <data name="PDS_CBOX_PDS_PING_RESULT" xml:space="preserve">
+    <value>PDS server {0}/ liveth. The server runneth software version {1}. Cerulean may embrace it.</value>
+  </data>
+  <data name="PDS_CBOX_URL_RESET" xml:space="preserve">
+    <value>The PDS host hath been reset to {0}.</value>
+  </data>
+  <data name="PDS_CBOX_URL_SAVED" xml:space="preserve">
+    <value>Thy custom PDS host hath been kept safe.</value>
+  </data>
+  <data name="PDS_LABEL_DESCRIPTION" xml:space="preserve">
+    <value>A Bluesky PDS holdeth thy chronicles and doth federate with the  
+wider AT Protocol to forge a social web.  
+
+Thou may’st host thine own PDS. To have Cerulean employ thine rather than the default (https://bsky.social), alter it here.  
+
+No official succour existeth for other microblogging realms.</value>
+  </data>
+  <data name="PDS_WINTITLE" xml:space="preserve">
+    <value>Alter PDS Host</value>
+  </data>
+
+  <!-- === Reset Password === -->
+  <data name="RESETPW_BUTTON_SEND_EMAIL" xml:space="preserve">
+    <value>Dispatch missive</value>
+  </data>
+  <data name="RESETPW_INFOLABEL_EMAIL_INVALID" xml:space="preserve">
+    <value>Enter thou a rightful e-mail</value>
+  </data>
+  <data name="RESETPW_INFOLABEL_STRONG_PASSWORD" xml:space="preserve">
+    <value>A stout secret word is commended</value>
+  </data>
+  <data name="RESETPW_LABEL_EMAIL" xml:space="preserve">
+    <value>Account e-mail</value>
+  </data>
+  <data name="RESETPW_LABEL_NEW_PASSWORD" xml:space="preserve">
+    <value>New secret word</value>
+  </data>
+  <data name="RESETPW_LABEL_RESET_CODE" xml:space="preserve">
+    <value>Reset token</value>
+  </data>
+  <data name="RESETPW_LABEL_STEP1" xml:space="preserve">
+    <value>1) Inscribe the e-mail thou didst employ to join Bluesky. A missive of reset shall reach thee.</value>
+  </data>
+  <data name="RESETPW_LABEL_STEP2" xml:space="preserve">
+    <value>2) Pen a new secret word of thine own choosing, withal the reset token delivered to thy hand.</value>
+  </data>
+  <data name="RESETPW_WINTITLE" xml:space="preserve">
+    <value>Renew thy secret word</value>
+  </data>
+</root>

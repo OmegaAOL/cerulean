@@ -66,14 +66,22 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>cer.ico</ApplicationIcon>
+    <ApplicationIcon>cerulean48.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Cerulean.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.Crypto.dll.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LibCurlNet">
       <HintPath>C:\Users\semmal\Desktop\Build.cURL.8.4\libcurlnet-1.3\bin\LibCurlNet.dll</HintPath>
+    </Reference>
+    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.41329, Culture=neutral, PublicKeyToken=318b389f0db66e46">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -96,15 +104,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C# Class Files\CeruleanBox.cs" />
     <Compile Include="C# Class Files\CustomControls.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="C# Class Files\Encryptor.cs" />
     <Compile Include="C# Class Files\GlobalVar.cs" />
-    <Compile Include="C# Class Files\MessageBoxes.cs" />
-    <Compile Include="C# Class Files\SkyBridge.cs" />
+    <Compile Include="C# Class Files\ImageQueue.cs" />
+    <Compile Include="C# Class Files\OAuth.cs" />
+    <Compile Include="C# Class Files\SkyBridge.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="C# Class Files\RegKit.cs" />
+    <Compile Include="C# Class Files\TweetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C# Class Files\TweetControl.Designer.cs">
+      <DependentUpon>TweetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C# Class Files\WebErrorHandler.cs" />
     <Compile Include="C# Class Files\WebsocketTest.cs" />
     <Compile Include="C# Class Files\WinVerKit.cs" />
+    <Compile Include="CeruleanArt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CeruleanArt.resx</DependentUpon>
+    </Compile>
     <Compile Include="Icons_Aero.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +139,29 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons_Classic.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LangPacks\LangPack1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LangPack.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Forms\CeruleanBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\CeruleanBox.Designer.cs">
+      <DependentUpon>CeruleanBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Forms\ImageViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\ImageViewer.Designer.cs">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_CreateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_CreateAccount.Designer.cs">
+      <DependentUpon>Menu_CreateAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows Forms\Menu_FeedSelector.cs">
       <SubType>Form</SubType>
@@ -133,6 +181,12 @@
     <Compile Include="Windows Forms\Menu_ChangePDS.Designer.cs">
       <DependentUpon>Menu_ChangePDS.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows Forms\Menu_ImageSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_ImageSelector.Designer.cs">
+      <DependentUpon>Menu_ImageSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows Forms\Menu_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,10 +201,23 @@
     </Compile>
     <Compile Include="C# Class Files\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CeruleanArt.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CeruleanArt.resx</DependentUpon>
+    <Compile Include="Windows Forms\Menu_Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_Profile.Designer.cs">
+      <DependentUpon>Menu_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_Report.Designer.cs">
+      <DependentUpon>Menu_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_ResetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\Menu_ResetPass.Designer.cs">
+      <DependentUpon>Menu_ResetPass.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows Forms\Menu_Settings.cs">
       <SubType>Form</SubType>
@@ -164,6 +231,9 @@
     <Compile Include="Windows Forms\Menu_Tweet.Designer.cs">
       <DependentUpon>Menu_Tweet.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="C# Class Files\TweetControl.resx">
+      <DependentUpon>TweetControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Icons_Classic.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons_Classic.Designer.cs</LastGenOutput>
@@ -173,6 +243,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Icons_Aero.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangPacks\LangPack.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangPack1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Cerulean.LangPacks</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\CeruleanBox.resx">
+      <DependentUpon>CeruleanBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\ImageViewer.resx">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\Menu_CreateAccount.resx">
+      <DependentUpon>Menu_CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\Menu_FeedSelector.resx">
       <DependentUpon>Menu_FeedSelector.cs</DependentUpon>
@@ -184,6 +268,9 @@
     <EmbeddedResource Include="Windows Forms\Menu_ChangePDS.resx">
       <DependentUpon>Menu_ChangePDS.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\Menu_ImageSelector.resx">
+      <DependentUpon>Menu_ImageSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\Menu_Login.resx">
       <DependentUpon>Menu_Login.cs</DependentUpon>
@@ -203,8 +290,17 @@
     </Compile>
     <EmbeddedResource Include="CeruleanArt.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CeruleanArt.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>CeruleanArt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\Menu_Profile.resx">
+      <DependentUpon>Menu_Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\Menu_Report.resx">
+      <DependentUpon>Menu_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\Menu_ResetPass.resx">
+      <DependentUpon>Menu_ResetPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\Menu_Settings.resx">
       <DependentUpon>Menu_Settings.cs</DependentUpon>
@@ -214,6 +310,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Cerulean_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -223,12 +320,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\banner_600wide.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\600widelesstrans.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -253,10 +344,45 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\banner_default_moretrans.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="BouncyCastle.Cryptography.dll" />
     <Content Include="cer.ico" />
+    <Content Include="cerulean48.ico" />
+    <Content Include="icon256.ico" />
+    <Content Include="icon32.ico" />
+    <Content Include="logo256.ico" />
+    <None Include="Resources\about_beta.png" />
+    <None Include="Resources\lock_16.png" />
+    <None Include="Resources\key_16.png" />
+    <None Include="Resources\globe_16.png" />
+    <None Include="Resources\nobevel.png" />
+    <None Include="Resources\plud1.png" />
+    <None Include="Resources\plud.png" />
+    <None Include="Resources\Untitled-3.png" />
+    <None Include="Resources\icon_add_16.png" />
+    <None Include="Resources\user_small.png" />
+    <None Include="Resources\default_user.png" />
+    <None Include="Resources\squareIcon.png" />
+    <None Include="Resources\upInactive.png" />
+    <None Include="Resources\upActive.png" />
+    <None Include="Resources\upvoteInactive.png" />
+    <None Include="Resources\upvoteActive.png" />
+    <None Include="Resources\heartActiveSmall.png" />
+    <None Include="Resources\heartActiveNew.png" />
+    <None Include="Resources\heartInactive.png" />
+    <None Include="Resources\heartActive.png" />
+    <None Include="Resources\top_Grad.png" />
+    <None Include="Resources\topGrads.png" />
+    <None Include="Resources\bottomGradient.png" />
+    <None Include="Resources\gagd.png" />
+    <None Include="Resources\gag.png" />
+    <None Include="Resources\gradLight.png" />
+    <None Include="Resources\gradientbarlight.png" />
+    <None Include="Resources\pinstripesblue.png" />
+    <None Include="Resources\bdStripes.png" />
+    <None Include="Resources\bluestripes.png" />
+    <None Include="Resources\pinstripes.png" />
+    <None Include="Resources\new_banner_about.png" />
+    <None Include="Resources\new_banner_600.png" />
     <None Include="Resources\imageres_101-8.png" />
     <None Include="Resources\imageres_101-13.png" />
     <None Include="Resources\wab_1-13.png" />

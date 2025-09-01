@@ -1,0 +1,163 @@
+{
+  "did": "did:plc:uo2fna47c4v6zcnklxfhcvjb",
+  "handle": "cwebbonline.com",
+  "displayName": "Christopher Webb",
+  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:uo2fna47c4v6zcnklxfhcvjb/bafkreiaw3ngw2fcsff7hcbqqdxu2vwvfapld5rbxe3jnslbxrqomv7eo2y@jpeg",
+  "associated": {
+    "lists": 4,
+    "feedgens": 0,
+    "starterPacks": 3,
+    "labeler": false,
+    "chat": {
+      "allowIncoming": "following"
+    },
+    "activitySubscription": {
+      "allowSubscriptions": "followers"
+    }
+  },
+  "viewer": {
+    "muted": false,
+    "blockedBy": false,
+    "knownFollowers": {
+      "count": 7,
+      "followers": [
+        {
+          "did": "did:plc:y5xyloyy7s4a2bwfeimj7r3b",
+          "handle": "mcuban.bsky.social",
+          "displayName": "Mark Cuban",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:y5xyloyy7s4a2bwfeimj7r3b/bafkreihxddlkbnblytjdbajg5qopawdfcabg5e7ppwja6zmm3lvnedzojm@jpeg",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3ltkqdmwhfa2h"
+          },
+          "labels": [],
+          "createdAt": "2023-05-02T06:18:19.464Z",
+          "verification": {
+            "verifications": [
+              {
+                "issuer": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                "uri": "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.graph.verification/3lndprfjyfq2f",
+                "isValid": true,
+                "createdAt": "2025-04-21T10:45:23.115Z"
+              }
+            ],
+            "verifiedStatus": "valid",
+            "trustedVerifierStatus": "none"
+          }
+        },
+        {
+          "did": "did:plc:x4g4laxkmsrczwvnvbbgsm7g",
+          "handle": "muellershewrote.com",
+          "displayName": "Mueller, She Wrote",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:x4g4laxkmsrczwvnvbbgsm7g/bafkreidedksmgrgiynd7ixfcubxd5g6gnfsfrrjerjxuhnxarhtkok7tb4@jpeg",
+          "associated": {
+            "chat": {
+              "allowIncoming": "all"
+            },
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3luekyadkmp2u"
+          },
+          "labels": [],
+          "createdAt": "2023-04-28T22:43:37.796Z",
+          "verification": {
+            "verifications": [
+              {
+                "issuer": "did:plc:z72i7hdynmk6r22z27h6tvur",
+                "uri": "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.graph.verification/3ltpojknnep24",
+                "isValid": true,
+                "createdAt": "2025-07-11T20:26:12.706Z"
+              }
+            ],
+            "verifiedStatus": "valid",
+            "trustedVerifierStatus": "none"
+          }
+        },
+        {
+          "did": "did:plc:bfcpzcdnsmq2rhh5jkjmlz4u",
+          "handle": "bradleywhitford.bsky.social",
+          "displayName": "Bradley Whitford ",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:bfcpzcdnsmq2rhh5jkjmlz4u/bafkreia4be6xdmyxjiir6b3dca7fw46bmrxur3zgkrlf5q7lkoqjk7sthu@jpeg",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3ltirfu5uqn2l"
+          },
+          "labels": [],
+          "createdAt": "2023-07-01T21:05:05.223Z"
+        },
+        {
+          "did": "did:plc:extdstxmirlramfqrtwsljey",
+          "handle": "elboricano.bsky.social",
+          "displayName": "Aliana R",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:extdstxmirlramfqrtwsljey/bafkreia4pur74bvvqqlo5zrjmrmo25d3gzf62tfaogwn44ztdhwhmwwtvy@jpeg",
+          "associated": {
+            "chat": {
+              "allowIncoming": "all"
+            },
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lu4filmpfx2d",
+            "followedBy": "at://did:plc:extdstxmirlramfqrtwsljey/app.bsky.graph.follow/3ltv73uwauv2k"
+          },
+          "labels": [],
+          "createdAt": "2024-11-13T21:05:42.978Z"
+        },
+        {
+          "did": "did:plc:r7jcpigvexmahco7h2gzcge3",
+          "handle": "aarwood46.bsky.social",
+          "displayName": "Headline Critic",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:r7jcpigvexmahco7h2gzcge3/bafkreibneygwjrpihqjuza47sil4wqnwsnghcw2esbprtbkkzggv5pnvx4@jpeg",
+          "associated": {
+            "chat": {
+              "allowIncoming": "all"
+            },
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3ltkp3de3ut2t"
+          },
+          "labels": [],
+          "createdAt": "2024-11-23T16:05:28.245Z"
+        }
+      ]
+    }
+  },
+  "labels": [],
+  "createdAt": "2023-08-12T04:13:28.328Z",
+  "description": "Husband | Father | Designer | California Native | Lifelong Dem",
+  "indexedAt": "2025-08-29T14:49:25.198Z",
+  "banner": "https://cdn.bsky.app/img/banner/plain/did:plc:uo2fna47c4v6zcnklxfhcvjb/bafkreiahcirzkiacngc5765m6a2mjqsruefwypedczwn7h3egdgdirttcq@jpeg",
+  "followersCount": 333633,
+  "followsCount": 7453,
+  "postsCount": 9538,
+  "pinnedPost": {
+    "cid": "bafyreia4jsdarmmkgxwsmcr7vr4q34poabhwdcjbxo6gfl4wqshi52r6le",
+    "uri": "at://did:plc:uo2fna47c4v6zcnklxfhcvjb/app.bsky.feed.post/3lxkbsaidcs2b"
+  }
+}

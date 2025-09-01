@@ -1,59 +1,251 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.Drawing;
-using WindowsFormsAero;
-using Cerulean.Windows_Forms;
+using System.IO; // for debug
+using System.Windows.Forms;
+using Cerulean.LangPacks;
+using Newtonsoft.Json.Linq;
+using OmegaAOL.SkyBridge;
 
 namespace Cerulean
 {
     public partial class Menu_Main : Form
     {
+        public static Menu_Main Instance { get; private set; }
+
         public Menu_Main()
         {
             InitializeComponent();
+            Instance = this;
+            _debounceTimer = new Timer();
+            _debounceTimer.Interval = 300; // 600 ms debounce delay
+            _debounceTimer.Tick += DebounceTimer_Tick;
 
-            handleLabel.Text = Global.handle;
-            statusLabel.Text = Global.connectionStatus;
+            searchBox.TextChanged += searchBox_TextChanged;
 
-            this.MinimumSize = this.Size; // makes the window non-resizeable
-            this.MaximumSize = this.Size;
-            MaximizeBox = false;
+        }
+
+        private void LocalizeControls()
+        {
+            this.Text = LangPack.MAIN_WINTITLE;
+            handleLabel.Text = Variables.Handle;
+            connStatusLabel.Text = Global.connectionStatus;
+            BackgroundImage = Global.bgImage;
+            newPostButton.Text = LangPack.MAIN_TBUTTON_NEW_POST;
+            newDmButton.Text = LangPack.MAIN_TBUTTON_NEW_DM;
+            feedSelectorButton.Text = LangPack.MAIN_TBUTTON_SELECT_FEED;
+            reauthButton.Text = LangPack.MAIN_TBUTTON_REAUTH;
+            logoutButton.Text = LangPack.MAIN_TBUTTON_LOGOUT;
+            searchBox.Text = LangPack.MAIN_SEARCHBOX_PLACEHOLDER;
+            quickPostBox.Text = LangPack.MAIN_QTBOX_PLACEHOLDER;
+            quickPostButton.Text = LangPack.MAIN_BUTTON_POST;
+            notificationsButton.Text = LangPack.MAIN_TBUTTON_NOTIFICATIONS;
         }
 
         private void Menu_Main_Load(object sender, EventArgs e)
         {
             CenterToParent();
-            this.AcceptButton = quickPostButton;
+            LocalizeControls();
+            predictionBox.Height = 0;
+
+            quickPostButton.Enabled = false;
+            this.ActiveControl = mainTree;
+            //NotificationFetcher();
+
+            
+            //mainTree.Nodes.
+
+
+            /*JObject response = new JObject();
+            BarGo();
+
+            SkyBridge.SkyWorker(
+                delegate { response = SkyBridge.Timeline(); },
+                delegate
+                {
+                    tweetBoardHandler(response);
+                    BarStop();
+                    statusLabel.Text = "Connected";
+                }
+             * 
+             * 
+            );*/
+        }
+
+        private void tweetBoardHandler(JObject response)
+        {
+            File.WriteAllText("feedDebug.txt", response.ToString());
+
+            if (WEH.ErrHandler(response)[2] != "true")
+            {
+                if (!response.ContainsKey("feed"))
+                    return;
+
+                JArray tweetArray = (JArray)response["feed"];
+                foreach (JObject tweetPackage in tweetArray)
+                {
+                    JObject tweet = (JObject)tweetPackage["post"];
+                    TweetControl control = CreateTweetControl(tweetPackage);
+                    tweetBoard.Controls.Add(control);
+                }
+            }
+        }
+
+        private TweetControl CreateTweetControl(JObject tweetPackage)
+        {
+            TweetControl t = new TweetControl();
+            t.LoadTweetContent(tweetPackage);
+            return t;
+        }
+
+
+        private void quickPostButton_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(quickPostBox.Text))
+            {
+                string tweetContent = quickPostBox.Text;
+                quickPostButton.Enabled = false;
+                BarGo();
+                if (byte.Parse(RegKit.Read("\\UserSettings", "DSForQuickPost")) == 1) // digital signature
+                {
+                    tweetContent += (" " + RegKit.Read("\\UserSettings", "DigitalSignature"));
+                }
+                Async.SkyWorker(
+                    delegate { Tweet.Create(tweetContent); },
+                    delegate { BarStop(); quickPostBox.Clear(); this.ActiveControl = mainTree; quickPostButton.Enabled = true; }
+                );
+            }
+        }
+
+        private void quickPostBox_Enter(object sender, EventArgs e)
+        {
+            if (quickPostBox.Text == LangPack.MAIN_QTBOX_PLACEHOLDER)
+            {
+                quickPostBox.ForeColor = Color.Black;
+                quickPostBox.Text = String.Empty;
+            }
+        }
+
+        private void quickPostBox_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(quickPostBox.Text))
+            {
+                quickPostBox.ForeColor = Color.DarkGray;
+                quickPostBox.Text = LangPack.MAIN_QTBOX_PLACEHOLDER;
+                quickPostButton.Enabled = false;
+            }
+        }
+
+        private void quickPostBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(quickPostBox.Text))
+            {
+                quickPostButton.Enabled = true;
+                this.AcceptButton = quickPostButton;
+            }
+            else
+            {
+                quickPostButton.Enabled = false;
+            }
+        }
+
+        private void searchBox_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
+
+            if (searchBox.Text == LangPack.MAIN_SEARCHBOX_PLACEHOLDER)
+            {
+                searchBox.ForeColor = Color.Black;
+                searchBox.Text = String.Empty;
+            }
+        }
+
+        private void searchBox_Leave(object sender, EventArgs e)
+        {
+
+            searchBox.ForeColor = Color.DarkGray;
+            searchBox.Text = LangPack.MAIN_SEARCHBOX_PLACEHOLDER;
+
+        }
+
+
+
+        private void menuItemReload_Click(object sender, EventArgs e)
+        {
+            new Menu_FeedSelector().ShowDialog();
+        }
+
+        private void BarGo()
+        {
+            proBar.MarqueeAnimationSpeed = 10;
+        }
+
+        private void BarStop()
+        {
+            proBar.MarqueeAnimationSpeed = 0;
+            proBar.Invalidate();
+        }
+
+        public void FetchFeed(bool timeline, string uri = null)
+        {
+            Menu_FeedSelector.Instance.Close();
+            tweetBoard.Controls.Clear();
+            JObject response = new JObject();
+            BarGo();
+
+            if (timeline)
+            {
+                Async.SkyWorker(
+                delegate { response = Feeds.Load.Timeline(); },
+                delegate
+                {
+                    tweetBoardHandler(response);
+                    BarStop();
+                }
+            );
+            }
+
+            else
+            {
+                Async.SkyWorker(
+                delegate { response = Feeds.Load.Custom(uri); },
+                delegate
+                {
+                    tweetBoardHandler(response);
+                    BarStop();
+                }
+            );
+            }
+        }
+
+        private void menuItemLogout_Click(object sender, EventArgs e)
+        {
+            Variables.Token = String.Empty;
+            Variables.RefreshToken = String.Empty;
+            RegKit.Write("\\LoginData", "handle", String.Empty);
+            RegKit.Write("\\LoginData", "password", String.Empty);
+            RegKit.Write("\\LoginData", "CredentialsEncrypted", "false");
+
+            Auth.Refresher.End();
+
+            Menu_Login loginmenu = new Menu_Login();
+            this.Hide();
+            loginmenu.Show();
         }
 
         private void menuItemOptions_Click(object sender, EventArgs e)
         {
-            var optionsmenu = new Menu_Settings();
-            optionsmenu.Show();
+            new Menu_Settings().ShowDialog();
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e)
         {
-            var aboutmenu = new Menu_About();
-            aboutmenu.Show();
+            new Menu_About().ShowDialog();
         }
 
         private void menuItemTweet_Click(object sender, EventArgs e)
         {
-            var tweet = new Menu_Tweet();
-            tweet.Show();
-        }
-
-        private void quickPostButton_Click(object sender, EventArgs ev)
-        {
-            quickPostButton.Enabled = false;
-            SkyBridge.SkyWorker(
-                 (s, evt) => SkyBridge.QuickTweet(quickPostBox.Text),
-                 (s, evt) => quickPostButton.Enabled = true
-                );
-
+            new Menu_Tweet(Tweet.Type.Normal).ShowDialog();
         }
 
         private void menuItemExit_Click(object sender, EventArgs e)
@@ -61,64 +253,29 @@ namespace Cerulean
             this.Close();
         }
 
-        private void searchBox_Enter(object sender, EventArgs e)
-        {
-            this.AcceptButton = null;
-            if (searchBox.Text == "Search Bluesky")
-            {
-                searchBox.ForeColor = Color.Black;
-                searchBox.Text = String.Empty;
-            }
-        }
-
-        private void searchBox_keyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SkyBridge.SkyWorker(
-                 (s, evt) => MessageBox.Show("SEARCH:\n\n" + SkyBridge.Search(searchBox.Text)),
-                 (s, evt) => { }
-                );
-
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void searchBox_Leave(object sender, EventArgs e)
-        {
-            this.AcceptButton = quickPostButton;
-            searchBox.ForeColor = Color.DarkGray;
-            searchBox.Text = "Search Bluesky";
-        }
-
         private void menuItemRefreshToken_Click(object sender, EventArgs e)
         {
-            SkyBridge.StartTokenRefresher(false);
+            Auth.Refresher.Start(Auth.Refresher.Mode.Manual);
         }
 
         private void menuItemDM_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Global.notImplemented);
+            Global.featureAbsent(LangPack.MAIN_CBOX_ABSENT_DM);
         }
 
-        private void menuItemReload_Click(object sender, EventArgs e)
+        private void menuItemGotoGitRepo_Click(object sender, EventArgs e)
         {
-            var feedmenu = new Menu_FeedSelector();
-            feedmenu.Show();
+            Process.Start(LangPack.MAIN_URL_CERULEANGITREPO);
         }
 
-        private void menuItemLogout_Click(object sender, EventArgs e)
+        private void menuItemGotoCeruleanCom_Click(object sender, EventArgs e)
         {
-            Global.token = String.Empty;
-            Global.refreshToken = String.Empty;
-            RegKit.write("\\LoginData", "handle", String.Empty);
-            RegKit.write("\\LoginData", "password", String.Empty);
-            SkyBridge.EndTokenRefresher();
-            //Global.skyWorker.CancelAsync();
-            var loginmenu = new Menu_Login(); // switches 
-            this.Hide();
-            loginmenu.Show();
+            Process.Start(LangPack.MAIN_URL_CERULEANWEB);
+        }
+
+        private void menuItemBugGitFile_Click(object sender, EventArgs e)
+        {
+            Process.Start((LangPack.MAIN_URL_CERULEANGITREPO + LangPack.MAIN_URL_CERULEANGITERRPATH));
         }
 
         private void Menu_Main_Close(object sender, FormClosedEventArgs e)
@@ -126,19 +283,167 @@ namespace Cerulean
             Application.Exit();
         }
 
-        private void menuItemGotoGitRepo_Click(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e) { }
+        private void panel3_Paint(object sender, PaintEventArgs e)
         {
-            Process.Start("http://github.com/OmegaAOL/cerulean");
         }
 
-        private void menuItemGotoCeruleanCom_Click(object sender, EventArgs e)
+        private Timer _debounceTimer;
+        private string _lastInput;
+
+        private void searchBox_keyDown(object sender, KeyEventArgs e)
         {
-            Process.Start("http://ceruleanweb.neocities.org/");
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (predictionResponse != null && WEH.ErrHandler(predictionResponse)[2] != "true")
+                {
+                    try
+                    {
+                        if (predictionResponse["actors"].ToString() != "[]")
+                        {
+                            string did = predictionResponse["actors"][0]["did"].ToString();
+                            new Menu_Profile(did).ShowDialog();
+
+                        }
+                    }
+                    catch { MessageBox.Show(predictionResponse.ToString()); }
+                }
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
-        private void menuItemBugGitFile_Click(object sender, EventArgs e)
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/OmegaAOL/cerulean/issues/new");
+            if (searchBox.Text == String.Empty || searchBox.Text == LangPack.MAIN_SEARCHBOX_PLACEHOLDER) { predictionBox.Height = 0; }
+            else
+            {
+                // Reset the timer every time text changes
+                _debounceTimer.Stop();
+                _debounceTimer.Start();
+
+                // Save the latest input
+                _lastInput = searchBox.Text;
+            }
+        }
+
+        public static JObject predictionResponse;
+        private void DebounceTimer_Tick(object sender, EventArgs e)
+        {
+            _debounceTimer.Stop();
+
+
+
+            // Only search if text hasn't changed since timer started
+            if (searchBox.Text == _lastInput && !string.IsNullOrEmpty(_lastInput))
+            {
+
+                predictionBox.Items.Clear();
+                predictionBox.Height = 15;
+                predictionBox.Items.Add(LangPack.MAIN_SEARCHLIST_SEARCHING);
+                predictionBox.Visible = true;
+
+                Async.SkyWorker(
+                    delegate { predictionResponse = Profile.Search.Typeahead(_lastInput); },
+                    delegate
+                    {
+                        if (predictionBox.Items.Count != 1)
+                        {
+                            predictionBox.Items.Clear();
+                            predictionBox.Visible = false;
+                        }
+
+                        if (predictionResponse != null && WEH.ErrHandler(predictionResponse)[2] != "true")
+                        {
+
+                            try
+                            {
+                                predictionBox.Items.Clear();
+                                if (predictionResponse["actors"].ToString() != "[]")
+                                {
+                                    foreach (JObject prediction in (JArray)(predictionResponse["actors"]))
+                                    {
+                                        predictionBox.Items.Add(prediction["handle"].ToString());
+                                    }
+                                    predictionBox.Height = (predictionBox.Items.Count * predictionBox.ItemHeight) + 2;
+                                    predictionBox.Visible = true;
+                                }
+                                else
+                                {
+                                    predictionBox.Items.Add(LangPack.MAIN_SEARCHLIST_NORESULT);
+                                }
+                            }
+                            catch (Exception ex) { MessageBox.Show(ex.Message); }
+                        }
+                        else
+                        {
+                            predictionBox.Items.Clear();
+                            predictionBox.Items.Add(LangPack.MAIN_SEARCHLIST_FAILED);
+                        }
+                    }
+                );
+            }
+        }
+
+        private void Menu_Main_Shown(object sender, EventArgs e)
+        {
+            new Menu_FeedSelector().ShowDialog();
+        }
+
+        private void notificationsButton_Click(object sender, EventArgs e)
+        {
+            NotificationFetcher();
+            //ChatListFetcher();
+        }
+
+        private void NotificationFetcher()
+        {
+            JArray notifications = new JArray();
+            Async.SkyWorker(
+                delegate { notifications = Notifications.Fetch(); },
+                delegate
+                {
+                    TreeNode parent = mainTree.Nodes.Add("Notifications");
+                    parent.Nodes.Clear();
+                    foreach (JObject notification in notifications)
+                    {
+                        string text = notification.SelectToken("reason").ToString() + " by " + notification.SelectToken("author.handle").ToString();
+                        parent.Nodes.Add(text);
+                    }
+                    parent.ExpandAll();
+                }
+            );
+        }
+
+        private void ChatListFetcher()
+        {
+            JArray chats = new JArray();
+            Async.SkyWorker(
+                delegate { chats = Chats.ListConversations(); },
+                delegate
+                {
+                    TreeNode parent = mainTree.Nodes.Add("Chats");
+                    parent.Nodes.Clear();
+                    foreach (JObject chat in chats)
+                    {
+                        string text = String.Empty;
+                        foreach (JObject member in (JArray)chat["members"])
+                        {
+                            text = text + member["handle"].ToString() + " with ";
+                        }
+                        parent.Nodes.Add(text);
+                    }
+                    parent.ExpandAll();
+                }
+            );
+        }
+
+        private void menuItem24_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

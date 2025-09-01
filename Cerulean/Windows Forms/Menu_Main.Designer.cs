@@ -79,23 +79,25 @@
             this.menuItem33 = new System.Windows.Forms.MenuItem();
             this.menuItemAbout = new System.Windows.Forms.MenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.connStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.proBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.handleLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.quickPostBox = new System.Windows.Forms.TextBox();
-            this.quickPostButton = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.newPostButton = new System.Windows.Forms.ToolStripButton();
+            this.newDmButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.feedSelectorButton = new System.Windows.Forms.ToolStripButton();
+            this.notificationsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.reauthButton = new System.Windows.Forms.ToolStripButton();
+            this.logoutButton = new System.Windows.Forms.ToolStripButton();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.panel3 = new Cerulean.BorderPanel();
-            this.panel2 = new Cerulean.BorderPanel();
+            this.quickPostButton = new Cerulean.CeruleanButton();
+            this.mainTree = new Cerulean.BorderTreeView();
+            this.predictionBox = new Cerulean.TypeaheadBox();
+            this.tweetBoard = new Cerulean.BorderPanel();
             this.statusStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +130,7 @@
             // menuItemTweet
             // 
             this.menuItemTweet.Index = 0;
-            this.menuItemTweet.Shortcut = System.Windows.Forms.Shortcut.CtrlT;
+            this.menuItemTweet.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
             this.menuItemTweet.Text = "New Post...";
             this.menuItemTweet.Click += new System.EventHandler(this.menuItemTweet_Click);
             // 
@@ -160,6 +162,7 @@
             this.menuItem24.Index = 5;
             this.menuItem24.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
             this.menuItem24.Text = "Print...";
+            this.menuItem24.Click += new System.EventHandler(this.menuItem24_Click);
             // 
             // menuItem25
             // 
@@ -429,187 +432,242 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.BackgroundImage = global::Cerulean.CeruleanArt.gradLight;
+            this.statusStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel,
-            this.toolStripProgressBar1,
+            this.connStatusLabel,
+            this.proBar,
             this.toolStripStatusLabel1,
             this.handleLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 696);
+            this.statusStrip.Location = new System.Drawing.Point(0, 710);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1350, 22);
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // statusLabel
+            // connStatusLabel
             // 
-            this.statusLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.statusLabel.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Padding = new System.Windows.Forms.Padding(6, 0, 5, 0);
-            this.statusLabel.Size = new System.Drawing.Size(90, 17);
-            this.statusLabel.Text = "Disconnected";
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.connStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.connStatusLabel.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.connStatusLabel.Name = "connStatusLabel";
+            this.connStatusLabel.Padding = new System.Windows.Forms.Padding(6, 0, 5, 0);
+            this.connStatusLabel.Size = new System.Drawing.Size(130, 17);
+            this.connStatusLabel.Text = "Cerulean.Placeholder";
+            this.connStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // toolStripProgressBar1
+            // proBar
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(120, 16);
+            this.proBar.MarqueeAnimationSpeed = 0;
+            this.proBar.Name = "proBar";
+            this.proBar.Size = new System.Drawing.Size(120, 16);
+            this.proBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1051, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(954, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "    ";
             // 
             // handleLabel
             // 
-            this.handleLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.handleLabel.BackColor = System.Drawing.Color.Transparent;
             this.handleLabel.Name = "handleLabel";
-            this.handleLabel.Size = new System.Drawing.Size(62, 17);
-            this.handleLabel.Text = "No handle";
+            this.handleLabel.Size = new System.Drawing.Size(119, 17);
+            this.handleLabel.Text = "Cerulean.Placeholder";
             this.handleLabel.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // quickPostBox
             // 
+            this.quickPostBox.ForeColor = System.Drawing.Color.DarkGray;
             this.quickPostBox.Location = new System.Drawing.Point(276, 648);
             this.quickPostBox.Name = "quickPostBox";
-            this.quickPostBox.Size = new System.Drawing.Size(937, 20);
+            this.quickPostBox.Size = new System.Drawing.Size(960, 20);
             this.quickPostBox.TabIndex = 3;
-            // 
-            // quickPostButton
-            // 
-            this.quickPostButton.BackColor = System.Drawing.SystemColors.Control;
-            this.quickPostButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.quickPostButton.Location = new System.Drawing.Point(1229, 646);
-            this.quickPostButton.Name = "quickPostButton";
-            this.quickPostButton.Size = new System.Drawing.Size(94, 23);
-            this.quickPostButton.TabIndex = 4;
-            this.quickPostButton.Text = "Quick Post";
-            this.quickPostButton.UseVisualStyleBackColor = false;
-            this.quickPostButton.Click += new System.EventHandler(this.quickPostButton_Click);
+            this.quickPostBox.Text = "Cerulean.Placeholder";
+            this.quickPostBox.TextChanged += new System.EventHandler(this.quickPostBox_TextChanged);
+            this.quickPostBox.Enter += new System.EventHandler(this.quickPostBox_Enter);
+            this.quickPostBox.Leave += new System.EventHandler(this.quickPostBox_Leave);
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackgroundImage = global::Cerulean.CeruleanArt.gradLight;
+            this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripSeparator1,
-            this.toolStripButton3,
-            this.toolStripButton6,
+            this.newPostButton,
+            this.newDmButton,
+            this.toolStripSeparator3,
+            this.feedSelectorButton,
+            this.notificationsButton,
             this.toolStripSeparator2,
-            this.toolStripButton5});
+            this.reauthButton,
+            this.logoutButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.MinimumSize = new System.Drawing.Size(1351, 25);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1350, 25);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
+            this.toolStrip1.Size = new System.Drawing.Size(1351, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // newPostButton
             // 
-            this.toolStripButton1.Image = global::Cerulean.Icons_Aero.imageres_158_10;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Black;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(77, 22);
-            this.toolStripButton1.Text = "New Post";
-            this.toolStripButton1.Click += new System.EventHandler(this.menuItemTweet_Click);
+            this.newPostButton.Image = global::Cerulean.Icons_Aero.imageres_158_10;
+            this.newPostButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.newPostButton.Name = "newPostButton";
+            this.newPostButton.Size = new System.Drawing.Size(139, 22);
+            this.newPostButton.Text = "Cerulean.Placeholder";
+            this.newPostButton.Click += new System.EventHandler(this.menuItemTweet_Click);
             // 
-            // toolStripButton2
+            // newDmButton
             // 
-            this.toolStripButton2.Image = global::Cerulean.Icons_Aero.imageres_128_10;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Black;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(134, 22);
-            this.toolStripButton2.Text = "New Direct Message";
-            this.toolStripButton2.Click += new System.EventHandler(this.menuItemDM_Click);
+            this.newDmButton.Image = global::Cerulean.Icons_Aero.imageres_128_10;
+            this.newDmButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.newDmButton.Name = "newDmButton";
+            this.newDmButton.Size = new System.Drawing.Size(139, 22);
+            this.newDmButton.Text = "Cerulean.Placeholder";
+            this.newDmButton.Click += new System.EventHandler(this.menuItemDM_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator3
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton3
+            // feedSelectorButton
             // 
-            this.toolStripButton3.Image = global::Cerulean.Icons_Aero.imageres_25_10;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Black;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(96, 22);
-            this.toolStripButton3.Text = "Reload Feeds";
-            this.toolStripButton3.Click += new System.EventHandler(this.menuItemReload_Click);
+            this.feedSelectorButton.Image = global::Cerulean.Icons_Aero.imageres_25_10;
+            this.feedSelectorButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.feedSelectorButton.Name = "feedSelectorButton";
+            this.feedSelectorButton.Size = new System.Drawing.Size(139, 22);
+            this.feedSelectorButton.Text = "Cerulean.Placeholder";
+            this.feedSelectorButton.Click += new System.EventHandler(this.menuItemReload_Click);
             // 
-            // toolStripButton6
+            // notificationsButton
             // 
-            this.toolStripButton6.Image = global::Cerulean.Icons_Aero.imageres_82_10;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(106, 22);
-            this.toolStripButton6.Text = "Reauthenticate";
-            this.toolStripButton6.Click += new System.EventHandler(this.menuItemRefreshToken_Click);
+            this.notificationsButton.Image = global::Cerulean.CeruleanArt.globe_16;
+            this.notificationsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.notificationsButton.Name = "notificationsButton";
+            this.notificationsButton.Size = new System.Drawing.Size(139, 22);
+            this.notificationsButton.Text = "Cerulean.Placeholder";
+            this.notificationsButton.ToolTipText = "Cerulean.Placeholder";
+            this.notificationsButton.Click += new System.EventHandler(this.notificationsButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton5
+            // reauthButton
             // 
-            this.toolStripButton5.Image = global::Cerulean.Icons_Aero.imageres_59_10;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Black;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(70, 22);
-            this.toolStripButton5.Text = "Log Out";
-            this.toolStripButton5.Click += new System.EventHandler(this.menuItemLogout_Click);
+            this.reauthButton.Image = global::Cerulean.Icons_Aero.imageres_82_10;
+            this.reauthButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.reauthButton.Name = "reauthButton";
+            this.reauthButton.Size = new System.Drawing.Size(139, 22);
+            this.reauthButton.Text = "Cerulean.Placeholder";
+            this.reauthButton.Click += new System.EventHandler(this.menuItemRefreshToken_Click);
+            // 
+            // logoutButton
+            // 
+            this.logoutButton.ForeColor = System.Drawing.Color.Black;
+            this.logoutButton.Image = global::Cerulean.Icons_Aero.imageres_59_10;
+            this.logoutButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(139, 22);
+            this.logoutButton.Text = "Cerulean.Placeholder";
+            this.logoutButton.Click += new System.EventHandler(this.menuItemLogout_Click);
             // 
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBox.ForeColor = System.Drawing.Color.DarkGray;
-            this.searchBox.Location = new System.Drawing.Point(1107, 2);
+            this.searchBox.Location = new System.Drawing.Point(1107, 1);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 20);
             this.searchBox.TabIndex = 6;
-            this.searchBox.Text = "Search Bluesky";
+            this.searchBox.Text = "Cerulean.Placeholder";
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_keyDown);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
-            // panel3
+            // quickPostButton
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel3.Location = new System.Drawing.Point(276, 38);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1047, 589);
-            this.panel3.TabIndex = 10;
+            this.quickPostButton.AutoSize = true;
+            this.quickPostButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.quickPostButton.BackColor = System.Drawing.SystemColors.Control;
+            this.quickPostButton.Enabled = false;
+            this.quickPostButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.quickPostButton.Location = new System.Drawing.Point(1248, 646);
+            this.quickPostButton.Margin = new System.Windows.Forms.Padding(0);
+            this.quickPostButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.quickPostButton.Name = "quickPostButton";
+            this.quickPostButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.quickPostButton.Size = new System.Drawing.Size(75, 23);
+            this.quickPostButton.TabIndex = 4;
+            this.quickPostButton.Text = "Post";
+            this.quickPostButton.UseVisualStyleBackColor = false;
+            this.quickPostButton.Click += new System.EventHandler(this.quickPostButton_Click);
             // 
-            // panel2
+            // mainTree
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel2.Location = new System.Drawing.Point(27, 38);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(218, 639);
-            this.panel2.TabIndex = 9;
+            this.mainTree.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.mainTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mainTree.Location = new System.Drawing.Point(27, 38);
+            this.mainTree.Name = "mainTree";
+            this.mainTree.Size = new System.Drawing.Size(218, 639);
+            this.mainTree.TabIndex = 0;
+            // 
+            // predictionBox
+            // 
+            this.predictionBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.predictionBox.FormattingEnabled = true;
+            this.predictionBox.Location = new System.Drawing.Point(1108, 20);
+            this.predictionBox.MaximumSize = new System.Drawing.Size(229, 300);
+            this.predictionBox.MinimumSize = new System.Drawing.Size(229, 0);
+            this.predictionBox.Name = "predictionBox";
+            this.predictionBox.Size = new System.Drawing.Size(229, 91);
+            this.predictionBox.TabIndex = 11;
+            this.predictionBox.Visible = false;
+            // 
+            // tweetBoard
+            // 
+            this.tweetBoard.AutoScroll = true;
+            this.tweetBoard.AutoScrollMargin = new System.Drawing.Size(0, 1);
+            this.tweetBoard.BackColor = System.Drawing.Color.Transparent;
+            this.tweetBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tweetBoard.Location = new System.Drawing.Point(276, 38);
+            this.tweetBoard.Margin = new System.Windows.Forms.Padding(0);
+            this.tweetBoard.Name = "tweetBoard";
+            this.tweetBoard.Size = new System.Drawing.Size(1047, 589);
+            this.tweetBoard.TabIndex = 10;
+            this.tweetBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // Menu_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1350, 718);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.ClientSize = new System.Drawing.Size(1350, 732);
+            this.Controls.Add(this.mainTree);
+            this.Controls.Add(this.predictionBox);
+            this.Controls.Add(this.tweetBoard);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.quickPostButton);
             this.Controls.Add(this.quickPostBox);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1366, 770);
             this.Menu = this.mainMenu1;
+            this.MinimumSize = new System.Drawing.Size(1366, 770);
             this.Name = "Menu_Main";
-            this.Text = "Cerulean";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Cerulean.Placeholder";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_Main_Close);
             this.Load += new System.EventHandler(this.Menu_Main_Load);
+            this.Shown += new System.EventHandler(this.Menu_Main_Shown);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -665,27 +723,29 @@
         private System.Windows.Forms.MenuItem menuItem33;
         private System.Windows.Forms.MenuItem menuItemAbout;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel connStatusLabel;
         private System.Windows.Forms.MenuItem menuItem43;
         private System.Windows.Forms.MenuItem menuItem44;
         private System.Windows.Forms.MenuItem menuItem45;
         private System.Windows.Forms.ToolStripStatusLabel handleLabel;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar proBar;
         private System.Windows.Forms.TextBox quickPostBox;
-        private System.Windows.Forms.Button quickPostButton;
+        private Cerulean.CeruleanButton quickPostButton;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton newPostButton;
+        private System.Windows.Forms.ToolStripButton newDmButton;
+        private System.Windows.Forms.ToolStripButton feedSelectorButton;
+        private System.Windows.Forms.ToolStripButton logoutButton;
         private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private BorderPanel panel2;
-        private BorderPanel panel3;
+        private System.Windows.Forms.ToolStripButton reauthButton;
+        private BorderPanel tweetBoard;
         private System.Windows.Forms.MenuItem menuItemBugGitFile;
         private System.Windows.Forms.MenuItem menuItem17;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private Cerulean.TypeaheadBox predictionBox;
+        private System.Windows.Forms.ToolStripButton notificationsButton;
+        private Cerulean.BorderTreeView mainTree;
     }
 }

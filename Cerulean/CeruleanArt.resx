@@ -118,10 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="banner_600wide" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\banner_600wide.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="default_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\default_user.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="banner_default_moretrans" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\banner_default_moretrans.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pinstripesblue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\pinstripesblue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upActive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\upActive.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gradLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\gradLight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="globe_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\globe_16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="topGrads" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\topGrads.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bottomGradient" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bottomGradient.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gagd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\gagd.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bdStripes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bdStripes.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="top_Grad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\top_Grad.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new_banner_600" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new_banner_600.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gradientbarlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\gradientbarlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new_banner_about" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new_banner_about.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upInactive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\upInactive.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\gag.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="squareIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\squareIcon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\user_small.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="about_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\about_beta.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

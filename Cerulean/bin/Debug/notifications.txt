@@ -1,0 +1,643 @@
+{
+  "notifications": [
+    {
+      "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.like/3lxemce4kos23",
+      "cid": "bafyreifsrpm3qo3i56thangoknseawtjpkj7sxnsnchtoxspmisdy3fjhu",
+      "author": {
+        "did": "did:plc:cgqyp2jefdzltpzxgdleuh6w",
+        "handle": "jakemanger.bsky.social",
+        "displayName": "Jake Manger",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:cgqyp2jefdzltpzxgdleuh6w/bafkreihju6tm4nw4qbvthg7ob7febmcw2utxibf7ahrr7ozp3hggckgbvq@jpeg",
+        "associated": {
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2025-02-12T09:31:37.745Z",
+        "description": "A broke PhD student turned indie developer building mini startups like a madman\nhttps://howtoconvert.co ($4k/mo)\nhttps://pictiler.com (new)\nhttps://suggestionbox.page\n\nAll my projects 👉 https://merlinsbeard.ai",
+        "indexedAt": "2025-08-26T02:13:52.598Z"
+      },
+      "reason": "like",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lxem2nicec2h",
+      "record": {
+        "$type": "app.bsky.feed.like",
+        "createdAt": "2025-08-27T08:27:53.081Z",
+        "subject": {
+          "cid": "bafyreigxzzgxx7eubxcrobq2mu4jgi6djpomfstyxhigdnu42esndp5hl4",
+          "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lxem2nicec2h"
+        }
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-27T08:27:53.081Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lxdm7qw3b22w",
+      "cid": "bafyreicyrckrbaph2ssntectt5kwjrtopxvrc62wf5oyk4lzqjmrpxozq4",
+      "author": {
+        "did": "did:plc:cgqyp2jefdzltpzxgdleuh6w",
+        "handle": "jakemanger.bsky.social",
+        "displayName": "Jake Manger",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:cgqyp2jefdzltpzxgdleuh6w/bafkreihju6tm4nw4qbvthg7ob7febmcw2utxibf7ahrr7ozp3hggckgbvq@jpeg",
+        "associated": {
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2025-02-12T09:31:37.745Z",
+        "description": "A broke PhD student turned indie developer building mini startups like a madman\nhttps://howtoconvert.co ($4k/mo)\nhttps://pictiler.com (new)\nhttps://suggestionbox.page\n\nAll my projects 👉 https://merlinsbeard.ai",
+        "indexedAt": "2025-08-26T02:13:52.598Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lxdejgqmic2m",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-26T22:53:46.317Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreiebafz64v4q7ghx466aiy7qhk6f3won4u63wftpirizs5spao7rha",
+            "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lxdejgqmic2m"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "Sorry, looking back you aren’t hating. Have had quite a few others that have been quite abusive"
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-26T22:53:46.317Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:lsxlezz5azs62gcyeeskolrz/app.bsky.feed.post/3lxaxelqm7s2k",
+      "cid": "bafyreie7tgykwkgbfpgr7w2rsgrahxizvr3c2yye6edsosasitnhdexici",
+      "author": {
+        "did": "did:plc:lsxlezz5azs62gcyeeskolrz",
+        "handle": "cooperatives.bsky.social",
+        "displayName": "The Cooperative Economy",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:lsxlezz5azs62gcyeeskolrz/bafkreieca2f45yxedhhlgknf4ffdfobdcqaq7j4cezg6pb3mdzwy7amwmi@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "all"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2024-11-15T20:15:03.721Z",
+        "description": "Advocating for a democratic, equitable, and inclusive world through cooperatives, worker ownership, unions, mutual aid, and workplace democracy. 💜\n\nPeople Above Profit ✊🏽 #EconomicDemocracy 🌲🌲\n\nusworker.coop | ncbaclusa.coop | workers.coop | ica.coop",
+        "indexedAt": "2025-04-27T18:44:56.676Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx6gok6j4k2t",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T21:35:20.611Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreigxnw4xjludwbzagk5dzbf2j6igkfhydukfh2dekjp5htwlxgenpy",
+            "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx6gok6j4k2t"
+          },
+          "root": {
+            "cid": "bafyreiafybt5wxuor4gdi7k5aim6vuwz2wapvfmp5p6yuldyyzioktwchy",
+            "uri": "at://did:plc:y5xyloyy7s4a2bwfeimj7r3b/app.bsky.feed.post/3lr4op5zib22q"
+          }
+        },
+        "text": "There are barriers to their creation. The co-op model benefits the poor the most, the same people who have access to the least amount of capital for starting a business. Awareness for the model is relatively low, combined with the small number of folks looking to create a business."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T21:35:20.611Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:ioa5toazzajlo42wyknani76/app.bsky.feed.like/3lxatwnxkqx2h",
+      "cid": "bafyreihqjjg3qwzstiqrsk3o2wtqp5isejfrqvykv6ivjsvitsoxaoki7q",
+      "author": {
+        "did": "did:plc:ioa5toazzajlo42wyknani76",
+        "handle": "odessasteppes.bsky.social",
+        "displayName": "Odessa",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ioa5toazzajlo42wyknani76/bafkreihxcn3yu5vzew77h2jtnu5zezvb2kxxcs2tsfk3mwaln7uyyu5z2a@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [
+          {
+            "src": "did:plc:ioa5toazzajlo42wyknani76",
+            "uri": "at://did:plc:ioa5toazzajlo42wyknani76/app.bsky.actor.profile/self",
+            "cid": "bafyreigwxhcgl6k7mcb7gwtlcysuhhzpmudjxtc433atphimiuyq4whade",
+            "val": "!no-unauthenticated",
+            "cts": "1970-01-01T00:00:00Z"
+          }
+        ],
+        "createdAt": "2023-11-06T23:11:17.092Z",
+        "description": "She/Her 🏳️‍⚧️\n\nI just want to post about fun stuff, but the politics never stops being stupid and dangerous.\n\nThings I consider fun: Video games, animation, painting minis, synths.",
+        "indexedAt": "2025-05-29T20:32:59.841Z"
+      },
+      "reason": "like",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.like",
+        "createdAt": "2025-08-25T20:33:51.261Z",
+        "subject": {
+          "cid": "bafyreidihcaekagfo7pgzjnjwpp4thvjack46ws54sn5mzvc3nkotymbqm",
+          "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z"
+        }
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T20:33:51.261Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx7rxnypws23",
+      "cid": "bafyreieyjgo7iuw5m7mo325ok5nwpkfvsbvsowb3ncjrqle5ggida7pbti",
+      "author": {
+        "did": "did:plc:cgqyp2jefdzltpzxgdleuh6w",
+        "handle": "jakemanger.bsky.social",
+        "displayName": "Jake Manger",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:cgqyp2jefdzltpzxgdleuh6w/bafkreihju6tm4nw4qbvthg7ob7febmcw2utxibf7ahrr7ozp3hggckgbvq@jpeg",
+        "associated": {
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2025-02-12T09:31:37.745Z",
+        "description": "A broke PhD student turned indie developer building mini startups like a madman\nhttps://howtoconvert.co ($4k/mo)\nhttps://pictiler.com (new)\nhttps://suggestionbox.page\n\nAll my projects 👉 https://merlinsbeard.ai",
+        "indexedAt": "2025-08-26T02:13:52.598Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T10:25:58.32Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreigbmal3dk3za4y3vtcfxskkgky62swldyj6y3oe4xshgh7igukhou",
+            "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx7rvif4qc2t"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "Exactly, the tool is for people who don't want to use the command line or don't know how. That's why I built it."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T10:25:58.32Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx7rvif4qc2t",
+      "cid": "bafyreigbmal3dk3za4y3vtcfxskkgky62swldyj6y3oe4xshgh7igukhou",
+      "author": {
+        "did": "did:plc:5bftt53nibe5zmqal7w5x334",
+        "handle": "jsnfwlr.com",
+        "displayName": "Jason Fowler",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:5bftt53nibe5zmqal7w5x334/bafkreicg6hlxolkg2b5bcyqmqigdjwpdleuntam5hd2z3ayzsi3dbd57iq@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2023-12-13T08:09:47.816Z",
+        "description": "🇦🇺 Father, Husband, Geek | https://jsnfwlr.com\n\nI code, therefore I am.\n\nChange your password.",
+        "indexedAt": "2025-07-25T11:48:18.803Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T10:24:45.326Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreidqks5pveikdzylhg2kes467rd5ncijpeathouvvoxa7javfgn5ey",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx7rlrk6y223"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "Exactly. No License contravention.\n\nI mean, I prefer to use the underlying tools themselves, and do so, but more power to you for creating a streamlined ui for otherwise complex tools."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T10:24:45.326Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx7rlrk6y223",
+      "cid": "bafyreidqks5pveikdzylhg2kes467rd5ncijpeathouvvoxa7javfgn5ey",
+      "author": {
+        "did": "did:plc:cgqyp2jefdzltpzxgdleuh6w",
+        "handle": "jakemanger.bsky.social",
+        "displayName": "Jake Manger",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:cgqyp2jefdzltpzxgdleuh6w/bafkreihju6tm4nw4qbvthg7ob7febmcw2utxibf7ahrr7ozp3hggckgbvq@jpeg",
+        "associated": {
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2025-02-12T09:31:37.745Z",
+        "description": "A broke PhD student turned indie developer building mini startups like a madman\nhttps://howtoconvert.co ($4k/mo)\nhttps://pictiler.com (new)\nhttps://suggestionbox.page\n\nAll my projects 👉 https://merlinsbeard.ai",
+        "indexedAt": "2025-08-26T02:13:52.598Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T10:19:19.385Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreig37lxyq5ofel7k7t7pxiw5vkmfd4x2pj5jczvj642hbz4fid433u",
+            "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx7rffl6ps2t"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "If they are referring to the GPL, then the app doesn't use any GPL libraries.\n\nIt communicates as seperate programs which is permitted by the GPL. That way, you preserve the right to modify and swap out any GPL code the app uses."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T10:19:19.385Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx7rffl6ps2t",
+      "cid": "bafyreig37lxyq5ofel7k7t7pxiw5vkmfd4x2pj5jczvj642hbz4fid433u",
+      "author": {
+        "did": "did:plc:5bftt53nibe5zmqal7w5x334",
+        "handle": "jsnfwlr.com",
+        "displayName": "Jason Fowler",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:5bftt53nibe5zmqal7w5x334/bafkreicg6hlxolkg2b5bcyqmqigdjwpdleuntam5hd2z3ayzsi3dbd57iq@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2023-12-13T08:09:47.816Z",
+        "description": "🇦🇺 Father, Husband, Geek | https://jsnfwlr.com\n\nI code, therefore I am.\n\nChange your password.",
+        "indexedAt": "2025-07-25T11:48:18.803Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T10:15:45.507Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreihm2ya4meuoeaswnvmpxcnctu7jlxfxbkgg5ymse3mwgjn43fs424",
+            "uri": "at://did:plc:7q64l7gyv6n5wssm5r5ekfoa/app.bsky.feed.post/3lx7jnt5efs2h"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "You got anything to back that up or are you just speculating?\n\nAlso, most open source licences don't stop you selling it or derivatives of it. They only require you provide the source code to anyone who has bought it, upon request."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T10:15:45.507Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:7q64l7gyv6n5wssm5r5ekfoa/app.bsky.feed.post/3lx7jnt5efs2h",
+      "cid": "bafyreihm2ya4meuoeaswnvmpxcnctu7jlxfxbkgg5ymse3mwgjn43fs424",
+      "author": {
+        "did": "did:plc:7q64l7gyv6n5wssm5r5ekfoa",
+        "handle": "rclarke.bsky.social",
+        "displayName": "Robin Clarke",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:7q64l7gyv6n5wssm5r5ekfoa/bafkreibj54rrsj6kgl2bzsdxfov3tbhyeucektyff53nmwg32i36gqh7d4@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2023-07-01T19:05:49.384Z",
+        "description": "Games producer, often found at Maraoke (@singmaraoke.bsky.social). He/him\nWords: http://www.citystate.co.uk\n\nI may put my frequently used hashtags here (tap and hold to filter): #NMS",
+        "indexedAt": "2025-06-23T12:52:55.932Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T07:57:18.235Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreifqwwqbwcn5ugee63afz3g6wtqhme7mdvgljoh6esvhjcc7vcuvie",
+            "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx5icarddc2n"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "How about \"you're bundling and selling a load of other people's work likely in contravention of their licences\"?"
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T07:57:18.235Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:7q64l7gyv6n5wssm5r5ekfoa/app.bsky.feed.like/3lx7jgfq4ed2y",
+      "cid": "bafyreicyoyz5onnxaznxxfaei25x2esfjgck2t4zd5bzcom5w6fxewre6i",
+      "author": {
+        "did": "did:plc:7q64l7gyv6n5wssm5r5ekfoa",
+        "handle": "rclarke.bsky.social",
+        "displayName": "Robin Clarke",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:7q64l7gyv6n5wssm5r5ekfoa/bafkreibj54rrsj6kgl2bzsdxfov3tbhyeucektyff53nmwg32i36gqh7d4@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2023-07-01T19:05:49.384Z",
+        "description": "Games producer, often found at Maraoke (@singmaraoke.bsky.social). He/him\nWords: http://www.citystate.co.uk\n\nI may put my frequently used hashtags here (tap and hold to filter): #NMS",
+        "indexedAt": "2025-06-23T12:52:55.932Z"
+      },
+      "reason": "like",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.like",
+        "createdAt": "2025-08-25T07:53:08.818Z",
+        "subject": {
+          "cid": "bafyreidihcaekagfo7pgzjnjwpp4thvjack46ws54sn5mzvc3nkotymbqm",
+          "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z"
+        }
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T07:53:08.818Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx7a2rgqxs2t",
+      "cid": "bafyreif7dkpw7odnluszzjduqy6oa3vjkjxblkft3h2vhbokmawmis55ii",
+      "author": {
+        "did": "did:plc:cgqyp2jefdzltpzxgdleuh6w",
+        "handle": "jakemanger.bsky.social",
+        "displayName": "Jake Manger",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:cgqyp2jefdzltpzxgdleuh6w/bafkreihju6tm4nw4qbvthg7ob7febmcw2utxibf7ahrr7ozp3hggckgbvq@jpeg",
+        "associated": {
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2025-02-12T09:31:37.745Z",
+        "description": "A broke PhD student turned indie developer building mini startups like a madman\nhttps://howtoconvert.co ($4k/mo)\nhttps://pictiler.com (new)\nhttps://suggestionbox.page\n\nAll my projects 👉 https://merlinsbeard.ai",
+        "indexedAt": "2025-08-26T02:13:52.598Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T05:05:35.235Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreigas7c4qoptqp7ur52x7enivl6kc6latazbfrxqdyv4owtnedtxeq",
+            "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx77o4dsjc2t"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "Appreciate the back up. It is crazy how people can just get into a hating mentality.\n\nThey assume all software should be free and I bet less than 1% of them will ever donate to a FOSS project. \n\nThats precisely the reason why most FOSS projects fail and die and have no active development"
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T05:05:35.235Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx77o4dsjc2t",
+      "cid": "bafyreigas7c4qoptqp7ur52x7enivl6kc6latazbfrxqdyv4owtnedtxeq",
+      "author": {
+        "did": "did:plc:5bftt53nibe5zmqal7w5x334",
+        "handle": "jsnfwlr.com",
+        "displayName": "Jason Fowler",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:5bftt53nibe5zmqal7w5x334/bafkreicg6hlxolkg2b5bcyqmqigdjwpdleuntam5hd2z3ayzsi3dbd57iq@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2023-12-13T08:09:47.816Z",
+        "description": "🇦🇺 Father, Husband, Geek | https://jsnfwlr.com\n\nI code, therefore I am.\n\nChange your password.",
+        "indexedAt": "2025-07-25T11:48:18.803Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5ersrtfc2z",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T04:58:30.466Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreiegma3osrnhasfndglqwblmflbrhrjlfwwnd46evw7gcyuhdpddhy",
+            "uri": "at://did:plc:eoh6owctzugy6l5puxmxzqk2/app.bsky.feed.post/3lx5lnbmyu22c"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "Comments like that are fine ELSEWHERE. Not in response to a developer's announcement."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T04:58:30.466Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:5bftt53nibe5zmqal7w5x334/app.bsky.feed.post/3lx77ibfrpk2t",
+      "cid": "bafyreiem2dxerhvo5hgrzup7fzq4jad44zwrj4o2pwnfnlydmxcuradlqu",
+      "author": {
+        "did": "did:plc:5bftt53nibe5zmqal7w5x334",
+        "handle": "jsnfwlr.com",
+        "displayName": "Jason Fowler",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:5bftt53nibe5zmqal7w5x334/bafkreicg6hlxolkg2b5bcyqmqigdjwpdleuntam5hd2z3ayzsi3dbd57iq@jpeg",
+        "associated": {
+          "chat": {
+            "allowIncoming": "following"
+          },
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2023-12-13T08:09:47.816Z",
+        "description": "🇦🇺 Father, Husband, Geek | https://jsnfwlr.com\n\nI code, therefore I am.\n\nChange your password.",
+        "indexedAt": "2025-07-25T11:48:18.803Z"
+      },
+      "reason": "reply",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5pvauzjc2d",
+      "record": {
+        "$type": "app.bsky.feed.post",
+        "createdAt": "2025-08-25T04:55:14.446Z",
+        "langs": [
+          "en"
+        ],
+        "reply": {
+          "parent": {
+            "cid": "bafyreiboizyv7gwiugw4nep333tdyvc7kegxkbh4nttokssotq3jatyu6m",
+            "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx5pvauzjc2d"
+          },
+          "root": {
+            "cid": "bafyreigh2c3k2hvsu45z3ckg5q2enmp3e3ou5tv3twfeuqx7kxvmtxfofa",
+            "uri": "at://did:plc:cgqyp2jefdzltpzxgdleuh6w/app.bsky.feed.post/3lx55rdyfsq2r"
+          }
+        },
+        "text": "So stick with your FOSS tool. And don't comment..."
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-25T04:55:14.446Z",
+      "labels": []
+    },
+    {
+      "uri": "at://did:plc:7ztm23sbw7l7gzwnrl6oal7m/app.bsky.feed.like/3lx6lmqtqq425",
+      "cid": "bafyreibdp3d3yygxansbrydrziby2mczd6z32axorbnjyheakirshk4c5q",
+      "author": {
+        "did": "did:plc:7ztm23sbw7l7gzwnrl6oal7m",
+        "handle": "urbanpoet.bsky.social",
+        "displayName": "Dennis",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:7ztm23sbw7l7gzwnrl6oal7m/bafkreihupwtcbvn7iiaiy4jsuehtxmkgcrxxa47nfxcmvrcyzzsrrechwy@jpeg",
+        "associated": {
+          "activitySubscription": {
+            "allowSubscriptions": "followers"
+          }
+        },
+        "viewer": {
+          "muted": false,
+          "blockedBy": false
+        },
+        "labels": [],
+        "createdAt": "2024-11-17T15:09:41.337Z",
+        "description": "Old guy that loves tech, football, basketball, fast cars, and the fall season. Politically I'm a moderate Democrat. No DM's please!",
+        "indexedAt": "2025-08-14T12:22:59.798Z"
+      },
+      "reason": "like",
+      "reasonSubject": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx63cgavtc2n",
+      "record": {
+        "$type": "app.bsky.feed.like",
+        "createdAt": "2025-08-24T22:59:49.628Z",
+        "subject": {
+          "cid": "bafyreidqc5t4brrfixbgka4rpzvaxye7nygzfgxxpxfllyghrlk26btyeq",
+          "uri": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.feed.post/3lx63cgavtc2n"
+        }
+      },
+      "isRead": true,
+      "indexedAt": "2025-08-24T22:59:49.628Z",
+      "labels": []
+    }
+  ],
+  "cursor": "2025-08-24T22:14:31.253Z",
+  "priority": false,
+  "seenAt": "2025-08-27T20:46:07.843Z"
+}

@@ -1,0 +1,192 @@
+{
+  "convos": [
+    {
+      "id": "3lxlqqb6bls2p",
+      "rev": "2222223qcl42b",
+      "members": [
+        {
+          "did": "did:plc:3eu7dl4zieh66ufh5374dsmw",
+          "handle": "ceruleanweb.neocities.org",
+          "displayName": "Cerulean for Bluesky",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:3eu7dl4zieh66ufh5374dsmw/bafkreielrkmi7tngydeeqs2etys7o3o4zfaejmwvmqerk2wtcfigrzwswe@jpeg",
+          "associated": {
+            "lists": 0,
+            "feedgens": 0,
+            "starterPacks": 0,
+            "labeler": false,
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lxlqq7kfy62g",
+            "followedBy": "at://did:plc:3eu7dl4zieh66ufh5374dsmw/app.bsky.graph.follow/3lxlqpnlfs62q",
+            "knownFollowers": {
+              "count": 1,
+              "followers": [
+                {
+                  "did": "did:plc:y4pmm7ixx6u5gd7rtxe4rnpn",
+                  "handle": "firecube.bsky.social",
+                  "displayName": "FireCube",
+                  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:y4pmm7ixx6u5gd7rtxe4rnpn/bafkreiaemythgtxhxcucavhj2wjf2ttaimk56dir5l47sa5uegskif7gmm@jpeg",
+                  "associated": {
+                    "activitySubscription": {
+                      "allowSubscriptions": "followers"
+                    }
+                  },
+                  "viewer": {
+                    "muted": false,
+                    "blockedBy": false,
+                    "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lvvqn2nxd622"
+                  },
+                  "labels": [],
+                  "createdAt": "2023-06-01T22:46:31.197Z"
+                }
+              ]
+            }
+          },
+          "labels": []
+        },
+        {
+          "did": "did:plc:lcjzu6ssrwr2ifdvpckvdwew",
+          "handle": "gigggity.bsky.social",
+          "displayName": "giggity",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:lcjzu6ssrwr2ifdvpckvdwew/bafkreickpufmh4koinhy377ox2qu7yutiv457o5skgfjohti5d7b5y3qz4@jpeg",
+          "associated": {
+            "lists": 0,
+            "feedgens": 0,
+            "starterPacks": 0,
+            "labeler": false,
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "knownFollowers": {
+              "count": 5,
+              "followers": [
+                {
+                  "did": "did:plc:53ye6uiu24kz5y6ze3zff5zu",
+                  "handle": "welcometoyourdoom.bsky.social",
+                  "displayName": "",
+                  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:53ye6uiu24kz5y6ze3zff5zu/bafkreig3ubny364tuoqwdetehaqjpab4frnqnyn2osjcibcse6u6fpntam@jpeg",
+                  "associated": {
+                    "activitySubscription": {
+                      "allowSubscriptions": "followers"
+                    }
+                  },
+                  "viewer": {
+                    "muted": false,
+                    "blockedBy": false,
+                    "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lu34z64ivc2u",
+                    "followedBy": "at://did:plc:53ye6uiu24kz5y6ze3zff5zu/app.bsky.graph.follow/3lu6jsxebpu2u"
+                  },
+                  "labels": [],
+                  "createdAt": "2024-12-04T14:17:29.046Z"
+                },
+                {
+                  "did": "did:plc:extdstxmirlramfqrtwsljey",
+                  "handle": "elboricano.bsky.social",
+                  "displayName": "Aliana R",
+                  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:extdstxmirlramfqrtwsljey/bafkreia4pur74bvvqqlo5zrjmrmo25d3gzf62tfaogwn44ztdhwhmwwtvy@jpeg",
+                  "associated": {
+                    "chat": {
+                      "allowIncoming": "all"
+                    },
+                    "activitySubscription": {
+                      "allowSubscriptions": "followers"
+                    }
+                  },
+                  "viewer": {
+                    "muted": false,
+                    "blockedBy": false,
+                    "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lu4filmpfx2d",
+                    "followedBy": "at://did:plc:extdstxmirlramfqrtwsljey/app.bsky.graph.follow/3ltv73uwauv2k"
+                  },
+                  "labels": [],
+                  "createdAt": "2024-11-13T21:05:42.978Z"
+                },
+                {
+                  "did": "did:plc:lcdbut6q762ki3qgj5shjnph",
+                  "handle": "fptp.bsky.social",
+                  "displayName": "Resist with Me! 🏳️‍🌈🌊🇺🇦🇵🇸🇺🇲",
+                  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:lcdbut6q762ki3qgj5shjnph/bafkreidvlngh6addd5a5gwliyjnrdsoza6ngawpt2odhtjt7yugn2e5vka@jpeg",
+                  "associated": {
+                    "activitySubscription": {
+                      "allowSubscriptions": "followers"
+                    }
+                  },
+                  "viewer": {
+                    "muted": false,
+                    "blockedBy": false,
+                    "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lvqp2yyqpm26",
+                    "followedBy": "at://did:plc:lcdbut6q762ki3qgj5shjnph/app.bsky.graph.follow/3lvrceixqcv2p"
+                  },
+                  "labels": [],
+                  "createdAt": "2023-10-02T17:34:58Z"
+                },
+                {
+                  "did": "did:plc:dris3it3b25szrtumaa6uhje",
+                  "handle": "tdr4pr.bsky.social",
+                  "displayName": "TDR",
+                  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:dris3it3b25szrtumaa6uhje/bafkreidane7ynlxnbyvbhk2a45cxbygqfgpb4jaovk5qfpz3osyyed5dba@jpeg",
+                  "associated": {
+                    "activitySubscription": {
+                      "allowSubscriptions": "followers"
+                    }
+                  },
+                  "viewer": {
+                    "muted": false,
+                    "blockedBy": false,
+                    "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lu4fica7rr2h",
+                    "followedBy": "at://did:plc:dris3it3b25szrtumaa6uhje/app.bsky.graph.follow/3ltv5pnjs572y"
+                  },
+                  "labels": [],
+                  "createdAt": "2025-07-13T23:10:37.732Z"
+                },
+                {
+                  "did": "did:plc:3eu7dl4zieh66ufh5374dsmw",
+                  "handle": "ceruleanweb.neocities.org",
+                  "displayName": "Cerulean for Bluesky",
+                  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:3eu7dl4zieh66ufh5374dsmw/bafkreielrkmi7tngydeeqs2etys7o3o4zfaejmwvmqerk2wtcfigrzwswe@jpeg",
+                  "associated": {
+                    "activitySubscription": {
+                      "allowSubscriptions": "followers"
+                    }
+                  },
+                  "viewer": {
+                    "muted": false,
+                    "blockedBy": false,
+                    "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lxlqq7kfy62g",
+                    "followedBy": "at://did:plc:3eu7dl4zieh66ufh5374dsmw/app.bsky.graph.follow/3lxlqpnlfs62q"
+                  },
+                  "labels": [],
+                  "createdAt": "2025-08-09T08:16:10.9Z"
+                }
+              ]
+            }
+          },
+          "labels": []
+        }
+      ],
+      "lastMessage": {
+        "$type": "chat.bsky.convo.defs#messageView",
+        "id": "3lxlqqg336e2p",
+        "rev": "2222223qcl42b",
+        "sender": {
+          "did": "did:plc:lcjzu6ssrwr2ifdvpckvdwew"
+        },
+        "text": "test",
+        "reactions": [],
+        "sentAt": "2025-08-30T04:35:58.245Z"
+      },
+      "unreadCount": 0,
+      "status": "accepted",
+      "muted": false
+    }
+  ]
+}

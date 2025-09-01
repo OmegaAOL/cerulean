@@ -11,7 +11,7 @@ namespace Cerulean
 {
     public static class RegKit // RegKit, OmegaAOL. Helper tool for when Registry.getValue and Registry.setValue are too input bloated. (Cerulean uses registry keys instead of a config.xml)
     {
-        public static string read(string subdir, string entry) // Reads the registry
+        public static string Read(string subdir, string entry) // Reads the registry
         {
             using (RegistryKey regkey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Cerulean" + subdir))
             {
@@ -28,7 +28,7 @@ namespace Cerulean
             }
         }
 
-        public static void write(string subdir, string entry, object entryValue) // Writes to the registry
+        public static void Write(string subdir, string entry, object entryValue) // Writes to the registry
         {
             using (RegistryKey regkey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Cerulean" + subdir))
             {
