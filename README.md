@@ -39,7 +39,15 @@ This is the repository for the open-source Cerulean Bluesky client, currently in
 
 # Security
 
-Cerulean stores your handle and password in the registry using AES-256-CBC. This is more than safe enough for the forseeable future.
+Cerulean stores your handle and password encrypted in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. It is **encrypted**.
+
+On Windows 2000 and up this uses DPAPI encryption, which is basically a Windows API that encrypts text for you based on a lot of user account
+information. It is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it.
+It is more than fine for you to use your real password (if you don't trust me, check and build from source!)
+
+On Windows 9x/ME/NT4 this uses AES-256, but the encryption key is partly hardcoded and partly derived from basic machine info (Windows did not have
+DPAPI back then). This is still great for most attackers, but a dedicated attacker combing through the Cerulean source code will be able to quite
+easily decrypt your key and info. There is literally nothing that can be done about this. Recommend using app passwords for these Windows versions.
 
 # Future roadmap
 
