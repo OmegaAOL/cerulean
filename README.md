@@ -50,7 +50,7 @@ Still apprehensive about DPAPI? To show you how confident I am in Cerulean's enc
 
 # Release information
 
-Cerulean is now in the beta stage. As such, it has standard beta releases and *Crimson Beta* releases. Crimson Beta releases are "previews" that come in betweeb betas. They are not meant to be dailyed and are very likely to have breaking bugs. Once Cerulean leaves the beta stage and enters the release stage, Crimson Beta releases will become Crimson releases.
+Cerulean is in the process of leaving the beta stage. Until the first stable release is published, *Crimson* releases will be uploaded. Consider Crimson the new beta branch now that we're out of beta. These Crimson releases are not production worthy. Do not use them as a daily driver. You have been warned.
 
 <img width="555" height="147" alt="crimson" src="https://github.com/user-attachments/assets/d6580bfb-ec4c-4acf-a63d-39b5cc28a185" />
 
