@@ -13,9 +13,24 @@ namespace Cerulean
     {
         public static Menu_Main Instance { get; private set; }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         public Menu_Main()
         {
             InitializeComponent();
+            EnableDoubleBuffer(tweetBoard);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                  ControlStyles.UserPaint |
+                  ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
             Instance = this;
             _debounceTimer = new Timer();
             _debounceTimer.Interval = 300; // 600 ms debounce delay
@@ -49,10 +64,9 @@ namespace Cerulean
             predictionBox.Height = 0;
 
             quickPostButton.Enabled = false;
-            this.ActiveControl = mainTree;
             //NotificationFetcher();
 
-            
+
             //mainTree.Nodes.
 
 
@@ -106,13 +120,13 @@ namespace Cerulean
                 string tweetContent = quickPostBox.Text;
                 quickPostButton.Enabled = false;
                 BarGo();
-                if (byte.Parse(RegKit.Read("\\UserSettings", "DSForQuickPost")) == 1) // digital signature
+                if (RegKit.Read.Dword("UserSettings", "DSForQuickPost") == 1) // digital signature
                 {
-                    tweetContent += (" " + RegKit.Read("\\UserSettings", "DigitalSignature"));
+                    tweetContent += (" " + RegKit.Read.String("UserSettings", "DigitalSignature"));
                 }
                 Async.SkyWorker(
                     delegate { Tweet.Create(tweetContent); },
-                    delegate { BarStop(); quickPostBox.Clear(); this.ActiveControl = mainTree; quickPostButton.Enabled = true; }
+                    delegate { BarStop(); quickPostBox.Clear(); this.ActiveControl = tweetBoard; quickPostButton.Enabled = true; }
                 );
             }
         }
@@ -165,7 +179,6 @@ namespace Cerulean
 
             searchBox.ForeColor = Color.DarkGray;
             searchBox.Text = LangPack.MAIN_SEARCHBOX_PLACEHOLDER;
-
         }
 
 
@@ -224,7 +237,7 @@ namespace Cerulean
             Variables.RefreshToken = String.Empty;
             RegKit.Write("\\LoginData", "handle", String.Empty);
             RegKit.Write("\\LoginData", "password", String.Empty);
-            RegKit.Write("\\LoginData", "CredentialsEncrypted", "false");
+            RegKit.Write("\\LoginData", "CredentialsEncrypted", 0);
 
             Auth.Refresher.End();
 
@@ -396,7 +409,7 @@ namespace Cerulean
         private void notificationsButton_Click(object sender, EventArgs e)
         {
             NotificationFetcher();
-            //ChatListFetcher();
+            
         }
 
         private void NotificationFetcher()
@@ -407,13 +420,14 @@ namespace Cerulean
                 delegate
                 {
                     TreeNode parent = mainTree.Nodes.Add("Notifications");
-                    parent.Nodes.Clear();
+                    //parent.Nodes.Clear();
                     foreach (JObject notification in notifications)
                     {
                         string text = notification.SelectToken("reason").ToString() + " by " + notification.SelectToken("author.handle").ToString();
                         parent.Nodes.Add(text);
                     }
                     parent.ExpandAll();
+                    ChatListFetcher();
                 }
             );
         }
@@ -426,24 +440,50 @@ namespace Cerulean
                 delegate
                 {
                     TreeNode parent = mainTree.Nodes.Add("Chats");
-                    parent.Nodes.Clear();
+                    //parent.Nodes.Clear();
                     foreach (JObject chat in chats)
                     {
-                        string text = String.Empty;
-                        foreach (JObject member in (JArray)chat["members"])
+                        string text = "with " + chat["members"][0]["handle"].ToString();
+                        /*foreach (JObject member in (JArray)chat["members"])
                         {
                             text = text + member["handle"].ToString() + " with ";
-                        }
+                        }*/
                         parent.Nodes.Add(text);
+                    }
+                    parent.ExpandAll();
+                    FollowerFetcher();
+                }
+            );
+        }
+
+        private void FollowerFetcher()
+        {
+            JArray followers = new JArray();
+            MessageBox.Show(Profile.GetDid(Variables.Handle).ToString());
+            Async.SkyWorker(
+
+                delegate { followers = Profile.FetchData.Followers(Profile.GetDid(Variables.Handle)); },
+                delegate
+                {
+                    TreeNode parent = mainTree.Nodes.Add("Followers");
+                    //parent.Nodes.Clear();
+
+                    foreach (JObject follower in followers)
+                    {
+                        parent.Nodes.Add(follower["handle"].ToString());
                     }
                     parent.ExpandAll();
                 }
             );
         }
 
-        private void menuItem24_Click(object sender, EventArgs e)
+        public static void EnableDoubleBuffer(Control control)
         {
-
+            control.GetType().InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null, control, new object[] { true });
         }
 
     }

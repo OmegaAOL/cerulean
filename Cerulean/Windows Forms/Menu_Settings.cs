@@ -17,7 +17,7 @@ namespace Cerulean
             this.MinimumSize = this.Size; // makes the window non-resizeable
             this.MaximumSize = this.Size;
             MaximizeBox = false;
-            dsBox.Text = RegKit.Read("\\UserSettings", "DigitalSignature");
+            dsBox.Text = RegKit.Read.String("UserSettings", "DigitalSignature");
         }
 
         private void Menu_Settings_Load(object sender, EventArgs e)
@@ -25,21 +25,6 @@ namespace Cerulean
             CenterToParent();
             BackgroundImage = Global.bgImage;
         }
-
-        private void regInstallButton_Click(object sender, EventArgs e) // rewrites all known registry values set by Cerulean
-        {
-            RegKit.Write("\\LoginData", "handle", String.Empty);
-            RegKit.Write("\\LoginData", "password", String.Empty);
-            RegKit.Write("\\API", "PDSHost", Global.defaultPDSHost);
-            RegKit.Write("\\API", "FirstRun", "complete");
-            RegKit.Write("\\UserSettings", "DigitalSignature", String.Empty);
-            RegKit.Write("\\UserSettings", "DSForQuickPost", 0);
-            RegKit.Write("\\UserSettings", "DSForComposer", 0);
-
-            regInstallUpdate.Text = "Registry reset";
-            regInstallUpdate.ForeColor = Color.Green;
-        }
-
 
         private void dsApplyButton_Click(object sender, EventArgs e)
         {
@@ -51,7 +36,7 @@ namespace Cerulean
                 RegKit.Write("\\UserSettings", "DSForQuickPost", 1);
             }
 
-            dsBox.Text = RegKit.Read("\\UserSettings", "DigitalSignature");
+            dsBox.Text = RegKit.Read.String("UserSettings", "DigitalSignature");
             dsLabel.Text = LABEL_DS_SAVED;
             dsLabel.ForeColor = Color.Green;
         }
@@ -60,12 +45,37 @@ namespace Cerulean
         {
             RegKit.Write("\\UserSettings", "DigitalSignature", String.Empty);
             RegKit.Write("\\UserSettings", "DSForQuickPost", 0);
-            dsBox.Text = RegKit.Read("\\UserSettings", "DigitalSignature");
+            dsBox.Text = RegKit.Read.String("UserSettings", "DigitalSignature");
             dsLabel.Text = LABEL_DS_RESET;
             dsLabel.ForeColor = Color.Blue;
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dsBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dsUseForQuickPost_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

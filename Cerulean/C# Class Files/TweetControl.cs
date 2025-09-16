@@ -15,6 +15,7 @@ namespace Cerulean
         private int repostCount;
         private int replyCount;
         private int quoteCount;
+        private int bookmarkCount;
         private string likeUri = null;
         private string repostUri = null;
         private string permalink = String.Empty;
@@ -24,6 +25,7 @@ namespace Cerulean
         private string embedURL = String.Empty;
         private JObject reply = null;
         private JObject tweet = null;
+        private bool selfTweet = false;
 
         public TweetControl()
         {
@@ -33,11 +35,25 @@ namespace Cerulean
             System.Reflection.BindingFlags.Instance |
             System.Reflection.BindingFlags.NonPublic,
             null, this, new object[] { true });
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
-              ControlStyles.AllPaintingInWmPaint |
-              ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                  ControlStyles.UserPaint |
+                  ControlStyles.OptimizedDoubleBuffer, true);
             this.UpdateStyles();
         }
+
+        private class FormatData // formatiing class test
+        {
+            public LinkButton Control { get; set; }
+            public string Name { get; set; }
+            public int Count { get; set; }
+
+            public FormatData(LinkButton control, string name, int count)
+            {
+                Control = control; 
+                Name = name;
+                Count = count;
+            }
+        }        
 
         public void LoadTweetContent(JObject tweetPackage) // load and set all content in TweetControl from tweetPackage
         {
@@ -49,9 +65,10 @@ namespace Cerulean
             string embedURL = null;
 
             likeCount = (int)tweet["likeCount"];
-            replyCount = (int)tweet["replyCount"];
+            replyCount = (int)tweet["replyCount"]; 
             repostCount = (int)tweet["repostCount"];
             quoteCount = (int)tweet["quoteCount"];
+            bookmarkCount = (int)tweet["bookmarkCount"];
 
             string atUri = tweet["uri"].ToString();
             string cid = tweet["cid"].ToString();
@@ -62,17 +79,7 @@ namespace Cerulean
             string text = tweet["record"]["text"].ToString();
 
             repostUri = tweet.SelectToken("viewer.repost") != null ? tweet["viewer"]["repost"].ToString() : null;
-            likeUri = tweet.SelectToken("viewer.like") != null ? tweet["viewer"]["like"].ToString() : null;
-
-            if (tweet.SelectToken("record.facets") != null) // checking if "facets" (website/hashtag link coordinates) exist
-            {
-                LinkSetter(tweet["record"]["facets"]); // sets LinkAreas of post text to the link areas specified in the coords
-            }
-
-            if (tweet.SelectToken("author.avatar") != null) // checking if avatar URL exists (this should always exist, afaik)
-            {
-                string posterAvatarURL = tweet["author"]["avatar"].ToString();
-            }
+            likeUri = tweet.SelectToken("viewer.like") != null ? tweet["viewer"]["like"].ToString() : null;           
 
             Profile.Verification verificationStatus = GetVerificationStatus(tweet);
 
@@ -108,10 +115,37 @@ namespace Cerulean
                 posterName.LinkColor = Color.Firebrick;
 
             // Format counts
-            LikeLabelSetter(likeUri != null);
+          
+            LikeLabelSetter(likeUri != null); 
             RepostLabelSetter(repostUri != null);
-            numberStringFormatter(replyClickCount, "reply", replyCount);            
-            numberStringFormatter(quoteClickCount, "quote", quoteCount);
+
+            FormatData[] fsdarr = new FormatData[3]
+            { 
+                new FormatData(replyClickCount, LangPack.TC_LINKLABEL_REPLY, replyCount),
+                new FormatData(quoteClickCount, LangPack.TC_LINKLABEL_QUOTE, quoteCount),
+                new FormatData(bookmarkClickCount, LangPack.TC_LINKLABEL_BOOKMARK, bookmarkCount)
+            }; 
+
+            foreach (FormatData data in fsdarr)
+            {
+                numberStringFormatter(data.Control, data.Name, data.Count);
+            }
+
+            if (tweet.SelectToken("record.facets") != null) // checking if "facets" (website/hashtag link coordinates) exist
+            {
+                LinkSetter(tweet["record"]["facets"]); // sets LinkAreas of post text to the link areas specified in the coords
+            }
+
+            if (handle == Variables.Handle)
+            {
+                selfTweet = true;
+                deleteLink.Visible = true;
+            }
+
+            if (tweet.SelectToken("author.avatar") != null) // checking if avatar URL exists (this should always exist, afaik)
+            {
+                string posterAvatarURL = tweet["author"]["avatar"].ToString();
+            }
 
             // Reply to
             if (reply != null)
@@ -120,24 +154,24 @@ namespace Cerulean
                     replyLabel.Enabled = true;
                     string replyTo;
                     string tweetType = reply["parent"]["$type"].ToString();
-                    
-                    if (tweetType == Tweet.Defs.PostView) 
-                    {
-                        replyTo = reply["parent"]["author"]["handle"].ToString();      
-                        
-                    }
 
-                    else if (tweetType == Tweet.Defs.NotFound)
+                    switch (tweetType)
                     {
-                        replyTo = "[deleted post]";
-                    }
-
-                    else
-                    {
-                        replyTo = "[unable to get reply information]";
-                    }
-
-                    replyLabel.Text = String.Format("(replying to {0})", replyTo);                                       
+                        case Tweet.Defs.View:
+                            replyTo = reply["parent"]["author"]["handle"].ToString();
+                            break;
+                        case Tweet.Defs.NotFound:
+                            replyTo = "(deleted post)";
+                            break;
+                        case Tweet.Defs.Blocked:
+                            replyTo = "(blocked post)";
+                            break;
+                        default:
+                            replyTo = "(unable to get reply information)";
+                            break;
+                    }   
+               
+                    replyLabel.Text = String.Format("replying to {0}", replyTo);                                       
             }
 
             // Embed
@@ -153,6 +187,11 @@ namespace Cerulean
 
                 expandImageButton.Text = GetExpandButtonText(embedType);
             }
+        }
+
+        private string Bracketer(string text)
+        {
+            return "(" + text + ")";
         }
 
         public void LinkSetter(JToken facetsToken)
@@ -178,7 +217,8 @@ namespace Cerulean
                 {
                     try
                     {
-                        postText.Links.Add(charStart, length);
+                        string linkText = text.Substring(charStart, length);
+                        postText.Links.Add(charStart, length, linkText);
                     }
                     catch (Exception ex) { CeruleanBox.Display(ex.Message); }
                 }
@@ -208,12 +248,13 @@ namespace Cerulean
                 if (verification["verifiedStatus"] != null &&
                     verification["verifiedStatus"].ToString() == "valid")
                 {
-                    verified = Profile.Verification.Verified;
-                    if (verification["trustedVerifierStatus"] != null &&
+                    verified = Profile.Verification.Verified;                   
+                }
+
+                if (verification["trustedVerifierStatus"] != null &&
                     verification["trustedVerifierStatus"].ToString() == "valid")
-                    {
-                        verified = Profile.Verification.TrustedVerifier;
-                    }
+                {
+                    verified = Profile.Verification.TrustedVerifier;
                 }
 
             }
@@ -263,10 +304,10 @@ namespace Cerulean
         private string GetExpandButtonText(string embedType)
         {
             if (embedType == EmbedType.Video)
-                return "expand video";
+                return LangPack.TC_LINKLABEL_EXPAND_VIDEO;
             if (embedType == EmbedType.Image)
-                return "expand image";
-            return "expand";
+                return LangPack.TC_LINKLABEL_EXPAND_IMAGE;
+            return LangPack.TC_LINKLABEL_EXPAND_GENERIC;
         }
 
         private string FormatTimeAgoUnit(int value, string unit)
@@ -279,24 +320,24 @@ namespace Cerulean
             DateTime createdUtc;
             if (!DateTime.TryParse(createdTime, null, System.Globalization.DateTimeStyles.AdjustToUniversal, out createdUtc))
             {
-                return "(unknown time)";
+                return String.Format("{0}", LangPack.TC_LABEL_UNKNOWN_TIME);
             }
 
             TimeSpan span = DateTime.UtcNow - createdUtc;
 
             if (span.TotalSeconds < 60)
-                return "just now";
+                return LangPack.TC_LABEL_TIME_NOW;
             if (span.TotalMinutes < 60)
-                return FormatTimeAgoUnit((int)span.TotalMinutes, "minute");
+                return FormatTimeAgoUnit((int)span.TotalMinutes, LangPack.TC_LABEL_TIME_MINUTE);
             if (span.TotalHours < 24)
-                return FormatTimeAgoUnit((int)span.TotalHours, "hour");
+                return FormatTimeAgoUnit((int)span.TotalHours, LangPack.TC_LABEL_TIME_HOUR);
             if (span.TotalDays < 7)
-                return FormatTimeAgoUnit((int)span.TotalDays, "day");
+                return FormatTimeAgoUnit((int)span.TotalDays, LangPack.TC_LABEL_TIME_DAY);
             if (span.TotalDays < 30)
-                return FormatTimeAgoUnit((int)(span.TotalDays / 7), "week");
+                return FormatTimeAgoUnit((int)(span.TotalDays / 7), LangPack.TC_LABEL_TIME_WEEK);
             if (span.TotalDays < 365)
-                return FormatTimeAgoUnit((int)(span.TotalDays / 30), "month");
-            return FormatTimeAgoUnit((int)(span.TotalDays / 365), "year");
+                return FormatTimeAgoUnit((int)(span.TotalDays / 30), LangPack.TC_LABEL_TIME_MONTH);
+            return FormatTimeAgoUnit((int)(span.TotalDays / 365), LangPack.TC_LABEL_TIME_YEAR);
         }
 
         private string numFormat(int number)
@@ -394,8 +435,8 @@ namespace Cerulean
         {
             if (!string.IsNullOrEmpty(permalink))
             {
-                string subject = Uri.EscapeDataString("Check out this post on Bluesky!");
-                string body = Uri.EscapeDataString(permalink + "\n\nAlso, I use Cerulean, a client for Bluesky. Try it out at https://ceruleanweb.neocities.org/");
+                string subject = Uri.EscapeDataString(LangPack.EXTERN_EMAIL_SUBJECT);
+                string body = Uri.EscapeDataString(permalink + "\n\n" + LangPack.EXTERN_EMAIL_BODY);
                 System.Diagnostics.Process.Start("mailto:?subject=" + subject + "&body=" + body);
             }
         }
@@ -435,15 +476,15 @@ namespace Cerulean
 
         private void RepostLabelSetter(bool reposted)
         {
-            repostClickCount.LinkColor = (reposted ? Color.MediumSeaGreen : Color.SteelBlue); // set label color
-            numberStringFormatter(repostClickCount, (reposted ? "reposted" : "repost"), repostCount); // set text
+            repostClickCount.LinkColor = (reposted ? Color.ForestGreen : ResDef.TextSoft); // set label color
+            numberStringFormatter(repostClickCount, (reposted ? LangPack.TC_LINKLABEL_REPOSTED : LangPack.TC_LINKLABEL_REPOST), repostCount); // set text
         }
 
         private void LikeLabelSetter(bool liked)
         {
             likeButton.Image = liked ? CeruleanArt.upActive : CeruleanArt.upInactive; // set like image (up-vote active, inactive)
 
-            likeCountLabel.Text = numFormat(likeCount) + (likeCount == 1 ? " like" : " likes"); // set text
+            likeCountLabel.Text = numFormat(likeCount) + (likeCount == 1 ? (" " + LangPack.TC_LABEL_LIKE_SINGULAR) : (" " +  LangPack.TC_LABEL_LIKE_PLURAL)); // set text
         }
 
         private void quoteClickCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -476,6 +517,7 @@ namespace Cerulean
                     label.Visible = true;
                 }
             }
+            deleteLink.Visible = selfTweet;
             moreLink.Visible = false;
         }
 
@@ -514,18 +556,6 @@ namespace Cerulean
 
         }
 
-        private void SetRoundedCorners(int radius)
-        {
-            Rectangle bounds = new Rectangle(0, 0, this.Width, this.Height);
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(bounds.X, bounds.Y, radius, radius, 180, 90);
-            path.AddArc(bounds.Right - radius, bounds.Y, radius, radius, 270, 90);
-            path.AddArc(bounds.Right - radius, bounds.Bottom - radius, radius, radius, 0, 90);
-            path.AddArc(bounds.X, bounds.Bottom - radius, radius, radius, 90, 90);
-            path.CloseAllFigures();
-            this.Region = new Region(path);
-        }
-
         private void expandImageButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Image img = null;
@@ -539,5 +569,34 @@ namespace Cerulean
 
         }
 
+        private void deleteLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Async.SkyWorker(
+                delegate { Tweet.Delete(atUri); },
+                delegate { this.Dispose(); }
+            );
+        }
+
+        private void postText_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            e.Link.Visited = true;
+            string link = e.Link.LinkData.ToString();
+
+            if (link.StartsWith("#"))
+            {
+                link = link.Replace("#", String.Empty); // THIS IS JUST TEMPORARY!!!!!!!
+                System.Diagnostics.Process.Start(Global.bskyUrl + "/hashtag/" + link);
+            }
+
+            else
+            {
+                System.Diagnostics.Process.Start(link);
+            }
+        }
+
+        private void likeCountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace Cerulean
         private const string LABEL_OFFLINEUSER = "Offline User";
         private const string BUTTON_UNMUTE = "Unmute";
         private const string BUTTON_UNFOLLOW = "Unfollow";
+        private const string BUTTON_FOLLOW = "Follow";
         private const string BUTTON_UNBLOCK = "Unblock";
         private const string LABEL_VERIFIER = "Trusted Verifier";
 
@@ -66,13 +67,14 @@ namespace Cerulean
                 this.Text = response["handle"].ToString();
                 handleLabel.Text = "@" + this.Text;
 
-                SetIfNotNull(nicknameLabel, GetSafeToken(response, "displayName"));
-                SetIfNotNull(bioLabel, GetSafeToken(response, "description"));
-                SetIfNotNull(followersLabel, GetSafeToken(response, "followersCount"));
-                SetIfNotNull(followingLabel, GetSafeToken(response, "followsCount"));
-                SetIfNotNull(postsLabel, GetSafeToken(response, "postsCount"));
-                SetIfNotNull(mutualsLabel, GetSafeToken(response, "viewer", "knownFollowers", "count"));
-                SetIfNotNull(allowChatLabel, GetSafeToken(response, "associated", "chat", "allowIncoming"));
+                SetIfNotNull(nicknameLabel, response.SelectToken("displayName"));
+                SetIfNotNull(bioLabel, response.SelectToken("description"));
+                SetIfNotNull(followersLabel, response.SelectToken("followersCount"));
+                SetIfNotNull(followingLabel, response.SelectToken("followsCount"));
+                SetIfNotNull(postsLabel, response.SelectToken("postsCount"));
+                SetIfNotNull(mutualsLabel, response.SelectToken("viewer.knownFollowers.count"));
+                SetIfNotNull(allowChatLabel, response.SelectToken("associated.chat.allowIncoming"));
+
                 bool followsYou = false;
 
                 if (response["displayName"] == null)
@@ -119,27 +121,26 @@ namespace Cerulean
                 if (createdAt != null)
                 {
                     DateTime dt = DateTime.Parse(createdAt.ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind);
-                    joinedLabel.Text = dt.Year.ToString();
+                    joinedLabel.Text = dt.ToString("MMM d, yyyy");
                 }
 
                 JToken verifiedStatus = GetSafeToken(response, "verification", "verifiedStatus");
                 JToken tvStatus = GetSafeToken(response, "verification", "trustedVerifierStatus");
-                if (verifiedStatus != null)
+
+                if (verifiedStatus.ToString() == "valid")
                 {
-                    if (verifiedStatus.ToString() == "valid")
-                    {
-                        verifiedLabel.Visible = true;
-                        nicknameLabel.ForeColor = Color.Goldenrod;
+                    verifiedLabel.Visible = true;
+                    nicknameLabel.ForeColor = Color.Goldenrod;
 
-                        if (tvStatus.ToString() == "valid")
-                        {
-                            verifiedLabel.Visible = true;
-                            verifiedLabel.ForeColor = Color.Firebrick;
-                            nicknameLabel.ForeColor = Color.Firebrick;
-                            verifiedLabel.Text = LABEL_VERIFIER;
-                        }
-                    }
 
+                }
+
+                if (tvStatus.ToString() == "valid")
+                {
+                    verifiedLabel.Visible = true;
+                    verifiedLabel.ForeColor = Color.Firebrick;
+                    nicknameLabel.ForeColor = Color.Firebrick;
+                    verifiedLabel.Text = LABEL_VERIFIER;
                 }
 
                 if (response["avatar"] != null)
@@ -191,12 +192,33 @@ namespace Cerulean
             );
         }
 
+        private void SetFollowText(bool following)
+        {
+            if (!following)
+                followButton.Text = BUTTON_FOLLOW;
+            else if (following)
+                followButton.Text = BUTTON_UNFOLLOW;
+        }
+
+
         private void followButton_Click(object sender, EventArgs e)
         {
-            if (following)
-                Profile.Follow.Add(response["did"].ToString());
-            else if (!following)
-                Profile.Follow.Remove(response["following"].ToString());
+            followButton.Enabled = false;
+            Async.SkyWorker(
+                delegate
+                {
+                    if (following)
+                        Profile.Follow.Remove(response["viewer"]["following"].ToString());
+                    else if (!following)
+                        Profile.Follow.Add(response["did"].ToString());
+                },
+                delegate
+                {
+                    following = !following;
+                    followButton.Enabled = true;
+                    SetFollowText(following);
+                }
+            );
 
         }
     }

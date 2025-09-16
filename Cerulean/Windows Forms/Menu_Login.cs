@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 using Cerulean.LangPacks;
 using Newtonsoft.Json.Linq;
 using OmegaAOL.SkyBridge;
@@ -45,13 +46,13 @@ namespace Cerulean
         }
 
         private void Menu_Login_Load(object sender, EventArgs e)
-        {            
-            CenterToParent();           
+        {
+            CenterToParent();
             LocalizeControlText();
             CheckSavedCred();
             this.AcceptButton = loginButton;
             BackgroundImage = Global.bgImage;
-            Variables.PDSHost = RegKit.Read("\\API", "PDSHost");
+            Variables.PDSHost = RegKit.Read.String("API", "PDSHost");
         }
 
         public void displayError(string[] strArray) // called to display error message
@@ -91,23 +92,14 @@ namespace Cerulean
             {
                 if (Variables.Handle.StartsWith("$"))
                 {
-                    if (Variables.Handle.Length >= 2)
+                    switch (Variables.Handle.Substring(1, Variables.Handle.Length - 1).ToLower())
                     {
-                        switch (Variables.Handle.Substring(1, Variables.Handle.Length - 1))
-                        {
-                            case "offline":
-                                EnterOfflineMode();
-                                return;
-                            default:
-                                displayError(LOCALMSG_INVALID_DEBUGCODE);
-                                break;
-
-                        }
-                    }
-
-                    else
-                    {
-                        displayError(LOCALMSG_INVALID_DEBUGCODE);
+                        case "offline":
+                            EnterOfflineMode();
+                            return;
+                        default:
+                            displayError(LOCALMSG_INVALID_DEBUGCODE);
+                            return;
                     }
                 }
                 else
@@ -121,13 +113,32 @@ namespace Cerulean
             timeOutBar.MarqueeAnimationSpeed = 10;
 
             header.Text = LOCALMSG_CONNECTING_TO_PDS[0];
-            header.ForeColor = Color.Blue;
+            header.ForeColor = Color.ForestGreen;
             descriptor.Text = LOCALMSG_CONNECTING_TO_PDS[1];
 
-            Async.SkyWorker(
+            /*Async.SkyWorker(
                 (s, evt) => evt.Result = Auth.Login(Variables.Handle, password),
                 (s, evt) => HandleLoginResponse(evt, password)
-            );
+            );*/
+
+            Thread t = new Thread(() =>
+            {
+                // Run the login on the background thread
+                object result = Auth.Login(Variables.Handle, password);
+
+                // Marshal back to the UI thread for safe control updates
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((MethodInvoker)(() => HandleLoginResponse(result, password)));
+                }
+                else
+                {
+                    HandleLoginResponse(result, password);
+                }
+            });
+
+            t.Start();
+
         }
 
         private void EnterOfflineMode()
@@ -148,27 +159,27 @@ namespace Cerulean
         {
             RegKit.Write("\\LoginData", "handle", Encryptor.Encrypt(handle));
             RegKit.Write("\\LoginData", "password", Encryptor.Encrypt(password));
-            RegKit.Write("\\LoginData", "CredentialsEncrypted", "true");
+            RegKit.Write("\\LoginData", "CredentialsEncrypted", 1);
         }
 
         private void CheckSavedCred()
         {
-            if (RegKit.Read("\\LoginData", "CredentialsEncrypted") == "true") 
+            if (RegKit.Read.Dword("LoginData", "CredentialsEncrypted") == 1)
             {
-                string handle = Encryptor.Decrypt(RegKit.Read("\\LoginData", "handle"));
-                string password = Encryptor.Decrypt(RegKit.Read("\\LoginData", "password"));
+                string handle = Encryptor.Decrypt(RegKit.Read.String("LoginData", "handle"));
+                string password = Encryptor.Decrypt(RegKit.Read.String("LoginData", "password"));
                 const string error = "$CERULEAN_ENCRYPTOR_ERROR_DECRYPT";
 
                 if (handle == error || password == error)
-                    displayError(new string[2]{"Credential decryption error", "Cerulean could not decrypt your credentials; please re-enter them. This is not a bug."});
-                else                                                          
+                    displayError(new string[2] { "Credential decryption error", "Cerulean could not decrypt your credentials; please re-enter them. This is not a bug." });
+                else
                     InitLogin(handle, password);
             }
         }
 
-        private void HandleLoginResponse(RunWorkerCompletedEventArgs evt, string password)
+        private void HandleLoginResponse(object result, string password)
         {
-            JObject reply = evt.Result as JObject;
+            JObject reply = result as JObject;
             string[] errReply = WEH.ErrHandler(reply, true);
 
             if (errReply[2] != "false")

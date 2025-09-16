@@ -90,7 +90,6 @@
             // 
             // okButton
             // 
-            this.okButton.AutoEllipsis = true;
             this.okButton.AutoSize = true;
             this.okButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -106,7 +105,6 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.AutoEllipsis = true;
             this.cancelButton.AutoSize = true;
             this.cancelButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -124,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.Properties.Resources.bluestripes;
+            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
             this.ClientSize = new System.Drawing.Size(361, 268);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);

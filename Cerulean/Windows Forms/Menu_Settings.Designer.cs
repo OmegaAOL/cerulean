@@ -29,39 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Settings));
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new Cerulean.CeruleanButton();
             this.regInstallUpdate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dsBox = new System.Windows.Forms.TextBox();
-            this.dsResetButton = new Cerulean.CeruleanButton();
-            this.dsApplyButton = new Cerulean.CeruleanButton();
+            this.okButton = new Cerulean.CeruleanButton();
+            this.applyButton = new Cerulean.CeruleanButton();
             this.dsLabel = new System.Windows.Forms.Label();
             this.dsUseForQuickPost = new System.Windows.Forms.CheckBox();
+            this.Settings = new System.Windows.Forms.TabControl();
+            this.updatesPage = new System.Windows.Forms.TabPage();
+            this.dsPage = new System.Windows.Forms.TabPage();
+            this.ceruleanButton1 = new Cerulean.CeruleanButton();
+            this.themePage = new System.Windows.Forms.TabPage();
+            this.updateCheckButton = new System.Windows.Forms.Button();
+            this.versionText = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Settings.SuspendLayout();
+            this.updatesPage.SuspendLayout();
+            this.dsPage.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(15, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(297, 65);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(97, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Reinstall Registry Keys";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.regInstallButton_Click);
             // 
             // regInstallUpdate
             // 
@@ -75,43 +61,55 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 129);
+            this.label2.Location = new System.Drawing.Point(6, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(294, 39);
             this.label2.TabIndex = 3;
             this.label2.Text = "Unlike Bluesky, Cerulean allows you to set a digital signature.\r\n\r\n\r\n";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dsBox
             // 
-            this.dsBox.Location = new System.Drawing.Point(15, 150);
+            this.dsBox.Location = new System.Drawing.Point(9, 34);
             this.dsBox.Multiline = true;
             this.dsBox.Name = "dsBox";
-            this.dsBox.Size = new System.Drawing.Size(317, 85);
+            this.dsBox.Size = new System.Drawing.Size(291, 111);
             this.dsBox.TabIndex = 5;
+            this.dsBox.TextChanged += new System.EventHandler(this.dsBox_TextChanged);
             // 
-            // dsResetButton
+            // okButton
             // 
-            this.dsResetButton.BackColor = System.Drawing.Color.Transparent;
-            this.dsResetButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.dsResetButton.Location = new System.Drawing.Point(256, 247);
-            this.dsResetButton.Name = "dsResetButton";
-            this.dsResetButton.Size = new System.Drawing.Size(75, 23);
-            this.dsResetButton.TabIndex = 6;
-            this.dsResetButton.Text = "Reset";
-            this.dsResetButton.UseVisualStyleBackColor = false;
-            this.dsResetButton.Click += new System.EventHandler(this.dsResetButton_Click);
+            this.okButton.AutoEllipsis = true;
+            this.okButton.AutoSize = true;
+            this.okButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.okButton.BackColor = System.Drawing.Color.Transparent;
+            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.okButton.Location = new System.Drawing.Point(95, 345);
+            this.okButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.okButton.Name = "okButton";
+            this.okButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 6;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = false;
+            this.okButton.Click += new System.EventHandler(this.dsResetButton_Click);
             // 
-            // dsApplyButton
+            // applyButton
             // 
-            this.dsApplyButton.BackColor = System.Drawing.Color.Transparent;
-            this.dsApplyButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.dsApplyButton.Location = new System.Drawing.Point(175, 247);
-            this.dsApplyButton.Name = "dsApplyButton";
-            this.dsApplyButton.Size = new System.Drawing.Size(75, 23);
-            this.dsApplyButton.TabIndex = 7;
-            this.dsApplyButton.Text = "Apply";
-            this.dsApplyButton.UseVisualStyleBackColor = false;
-            this.dsApplyButton.Click += new System.EventHandler(this.dsApplyButton_Click);
+            this.applyButton.AutoEllipsis = true;
+            this.applyButton.AutoSize = true;
+            this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.applyButton.BackColor = System.Drawing.Color.Transparent;
+            this.applyButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.applyButton.Location = new System.Drawing.Point(257, 345);
+            this.applyButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.applyButton.Size = new System.Drawing.Size(75, 23);
+            this.applyButton.TabIndex = 7;
+            this.applyButton.Text = "Apply";
+            this.applyButton.UseVisualStyleBackColor = false;
+            this.applyButton.Click += new System.EventHandler(this.dsApplyButton_Click);
             // 
             // dsLabel
             // 
@@ -126,31 +124,126 @@
             this.dsUseForQuickPost.AutoSize = true;
             this.dsUseForQuickPost.BackColor = System.Drawing.Color.Transparent;
             this.dsUseForQuickPost.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.dsUseForQuickPost.Location = new System.Drawing.Point(122, 276);
+            this.dsUseForQuickPost.Location = new System.Drawing.Point(95, 151);
             this.dsUseForQuickPost.Name = "dsUseForQuickPost";
             this.dsUseForQuickPost.Size = new System.Drawing.Size(215, 18);
             this.dsUseForQuickPost.TabIndex = 10;
             this.dsUseForQuickPost.Text = "Enable Digital Signature for Quick Post";
             this.dsUseForQuickPost.UseVisualStyleBackColor = false;
+            this.dsUseForQuickPost.CheckedChanged += new System.EventHandler(this.dsUseForQuickPost_CheckedChanged);
+            // 
+            // Settings
+            // 
+            this.Settings.Controls.Add(this.updatesPage);
+            this.Settings.Controls.Add(this.dsPage);
+            this.Settings.Controls.Add(this.themePage);
+            this.Settings.Location = new System.Drawing.Point(12, 12);
+            this.Settings.Name = "Settings";
+            this.Settings.SelectedIndex = 0;
+            this.Settings.Size = new System.Drawing.Size(324, 327);
+            this.Settings.TabIndex = 11;
+            // 
+            // updatesPage
+            // 
+            this.updatesPage.Controls.Add(this.label1);
+            this.updatesPage.Controls.Add(this.versionText);
+            this.updatesPage.Controls.Add(this.updateCheckButton);
+            this.updatesPage.Location = new System.Drawing.Point(4, 22);
+            this.updatesPage.Name = "updatesPage";
+            this.updatesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.updatesPage.Size = new System.Drawing.Size(316, 301);
+            this.updatesPage.TabIndex = 0;
+            this.updatesPage.Text = "Updates";
+            this.updatesPage.UseVisualStyleBackColor = true;
+            this.updatesPage.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // dsPage
+            // 
+            this.dsPage.Controls.Add(this.dsUseForQuickPost);
+            this.dsPage.Controls.Add(this.dsBox);
+            this.dsPage.Controls.Add(this.label2);
+            this.dsPage.Location = new System.Drawing.Point(4, 22);
+            this.dsPage.Name = "dsPage";
+            this.dsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.dsPage.Size = new System.Drawing.Size(316, 301);
+            this.dsPage.TabIndex = 1;
+            this.dsPage.Text = "Digital Signature";
+            this.dsPage.UseVisualStyleBackColor = true;
+            // 
+            // ceruleanButton1
+            // 
+            this.ceruleanButton1.AutoSize = true;
+            this.ceruleanButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ceruleanButton1.BackColor = System.Drawing.Color.Transparent;
+            this.ceruleanButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ceruleanButton1.Location = new System.Drawing.Point(176, 345);
+            this.ceruleanButton1.MinimumSize = new System.Drawing.Size(75, 23);
+            this.ceruleanButton1.Name = "ceruleanButton1";
+            this.ceruleanButton1.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.ceruleanButton1.Size = new System.Drawing.Size(75, 23);
+            this.ceruleanButton1.TabIndex = 12;
+            this.ceruleanButton1.Text = "Cancel";
+            this.ceruleanButton1.UseVisualStyleBackColor = false;
+            // 
+            // themePage
+            // 
+            this.themePage.Location = new System.Drawing.Point(4, 22);
+            this.themePage.Name = "themePage";
+            this.themePage.Padding = new System.Windows.Forms.Padding(3);
+            this.themePage.Size = new System.Drawing.Size(316, 301);
+            this.themePage.TabIndex = 2;
+            this.themePage.Text = "Theme";
+            this.themePage.UseVisualStyleBackColor = true;
+            // 
+            // updateCheckButton
+            // 
+            this.updateCheckButton.Location = new System.Drawing.Point(21, 60);
+            this.updateCheckButton.Name = "updateCheckButton";
+            this.updateCheckButton.Size = new System.Drawing.Size(119, 23);
+            this.updateCheckButton.TabIndex = 0;
+            this.updateCheckButton.Text = "Check for updates";
+            this.updateCheckButton.UseVisualStyleBackColor = true;
+            this.updateCheckButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // versionText
+            // 
+            this.versionText.AutoSize = true;
+            this.versionText.Location = new System.Drawing.Point(18, 40);
+            this.versionText.Name = "versionText";
+            this.versionText.Size = new System.Drawing.Size(94, 13);
+            this.versionText.TabIndex = 1;
+            this.versionText.Text = "Latest version: 1.8";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "You are running version 1.7";
             // 
             // Menu_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 301);
-            this.Controls.Add(this.dsUseForQuickPost);
+            this.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.ClientSize = new System.Drawing.Size(351, 380);
+            this.Controls.Add(this.ceruleanButton1);
+            this.Controls.Add(this.Settings);
             this.Controls.Add(this.dsLabel);
-            this.Controls.Add(this.dsApplyButton);
-            this.Controls.Add(this.dsResetButton);
-            this.Controls.Add(this.dsBox);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.applyButton);
+            this.Controls.Add(this.okButton);
             this.Controls.Add(this.regInstallUpdate);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_Settings";
             this.Text = "Cerulean Preferences";
             this.Load += new System.EventHandler(this.Menu_Settings_Load);
+            this.Settings.ResumeLayout(false);
+            this.updatesPage.ResumeLayout(false);
+            this.updatesPage.PerformLayout();
+            this.dsPage.ResumeLayout(false);
+            this.dsPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,14 +251,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private Cerulean.CeruleanButton button1;
         private System.Windows.Forms.Label regInstallUpdate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox dsBox;
-        private Cerulean.CeruleanButton dsResetButton;
-        private Cerulean.CeruleanButton dsApplyButton;
+        private Cerulean.CeruleanButton okButton;
+        private Cerulean.CeruleanButton applyButton;
         private System.Windows.Forms.Label dsLabel;
         private System.Windows.Forms.CheckBox dsUseForQuickPost;
+        private System.Windows.Forms.TabControl Settings;
+        private System.Windows.Forms.TabPage updatesPage;
+        private System.Windows.Forms.TabPage dsPage;
+        private CeruleanButton ceruleanButton1;
+        private System.Windows.Forms.TabPage themePage;
+        private System.Windows.Forms.Button updateCheckButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label versionText;
     }
 }

@@ -145,6 +145,12 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="CBOX_WINTITLE" xml:space="preserve">
     <value>Cerulean</value>
   </data>
+  <data name="EXTERN_EMAIL_BODY" xml:space="preserve">
+    <value>Also, I use Cerulean, a client for Bluesky. Try it out at https://ceruleanweb.neocities.org/</value>
+  </data>
+  <data name="EXTERN_EMAIL_SUBJECT" xml:space="preserve">
+    <value>Check out this post on Bluesky!</value>
+  </data>
   <data name="FEEDSEL_BUTTON_SELECT_FEED" xml:space="preserve">
     <value>Select Feed</value>
   </data>
@@ -230,7 +236,7 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
     <value>Invalid debug code</value>
   </data>
   <data name="LOGIN_LOCALMSG_INVALID_DEBUGCODE_SUB" xml:space="preserve">
-    <value>The debug code that you have entered is invalid.</value>
+    <value>The debug code that you have entered is invalid. Please refer to the Cerulean website for a list of debug codes.</value>
   </data>
   <data name="LOGIN_WINTITLE" xml:space="preserve">
     <value>Cerulean Login</value>
@@ -295,6 +301,14 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="MAIN_WINTITLE" xml:space="preserve">
     <value>Cerulean</value>
   </data>
+  <data name="MSG_FIRSTRUN_TERMS" xml:space="preserve">
+    <value>Further use of this program assumes that you have read and agree to the Cerulean Terms (https://ceruleanweb.neocities.org/legal/terms.html).</value>
+  </data>
+  <data name="MSG_WIN9XWARNING" xml:space="preserve">
+    <value>You are running a 'legacy kernel' version of Windows (9x/ME/NT4). This comes with a few caveats:\n\n" +
+                "1: Fonts will probably not display properly as Microsoft Sans Serif is not installed by default on your system.\n\n2: The encryption used to save " +
+                "your handle and password is the legacy CeruleanCrypt method, and not DPAPI. This is less secure.\n\n3: Generally expect some things to be broken.</value>
+  </data>
   <data name="PDS_BUTTON_PING_SERVER" xml:space="preserve">
     <value>Check server status</value>
   </data>
@@ -356,5 +370,59 @@ reset code that you received in the mail:</value>
   </data>
   <data name="TC_LABEL_DELETED" xml:space="preserve">
     <value>deleted post</value>
+  </data>
+  <data name="TC_LABEL_LIKE_PLURAL" xml:space="preserve">
+    <value>likes</value>
+  </data>
+  <data name="TC_LABEL_LIKE_SINGULAR" xml:space="preserve">
+    <value>like</value>
+  </data>
+  <data name="TC_LABEL_TIME_DAY" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="TC_LABEL_TIME_HOUR" xml:space="preserve">
+    <value>hour</value>
+  </data>
+  <data name="TC_LABEL_TIME_MINUTE" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="TC_LABEL_TIME_MONTH" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="TC_LABEL_TIME_NOW" xml:space="preserve">
+    <value>just now</value>
+  </data>
+  <data name="TC_LABEL_TIME_WEEK" xml:space="preserve">
+    <value>week</value>
+  </data>
+  <data name="TC_LABEL_TIME_YEAR" xml:space="preserve">
+    <value>year</value>
+  </data>
+  <data name="TC_LABEL_UNKNOWN_TIME" xml:space="preserve">
+    <value>unknown time</value>
+  </data>
+  <data name="TC_LINKLABEL_BOOKMARK" xml:space="preserve">
+    <value>bookmark</value>
+  </data>
+  <data name="TC_LINKLABEL_EXPAND_GENERIC" xml:space="preserve">
+    <value>expand</value>
+  </data>
+  <data name="TC_LINKLABEL_EXPAND_IMAGE" xml:space="preserve">
+    <value>expand image</value>
+  </data>
+  <data name="TC_LINKLABEL_EXPAND_VIDEO" xml:space="preserve">
+    <value>expand video</value>
+  </data>
+  <data name="TC_LINKLABEL_QUOTE" xml:space="preserve">
+    <value>quote</value>
+  </data>
+  <data name="TC_LINKLABEL_REPLY" xml:space="preserve">
+    <value>reply</value>
+  </data>
+  <data name="TC_LINKLABEL_REPOST" xml:space="preserve">
+    <value>repost</value>
+  </data>
+  <data name="TC_LINKLABEL_REPOSTED" xml:space="preserve">
+    <value>reposted</value>
   </data>
 </root>

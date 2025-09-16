@@ -35,14 +35,12 @@
             this.timeAgo = new System.Windows.Forms.Label();
             this.postImage = new System.Windows.Forms.PictureBox();
             this.actionsPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.posterHandle = new System.Windows.Forms.Label();
-            this.replyLabel = new System.Windows.Forms.Label();
-            this.posterName = new Cerulean.LinkButton();
             this.replyClickCount = new Cerulean.LinkButton();
             this.repostClickCount = new Cerulean.LinkButton();
             this.quoteClickCount = new Cerulean.LinkButton();
+            this.bookmarkClickCount = new Cerulean.LinkButton();
             this.viewThreadButton = new Cerulean.LinkButton();
+            this.deleteLink = new Cerulean.LinkButton();
             this.muteButton = new Cerulean.LinkButton();
             this.copyTextButton = new Cerulean.LinkButton();
             this.shareButton = new Cerulean.LinkButton();
@@ -52,6 +50,10 @@
             this.collapseButton = new Cerulean.LinkButton();
             this.lessLink = new Cerulean.LinkButton();
             this.moreLink = new Cerulean.LinkButton();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.posterName = new Cerulean.LinkButton();
+            this.posterHandle = new System.Windows.Forms.Label();
+            this.replyLabel = new System.Windows.Forms.Label();
             this.expandImageButton = new Cerulean.LinkButton();
             ((System.ComponentModel.ISupportInitialize)(this.likeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postImage)).BeginInit();
@@ -73,6 +75,7 @@
             this.postText.Size = new System.Drawing.Size(815, 45);
             this.postText.TabIndex = 0;
             this.postText.Text = resources.GetString("postText.Text");
+            this.postText.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.postText_LinkClicked);
             // 
             // likeButton
             // 
@@ -102,6 +105,7 @@
             // 
             this.timeAgo.AutoSize = true;
             this.timeAgo.BackColor = System.Drawing.Color.Transparent;
+            this.timeAgo.ForeColor = System.Drawing.Color.DimGray;
             this.timeAgo.Location = new System.Drawing.Point(176, 0);
             this.timeAgo.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.timeAgo.Name = "timeAgo";
@@ -127,7 +131,9 @@
             this.actionsPanel.Controls.Add(this.replyClickCount);
             this.actionsPanel.Controls.Add(this.repostClickCount);
             this.actionsPanel.Controls.Add(this.quoteClickCount);
+            this.actionsPanel.Controls.Add(this.bookmarkClickCount);
             this.actionsPanel.Controls.Add(this.viewThreadButton);
+            this.actionsPanel.Controls.Add(this.deleteLink);
             this.actionsPanel.Controls.Add(this.muteButton);
             this.actionsPanel.Controls.Add(this.copyTextButton);
             this.actionsPanel.Controls.Add(this.shareButton);
@@ -139,64 +145,15 @@
             this.actionsPanel.Controls.Add(this.moreLink);
             this.actionsPanel.Location = new System.Drawing.Point(80, 76);
             this.actionsPanel.Name = "actionsPanel";
-            this.actionsPanel.Size = new System.Drawing.Size(681, 19);
+            this.actionsPanel.Size = new System.Drawing.Size(815, 19);
             this.actionsPanel.TabIndex = 19;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel2.Controls.Add(this.posterName);
-            this.flowLayoutPanel2.Controls.Add(this.posterHandle);
-            this.flowLayoutPanel2.Controls.Add(this.timeAgo);
-            this.flowLayoutPanel2.Controls.Add(this.replyLabel);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(77, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(566, 16);
-            this.flowLayoutPanel2.TabIndex = 20;
-            // 
-            // posterHandle
-            // 
-            this.posterHandle.AutoSize = true;
-            this.posterHandle.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.posterHandle.Location = new System.Drawing.Point(63, 0);
-            this.posterHandle.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.posterHandle.Name = "posterHandle";
-            this.posterHandle.Size = new System.Drawing.Size(110, 13);
-            this.posterHandle.TabIndex = 20;
-            this.posterHandle.Text = "@fantasia.bsky.social";
-            // 
-            // replyLabel
-            // 
-            this.replyLabel.AutoSize = true;
-            this.replyLabel.Enabled = false;
-            this.replyLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.replyLabel.Location = new System.Drawing.Point(245, 0);
-            this.replyLabel.Name = "replyLabel";
-            this.replyLabel.Size = new System.Drawing.Size(152, 13);
-            this.replyLabel.TabIndex = 19;
-            this.replyLabel.Text = "(replying to historia.bsky.social)";
-            this.replyLabel.Visible = false;
-            // 
-            // posterName
-            // 
-            this.posterName.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
-            this.posterName.AutoSize = true;
-            this.posterName.BackColor = System.Drawing.Color.Transparent;
-            this.posterName.LinkColor = System.Drawing.Color.RoyalBlue;
-            this.posterName.Location = new System.Drawing.Point(3, 0);
-            this.posterName.Name = "posterName";
-            this.posterName.Size = new System.Drawing.Size(57, 13);
-            this.posterName.TabIndex = 18;
-            this.posterName.TabStop = true;
-            this.posterName.Text = "FanTAStic";
-            this.posterName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.posterName_LinkClicked);
             // 
             // replyClickCount
             // 
             this.replyClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.replyClickCount.AutoSize = true;
             this.replyClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.replyClickCount.LinkColor = System.Drawing.Color.SteelBlue;
+            this.replyClickCount.LinkColor = System.Drawing.Color.DimGray;
             this.replyClickCount.Location = new System.Drawing.Point(3, 0);
             this.replyClickCount.Name = "replyClickCount";
             this.replyClickCount.Size = new System.Drawing.Size(29, 13);
@@ -210,7 +167,7 @@
             this.repostClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.repostClickCount.AutoSize = true;
             this.repostClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.repostClickCount.LinkColor = System.Drawing.Color.SteelBlue;
+            this.repostClickCount.LinkColor = System.Drawing.Color.DimGray;
             this.repostClickCount.Location = new System.Drawing.Point(38, 0);
             this.repostClickCount.Name = "repostClickCount";
             this.repostClickCount.Size = new System.Drawing.Size(36, 13);
@@ -224,7 +181,7 @@
             this.quoteClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.quoteClickCount.AutoSize = true;
             this.quoteClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.quoteClickCount.LinkColor = System.Drawing.Color.SteelBlue;
+            this.quoteClickCount.LinkColor = System.Drawing.Color.DimGray;
             this.quoteClickCount.Location = new System.Drawing.Point(80, 0);
             this.quoteClickCount.Name = "quoteClickCount";
             this.quoteClickCount.Size = new System.Drawing.Size(34, 13);
@@ -233,13 +190,26 @@
             this.quoteClickCount.Text = "quote";
             this.quoteClickCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.quoteClickCount_LinkClicked);
             // 
+            // bookmarkClickCount
+            // 
+            this.bookmarkClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+            this.bookmarkClickCount.AutoSize = true;
+            this.bookmarkClickCount.BackColor = System.Drawing.Color.Transparent;
+            this.bookmarkClickCount.LinkColor = System.Drawing.Color.DimGray;
+            this.bookmarkClickCount.Location = new System.Drawing.Point(120, 0);
+            this.bookmarkClickCount.Name = "bookmarkClickCount";
+            this.bookmarkClickCount.Size = new System.Drawing.Size(54, 13);
+            this.bookmarkClickCount.TabIndex = 21;
+            this.bookmarkClickCount.TabStop = true;
+            this.bookmarkClickCount.Text = "bookmark";
+            // 
             // viewThreadButton
             // 
             this.viewThreadButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.viewThreadButton.AutoSize = true;
             this.viewThreadButton.BackColor = System.Drawing.Color.Transparent;
-            this.viewThreadButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.viewThreadButton.Location = new System.Drawing.Point(120, 0);
+            this.viewThreadButton.LinkColor = System.Drawing.Color.DimGray;
+            this.viewThreadButton.Location = new System.Drawing.Point(180, 0);
             this.viewThreadButton.Name = "viewThreadButton";
             this.viewThreadButton.Size = new System.Drawing.Size(62, 13);
             this.viewThreadButton.TabIndex = 16;
@@ -247,13 +217,29 @@
             this.viewThreadButton.Text = "view thread";
             this.viewThreadButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.viewThreadButton_LinkClicked);
             // 
+            // deleteLink
+            // 
+            this.deleteLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+            this.deleteLink.AutoSize = true;
+            this.deleteLink.BackColor = System.Drawing.Color.Transparent;
+            this.deleteLink.LinkColor = System.Drawing.Color.Firebrick;
+            this.deleteLink.Location = new System.Drawing.Point(248, 0);
+            this.deleteLink.Name = "deleteLink";
+            this.deleteLink.Size = new System.Drawing.Size(36, 13);
+            this.deleteLink.TabIndex = 20;
+            this.deleteLink.TabStop = true;
+            this.deleteLink.Text = "delete";
+            this.deleteLink.Visible = false;
+            this.deleteLink.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            this.deleteLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.deleteLink_LinkClicked);
+            // 
             // muteButton
             // 
             this.muteButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.muteButton.AutoSize = true;
             this.muteButton.BackColor = System.Drawing.Color.Transparent;
-            this.muteButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.muteButton.Location = new System.Drawing.Point(188, 0);
+            this.muteButton.LinkColor = System.Drawing.Color.DimGray;
+            this.muteButton.Location = new System.Drawing.Point(290, 0);
             this.muteButton.Name = "muteButton";
             this.muteButton.Size = new System.Drawing.Size(63, 13);
             this.muteButton.TabIndex = 9;
@@ -267,8 +253,8 @@
             this.copyTextButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.copyTextButton.AutoSize = true;
             this.copyTextButton.BackColor = System.Drawing.Color.Transparent;
-            this.copyTextButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.copyTextButton.Location = new System.Drawing.Point(257, 0);
+            this.copyTextButton.LinkColor = System.Drawing.Color.DimGray;
+            this.copyTextButton.Location = new System.Drawing.Point(359, 0);
             this.copyTextButton.Name = "copyTextButton";
             this.copyTextButton.Size = new System.Drawing.Size(50, 13);
             this.copyTextButton.TabIndex = 7;
@@ -282,8 +268,8 @@
             this.shareButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.shareButton.AutoSize = true;
             this.shareButton.BackColor = System.Drawing.Color.Transparent;
-            this.shareButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.shareButton.Location = new System.Drawing.Point(313, 0);
+            this.shareButton.LinkColor = System.Drawing.Color.DimGray;
+            this.shareButton.Location = new System.Drawing.Point(415, 0);
             this.shareButton.Name = "shareButton";
             this.shareButton.Size = new System.Drawing.Size(33, 13);
             this.shareButton.TabIndex = 6;
@@ -297,8 +283,8 @@
             this.permalinkButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.permalinkButton.AutoSize = true;
             this.permalinkButton.BackColor = System.Drawing.Color.Transparent;
-            this.permalinkButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.permalinkButton.Location = new System.Drawing.Point(352, 0);
+            this.permalinkButton.LinkColor = System.Drawing.Color.DimGray;
+            this.permalinkButton.Location = new System.Drawing.Point(454, 0);
             this.permalinkButton.Name = "permalinkButton";
             this.permalinkButton.Size = new System.Drawing.Size(52, 13);
             this.permalinkButton.TabIndex = 8;
@@ -312,8 +298,8 @@
             this.openInBrowserButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.openInBrowserButton.AutoSize = true;
             this.openInBrowserButton.BackColor = System.Drawing.Color.Transparent;
-            this.openInBrowserButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.openInBrowserButton.Location = new System.Drawing.Point(410, 0);
+            this.openInBrowserButton.LinkColor = System.Drawing.Color.DimGray;
+            this.openInBrowserButton.Location = new System.Drawing.Point(512, 0);
             this.openInBrowserButton.Name = "openInBrowserButton";
             this.openInBrowserButton.Size = new System.Drawing.Size(82, 13);
             this.openInBrowserButton.TabIndex = 17;
@@ -328,8 +314,8 @@
             this.reportButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.reportButton.AutoSize = true;
             this.reportButton.BackColor = System.Drawing.Color.Transparent;
-            this.reportButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.reportButton.Location = new System.Drawing.Point(498, 0);
+            this.reportButton.LinkColor = System.Drawing.Color.DimGray;
+            this.reportButton.Location = new System.Drawing.Point(600, 0);
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(34, 13);
             this.reportButton.TabIndex = 10;
@@ -343,8 +329,8 @@
             this.collapseButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.collapseButton.AutoSize = true;
             this.collapseButton.BackColor = System.Drawing.Color.Transparent;
-            this.collapseButton.LinkColor = System.Drawing.Color.SteelBlue;
-            this.collapseButton.Location = new System.Drawing.Point(538, 0);
+            this.collapseButton.LinkColor = System.Drawing.Color.DimGray;
+            this.collapseButton.Location = new System.Drawing.Point(640, 0);
             this.collapseButton.Name = "collapseButton";
             this.collapseButton.Size = new System.Drawing.Size(69, 13);
             this.collapseButton.TabIndex = 13;
@@ -358,8 +344,8 @@
             this.lessLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.lessLink.AutoSize = true;
             this.lessLink.BackColor = System.Drawing.Color.Transparent;
-            this.lessLink.LinkColor = System.Drawing.Color.Firebrick;
-            this.lessLink.Location = new System.Drawing.Point(613, 0);
+            this.lessLink.LinkColor = System.Drawing.Color.DimGray;
+            this.lessLink.Location = new System.Drawing.Point(715, 0);
             this.lessLink.Name = "lessLink";
             this.lessLink.Size = new System.Drawing.Size(25, 13);
             this.lessLink.TabIndex = 18;
@@ -370,11 +356,11 @@
             // 
             // moreLink
             // 
-            this.moreLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+            this.moreLink.ActiveLinkColor = System.Drawing.Color.DarkCyan;
             this.moreLink.AutoSize = true;
             this.moreLink.BackColor = System.Drawing.Color.Transparent;
-            this.moreLink.LinkColor = System.Drawing.Color.SteelBlue;
-            this.moreLink.Location = new System.Drawing.Point(644, 0);
+            this.moreLink.LinkColor = System.Drawing.Color.DimGray;
+            this.moreLink.Location = new System.Drawing.Point(746, 0);
             this.moreLink.Name = "moreLink";
             this.moreLink.Size = new System.Drawing.Size(30, 13);
             this.moreLink.TabIndex = 19;
@@ -382,11 +368,60 @@
             this.moreLink.Text = "more";
             this.moreLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.moreLink_LinkClicked);
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel2.Controls.Add(this.posterName);
+            this.flowLayoutPanel2.Controls.Add(this.posterHandle);
+            this.flowLayoutPanel2.Controls.Add(this.timeAgo);
+            this.flowLayoutPanel2.Controls.Add(this.replyLabel);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(77, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(566, 16);
+            this.flowLayoutPanel2.TabIndex = 20;
+            // 
+            // posterName
+            // 
+            this.posterName.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+            this.posterName.AutoSize = true;
+            this.posterName.BackColor = System.Drawing.Color.Transparent;
+            this.posterName.LinkColor = System.Drawing.Color.SteelBlue;
+            this.posterName.Location = new System.Drawing.Point(3, 0);
+            this.posterName.Name = "posterName";
+            this.posterName.Size = new System.Drawing.Size(57, 13);
+            this.posterName.TabIndex = 18;
+            this.posterName.TabStop = true;
+            this.posterName.Text = "FanTAStic";
+            this.posterName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.posterName_LinkClicked);
+            // 
+            // posterHandle
+            // 
+            this.posterHandle.AutoSize = true;
+            this.posterHandle.ForeColor = System.Drawing.Color.Black;
+            this.posterHandle.Location = new System.Drawing.Point(63, 0);
+            this.posterHandle.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.posterHandle.Name = "posterHandle";
+            this.posterHandle.Size = new System.Drawing.Size(110, 13);
+            this.posterHandle.TabIndex = 20;
+            this.posterHandle.Text = "@fantasia.bsky.social";
+            // 
+            // replyLabel
+            // 
+            this.replyLabel.AutoSize = true;
+            this.replyLabel.Enabled = false;
+            this.replyLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.replyLabel.Location = new System.Drawing.Point(245, 0);
+            this.replyLabel.Name = "replyLabel";
+            this.replyLabel.Size = new System.Drawing.Size(152, 13);
+            this.replyLabel.TabIndex = 19;
+            this.replyLabel.Text = "(replying to historia.bsky.social)";
+            this.replyLabel.Visible = false;
+            // 
             // expandImageButton
             // 
             this.expandImageButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.expandImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.expandImageButton.LinkColor = System.Drawing.Color.Firebrick;
+            this.expandImageButton.LinkColor = System.Drawing.Color.SteelBlue;
             this.expandImageButton.Location = new System.Drawing.Point(905, 76);
             this.expandImageButton.Name = "expandImageButton";
             this.expandImageButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -402,7 +437,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.Properties.Resources.bluestripes;
+            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.actionsPanel);
             this.Controls.Add(this.postImage);
@@ -450,5 +485,7 @@
         private System.Windows.Forms.Label posterHandle;
         private LinkButton lessLink;
         private LinkButton moreLink;
+        private LinkButton deleteLink;
+        private LinkButton bookmarkClickCount;
     }
 }

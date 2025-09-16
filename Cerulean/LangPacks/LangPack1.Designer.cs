@@ -123,6 +123,24 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Also, I use Cerulean, a client for Bluesky. Try it out at https://ceruleanweb.neocities.org/.
+        /// </summary>
+        internal static string EXTERN_EMAIL_BODY {
+            get {
+                return ResourceManager.GetString("EXTERN_EMAIL_BODY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check out this post on Bluesky!.
+        /// </summary>
+        internal static string EXTERN_EMAIL_SUBJECT {
+            get {
+                return ResourceManager.GetString("EXTERN_EMAIL_SUBJECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Feed.
         /// </summary>
         internal static string FEEDSEL_BUTTON_SELECT_FEED {
@@ -375,7 +393,7 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The debug code that you have entered is invalid..
+        ///   Looks up a localized string similar to The debug code that you have entered is invalid. Please refer to the Cerulean website for a list of debug codes..
         /// </summary>
         internal static string LOGIN_LOCALMSG_INVALID_DEBUGCODE_SUB {
             get {
@@ -573,6 +591,26 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Further use of this program assumes that you have read and agree to the Cerulean Terms (https://ceruleanweb.neocities.org/legal/terms.html)..
+        /// </summary>
+        internal static string MSG_FIRSTRUN_TERMS {
+            get {
+                return ResourceManager.GetString("MSG_FIRSTRUN_TERMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are running a &apos;legacy kernel&apos; version of Windows (9x/ME/NT4). This comes with a few caveats:\n\n&quot; +
+        ///                &quot;1: Fonts will probably not display properly as Microsoft Sans Serif is not installed by default on your system.\n\n2: The encryption used to save &quot; +
+        ///                &quot;your handle and password is the legacy CeruleanCrypt method, and not DPAPI. This is less secure.\n\n3: Generally expect some things to be broken..
+        /// </summary>
+        internal static string MSG_WIN9XWARNING {
+            get {
+                return ResourceManager.GetString("MSG_WIN9XWARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check server status.
         /// </summary>
         internal static string PDS_BUTTON_PING_SERVER {
@@ -739,6 +777,168 @@ namespace Cerulean.LangPacks {
         internal static string TC_LABEL_DELETED {
             get {
                 return ResourceManager.GetString("TC_LABEL_DELETED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to likes.
+        /// </summary>
+        internal static string TC_LABEL_LIKE_PLURAL {
+            get {
+                return ResourceManager.GetString("TC_LABEL_LIKE_PLURAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to like.
+        /// </summary>
+        internal static string TC_LABEL_LIKE_SINGULAR {
+            get {
+                return ResourceManager.GetString("TC_LABEL_LIKE_SINGULAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to day.
+        /// </summary>
+        internal static string TC_LABEL_TIME_DAY {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hour.
+        /// </summary>
+        internal static string TC_LABEL_TIME_HOUR {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_HOUR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minute.
+        /// </summary>
+        internal static string TC_LABEL_TIME_MINUTE {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_MINUTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to month.
+        /// </summary>
+        internal static string TC_LABEL_TIME_MONTH {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_MONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to just now.
+        /// </summary>
+        internal static string TC_LABEL_TIME_NOW {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_NOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to week.
+        /// </summary>
+        internal static string TC_LABEL_TIME_WEEK {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_WEEK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to year.
+        /// </summary>
+        internal static string TC_LABEL_TIME_YEAR {
+            get {
+                return ResourceManager.GetString("TC_LABEL_TIME_YEAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unknown time.
+        /// </summary>
+        internal static string TC_LABEL_UNKNOWN_TIME {
+            get {
+                return ResourceManager.GetString("TC_LABEL_UNKNOWN_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bookmark.
+        /// </summary>
+        internal static string TC_LINKLABEL_BOOKMARK {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_BOOKMARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to expand.
+        /// </summary>
+        internal static string TC_LINKLABEL_EXPAND_GENERIC {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_EXPAND_GENERIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to expand image.
+        /// </summary>
+        internal static string TC_LINKLABEL_EXPAND_IMAGE {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_EXPAND_IMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to expand video.
+        /// </summary>
+        internal static string TC_LINKLABEL_EXPAND_VIDEO {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_EXPAND_VIDEO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to quote.
+        /// </summary>
+        internal static string TC_LINKLABEL_QUOTE {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_QUOTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to reply.
+        /// </summary>
+        internal static string TC_LINKLABEL_REPLY {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_REPLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to repost.
+        /// </summary>
+        internal static string TC_LINKLABEL_REPOST {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_REPOST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to reposted.
+        /// </summary>
+        internal static string TC_LINKLABEL_REPOSTED {
+            get {
+                return ResourceManager.GetString("TC_LINKLABEL_REPOSTED", resourceCulture);
             }
         }
     }

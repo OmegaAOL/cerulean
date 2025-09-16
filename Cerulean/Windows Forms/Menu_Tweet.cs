@@ -44,7 +44,7 @@ namespace Cerulean
                 SetControlsQuote(parent);
             }
 
-            if (byte.Parse(RegKit.Read("\\UserSettings", "DSForComposer")) == 1)
+            if (RegKit.Read.Dword("UserSettings", "DSForComposer") == 1)
             {
                 spellingCheckBox.Checked = true;
             }
@@ -133,12 +133,12 @@ namespace Cerulean
             if (spellingCheckBox.Checked && tweetBox.ForeColor == Color.Firebrick)
                 content.SpellCheck(tweetContent);
 
-            if (byte.Parse(RegKit.Read("\\UserSettings", "DSForComposer")) == 1) // digital signature
+            if (RegKit.Read.Dword("UserSettings", "DSForComposer") == 1) // digital signature
             {
-                tweetContent += (" " + RegKit.Read("\\UserSettings", "DigitalSignature"));
+                tweetContent += (" " + RegKit.Read.String("UserSettings", "DigitalSignature"));
             }
 
-            /*Async.SkyWorker(
+            Async.SkyWorker(
                 (s, evt) =>
                 {
                     switch (type)
@@ -153,7 +153,7 @@ namespace Cerulean
                             evt.Result = Tweet.Quote(tweetContent, parent);
                             break;
                         case Tweet.Type.Repost:
-                            evt.Result = Tweet.Repost(parent);
+                            evt.Result = Tweet.Repost.Add(parent);
                             break;
                     }
                 },
@@ -165,7 +165,7 @@ namespace Cerulean
                     tweetButton.Enabled = true;
                     Variables.BlobArray = null;
                 }
-            );*/
+            );
         }
 
         private void draftButton_Click(object sender, EventArgs e)

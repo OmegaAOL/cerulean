@@ -40,7 +40,7 @@ namespace Cerulean
             this.BorderStyle = BorderStyle.None; // remove default border
         }
 
-        protected override void OnPaintBackground(PaintEventArgs pevent)
+        protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaintBackground(pevent);
             using (Pen p = new Pen(Color.LightGray))
@@ -56,7 +56,7 @@ namespace Cerulean
         private readonly Padding fixedPadding = new Padding(6, 1, 5, 0);
         private readonly Size fixedMinSize = new Size(75, 23);
 
-        public CeruleanButton() 
+        public CeruleanButton()
         {
             base.AutoSize = true;
             base.AutoSizeMode = AutoSizeMode.GrowAndShrink;

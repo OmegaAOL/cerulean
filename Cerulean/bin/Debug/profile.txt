@@ -1,0 +1,63 @@
+{
+  "did": "did:plc:ornpixmpy5ts36lh7hmi7wkp",
+  "handle": "warren.senate.gov",
+  "displayName": "Elizabeth Warren",
+  "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ornpixmpy5ts36lh7hmi7wkp/bafkreih2fodb55nu2ewj6aucqxucr2f3l4twpqrdpbju4yncnmr4magyry@jpeg",
+  "associated": {
+    "lists": 0,
+    "feedgens": 0,
+    "starterPacks": 0,
+    "labeler": false,
+    "activitySubscription": {
+      "allowSubscriptions": "followers"
+    }
+  },
+  "viewer": {
+    "muted": false,
+    "blockedBy": false,
+    "knownFollowers": {
+      "count": 1,
+      "followers": [
+        {
+          "did": "did:plc:lcdbut6q762ki3qgj5shjnph",
+          "handle": "fptp.bsky.social",
+          "displayName": "Resist with Me! 🏳️‍🌈🌊🇺🇦🇵🇸🇺🇲",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:lcdbut6q762ki3qgj5shjnph/bafkreigmaiqemjii7gduxjftv62zfsereqjk5axr6dhtsd4yol2f5gcqvy@jpeg",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "viewer": {
+            "muted": false,
+            "blockedBy": false,
+            "following": "at://did:plc:lcjzu6ssrwr2ifdvpckvdwew/app.bsky.graph.follow/3lvqp2yyqpm26",
+            "followedBy": "at://did:plc:lcdbut6q762ki3qgj5shjnph/app.bsky.graph.follow/3lvrceixqcv2p"
+          },
+          "labels": [],
+          "createdAt": "2023-10-02T17:34:58Z"
+        }
+      ]
+    }
+  },
+  "labels": [],
+  "createdAt": "2024-11-13T19:26:18.373Z",
+  "verification": {
+    "verifications": [
+      {
+        "issuer": "did:plc:z72i7hdynmk6r22z27h6tvur",
+        "uri": "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.graph.verification/3lndyb6f4aq2i",
+        "isValid": true,
+        "createdAt": "2025-04-21T13:17:22.473Z"
+      }
+    ],
+    "verifiedStatus": "valid",
+    "trustedVerifierStatus": "none"
+  },
+  "description": "U.S. Senator, Massachusetts. She/her/hers. Official Senate account.",
+  "indexedAt": "2024-12-04T20:05:58.947Z",
+  "banner": "https://cdn.bsky.app/img/banner/plain/did:plc:ornpixmpy5ts36lh7hmi7wkp/bafkreihhs6gep36af2yiayatkoolvtaiikftunpqzf3qqwx3yvcyf53wtm@jpeg",
+  "followersCount": 395552,
+  "followsCount": 24,
+  "postsCount": 1064
+}

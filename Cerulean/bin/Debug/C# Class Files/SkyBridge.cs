@@ -1,8 +1,16 @@
-﻿/**********************************************************************************
+﻿/*==================================================================================
+ 
+ =============================//LEGAL NOTICE\\====================================
 By using or editing this API framework, you accept the Cerulean Terms of
 Service (found at http://ceruleanweb.neocities.org/legal/terms.txt).
 This framework ("SkyBridge by OmegaAOL") falls under the Cerulean software group.
-***********************************************************************************/
+
+ ============================//FOR DEVELOPERS\\===================================
+There are a lot of redundant methods in here. This is intentional and for ease of use
+and understanding of the library. Do not try to "simplify" it.
+This library is currently a static one. This will be changed in the future.
+ 
+===================================================================================*/
 
 using System;
 using System.ComponentModel;
@@ -31,7 +39,8 @@ namespace OmegaAOL.SkyBridge
         internal static string RefreshToken;
         internal static string Handle;
         public static JArray BlobArray = null;
-        public static string PDSHost;
+        public static string PDSHost { internal get; set; }
+        public static string ChatAPI { internal get; set; }
     }
 
     internal static class Display
@@ -122,6 +131,7 @@ namespace OmegaAOL.SkyBridge
             CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, header);
             CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
             CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+            CurlRequest.SetOpt(CURLoption.CURLOPT_TIMEOUT, 10);
             CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
             //CurlRequest.SetOpt(CURLoption.CURLOPT_VERBOSE, true);
             CurlRequest.SetOpt(CURLoption.CURLOPT_DEBUGFUNCTION, new Easy.DebugFunction(OnDebug));
@@ -158,9 +168,9 @@ namespace OmegaAOL.SkyBridge
                 {
                     if (!silent)
                     {
-                        Error.Throw(CurlRequest, code);
-                        curlerror["error"] = "Connection failed";
-                        curlerror["message"] = "There was an issue connecting to the server. Error code: " + code.ToString();
+                        // Error.Throw(CurlRequest, code);
+                        curlerror["error"] = code.ToString();
+                        curlerror["message"] = code.ToString();
                     }
 
                     response = curlerror;
@@ -346,8 +356,8 @@ namespace OmegaAOL.SkyBridge
                 {
                     manualRefreshTriggered = true;
                     Async.SkyWorker(
-                    (s, evt) => RefreshAccessToken(null),
-                    (s, evt) => { manualRefreshTriggered = false; }
+                    delegate { RefreshAccessToken(null); },
+                    delegate { manualRefreshTriggered = false; }
                     );
                 }
             }
@@ -391,7 +401,8 @@ namespace OmegaAOL.SkyBridge
         {
             private const string preDef = "app.bsky.feed.defs#";
             public const string NotFound = preDef + "notFoundPost";
-            public const string PostView = preDef + "postView";
+            public const string Blocked = preDef + "blockedPost";
+            public const string View = preDef + "postView";
         }
 
         public static class Search
@@ -412,6 +423,12 @@ namespace OmegaAOL.SkyBridge
         public static JObject Create(string text)
         {
             return TweetRecCreate(text, Type.Normal);
+        }
+
+        public static void Delete(string uri)
+        {
+            string rkey = uri.Substring(uri.LastIndexOf('/') + 1);
+            Record.Delete("app.bsky.feed.post", rkey);
         }
 
         public static JObject Reply(string text, JObject parent, JObject root)
@@ -554,6 +571,21 @@ namespace OmegaAOL.SkyBridge
     {
         public enum Verification { None, Verified, TrustedVerifier };
 
+        public static JObject Create(string handle, string email = "", string password = "", string displayName = "", string description = "")
+        {
+            JObject postJson = new JObject();
+            postJson["handle"] = handle;
+            postJson["email"] = email;
+            postJson["password"] = password;
+
+            string endPoint = "com.atproto.server.createAccount";
+            string postFields = postJson.ToString(Formatting.None);
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+        }
+
         public static JObject Load(string did)
         {
             string endPoint = "app.bsky.actor.getProfile";
@@ -564,6 +596,19 @@ namespace OmegaAOL.SkyBridge
             return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
         }
 
+        public static class FetchData
+        {
+            public static JArray Followers(string did)
+            {
+                string endPoint = "app.bsky.graph.getFollowers";
+                string getParam = "actor=" + did;
+                string header1 = "Authorization: Bearer " + Variables.Token;
+                string header2 = "Content-Type: application/json";
+                MessageBox.Show((Http.Request(endPoint, getParam, header1, header2, Http.Method.Get).ToString()));
+                return (JArray)((Http.Request(endPoint, getParam, header1, header2, Http.Method.Get))["followers"]);
+            }
+        }
+
         public static class Follow
         {
             public static void Add(string did)
@@ -571,14 +616,36 @@ namespace OmegaAOL.SkyBridge
                 JObject record = new JObject();
                 record["subject"] = did;
                 record["createdAt"] = Tools.DateToBsky();
-                Record.Create("app.bsky.graph.follow", record);
+                Record.Create("app.bsky.graph.follow", record).ToString();
             }
 
             public static void Remove(string uri)
             {
                 string rkey = uri.Substring(uri.LastIndexOf('/') + 1);
-                Record.Delete("app.bsky.graph.follow", rkey);
+                Record.Delete("app.bsky.graph.follow", rkey).ToString();
             }
+        }
+
+        public static string GetDid(string handle)
+        {
+            return HandleDidFetcher("com.atproto.identity.resolveHandle", "did", handle, "handle");
+        }
+
+        public static string GetHandle(string did)
+        {
+            return HandleDidFetcher("com.atproto.identity.resolveDid", "handle", did, "did");
+        }
+
+        private static string HandleDidFetcher(string endPoint, string tokenName, string input, string ogTokenName)
+        {
+            string getParam = ogTokenName + "=" + input;
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            JToken result = Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            MessageBox.Show(result.ToString());
+                return result.SelectToken(tokenName).ToString();
+            
         }
 
         public static class Search
@@ -619,7 +686,7 @@ namespace OmegaAOL.SkyBridge
             string getParam = "limit=" + limit.ToString();
             string header1 = "Authorization: Bearer " + Variables.Token;
             string header2 = "Content-Type: application/json";
-            string alternateUrl = "https://api.bsky.chat";
+            string alternateUrl = Variables.ChatAPI;
 
             return (JArray)(Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get, alternateUrl))["convos"];
         }
