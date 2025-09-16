@@ -11,12 +11,24 @@ namespace Cerulean
         public const string bskyTosUrl = "https://bsky.social/about/support/tos";
         public static string connectionStatus;    
         public static string[] stringArray;
-        public static Color BaseColor = Color.FromArgb(239, 244, 249);
-        public static Color ForeBlueColor = Color.FromArgb(239, 244, 249);
         public static Image bgImage = CeruleanArt.pinstripesblue;
         public static void featureAbsent(string feature)
         {
             CeruleanBox.Display("This feature hasn't been added to Cerulean yet. Check if it's available in the latest version.\n\nFeature: " + feature);
         }
+    }
+
+    public static class ResDef
+    {
+        public static readonly Color ForeDefault = Color.SteelBlue;
+        public static readonly Color ForeAlternate = Color.DarkCyan;
+        public static readonly Color ForeEsteemed = Color.DarkGoldenrod;
+        public static readonly Color ForeError = Color.Firebrick;
+        public static readonly Color TextHard = Color.Black;
+        public static readonly Color TextSoft = Color.DimGray;
+        public static readonly Color BgHard = Color.White;
+        public static readonly Color BgSoft = Color.Gainsboro;
+        public static readonly Color Border = Color.DarkGray;
+        public static readonly Image BgImage = CeruleanArt.pinstripesblue;
     }
 }

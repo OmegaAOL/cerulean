@@ -39,9 +39,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.reportButton = new Cerulean.CeruleanButton();
-            this.followButton = new Cerulean.CeruleanButton();
-            this.blockButton = new Cerulean.CeruleanButton();
             this.bioPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.bioLabel = new System.Windows.Forms.Label();
             this.followersLabel = new System.Windows.Forms.Label();
@@ -56,8 +53,11 @@
             this.followsYouLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.allowChatLabel = new System.Windows.Forms.Label();
-            this.chatButton = new Cerulean.CeruleanButton();
             this.expandLabel = new Cerulean.LinkButton();
+            this.chatButton = new Cerulean.CeruleanButton();
+            this.blockButton = new Cerulean.CeruleanButton();
+            this.followButton = new Cerulean.CeruleanButton();
+            this.reportButton = new Cerulean.CeruleanButton();
             ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             this.bioPanel.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +84,7 @@
             this.handleLabel.Name = "handleLabel";
             this.handleLabel.Size = new System.Drawing.Size(220, 13);
             this.handleLabel.TabIndex = 1;
-            this.handleLabel.Text = "@fantasia.bsky.social";
+            this.handleLabel.Text = "handle unknown";
             this.handleLabel.Visible = false;
             // 
             // verifiedLabel
@@ -157,7 +157,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(133, 75);
+            this.label7.Location = new System.Drawing.Point(15, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 8;
@@ -188,53 +188,6 @@
             this.label9.Text = "Blocks you:";
             this.label9.Visible = false;
             // 
-            // reportButton
-            // 
-            this.reportButton.AutoSize = true;
-            this.reportButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.reportButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.reportButton.Location = new System.Drawing.Point(256, 129);
-            this.reportButton.MinimumSize = new System.Drawing.Size(75, 23);
-            this.reportButton.Name = "reportButton";
-            this.reportButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
-            this.reportButton.Size = new System.Drawing.Size(75, 23);
-            this.reportButton.TabIndex = 11;
-            this.reportButton.Text = "Report";
-            this.reportButton.UseVisualStyleBackColor = true;
-            this.reportButton.Visible = false;
-            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
-            // 
-            // followButton
-            // 
-            this.followButton.AutoSize = true;
-            this.followButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.followButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.followButton.Location = new System.Drawing.Point(13, 129);
-            this.followButton.MinimumSize = new System.Drawing.Size(75, 23);
-            this.followButton.Name = "followButton";
-            this.followButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
-            this.followButton.Size = new System.Drawing.Size(75, 23);
-            this.followButton.TabIndex = 12;
-            this.followButton.Text = "Follow";
-            this.followButton.UseVisualStyleBackColor = true;
-            this.followButton.Visible = false;
-            this.followButton.Click += new System.EventHandler(this.followButton_Click);
-            // 
-            // blockButton
-            // 
-            this.blockButton.AutoSize = true;
-            this.blockButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.blockButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.blockButton.Location = new System.Drawing.Point(175, 129);
-            this.blockButton.MinimumSize = new System.Drawing.Size(75, 23);
-            this.blockButton.Name = "blockButton";
-            this.blockButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
-            this.blockButton.Size = new System.Drawing.Size(75, 23);
-            this.blockButton.TabIndex = 13;
-            this.blockButton.Text = "Block";
-            this.blockButton.UseVisualStyleBackColor = true;
-            this.blockButton.Visible = false;
-            // 
             // bioPanel
             // 
             this.bioPanel.AutoScroll = true;
@@ -256,9 +209,8 @@
             this.bioLabel.MaximumSize = new System.Drawing.Size(295, 99999);
             this.bioLabel.Name = "bioLabel";
             this.bioLabel.Padding = new System.Windows.Forms.Padding(6, 6, 0, 0);
-            this.bioLabel.Size = new System.Drawing.Size(81, 19);
+            this.bioLabel.Size = new System.Drawing.Size(6, 19);
             this.bioLabel.TabIndex = 0;
-            this.bioLabel.Text = "No description";
             this.bioLabel.Visible = false;
             // 
             // followersLabel
@@ -318,7 +270,7 @@
             this.joinedLabel.AutoSize = true;
             this.joinedLabel.BackColor = System.Drawing.Color.Transparent;
             this.joinedLabel.ForeColor = System.Drawing.Color.SteelBlue;
-            this.joinedLabel.Location = new System.Drawing.Point(170, 75);
+            this.joinedLabel.Location = new System.Drawing.Point(52, 105);
             this.joinedLabel.Margin = new System.Windows.Forms.Padding(0);
             this.joinedLabel.Name = "joinedLabel";
             this.joinedLabel.Size = new System.Drawing.Size(51, 13);
@@ -388,7 +340,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(15, 105);
+            this.label1.Location = new System.Drawing.Point(133, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 25;
@@ -400,28 +352,13 @@
             this.allowChatLabel.AutoSize = true;
             this.allowChatLabel.BackColor = System.Drawing.Color.Transparent;
             this.allowChatLabel.ForeColor = System.Drawing.Color.SteelBlue;
-            this.allowChatLabel.Location = new System.Drawing.Point(70, 105);
+            this.allowChatLabel.Location = new System.Drawing.Point(188, 75);
             this.allowChatLabel.Margin = new System.Windows.Forms.Padding(0);
             this.allowChatLabel.Name = "allowChatLabel";
             this.allowChatLabel.Size = new System.Drawing.Size(31, 13);
             this.allowChatLabel.TabIndex = 26;
             this.allowChatLabel.Text = "none";
             this.allowChatLabel.Visible = false;
-            // 
-            // chatButton
-            // 
-            this.chatButton.AutoSize = true;
-            this.chatButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.chatButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chatButton.Location = new System.Drawing.Point(94, 129);
-            this.chatButton.MinimumSize = new System.Drawing.Size(75, 23);
-            this.chatButton.Name = "chatButton";
-            this.chatButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
-            this.chatButton.Size = new System.Drawing.Size(75, 23);
-            this.chatButton.TabIndex = 27;
-            this.chatButton.Text = "Chat";
-            this.chatButton.UseVisualStyleBackColor = true;
-            this.chatButton.Visible = false;
             // 
             // expandLabel
             // 
@@ -440,12 +377,74 @@
             this.expandLabel.Visible = false;
             this.expandLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.expandLabel_LinkClicked);
             // 
+            // chatButton
+            // 
+            this.chatButton.AutoSize = true;
+            this.chatButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chatButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chatButton.Location = new System.Drawing.Point(94, 129);
+            this.chatButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.chatButton.Name = "chatButton";
+            this.chatButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.chatButton.Size = new System.Drawing.Size(75, 23);
+            this.chatButton.TabIndex = 27;
+            this.chatButton.Text = "Chat";
+            this.chatButton.UseVisualStyleBackColor = true;
+            this.chatButton.Visible = false;
+            // 
+            // blockButton
+            // 
+            this.blockButton.AutoSize = true;
+            this.blockButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.blockButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.blockButton.Location = new System.Drawing.Point(175, 129);
+            this.blockButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.blockButton.Name = "blockButton";
+            this.blockButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.blockButton.Size = new System.Drawing.Size(75, 23);
+            this.blockButton.TabIndex = 13;
+            this.blockButton.Text = "Block";
+            this.blockButton.UseVisualStyleBackColor = true;
+            this.blockButton.Visible = false;
+            // 
+            // followButton
+            // 
+            this.followButton.AutoSize = true;
+            this.followButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.followButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.followButton.Location = new System.Drawing.Point(13, 129);
+            this.followButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.followButton.Name = "followButton";
+            this.followButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.followButton.Size = new System.Drawing.Size(75, 23);
+            this.followButton.TabIndex = 12;
+            this.followButton.Text = "Follow";
+            this.followButton.UseVisualStyleBackColor = true;
+            this.followButton.Visible = false;
+            this.followButton.Click += new System.EventHandler(this.followButton_Click);
+            // 
+            // reportButton
+            // 
+            this.reportButton.AutoSize = true;
+            this.reportButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.reportButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.reportButton.Location = new System.Drawing.Point(256, 129);
+            this.reportButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.reportButton.Size = new System.Drawing.Size(75, 23);
+            this.reportButton.TabIndex = 11;
+            this.reportButton.Text = "Report";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Visible = false;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
+            // 
             // Menu_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = global::Cerulean.Properties.Resources.bluestripes;
+            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
             this.ClientSize = new System.Drawing.Size(342, 267);
             this.Controls.Add(this.expandLabel);
             this.Controls.Add(this.bioPanel);

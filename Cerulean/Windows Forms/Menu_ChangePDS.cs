@@ -23,7 +23,7 @@ namespace Cerulean
             LocalizeControlText();
             BackgroundImage = Global.bgImage;
             this.AcceptButton = applyButton;
-            pdshostbox.Text = RegKit.Read("\\API", "PDSHost");
+            pdshostbox.Text = RegKit.Read.String("API", "PDSHost");
         }
 
         private void LocalizeControlText()
@@ -51,7 +51,7 @@ namespace Cerulean
         {
             RegKit.Write("\\API", "PDSHost", Global.defaultPDSHost);
             CeruleanBox.Display(String.Format(LangPack.PDS_CBOX_URL_RESET, Global.defaultPDSHost));
-            pdshostbox.Text = RegKit.Read("\\API", "PDSHost");
+            pdshostbox.Text = RegKit.Read.String("API", "PDSHost");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -67,14 +67,18 @@ namespace Cerulean
                 (s, evt) =>
                 {
                     chkStatus.Enabled = true;
+                    string message, result = String.Empty;
                     if ((string)evt.Result == "error")
                     {
-                        CeruleanBox.Display(String.Format(LangPack.PDS_CBOX_PDS_PING_ERROR, RegKit.Read("\\API", "PDSHost")));
+                        message = LangPack.PDS_CBOX_PDS_PING_ERROR;
+                        
                     }
                     else
                     {
-                        CeruleanBox.Display(String.Format(LangPack.PDS_CBOX_PDS_PING_RESULT, RegKit.Read("\\API", "PDSHost"), evt.Result));
+                        message = LangPack.PDS_CBOX_PDS_PING_RESULT;
+                        result = evt.Result.ToString();
                     }
+                    CeruleanBox.Display(message + RegKit.Read.String("API", "PDSHost") + result);
                 }
             );
         }

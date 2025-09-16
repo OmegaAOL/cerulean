@@ -9,7 +9,7 @@ namespace Cerulean
 {
     class WEH
     {
-        public static void ErrThrower(bool localHandling, string title, string subtitle = "") 
+        public static void ErrThrower(bool localHandling, string title, string subtitle = "")
         {
             /*if (title == "Connection failed")
             {
@@ -18,16 +18,16 @@ namespace Cerulean
 
             if (localHandling == false)
             {
-                
-                
 
-                    if (subtitle != String.Empty)
-                    {
-                        title += String.Format("\nDESCRIPTION: {0}", subtitle);
-                    }
 
-                    CeruleanBox.Display("ERROR: " + title);
-                
+
+                if (subtitle != String.Empty)
+                {
+                    title += String.Format("\nDESCRIPTION: {0}", subtitle);
+                }
+
+                CeruleanBox.Display("ERROR: " + title);
+
             }
         }
 
@@ -36,50 +36,46 @@ namespace Cerulean
             string title = String.Empty, subtitle = String.Empty;
             string[] errtrue = new string[] { null, null, "true" };
             string[] errfalse = new string[] { null, null, "false" };
-            
+
             if (input.ContainsKey("error"))
             {
-                if ((string)input["error"] == ("noResponse"))
+                switch ((string)input["error"])
                 {
-                    title = "Empty response from server";
-                    subtitle = "Blank response received from the server.";
-                }
+                    case "AuthFactorTokenRequired":
+                        title = "Email 2FA token required; use app password";
+                        subtitle = "The server requires two-factor authentication. Cerulean does not support legacy 2FA, so use an app password instead.";
+                        break;
+                    case "RateLimitExceeded":
+                        title = "Rate limit exceeded";
+                        subtitle = "The PDS is rate limiting your account. Try again later, or contact your PDS administrator.";
+                        break;
+                    case "AuthenticationRequired":
+                        title = "Invalid login details";
+                        subtitle = "The login credentials you have provided are invalid. If you used your email to log in, use your handle instead.";
+                        break;
+                    case "ExpiredToken":
+                        Auth.Refresher.Start(Auth.Refresher.Mode.Auto);
+                        return errfalse;
+                    case "noResponse":
+                        title = "Empty response from server";
+                        subtitle = "Blank response received from the server.";
+                        break;
+                    case "CURLE_COULDNT_RESOLVE_HOST":
+                        title = "Couldn't connect to server";
+                        subtitle = "Cerulean could not reach the server. Check your internet connection and PDS host settings.";
+                        break;
+                    default:
+                        title = "Error: " + (string)input["error"];
+                        if (input.ContainsKey("message"))
+                        {
+                            subtitle = (string)input["message"];
+                        }
+                        else
+                        {
+                            subtitle = "This error is unhandled by Cerulean (it's server-side). Report this on GitHub.";
+                        }
+                        break;
 
-                else if ((string)input["error"] == "ExpiredToken")
-                {
-                    Auth.Refresher.Start(Auth.Refresher.Mode.Auto);
-                    return errfalse;
-                }
-
-                else if ((string)input["error"] == "AuthenticationRequired")
-                {
-                    title = "Invalid login details";
-                    subtitle = "The login credentials you have provided are invalid. If you used your email to log in, use your handle instead.";
-                }
-
-                else if ((string)input["error"] == "RateLimitExceeded")
-                {
-                    title = "Rate limit exceeded";
-                    subtitle = "The PDS is rate limiting your account. Try again later, or contact your PDS administrator.";
-                }
-
-                else if ((string)input["error"] == "AuthFactorTokenRequired")
-                {
-                    title = "Email 2FA token required; use app password";
-                    subtitle = "The server requires two-factor authentication. Cerulean does not support legacy 2FA, so use an app password instead.";
-                }
-
-                else
-                {
-                    title = (string)input["error"];
-                    if (input.ContainsKey("message"))
-                    {
-                        subtitle = (string)input["message"];
-                    }
-                    else
-                    {
-                        subtitle = "This error is unhandled by Cerulean (it's server-side). Report this on GitHub.";
-                    }
                 }
 
                 ErrThrower(localHandling, title, subtitle);

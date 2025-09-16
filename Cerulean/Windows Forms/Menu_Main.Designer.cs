@@ -162,7 +162,6 @@
             this.menuItem24.Index = 5;
             this.menuItem24.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
             this.menuItem24.Text = "Print...";
-            this.menuItem24.Click += new System.EventHandler(this.menuItem24_Click);
             // 
             // menuItem25
             // 

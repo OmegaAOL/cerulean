@@ -40,5 +40,18 @@ namespace Cerulean
         {
             Process.Start(Global.bskyTosUrl);
         }
+
+        private void tosBox_ToggleCheck(object sender, EventArgs e)
+        {
+            if (tosBox.Checked && !String.IsNullOrEmpty(handleBox.Text))
+                createButton.Enabled = true;
+            else
+                createButton.Enabled = false;
+        }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
