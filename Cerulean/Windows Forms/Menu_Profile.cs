@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
+using Cerulean.LangPacks;
 using OmegaAOL.SkyBridge;
 
 namespace Cerulean
@@ -38,6 +39,7 @@ namespace Cerulean
         {
             this.ActiveControl = followButton;
             CenterToParent();
+            nicknameLabel.Text = LangPack.GLOBAL_DISPLAYNAME_EMPTY;
         }
 
         private void GetProfileData(string did)
@@ -131,8 +133,6 @@ namespace Cerulean
                 {
                     verifiedLabel.Visible = true;
                     nicknameLabel.ForeColor = Color.Goldenrod;
-
-
                 }
 
                 if (tvStatus.ToString() == "valid")
@@ -168,7 +168,7 @@ namespace Cerulean
             foreach (string part in path)
             {
                 if (token == null || token.Type == JTokenType.Null)
-                    return null;
+                    return String.Empty;
                 token = token[part];
             }
             return token;

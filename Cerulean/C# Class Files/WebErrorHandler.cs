@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using OmegaAOL.SkyBridge;
+using Cerulean.LangPacks;
 
 namespace Cerulean
 {

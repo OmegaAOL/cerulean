@@ -121,7 +121,7 @@ namespace Cerulean
                 (s, evt) => HandleLoginResponse(evt, password)
             );*/
 
-            Thread t = new Thread(() =>
+            Thread t = new Thread(() => //omega
             {
                 // Run the login on the background thread
                 object result = Auth.Login(Variables.Handle, password);

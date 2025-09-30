@@ -190,8 +190,17 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="GLOBAL_BUTTON_RESET" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="GLOBAL_DISPLAYNAME_EMPTY" xml:space="preserve">
+    <value>No display name</value>
+  </data>
+  <data name="GLOBAL_ERROR_MESSAGE" xml:space="preserve">
+    <value>Oh no! There was an error in Cerulean. Press OK to continue. </value>
+  </data>
   <data name="GLOBAL_INFOLABEL_EMPTY_FIELDS" xml:space="preserve">
     <value>Fill all fields</value>
+  </data>
+  <data name="GLOBAL_UNKNOWN" xml:space="preserve">
+    <value>unknown</value>
   </data>
   <data name="IMGVIEWER_WINTITLE" xml:space="preserve">
     <value>Image viewer</value>
@@ -424,5 +433,14 @@ reset code that you received in the mail:</value>
   </data>
   <data name="TC_LINKLABEL_REPOSTED" xml:space="preserve">
     <value>reposted</value>
+  </data>
+  <data name="TVIEW_NOPOSTS" xml:space="preserve">
+    <value>This post does not have any replies.</value>
+  </data>
+  <data name="TVIEW_WINTITLE" xml:space="preserve">
+    <value>Post by</value>
+  </data>
+  <data name="TVIEW_WINTITLE_LOADING" xml:space="preserve">
+    <value>Loading post thread...</value>
   </data>
 </root>

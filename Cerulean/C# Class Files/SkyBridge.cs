@@ -155,7 +155,7 @@ namespace OmegaAOL.SkyBridge
                 }
             }
 
-            else if (reqType == Method.Get)
+            else 
             {
                 CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
             }
@@ -428,6 +428,16 @@ namespace OmegaAOL.SkyBridge
         {
             string rkey = uri.Substring(uri.LastIndexOf('/') + 1);
             Record.Delete("app.bsky.feed.post", rkey);
+        }
+
+        public static JObject FetchThread(string uri, int depth = 6, int parentHeight = 80)
+        {
+            string endPoint = "app.bsky.feed.getPostThread";
+            string getParam = "uri=" + uri + "&depth=" + depth.ToString() + "&parentHeight=" + parentHeight.ToString();
+            string header1 = "Authorization: Bearer " + Variables.Token;
+            string header2 = "Content-Type: application/json";
+
+            return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
         }
 
         public static JObject Reply(string text, JObject parent, JObject root)

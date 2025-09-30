@@ -5,6 +5,7 @@ Terms of Service (found at http://ceruleanweb.neocities.org/legal/terms.txt)
 
 using System;
 using System.Windows.Forms;
+using System.Threading;
 using SeasideResearch.LibCurlNet;
 using Cerulean.LangPacks;
 
@@ -36,6 +37,9 @@ namespace Cerulean
         [STAThread]
         static void Main()
         {
+            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException); // for global error catching/handling
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             betaSettings();
@@ -51,6 +55,23 @@ namespace Cerulean
             //{
             //    CeruleanBox.Display(ex.Message);
             //}
+        }
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            ShowError(e.Exception);
+            MessageBox.Show("An unexpected error occurred: " + e.Exception.Message);
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            ShowError((Exception)e.ExceptionObject);
+            MessageBox.Show("Fatal error: " + ((Exception)e.ExceptionObject).Message);
+        }
+
+        private static void ShowError(Exception ex) 
+        {
+            CeruleanBox.Display(LangPack.GLOBAL_ERROR_MESSAGE + "\n\n" + "(" + ex.ToString() + ")");
         }
 
         private static void OnApplicationExit(object sender, EventArgs e)
