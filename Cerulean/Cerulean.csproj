@@ -231,6 +231,12 @@
     <Compile Include="Windows Forms\Menu_Tweet.Designer.cs">
       <DependentUpon>Menu_Tweet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows Forms\ThreadViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\ThreadViewer.Designer.cs">
+      <DependentUpon>ThreadViewer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="C# Class Files\TweetControl.resx">
       <DependentUpon>TweetControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\Menu_Tweet.resx">
       <DependentUpon>Menu_Tweet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\ThreadViewer.resx">
+      <DependentUpon>ThreadViewer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Cerulean_TemporaryKey.pfx" />

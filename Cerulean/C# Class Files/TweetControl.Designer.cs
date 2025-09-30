@@ -38,7 +38,6 @@
             this.replyClickCount = new Cerulean.LinkButton();
             this.repostClickCount = new Cerulean.LinkButton();
             this.quoteClickCount = new Cerulean.LinkButton();
-            this.bookmarkClickCount = new Cerulean.LinkButton();
             this.viewThreadButton = new Cerulean.LinkButton();
             this.deleteLink = new Cerulean.LinkButton();
             this.muteButton = new Cerulean.LinkButton();
@@ -131,7 +130,6 @@
             this.actionsPanel.Controls.Add(this.replyClickCount);
             this.actionsPanel.Controls.Add(this.repostClickCount);
             this.actionsPanel.Controls.Add(this.quoteClickCount);
-            this.actionsPanel.Controls.Add(this.bookmarkClickCount);
             this.actionsPanel.Controls.Add(this.viewThreadButton);
             this.actionsPanel.Controls.Add(this.deleteLink);
             this.actionsPanel.Controls.Add(this.muteButton);
@@ -190,26 +188,13 @@
             this.quoteClickCount.Text = "quote";
             this.quoteClickCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.quoteClickCount_LinkClicked);
             // 
-            // bookmarkClickCount
-            // 
-            this.bookmarkClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
-            this.bookmarkClickCount.AutoSize = true;
-            this.bookmarkClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.bookmarkClickCount.LinkColor = System.Drawing.Color.DimGray;
-            this.bookmarkClickCount.Location = new System.Drawing.Point(120, 0);
-            this.bookmarkClickCount.Name = "bookmarkClickCount";
-            this.bookmarkClickCount.Size = new System.Drawing.Size(54, 13);
-            this.bookmarkClickCount.TabIndex = 21;
-            this.bookmarkClickCount.TabStop = true;
-            this.bookmarkClickCount.Text = "bookmark";
-            // 
             // viewThreadButton
             // 
             this.viewThreadButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.viewThreadButton.AutoSize = true;
             this.viewThreadButton.BackColor = System.Drawing.Color.Transparent;
             this.viewThreadButton.LinkColor = System.Drawing.Color.DimGray;
-            this.viewThreadButton.Location = new System.Drawing.Point(180, 0);
+            this.viewThreadButton.Location = new System.Drawing.Point(120, 0);
             this.viewThreadButton.Name = "viewThreadButton";
             this.viewThreadButton.Size = new System.Drawing.Size(62, 13);
             this.viewThreadButton.TabIndex = 16;
@@ -223,7 +208,7 @@
             this.deleteLink.AutoSize = true;
             this.deleteLink.BackColor = System.Drawing.Color.Transparent;
             this.deleteLink.LinkColor = System.Drawing.Color.Firebrick;
-            this.deleteLink.Location = new System.Drawing.Point(248, 0);
+            this.deleteLink.Location = new System.Drawing.Point(188, 0);
             this.deleteLink.Name = "deleteLink";
             this.deleteLink.Size = new System.Drawing.Size(36, 13);
             this.deleteLink.TabIndex = 20;
@@ -239,7 +224,7 @@
             this.muteButton.AutoSize = true;
             this.muteButton.BackColor = System.Drawing.Color.Transparent;
             this.muteButton.LinkColor = System.Drawing.Color.DimGray;
-            this.muteButton.Location = new System.Drawing.Point(290, 0);
+            this.muteButton.Location = new System.Drawing.Point(230, 0);
             this.muteButton.Name = "muteButton";
             this.muteButton.Size = new System.Drawing.Size(63, 13);
             this.muteButton.TabIndex = 9;
@@ -254,7 +239,7 @@
             this.copyTextButton.AutoSize = true;
             this.copyTextButton.BackColor = System.Drawing.Color.Transparent;
             this.copyTextButton.LinkColor = System.Drawing.Color.DimGray;
-            this.copyTextButton.Location = new System.Drawing.Point(359, 0);
+            this.copyTextButton.Location = new System.Drawing.Point(299, 0);
             this.copyTextButton.Name = "copyTextButton";
             this.copyTextButton.Size = new System.Drawing.Size(50, 13);
             this.copyTextButton.TabIndex = 7;
@@ -269,7 +254,7 @@
             this.shareButton.AutoSize = true;
             this.shareButton.BackColor = System.Drawing.Color.Transparent;
             this.shareButton.LinkColor = System.Drawing.Color.DimGray;
-            this.shareButton.Location = new System.Drawing.Point(415, 0);
+            this.shareButton.Location = new System.Drawing.Point(355, 0);
             this.shareButton.Name = "shareButton";
             this.shareButton.Size = new System.Drawing.Size(33, 13);
             this.shareButton.TabIndex = 6;
@@ -284,7 +269,7 @@
             this.permalinkButton.AutoSize = true;
             this.permalinkButton.BackColor = System.Drawing.Color.Transparent;
             this.permalinkButton.LinkColor = System.Drawing.Color.DimGray;
-            this.permalinkButton.Location = new System.Drawing.Point(454, 0);
+            this.permalinkButton.Location = new System.Drawing.Point(394, 0);
             this.permalinkButton.Name = "permalinkButton";
             this.permalinkButton.Size = new System.Drawing.Size(52, 13);
             this.permalinkButton.TabIndex = 8;
@@ -299,7 +284,7 @@
             this.openInBrowserButton.AutoSize = true;
             this.openInBrowserButton.BackColor = System.Drawing.Color.Transparent;
             this.openInBrowserButton.LinkColor = System.Drawing.Color.DimGray;
-            this.openInBrowserButton.Location = new System.Drawing.Point(512, 0);
+            this.openInBrowserButton.Location = new System.Drawing.Point(452, 0);
             this.openInBrowserButton.Name = "openInBrowserButton";
             this.openInBrowserButton.Size = new System.Drawing.Size(82, 13);
             this.openInBrowserButton.TabIndex = 17;
@@ -315,7 +300,7 @@
             this.reportButton.AutoSize = true;
             this.reportButton.BackColor = System.Drawing.Color.Transparent;
             this.reportButton.LinkColor = System.Drawing.Color.DimGray;
-            this.reportButton.Location = new System.Drawing.Point(600, 0);
+            this.reportButton.Location = new System.Drawing.Point(540, 0);
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(34, 13);
             this.reportButton.TabIndex = 10;
@@ -330,7 +315,7 @@
             this.collapseButton.AutoSize = true;
             this.collapseButton.BackColor = System.Drawing.Color.Transparent;
             this.collapseButton.LinkColor = System.Drawing.Color.DimGray;
-            this.collapseButton.Location = new System.Drawing.Point(640, 0);
+            this.collapseButton.Location = new System.Drawing.Point(580, 0);
             this.collapseButton.Name = "collapseButton";
             this.collapseButton.Size = new System.Drawing.Size(69, 13);
             this.collapseButton.TabIndex = 13;
@@ -345,7 +330,7 @@
             this.lessLink.AutoSize = true;
             this.lessLink.BackColor = System.Drawing.Color.Transparent;
             this.lessLink.LinkColor = System.Drawing.Color.DimGray;
-            this.lessLink.Location = new System.Drawing.Point(715, 0);
+            this.lessLink.Location = new System.Drawing.Point(655, 0);
             this.lessLink.Name = "lessLink";
             this.lessLink.Size = new System.Drawing.Size(25, 13);
             this.lessLink.TabIndex = 18;
@@ -360,7 +345,7 @@
             this.moreLink.AutoSize = true;
             this.moreLink.BackColor = System.Drawing.Color.Transparent;
             this.moreLink.LinkColor = System.Drawing.Color.DimGray;
-            this.moreLink.Location = new System.Drawing.Point(746, 0);
+            this.moreLink.Location = new System.Drawing.Point(686, 0);
             this.moreLink.Name = "moreLink";
             this.moreLink.Size = new System.Drawing.Size(30, 13);
             this.moreLink.TabIndex = 19;
@@ -486,6 +471,5 @@
         private LinkButton lessLink;
         private LinkButton moreLink;
         private LinkButton deleteLink;
-        private LinkButton bookmarkClickCount;
     }
 }

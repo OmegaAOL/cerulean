@@ -1,11 +1,19 @@
 {
   "repo": "gigggity.bsky.social",
-  "collection": "app.bsky.feed.like",
+  "collection": "app.bsky.feed.post",
   "record": {
-    "subject": {
-      "uri": "at://did:plc:ornpixmpy5ts36lh7hmi7wkp/app.bsky.feed.post/3lyxkkyjbas2a",
-      "cid": "bafyreiaigujdksshb5nh2rfcljfkfpw3ekjsdqskshtjwunqjd2pzvi7ka"
-    },
-    "createdAt": "2025-09-16T20:36:56Z"
+    "$type": "app.bsky.feed.post",
+    "text": "yay censorship!!",
+    "createdAt": "2025-10-01T04:29:09Z",
+    "reply": {
+      "root": {
+        "uri": "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3lz7yasblh22p",
+        "cid": "bafyreicck4t533emz4p2d3u3qjhvov3p4lztdwa2lkr3ehwo6axkxf4ls4"
+      },
+      "parent": {
+        "uri": "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3lz7yasblh22p",
+        "cid": "bafyreicck4t533emz4p2d3u3qjhvov3p4lztdwa2lkr3ehwo6axkxf4ls4"
+      }
+    }
   }
 }

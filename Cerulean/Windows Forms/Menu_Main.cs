@@ -88,7 +88,7 @@ namespace Cerulean
 
         private void tweetBoardHandler(JObject response)
         {
-            File.WriteAllText("feedDebug.txt", response.ToString());
+            //File.WriteAllText("feedDebug.txt", response.ToString()); // debug
 
             if (WEH.ErrHandler(response)[2] != "true")
             {
@@ -99,19 +99,12 @@ namespace Cerulean
                 foreach (JObject tweetPackage in tweetArray)
                 {
                     JObject tweet = (JObject)tweetPackage["post"];
-                    TweetControl control = CreateTweetControl(tweetPackage);
-                    tweetBoard.Controls.Add(control);
+                    TweetControl t = new TweetControl();
+                    t.LoadTweetContent(tweetPackage);
+                    tweetBoard.Controls.Add(t);
                 }
             }
         }
-
-        private TweetControl CreateTweetControl(JObject tweetPackage)
-        {
-            TweetControl t = new TweetControl();
-            t.LoadTweetContent(tweetPackage);
-            return t;
-        }
-
 
         private void quickPostButton_Click(object sender, EventArgs e)
         {

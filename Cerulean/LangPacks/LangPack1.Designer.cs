@@ -258,11 +258,38 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No display name.
+        /// </summary>
+        internal static string GLOBAL_DISPLAYNAME_EMPTY {
+            get {
+                return ResourceManager.GetString("GLOBAL_DISPLAYNAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oh no! There was an error in Cerulean. Press OK to continue. .
+        /// </summary>
+        internal static string GLOBAL_ERROR_MESSAGE {
+            get {
+                return ResourceManager.GetString("GLOBAL_ERROR_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill all fields.
         /// </summary>
         internal static string GLOBAL_INFOLABEL_EMPTY_FIELDS {
             get {
                 return ResourceManager.GetString("GLOBAL_INFOLABEL_EMPTY_FIELDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unknown.
+        /// </summary>
+        internal static string GLOBAL_UNKNOWN {
+            get {
+                return ResourceManager.GetString("GLOBAL_UNKNOWN", resourceCulture);
             }
         }
         
@@ -939,6 +966,33 @@ namespace Cerulean.LangPacks {
         internal static string TC_LINKLABEL_REPOSTED {
             get {
                 return ResourceManager.GetString("TC_LINKLABEL_REPOSTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This post does not have any replies..
+        /// </summary>
+        internal static string TVIEW_NOPOSTS {
+            get {
+                return ResourceManager.GetString("TVIEW_NOPOSTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post by.
+        /// </summary>
+        internal static string TVIEW_WINTITLE {
+            get {
+                return ResourceManager.GetString("TVIEW_WINTITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading post thread....
+        /// </summary>
+        internal static string TVIEW_WINTITLE_LOADING {
+            get {
+                return ResourceManager.GetString("TVIEW_WINTITLE_LOADING", resourceCulture);
             }
         }
     }

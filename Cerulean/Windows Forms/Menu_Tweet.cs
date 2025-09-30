@@ -124,14 +124,20 @@ namespace Cerulean
             }
         }
 
+        public bool hasChecked = false;
+
         public void tweetButton_Click(object sender, EventArgs ev)
         {
             string tweetContent = tweetBox.Text;
             tweetButton.Enabled = false;
             progressBar1.Style = ProgressBarStyle.Marquee;
             progressBar1.MarqueeAnimationSpeed = 15;
-            if (spellingCheckBox.Checked && tweetBox.ForeColor == Color.Firebrick)
+            if (spellingCheckBox.Checked && tweetBox.ForeColor == Color.Firebrick && !hasChecked)
+            {
                 content.SpellCheck(tweetContent);
+                hasChecked = true;
+                return;
+            }
 
             if (RegKit.Read.Dword("UserSettings", "DSForComposer") == 1) // digital signature
             {
@@ -159,7 +165,6 @@ namespace Cerulean
                 },
                 (s, evt) =>
                 {
-                    CeruleanBox.Display(evt.Result.ToString());
                     progressBar1.MarqueeAnimationSpeed = 0;
                     progressBar1.Style = ProgressBarStyle.Continuous;
                     tweetButton.Enabled = true;
