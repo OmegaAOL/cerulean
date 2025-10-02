@@ -54,7 +54,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ImageViewer";
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.ImageViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
             this.ResumeLayout(false);

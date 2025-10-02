@@ -13,16 +13,25 @@ This library is currently a static one. This will be changed in the future.
 ===================================================================================*/
 
 using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.ComponentModel;
 using SeasideResearch.LibCurlNet;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using OmegaAOL.OAuth; // DEAL WITH THIS DEPENDENCY!!!
+using OmegaAOL.OAuth; 
+
+/*====================IMPORTANT! IMPORTANT! IMPORTANT! IMPORTANT!=========================
+ 
+ =============================//DEAR PATRICK\\====================================
+I know the code here is pretty messy and there is a hell of a lot of repetition, I havent
+got around to cleaning it up yet. I will.
+ 
+======================IMPORTANT! IMPORTANT! IMPORTANT! IMPORTANT!=========================*/
+
 
 namespace OmegaAOL.SkyBridge
 {
@@ -96,7 +105,7 @@ namespace OmegaAOL.SkyBridge
             CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
         }
 
-        public static JObject Request(string endPoint, object parameters, string header1, string header2, Method reqType, string alternateBase = null) // Handles all requests Cerulean makes to the API.
+        public static JObject Request(string endPoint, object parameters, string[] headers, Method reqType, string alternateBase = null) // Handles all requests Cerulean makes to the API.
         {
             //CurlRequest.Reset();
 
@@ -123,11 +132,13 @@ namespace OmegaAOL.SkyBridge
                 return realSize;
             };
 
-            Slist header = new Slist(); // For headers
-            header.Append(header1);
-            header.Append(header2);
+            Slist headerList = new Slist(); // For headers
+            foreach (string header in headers)
+            {
+                headerList.Append(header);
+            }
 
-            CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, header);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, headerList);
             CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
             CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
             CurlRequest.SetOpt(CURLoption.CURLOPT_TIMEOUT, 10);
@@ -299,10 +310,9 @@ namespace OmegaAOL.SkyBridge
 
             string endPoint = "com.atproto.server.createSession";
             string postFields = postJson.ToString(Formatting.None);
-            string header1 = "Content-Type: application/json";
-            string header2 = String.Empty;
+            string[] headers = new string[1] { "Content-Type: application/json" };
 
-            JObject authResponse = Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            JObject authResponse = Http.Request(endPoint, postFields, headers, Http.Method.Post);
             Refresher.Start(Refresher.Mode.Auto); // starts the 5-min-interval token refreshing method(s)
             return authResponse;
         }
@@ -317,10 +327,9 @@ namespace OmegaAOL.SkyBridge
 
                 string endPoint = "com.atproto.server.requestPasswordReset";
                 string postFields = postJson.ToString(Formatting.None);
-                string header1 = "Content-Type: application/json";
-                string header2 = String.Empty;
+                string[] headers = new string[1] { "Content-Type: application/json" };
 
-                return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+                return Http.Request(endPoint, postFields, headers, Http.Method.Post);
             }
 
             public static JObject Password(string token, string newpass)
@@ -331,10 +340,9 @@ namespace OmegaAOL.SkyBridge
 
                 string endPoint = "com.atproto.server.resetPassword";
                 string postFields = postJson.ToString(Formatting.None);
-                string header1 = "Content-Type: application/json";
-                string header2 = String.Empty;
+                string[] headers = new string[1] { "Content-Type: application/json" };
 
-                return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+                return Http.Request(endPoint, postFields, headers, Http.Method.Post);
             }
         }
 
@@ -371,10 +379,8 @@ namespace OmegaAOL.SkyBridge
             {
                 string endPoint = "com.atproto.server.refreshSession";
                 string postFields = String.Empty;
-                string header1 = "Authorization: Bearer " + Variables.RefreshToken;
-                string header2 = "Accept: application/json";
-
-                JObject refreshBody = Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.RefreshToken, "Accept: application/json"};
+                JObject refreshBody = Http.Request(endPoint, postFields, headers, Http.Method.Post);
                 //WEH.ErrHandler(refreshBody);
                 //Display.Text("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
 
@@ -412,10 +418,9 @@ namespace OmegaAOL.SkyBridge
 
                 string endPoint = "app.bsky.feed.searchPosts";
                 string getParam = "q=" + query;
-                string header1 = "Authorization: Bearer " + Variables.Token;
-                string header2 = "Content-Type: application/json";
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+                return Http.Request(endPoint, getParam, headers, Http.Method.Get);
             }
         }
 
@@ -434,10 +439,9 @@ namespace OmegaAOL.SkyBridge
         {
             string endPoint = "app.bsky.feed.getPostThread";
             string getParam = "uri=" + uri + "&depth=" + depth.ToString() + "&parentHeight=" + parentHeight.ToString();
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            return Http.Request(endPoint, getParam, headers, Http.Method.Get);
         }
 
         public static JObject Reply(string text, JObject parent, JObject root)
@@ -550,14 +554,11 @@ namespace OmegaAOL.SkyBridge
             postJson["collection"] = collection;
             postJson["record"] = record;
 
-            File.WriteAllText("tweet.txt", postJson.ToString());
-
             string endPoint = "com.atproto.repo.createRecord";
             string postFields = postJson.ToString(Formatting.None);
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            return Http.Request(endPoint, postFields, headers, Http.Method.Post);
         }
 
         public static JObject Delete(string collection, string rkey)
@@ -569,10 +570,9 @@ namespace OmegaAOL.SkyBridge
 
             string endPoint = "com.atproto.repo.deleteRecord";
             string postFields = deleteJson.ToString(Formatting.None);
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            return Http.Request(endPoint, postFields, headers, Http.Method.Post);
         }
     }
 
@@ -589,20 +589,18 @@ namespace OmegaAOL.SkyBridge
 
             string endPoint = "com.atproto.server.createAccount";
             string postFields = postJson.ToString(Formatting.None);
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            return Http.Request(endPoint, postFields, headers, Http.Method.Post);
         }
 
         public static JObject Load(string did)
         {
             string endPoint = "app.bsky.actor.getProfile";
             string getParam = "actor=" + did;
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            return Http.Request(endPoint, getParam, headers, Http.Method.Get);
         }
 
         public static class FetchData
@@ -611,10 +609,9 @@ namespace OmegaAOL.SkyBridge
             {
                 string endPoint = "app.bsky.graph.getFollowers";
                 string getParam = "actor=" + did;
-                string header1 = "Authorization: Bearer " + Variables.Token;
-                string header2 = "Content-Type: application/json";
-                MessageBox.Show((Http.Request(endPoint, getParam, header1, header2, Http.Method.Get).ToString()));
-                return (JArray)((Http.Request(endPoint, getParam, header1, header2, Http.Method.Get))["followers"]);
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
+                MessageBox.Show((Http.Request(endPoint, getParam, headers, Http.Method.Get).ToString()));
+                return (JArray)((Http.Request(endPoint, getParam, headers, Http.Method.Get))["followers"]);
             }
         }
 
@@ -648,10 +645,9 @@ namespace OmegaAOL.SkyBridge
         private static string HandleDidFetcher(string endPoint, string tokenName, string input, string ogTokenName)
         {
             string getParam = ogTokenName + "=" + input;
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            JToken result = Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+            JToken result = Http.Request(endPoint, getParam, headers, Http.Method.Get);
             MessageBox.Show(result.ToString());
                 return result.SelectToken(tokenName).ToString();
             
@@ -664,10 +660,9 @@ namespace OmegaAOL.SkyBridge
                 int limit = 100;
                 string endPoint = "app.bsky.actor.searchActorsTypeahead";
                 string getParam = "q=" + Uri.EscapeDataString(search) + "&limit=" + limit.ToString();
-                string header1 = "Authorization: Bearer " + Variables.Token;
-                string header2 = "Content-Type: application/json";
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+                return Http.Request(endPoint, getParam, headers, Http.Method.Get);
             }
         }
     }
@@ -679,10 +674,9 @@ namespace OmegaAOL.SkyBridge
             int limit = 100;
             string endPoint = "app.bsky.notification.listNotifications";
             string getParam = "limit=" + limit.ToString();
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return (JArray)(Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get))["notifications"];
+            return (JArray)(Http.Request(endPoint, String.Empty, headers, Http.Method.Get))["notifications"];
         }
     }
 
@@ -693,11 +687,10 @@ namespace OmegaAOL.SkyBridge
             int limit = 100;
             string endPoint = "chat.bsky.convo.listConvos";
             string getParam = "limit=" + limit.ToString();
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
             string alternateUrl = Variables.ChatAPI;
 
-            return (JArray)(Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get, alternateUrl))["convos"];
+            return (JArray)(Http.Request(endPoint, String.Empty, headers, Http.Method.Get, alternateUrl))["convos"];
         }
     }
 
@@ -706,10 +699,9 @@ namespace OmegaAOL.SkyBridge
         public static JObject GetRecommendations() // Searches for posts
         {
             string endPoint = "app.bsky.feed.getSuggestedFeeds";
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-            return Http.Request(endPoint, String.Empty, header1, header2, Http.Method.Get);
+            return Http.Request(endPoint, String.Empty, headers, Http.Method.Get);
         }
 
         public static class Load
@@ -718,20 +710,18 @@ namespace OmegaAOL.SkyBridge
             {
                 string endPoint = "app.bsky.feed.getTimeline";
                 string getParam = "algorithm=reverse-chronological";
-                string header1 = "Authorization: Bearer " + Variables.Token;
-                string header2 = "Content-Type: application/json";
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+                return Http.Request(endPoint, getParam, headers, Http.Method.Get);
             }
 
             public static JObject Custom(string uri)
             {
                 string endPoint = "app.bsky.feed.getFeed";
                 string getParam = "feed=" + uri;
-                string header1 = "Authorization: Bearer " + Variables.Token;
-                string header2 = "Content-Type: application/json";
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
-                return Http.Request(endPoint, getParam, header1, header2, Http.Method.Get);
+                return Http.Request(endPoint, getParam, headers, Http.Method.Get);
             }
         }
     }
@@ -742,10 +732,9 @@ namespace OmegaAOL.SkyBridge
         {
             string endPoint = "_health";
             string postFields = String.Empty;
-            string header1 = "Content-Type: application/json";
-            string header2 = String.Empty;
+            string[] headers = new string[1] { "Content-Type: application/json" };
 
-            JObject reply = Http.Request(endPoint, postFields, header1, header2, Http.Method.Get);
+            JObject reply = Http.Request(endPoint, postFields, headers, Http.Method.Get);
 
             if (reply.ContainsKey("version"))
             {
@@ -797,12 +786,11 @@ namespace OmegaAOL.SkyBridge
 
             string endPoint = "com.atproto.moderation.createReport";
             string postFields = postJson.ToString(Formatting.None);
-            string header1 = "Authorization: Bearer " + Variables.Token;
-            string header2 = "Content-Type: application/json";
+            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
 
             MessageBox.Show(postFields);
 
-            return Http.Request(endPoint, postFields, header1, header2, Http.Method.Post);
+            return Http.Request(endPoint, postFields, headers, Http.Method.Post);
         }
     }
 
@@ -813,7 +801,7 @@ namespace OmegaAOL.SkyBridge
             StringBuilder responseBuilder = new StringBuilder();
 
             Easy easy = new Easy();
-            easy.SetOpt(CURLoption.CURLOPT_URL, "https://bsky.social/xrpc/com.atproto.repo.uploadBlob");
+            easy.SetOpt(CURLoption.CURLOPT_URL, Variables.PDSHost + "/xrpc/com.atproto.repo.uploadBlob");
             easy.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
 
             // POST with binary body

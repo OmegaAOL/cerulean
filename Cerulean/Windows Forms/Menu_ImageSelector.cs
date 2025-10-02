@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Drawing.Imaging;
+using Cerulean.LangPacks;
 using System.Windows.Forms;
 using OmegaAOL.SkyBridge;
 
@@ -40,6 +41,9 @@ namespace Cerulean
             size = SizeFinder(pic);
             format = FormatFinder(pic);
             detailsLabel.Text = String.Format("{0}x{1} {2}KB {3}", width, height, size, format);
+            this.Text = LangPack.IMAGESEL_WINTITLE;
+            addPictureText.Text = LangPack.IMAGESEL_LABEL_ADD_PICTURE;
+            altTextBox.Text = LangPack.IMAGESEL_TEXTBOXHINT_DESC;
         }
 
         private double SizeFinder(Image img)

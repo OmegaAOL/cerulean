@@ -126,6 +126,12 @@
   <data name="ABOUT_BUTTON_POST_CERULEAN" xml:space="preserve">
     <value>Post about Cerulean</value>
   </data>
+  <data name="ABOUT_CBOX_FEATUREABSENT_DONATIONS" xml:space="preserve">
+    <value>Donations</value>
+  </data>
+  <data name="ABOUT_CBOX_THANKS" xml:space="preserve">
+    <value>Thank you!</value>
+  </data>
   <data name="ABOUT_LABEL_DESCRIPTION" xml:space="preserve">
     <value>Hello, and thanks for using my client! It's currently in the beta stage, which means a fair chunk of stuff
 is incomplete or unimplemented. I would appreciate it if you contacted me about potential
@@ -138,6 +144,9 @@ features (and more) to this client.
 Contact: gigggity@proton.me / gigggity.bsky.social
 
 Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of Bluesky Social, PBC.</value>
+  </data>
+  <data name="ABOUT_TXT_PROMO" xml:space="preserve">
+    <value>I use Cerulean, a Bluesky client for Windows 98 - 11. Try it at</value>
   </data>
   <data name="ABOUT_WINTITLE" xml:space="preserve">
     <value>About Cerulean</value>
@@ -202,6 +211,18 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="GLOBAL_UNKNOWN" xml:space="preserve">
     <value>unknown</value>
   </data>
+  <data name="GLOBAL_YES" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="IMAGESEL_LABEL_ADD_PICTURE" xml:space="preserve">
+    <value>You may add an image to your post:</value>
+  </data>
+  <data name="IMAGESEL_TEXTBOXHINT_DESC" xml:space="preserve">
+    <value>Add a description?</value>
+  </data>
+  <data name="IMAGESEL_WINTITLE" xml:space="preserve">
+    <value>Choose an image</value>
+  </data>
   <data name="IMGVIEWER_WINTITLE" xml:space="preserve">
     <value>Image viewer</value>
   </data>
@@ -256,6 +277,9 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="MAIN_CBOX_ABSENT_DM" xml:space="preserve">
     <value>Direct Messaging</value>
   </data>
+  <data name="MAIN_CBOX_FEATUREABSENT" xml:space="preserve">
+    <value>This feature hasn't been added to Cerulean yet. Check if it's available in the latest version.\n\nFeature:</value>
+  </data>
   <data name="MAIN_QTBOX_PLACEHOLDER" xml:space="preserve">
     <value>What's happening?</value>
   </data>
@@ -298,20 +322,11 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="MAIN_TLABEL_HANDLE_OFFLINE" xml:space="preserve">
     <value>DEBUG: Offline User</value>
   </data>
-  <data name="MAIN_URL_CERULEANGITERRPATH" xml:space="preserve">
-    <value>/issues/new</value>
-  </data>
-  <data name="MAIN_URL_CERULEANGITREPO" xml:space="preserve">
-    <value>http://github.com/OmegaAOL/cerulean</value>
-  </data>
-  <data name="MAIN_URL_CERULEANWEB" xml:space="preserve">
-    <value>http://ceruleanweb.neocities.org/</value>
-  </data>
   <data name="MAIN_WINTITLE" xml:space="preserve">
     <value>Cerulean</value>
   </data>
   <data name="MSG_FIRSTRUN_TERMS" xml:space="preserve">
-    <value>Further use of this program assumes that you have read and agree to the Cerulean Terms (https://ceruleanweb.neocities.org/legal/terms.html).</value>
+    <value>Further use of this program assumes that you have read and agree to the Cerulean Terms, found at</value>
   </data>
   <data name="MSG_WIN9XWARNING" xml:space="preserve">
     <value>You are running a 'legacy kernel' version of Windows (9x/ME/NT4). This comes with a few caveats:\n\n" +
@@ -348,6 +363,48 @@ There is no official support for alternative microblogging services.</value>
   <data name="PDS_WINTITLE" xml:space="preserve">
     <value>Change PDS Host</value>
   </data>
+  <data name="PROFILE_BUTTON_FOLLOW" xml:space="preserve">
+    <value>Follow</value>
+  </data>
+  <data name="PROFILE_BUTTON_UNBLOCK" xml:space="preserve">
+    <value>Unblock</value>
+  </data>
+  <data name="PROFILE_BUTTON_UNFOLLOW" xml:space="preserve">
+    <value>Unfollow</value>
+  </data>
+  <data name="PROFILE_BUTTON_UNMUTE" xml:space="preserve">
+    <value>Unmute</value>
+  </data>
+  <data name="PROFILE_LABEL_OFFLINEUSER" xml:space="preserve">
+    <value>Offline User</value>
+  </data>
+  <data name="PROFILE_LABEL_VERIFIER" xml:space="preserve">
+    <value>Trusted Verifier</value>
+  </data>
+  <data name="REPORT_APPEAL" xml:space="preserve">
+    <value>Appeal a previously taken moderation action</value>
+  </data>
+  <data name="REPORT_CBOX_FILED" xml:space="preserve">
+    <value>Filed as Report #</value>
+  </data>
+  <data name="REPORT_MISLEADING" xml:space="preserve">
+    <value>Misleading identity, affiliation, or content</value>
+  </data>
+  <data name="REPORT_OTHER" xml:space="preserve">
+    <value>Reports not falling under another report category</value>
+  </data>
+  <data name="REPORT_RUDE" xml:space="preserve">
+    <value>Harassing, explicit, or otherwise unwelcoming behavior</value>
+  </data>
+  <data name="REPORT_SEXUAL" xml:space="preserve">
+    <value>Unwanted or mislabeled sexual content</value>
+  </data>
+  <data name="REPORT_SPAM" xml:space="preserve">
+    <value>Frequent unwanted promotion, replies, mentions</value>
+  </data>
+  <data name="REPORT_VIOLATION" xml:space="preserve">
+    <value>Direct violation of server rules, laws, terms of service</value>
+  </data>
   <data name="RESETPW_BUTTON_SEND_EMAIL" xml:space="preserve">
     <value>Send email</value>
   </data>
@@ -377,8 +434,44 @@ reset code that you received in the mail:</value>
   <data name="RESETPW_WINTITLE" xml:space="preserve">
     <value>Reset password</value>
   </data>
+  <data name="SETTINGS_BUTTON_CHECK_UPDATES" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="SETTINGS_LABEL_DS_RESET" xml:space="preserve">
+    <value>Digital Signature reset to default</value>
+  </data>
+  <data name="SETTINGS_LABEL_DS_SAVED" xml:space="preserve">
+    <value>Digital Signature saved</value>
+  </data>
+  <data name="SETTINGS_LABEL_VERSION_CURRENT" xml:space="preserve">
+    <value>You are running version:</value>
+  </data>
+  <data name="SETTINGS_LABEL_VERSION_LATEST" xml:space="preserve">
+    <value>Latest version:</value>
+  </data>
+  <data name="SETTINGS_PAGE_DS" xml:space="preserve">
+    <value>Digital Signature</value>
+  </data>
+  <data name="SETTINGS_PAGE_THEME" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="SETTINGS_PAGE_UPDATES" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="SETTINGS_WINTITLE" xml:space="preserve">
+    <value>Cerulean Preferences</value>
+  </data>
   <data name="TC_LABEL_DELETED" xml:space="preserve">
     <value>deleted post</value>
+  </data>
+  <data name="TC_LABEL_DEPTH" xml:space="preserve">
+    <value>levels deep</value>
+  </data>
+  <data name="TC_LABEL_DEPTH_0" xml:space="preserve">
+    <value>surface level</value>
+  </data>
+  <data name="TC_LABEL_DEPTH_1" xml:space="preserve">
+    <value>1 level deep</value>
   </data>
   <data name="TC_LABEL_LIKE_PLURAL" xml:space="preserve">
     <value>likes</value>
@@ -442,5 +535,20 @@ reset code that you received in the mail:</value>
   </data>
   <data name="TVIEW_WINTITLE_LOADING" xml:space="preserve">
     <value>Loading post thread...</value>
+  </data>
+  <data name="TWEET_LABEL_CHARCOUNT_ONECHAR" xml:space="preserve">
+    <value>1 character left</value>
+  </data>
+  <data name="TWEET_LABEL_CHARCOUNT_REMAINING" xml:space="preserve">
+    <value>{0} characters left</value>
+  </data>
+  <data name="TWEET_TEXTBOX_QUOTE_PRE" xml:space="preserve">
+    <value>Quoting</value>
+  </data>
+  <data name="TWEET_WINTITLE_QUOTE_PRE" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="TWEET_WINTITLE_REPLYTO_PRE" xml:space="preserve">
+    <value>Reply to</value>
   </data>
 </root>

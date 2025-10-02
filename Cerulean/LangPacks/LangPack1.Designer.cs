@@ -88,6 +88,24 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Donations.
+        /// </summary>
+        internal static string ABOUT_CBOX_FEATUREABSENT_DONATIONS {
+            get {
+                return ResourceManager.GetString("ABOUT_CBOX_FEATUREABSENT_DONATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you!.
+        /// </summary>
+        internal static string ABOUT_CBOX_THANKS {
+            get {
+                return ResourceManager.GetString("ABOUT_CBOX_THANKS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello, and thanks for using my client! It&apos;s currently in the beta stage, which means a fair chunk of stuff
         ///is incomplete or unimplemented. I would appreciate it if you contacted me about potential
         ///new features I could add or things I could change.
@@ -101,6 +119,15 @@ namespace Cerulean.LangPacks {
         internal static string ABOUT_LABEL_DESCRIPTION {
             get {
                 return ResourceManager.GetString("ABOUT_LABEL_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I use Cerulean, a Bluesky client for Windows 98 - 11. Try it at.
+        /// </summary>
+        internal static string ABOUT_TXT_PROMO {
+            get {
+                return ResourceManager.GetString("ABOUT_TXT_PROMO", resourceCulture);
             }
         }
         
@@ -294,6 +321,42 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string GLOBAL_YES {
+            get {
+                return ResourceManager.GetString("GLOBAL_YES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may add an image to your post:.
+        /// </summary>
+        internal static string IMAGESEL_LABEL_ADD_PICTURE {
+            get {
+                return ResourceManager.GetString("IMAGESEL_LABEL_ADD_PICTURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a description?.
+        /// </summary>
+        internal static string IMAGESEL_TEXTBOXHINT_DESC {
+            get {
+                return ResourceManager.GetString("IMAGESEL_TEXTBOXHINT_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose an image.
+        /// </summary>
+        internal static string IMAGESEL_WINTITLE {
+            get {
+                return ResourceManager.GetString("IMAGESEL_WINTITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image viewer.
         /// </summary>
         internal static string IMGVIEWER_WINTITLE {
@@ -456,6 +519,15 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This feature hasn&apos;t been added to Cerulean yet. Check if it&apos;s available in the latest version.\n\nFeature:.
+        /// </summary>
+        internal static string MAIN_CBOX_FEATUREABSENT {
+            get {
+                return ResourceManager.GetString("MAIN_CBOX_FEATUREABSENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What&apos;s happening?.
         /// </summary>
         internal static string MAIN_QTBOX_PLACEHOLDER {
@@ -582,33 +654,6 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /issues/new.
-        /// </summary>
-        internal static string MAIN_URL_CERULEANGITERRPATH {
-            get {
-                return ResourceManager.GetString("MAIN_URL_CERULEANGITERRPATH", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to http://github.com/OmegaAOL/cerulean.
-        /// </summary>
-        internal static string MAIN_URL_CERULEANGITREPO {
-            get {
-                return ResourceManager.GetString("MAIN_URL_CERULEANGITREPO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to http://ceruleanweb.neocities.org/.
-        /// </summary>
-        internal static string MAIN_URL_CERULEANWEB {
-            get {
-                return ResourceManager.GetString("MAIN_URL_CERULEANWEB", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cerulean.
         /// </summary>
         internal static string MAIN_WINTITLE {
@@ -618,7 +663,7 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Further use of this program assumes that you have read and agree to the Cerulean Terms (https://ceruleanweb.neocities.org/legal/terms.html)..
+        ///   Looks up a localized string similar to Further use of this program assumes that you have read and agree to the Cerulean Terms, found at.
         /// </summary>
         internal static string MSG_FIRSTRUN_TERMS {
             get {
@@ -716,6 +761,132 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Follow.
+        /// </summary>
+        internal static string PROFILE_BUTTON_FOLLOW {
+            get {
+                return ResourceManager.GetString("PROFILE_BUTTON_FOLLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unblock.
+        /// </summary>
+        internal static string PROFILE_BUTTON_UNBLOCK {
+            get {
+                return ResourceManager.GetString("PROFILE_BUTTON_UNBLOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unfollow.
+        /// </summary>
+        internal static string PROFILE_BUTTON_UNFOLLOW {
+            get {
+                return ResourceManager.GetString("PROFILE_BUTTON_UNFOLLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unmute.
+        /// </summary>
+        internal static string PROFILE_BUTTON_UNMUTE {
+            get {
+                return ResourceManager.GetString("PROFILE_BUTTON_UNMUTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offline User.
+        /// </summary>
+        internal static string PROFILE_LABEL_OFFLINEUSER {
+            get {
+                return ResourceManager.GetString("PROFILE_LABEL_OFFLINEUSER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trusted Verifier.
+        /// </summary>
+        internal static string PROFILE_LABEL_VERIFIER {
+            get {
+                return ResourceManager.GetString("PROFILE_LABEL_VERIFIER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appeal a previously taken moderation action.
+        /// </summary>
+        internal static string REPORT_APPEAL {
+            get {
+                return ResourceManager.GetString("REPORT_APPEAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filed as Report #.
+        /// </summary>
+        internal static string REPORT_CBOX_FILED {
+            get {
+                return ResourceManager.GetString("REPORT_CBOX_FILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misleading identity, affiliation, or content.
+        /// </summary>
+        internal static string REPORT_MISLEADING {
+            get {
+                return ResourceManager.GetString("REPORT_MISLEADING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports not falling under another report category.
+        /// </summary>
+        internal static string REPORT_OTHER {
+            get {
+                return ResourceManager.GetString("REPORT_OTHER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Harassing, explicit, or otherwise unwelcoming behavior.
+        /// </summary>
+        internal static string REPORT_RUDE {
+            get {
+                return ResourceManager.GetString("REPORT_RUDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unwanted or mislabeled sexual content.
+        /// </summary>
+        internal static string REPORT_SEXUAL {
+            get {
+                return ResourceManager.GetString("REPORT_SEXUAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequent unwanted promotion, replies, mentions.
+        /// </summary>
+        internal static string REPORT_SPAM {
+            get {
+                return ResourceManager.GetString("REPORT_SPAM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direct violation of server rules, laws, terms of service.
+        /// </summary>
+        internal static string REPORT_VIOLATION {
+            get {
+                return ResourceManager.GetString("REPORT_VIOLATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send email.
         /// </summary>
         internal static string RESETPW_BUTTON_SEND_EMAIL {
@@ -799,11 +970,119 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        internal static string SETTINGS_BUTTON_CHECK_UPDATES {
+            get {
+                return ResourceManager.GetString("SETTINGS_BUTTON_CHECK_UPDATES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Signature reset to default.
+        /// </summary>
+        internal static string SETTINGS_LABEL_DS_RESET {
+            get {
+                return ResourceManager.GetString("SETTINGS_LABEL_DS_RESET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Signature saved.
+        /// </summary>
+        internal static string SETTINGS_LABEL_DS_SAVED {
+            get {
+                return ResourceManager.GetString("SETTINGS_LABEL_DS_SAVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are running version:.
+        /// </summary>
+        internal static string SETTINGS_LABEL_VERSION_CURRENT {
+            get {
+                return ResourceManager.GetString("SETTINGS_LABEL_VERSION_CURRENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest version:.
+        /// </summary>
+        internal static string SETTINGS_LABEL_VERSION_LATEST {
+            get {
+                return ResourceManager.GetString("SETTINGS_LABEL_VERSION_LATEST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digital Signature.
+        /// </summary>
+        internal static string SETTINGS_PAGE_DS {
+            get {
+                return ResourceManager.GetString("SETTINGS_PAGE_DS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Themes.
+        /// </summary>
+        internal static string SETTINGS_PAGE_THEME {
+            get {
+                return ResourceManager.GetString("SETTINGS_PAGE_THEME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        internal static string SETTINGS_PAGE_UPDATES {
+            get {
+                return ResourceManager.GetString("SETTINGS_PAGE_UPDATES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cerulean Preferences.
+        /// </summary>
+        internal static string SETTINGS_WINTITLE {
+            get {
+                return ResourceManager.GetString("SETTINGS_WINTITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to deleted post.
         /// </summary>
         internal static string TC_LABEL_DELETED {
             get {
                 return ResourceManager.GetString("TC_LABEL_DELETED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to levels deep.
+        /// </summary>
+        internal static string TC_LABEL_DEPTH {
+            get {
+                return ResourceManager.GetString("TC_LABEL_DEPTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to surface level.
+        /// </summary>
+        internal static string TC_LABEL_DEPTH_0 {
+            get {
+                return ResourceManager.GetString("TC_LABEL_DEPTH_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 level deep.
+        /// </summary>
+        internal static string TC_LABEL_DEPTH_1 {
+            get {
+                return ResourceManager.GetString("TC_LABEL_DEPTH_1", resourceCulture);
             }
         }
         
@@ -993,6 +1272,51 @@ namespace Cerulean.LangPacks {
         internal static string TVIEW_WINTITLE_LOADING {
             get {
                 return ResourceManager.GetString("TVIEW_WINTITLE_LOADING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 character left.
+        /// </summary>
+        internal static string TWEET_LABEL_CHARCOUNT_ONECHAR {
+            get {
+                return ResourceManager.GetString("TWEET_LABEL_CHARCOUNT_ONECHAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} characters left.
+        /// </summary>
+        internal static string TWEET_LABEL_CHARCOUNT_REMAINING {
+            get {
+                return ResourceManager.GetString("TWEET_LABEL_CHARCOUNT_REMAINING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quoting.
+        /// </summary>
+        internal static string TWEET_TEXTBOX_QUOTE_PRE {
+            get {
+                return ResourceManager.GetString("TWEET_TEXTBOX_QUOTE_PRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quote.
+        /// </summary>
+        internal static string TWEET_WINTITLE_QUOTE_PRE {
+            get {
+                return ResourceManager.GetString("TWEET_WINTITLE_QUOTE_PRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reply to.
+        /// </summary>
+        internal static string TWEET_WINTITLE_REPLYTO_PRE {
+            get {
+                return ResourceManager.GetString("TWEET_WINTITLE_REPLYTO_PRE", resourceCulture);
             }
         }
     }

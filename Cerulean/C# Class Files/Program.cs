@@ -26,8 +26,8 @@ namespace Cerulean
         {
             if ((RegKit.Read.Dword("UserSettings", "FirstRun")) != 1)
             {
-                CeruleanBox.Display(LangPack.MSG_FIRSTRUN_TERMS);
-                RegKit.Write("\\API", "PDSHost", Global.defaultPDSHost);
+                CeruleanBox.Display(LangPack.MSG_FIRSTRUN_TERMS + " " + WebResources.TERMS + ".");
+                RegKit.Write("\\API", "PDSHost", WebResources.PDS_BLUESKY);
                 RegKit.Write("\\UserSettings", "DigitalSignature", String.Empty);
                 RegKit.Write("\\UserSettings", "FirstRun", 1);
             }

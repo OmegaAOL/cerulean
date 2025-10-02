@@ -451,7 +451,7 @@
             this.connStatusLabel.Name = "connStatusLabel";
             this.connStatusLabel.Padding = new System.Windows.Forms.Padding(6, 0, 5, 0);
             this.connStatusLabel.Size = new System.Drawing.Size(130, 17);
-            this.connStatusLabel.Text = "Cerulean.Placeholder";
+            this.connStatusLabel.Text = "Placeholder text";
             this.connStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // proBar
@@ -474,7 +474,7 @@
             this.handleLabel.BackColor = System.Drawing.Color.Transparent;
             this.handleLabel.Name = "handleLabel";
             this.handleLabel.Size = new System.Drawing.Size(119, 17);
-            this.handleLabel.Text = "Cerulean.Placeholder";
+            this.handleLabel.Text = "Placeholder text";
             this.handleLabel.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // quickPostBox
@@ -484,7 +484,7 @@
             this.quickPostBox.Name = "quickPostBox";
             this.quickPostBox.Size = new System.Drawing.Size(960, 20);
             this.quickPostBox.TabIndex = 3;
-            this.quickPostBox.Text = "Cerulean.Placeholder";
+            this.quickPostBox.Text = "Placeholder text";
             this.quickPostBox.TextChanged += new System.EventHandler(this.quickPostBox_TextChanged);
             this.quickPostBox.Enter += new System.EventHandler(this.quickPostBox_Enter);
             this.quickPostBox.Leave += new System.EventHandler(this.quickPostBox_Leave);
@@ -516,7 +516,7 @@
             this.newPostButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newPostButton.Name = "newPostButton";
             this.newPostButton.Size = new System.Drawing.Size(139, 22);
-            this.newPostButton.Text = "Cerulean.Placeholder";
+            this.newPostButton.Text = "Placeholder text";
             this.newPostButton.Click += new System.EventHandler(this.menuItemTweet_Click);
             // 
             // newDmButton
@@ -525,7 +525,7 @@
             this.newDmButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newDmButton.Name = "newDmButton";
             this.newDmButton.Size = new System.Drawing.Size(139, 22);
-            this.newDmButton.Text = "Cerulean.Placeholder";
+            this.newDmButton.Text = "Placeholder text";
             this.newDmButton.Click += new System.EventHandler(this.menuItemDM_Click);
             // 
             // toolStripSeparator3
@@ -539,7 +539,7 @@
             this.feedSelectorButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.feedSelectorButton.Name = "feedSelectorButton";
             this.feedSelectorButton.Size = new System.Drawing.Size(139, 22);
-            this.feedSelectorButton.Text = "Cerulean.Placeholder";
+            this.feedSelectorButton.Text = "Placeholder text";
             this.feedSelectorButton.Click += new System.EventHandler(this.menuItemReload_Click);
             // 
             // notificationsButton
@@ -548,8 +548,8 @@
             this.notificationsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.notificationsButton.Name = "notificationsButton";
             this.notificationsButton.Size = new System.Drawing.Size(139, 22);
-            this.notificationsButton.Text = "Cerulean.Placeholder";
-            this.notificationsButton.ToolTipText = "Cerulean.Placeholder";
+            this.notificationsButton.Text = "Placeholder text";
+            this.notificationsButton.ToolTipText = "Placeholder text";
             this.notificationsButton.Click += new System.EventHandler(this.notificationsButton_Click);
             // 
             // toolStripSeparator2
@@ -563,7 +563,7 @@
             this.reauthButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reauthButton.Name = "reauthButton";
             this.reauthButton.Size = new System.Drawing.Size(139, 22);
-            this.reauthButton.Text = "Cerulean.Placeholder";
+            this.reauthButton.Text = "Placeholder text";
             this.reauthButton.Click += new System.EventHandler(this.menuItemRefreshToken_Click);
             // 
             // logoutButton
@@ -573,7 +573,7 @@
             this.logoutButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(139, 22);
-            this.logoutButton.Text = "Cerulean.Placeholder";
+            this.logoutButton.Text = "Placeholder text";
             this.logoutButton.Click += new System.EventHandler(this.menuItemLogout_Click);
             // 
             // searchBox
@@ -584,7 +584,7 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 20);
             this.searchBox.TabIndex = 6;
-            this.searchBox.Text = "Cerulean.Placeholder";
+            this.searchBox.Text = "Placeholder text";
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_keyDown);
@@ -663,7 +663,7 @@
             this.MinimumSize = new System.Drawing.Size(1366, 770);
             this.Name = "Menu_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_Main_Close);
             this.Load += new System.EventHandler(this.Menu_Main_Load);
             this.Shown += new System.EventHandler(this.Menu_Main_Shown);

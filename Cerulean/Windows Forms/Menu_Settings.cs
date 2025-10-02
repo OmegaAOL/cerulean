@@ -2,14 +2,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using Cerulean.LangPacks;
 
 namespace Cerulean
 {
     public partial class Menu_Settings : Form
     {
-        /* ===== Constants ===== */
-        private const string LABEL_DS_SAVED = "Digital Signature saved";
-        private const string LABEL_DS_RESET = "Digital Signature reset to default";
+        private string latestVersionFetched = LangPack.GLOBAL_UNKNOWN;
 
         public Menu_Settings()
         {
@@ -18,6 +17,13 @@ namespace Cerulean
             this.MaximumSize = this.Size;
             MaximizeBox = false;
             dsBox.Text = RegKit.Read.String("UserSettings", "DigitalSignature");
+            updateCheckButton.Text = LangPack.SETTINGS_BUTTON_CHECK_UPDATES;
+            this.Text = LangPack.SETTINGS_WINTITLE;
+            currentVersion.Text = LangPack.SETTINGS_LABEL_VERSION_CURRENT + " " + Global.version;
+            latestVersion.Text = LangPack.SETTINGS_LABEL_VERSION_LATEST + " " + latestVersionFetched;
+            updatesPage.Text = LangPack.SETTINGS_PAGE_UPDATES;
+            dsPage.Text = LangPack.SETTINGS_PAGE_DS;
+            themePage.Text = LangPack.SETTINGS_PAGE_THEME;
         }
 
         private void Menu_Settings_Load(object sender, EventArgs e)
@@ -37,7 +43,7 @@ namespace Cerulean
             }
 
             dsBox.Text = RegKit.Read.String("UserSettings", "DigitalSignature");
-            dsLabel.Text = LABEL_DS_SAVED;
+            dsLabel.Text = LangPack.SETTINGS_LABEL_DS_SAVED;
             dsLabel.ForeColor = Color.Green;
         }
 
@@ -46,7 +52,7 @@ namespace Cerulean
             RegKit.Write("\\UserSettings", "DigitalSignature", String.Empty);
             RegKit.Write("\\UserSettings", "DSForQuickPost", 0);
             dsBox.Text = RegKit.Read.String("UserSettings", "DigitalSignature");
-            dsLabel.Text = LABEL_DS_RESET;
+            dsLabel.Text = LangPack.SETTINGS_LABEL_DS_RESET;
             dsLabel.ForeColor = Color.Blue;
         }
 

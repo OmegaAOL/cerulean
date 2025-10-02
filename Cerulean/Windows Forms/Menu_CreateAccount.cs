@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using Cerulean.LangPacks;
 using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
@@ -38,7 +39,7 @@ namespace Cerulean
 
         private void viewTOSButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(Global.bskyTosUrl);
+            Process.Start(WebResources.TERMS_BLUESKY);
         }
 
         private void tosBox_ToggleCheck(object sender, EventArgs e)

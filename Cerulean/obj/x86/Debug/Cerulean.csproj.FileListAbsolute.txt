@@ -94,3 +94,4 @@ D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.pd
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\BouncyCastle.Crypto.dll
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\C# Class Files\SkyBridge.cs
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.ThreadViewer.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.LangPacks.WebResources.resources

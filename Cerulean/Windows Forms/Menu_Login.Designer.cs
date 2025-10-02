@@ -69,7 +69,7 @@ namespace Cerulean
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(158, 18);
             this.header.TabIndex = 2;
-            this.header.Text = "Cerulean.Placeholder";
+            this.header.Text = "Placeholder text";
             // 
             // descriptor
             // 
@@ -83,7 +83,7 @@ namespace Cerulean
             this.descriptor.Name = "descriptor";
             this.descriptor.Size = new System.Drawing.Size(108, 13);
             this.descriptor.TabIndex = 6;
-            this.descriptor.Text = "Cerulean.Placeholder";
+            this.descriptor.Text = "Placeholder text";
             // 
             // handleLabel
             // 
@@ -99,7 +99,7 @@ namespace Cerulean
             this.handleLabel.Name = "handleLabel";
             this.handleLabel.Size = new System.Drawing.Size(99, 13);
             this.handleLabel.TabIndex = 7;
-            this.handleLabel.Text = "Cerulean.Placeholder";
+            this.handleLabel.Text = "Placeholder text";
             this.handleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // passwordLabel
@@ -115,7 +115,7 @@ namespace Cerulean
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(99, 13);
             this.passwordLabel.TabIndex = 8;
-            this.passwordLabel.Text = "Cerulean.Placeholder";
+            this.passwordLabel.Text = "Placeholder text";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // handleBox
@@ -148,7 +148,7 @@ namespace Cerulean
             this.rememberMeBox.Name = "rememberMeBox";
             this.rememberMeBox.Size = new System.Drawing.Size(133, 18);
             this.rememberMeBox.TabIndex = 11;
-            this.rememberMeBox.Text = "Cerulean.Placeholder";
+            this.rememberMeBox.Text = "Placeholder text";
             this.rememberMeBox.UseVisualStyleBackColor = false;
             // 
             // changePdsHostButton
@@ -164,7 +164,7 @@ namespace Cerulean
             this.changePdsHostButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.changePdsHostButton.Size = new System.Drawing.Size(133, 23);
             this.changePdsHostButton.TabIndex = 4;
-            this.changePdsHostButton.Text = "Cerulean.Placeholder";
+            this.changePdsHostButton.Text = "Placeholder text";
             this.changePdsHostButton.UseVisualStyleBackColor = false;
             this.changePdsHostButton.Click += new System.EventHandler(this.changePdsHostButton_Click);
             // 
@@ -191,7 +191,7 @@ namespace Cerulean
             this.newAccountButton.Size = new System.Drawing.Size(108, 13);
             this.newAccountButton.TabIndex = 12;
             this.newAccountButton.TabStop = true;
-            this.newAccountButton.Text = "Cerulean.Placeholder";
+            this.newAccountButton.Text = "Placeholder text";
             this.newAccountButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newAccountButton_LinkClicked);
             // 
             // flowLayoutPanel1
@@ -230,7 +230,7 @@ namespace Cerulean
             this.loginButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.loginButton.Size = new System.Drawing.Size(133, 23);
             this.loginButton.TabIndex = 3;
-            this.loginButton.Text = "Cerulean.Placeholder";
+            this.loginButton.Text = "Placeholder text";
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
@@ -293,7 +293,7 @@ namespace Cerulean
             this.forgotPasswordButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.forgotPasswordButton.Size = new System.Drawing.Size(133, 23);
             this.forgotPasswordButton.TabIndex = 7;
-            this.forgotPasswordButton.Text = "Cerulean.Placeholder";
+            this.forgotPasswordButton.Text = "Placeholder text";
             this.forgotPasswordButton.UseVisualStyleBackColor = false;
             this.forgotPasswordButton.Click += new System.EventHandler(this.forgotPasswordButton_Click);
             // 
@@ -326,7 +326,7 @@ namespace Cerulean
             this.Controls.Add(this.flowLayoutPanel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_Login";
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_Login_Close);
             this.Load += new System.EventHandler(this.Menu_Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

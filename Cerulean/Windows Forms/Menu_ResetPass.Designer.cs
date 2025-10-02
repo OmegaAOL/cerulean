@@ -77,7 +77,7 @@
             this.applyButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.applyButton.Size = new System.Drawing.Size(80, 23);
             this.applyButton.TabIndex = 5;
-            this.applyButton.Text = "Cerulean.Placeholder";
+            this.applyButton.Text = "Placeholder text";
             this.applyButton.UseVisualStyleBackColor = false;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
@@ -96,7 +96,7 @@
             this.cancelButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.cancelButton.Size = new System.Drawing.Size(80, 23);
             this.cancelButton.TabIndex = 6;
-            this.cancelButton.Text = "Cerulean.Placeholder";
+            this.cancelButton.Text = "Placeholder text";
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
             // sendEmButton
@@ -114,7 +114,7 @@
             this.sendEmButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.sendEmButton.Size = new System.Drawing.Size(149, 23);
             this.sendEmButton.TabIndex = 7;
-            this.sendEmButton.Text = "Cerulean.Placeholder";
+            this.sendEmButton.Text = "Placeholder text";
             this.sendEmButton.UseVisualStyleBackColor = false;
             this.sendEmButton.Click += new System.EventHandler(this.sendEmButton_Click);
             // 
@@ -145,7 +145,7 @@
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(76, 13);
             this.passwordLabel.TabIndex = 10;
-            this.passwordLabel.Text = "Cerulean.Placeholder";
+            this.passwordLabel.Text = "Placeholder text";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // codeLabel
@@ -160,7 +160,7 @@
             this.codeLabel.Name = "codeLabel";
             this.codeLabel.Size = new System.Drawing.Size(76, 13);
             this.codeLabel.TabIndex = 11;
-            this.codeLabel.Text = "Cerulean.Placeholder";
+            this.codeLabel.Text = "Placeholder text";
             this.codeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // step2
@@ -172,7 +172,7 @@
             this.step2.Name = "step2";
             this.step2.Size = new System.Drawing.Size(124, 13);
             this.step2.TabIndex = 12;
-            this.step2.Text = "Cerulean.Placeholder";
+            this.step2.Text = "Placeholder text";
             // 
             // emailBox
             // 
@@ -193,7 +193,7 @@
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(76, 13);
             this.emailLabel.TabIndex = 14;
-            this.emailLabel.Text = "Cerulean.Placeholder";
+            this.emailLabel.Text = "Placeholder text";
             this.emailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // infoLabel
@@ -209,7 +209,7 @@
             this.infoLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.infoLabel.Size = new System.Drawing.Size(168, 23);
             this.infoLabel.TabIndex = 15;
-            this.infoLabel.Text = "Cerulean.Placeholder";
+            this.infoLabel.Text = "Placeholder text";
             this.infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // step1
@@ -221,7 +221,7 @@
             this.step1.Name = "step1";
             this.step1.Size = new System.Drawing.Size(124, 13);
             this.step1.TabIndex = 16;
-            this.step1.Text = "Cerulean.Placeholder";
+            this.step1.Text = "Placeholder text";
             // 
             // flowLayoutPanel5
             // 
@@ -313,7 +313,7 @@
             this.MaximumSize = new System.Drawing.Size(372, 311);
             this.MinimumSize = new System.Drawing.Size(372, 311);
             this.Name = "Menu_ResetPass";
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.Menu_ResetPass_Load);
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
