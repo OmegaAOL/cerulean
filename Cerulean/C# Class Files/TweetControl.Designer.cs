@@ -35,6 +35,12 @@
             this.timeAgo = new System.Windows.Forms.Label();
             this.postImage = new System.Windows.Forms.PictureBox();
             this.actionsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.posterHandle = new System.Windows.Forms.Label();
+            this.replyLabel = new System.Windows.Forms.Label();
+            this.depthLabel = new System.Windows.Forms.Label();
+            this.depthPanel = new System.Windows.Forms.Panel();
+            this.posterName = new Cerulean.LinkButton();
             this.replyClickCount = new Cerulean.LinkButton();
             this.repostClickCount = new Cerulean.LinkButton();
             this.quoteClickCount = new Cerulean.LinkButton();
@@ -49,10 +55,6 @@
             this.collapseButton = new Cerulean.LinkButton();
             this.lessLink = new Cerulean.LinkButton();
             this.moreLink = new Cerulean.LinkButton();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.posterName = new Cerulean.LinkButton();
-            this.posterHandle = new System.Windows.Forms.Label();
-            this.replyLabel = new System.Windows.Forms.Label();
             this.expandImageButton = new Cerulean.LinkButton();
             ((System.ComponentModel.ISupportInitialize)(this.likeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postImage)).BeginInit();
@@ -145,6 +147,74 @@
             this.actionsPanel.Name = "actionsPanel";
             this.actionsPanel.Size = new System.Drawing.Size(815, 19);
             this.actionsPanel.TabIndex = 19;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel2.Controls.Add(this.posterName);
+            this.flowLayoutPanel2.Controls.Add(this.posterHandle);
+            this.flowLayoutPanel2.Controls.Add(this.timeAgo);
+            this.flowLayoutPanel2.Controls.Add(this.replyLabel);
+            this.flowLayoutPanel2.Controls.Add(this.depthLabel);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(77, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(566, 16);
+            this.flowLayoutPanel2.TabIndex = 20;
+            // 
+            // posterHandle
+            // 
+            this.posterHandle.AutoSize = true;
+            this.posterHandle.ForeColor = System.Drawing.Color.Black;
+            this.posterHandle.Location = new System.Drawing.Point(63, 0);
+            this.posterHandle.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.posterHandle.Name = "posterHandle";
+            this.posterHandle.Size = new System.Drawing.Size(110, 13);
+            this.posterHandle.TabIndex = 20;
+            this.posterHandle.Text = "@fantasia.bsky.social";
+            // 
+            // replyLabel
+            // 
+            this.replyLabel.AutoSize = true;
+            this.replyLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.replyLabel.Location = new System.Drawing.Point(245, 0);
+            this.replyLabel.Name = "replyLabel";
+            this.replyLabel.Size = new System.Drawing.Size(152, 13);
+            this.replyLabel.TabIndex = 19;
+            this.replyLabel.Text = "(replying to historia.bsky.social)";
+            this.replyLabel.Visible = false;
+            // 
+            // depthLabel
+            // 
+            this.depthLabel.AutoSize = true;
+            this.depthLabel.ForeColor = System.Drawing.Color.SeaGreen;
+            this.depthLabel.Location = new System.Drawing.Point(403, 0);
+            this.depthLabel.Name = "depthLabel";
+            this.depthLabel.Size = new System.Drawing.Size(43, 13);
+            this.depthLabel.TabIndex = 21;
+            this.depthLabel.Text = "depth 1";
+            this.depthLabel.Visible = false;
+            // 
+            // depthPanel
+            // 
+            this.depthPanel.Location = new System.Drawing.Point(0, 0);
+            this.depthPanel.Name = "depthPanel";
+            this.depthPanel.Size = new System.Drawing.Size(6, 98);
+            this.depthPanel.TabIndex = 21;
+            this.depthPanel.Visible = false;
+            // 
+            // posterName
+            // 
+            this.posterName.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+            this.posterName.AutoSize = true;
+            this.posterName.BackColor = System.Drawing.Color.Transparent;
+            this.posterName.LinkColor = System.Drawing.Color.SteelBlue;
+            this.posterName.Location = new System.Drawing.Point(3, 0);
+            this.posterName.Name = "posterName";
+            this.posterName.Size = new System.Drawing.Size(57, 13);
+            this.posterName.TabIndex = 18;
+            this.posterName.TabStop = true;
+            this.posterName.Text = "FanTAStic";
+            this.posterName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.posterName_LinkClicked);
             // 
             // replyClickCount
             // 
@@ -353,55 +423,6 @@
             this.moreLink.Text = "more";
             this.moreLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.moreLink_LinkClicked);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel2.Controls.Add(this.posterName);
-            this.flowLayoutPanel2.Controls.Add(this.posterHandle);
-            this.flowLayoutPanel2.Controls.Add(this.timeAgo);
-            this.flowLayoutPanel2.Controls.Add(this.replyLabel);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(77, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(566, 16);
-            this.flowLayoutPanel2.TabIndex = 20;
-            // 
-            // posterName
-            // 
-            this.posterName.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
-            this.posterName.AutoSize = true;
-            this.posterName.BackColor = System.Drawing.Color.Transparent;
-            this.posterName.LinkColor = System.Drawing.Color.SteelBlue;
-            this.posterName.Location = new System.Drawing.Point(3, 0);
-            this.posterName.Name = "posterName";
-            this.posterName.Size = new System.Drawing.Size(57, 13);
-            this.posterName.TabIndex = 18;
-            this.posterName.TabStop = true;
-            this.posterName.Text = "FanTAStic";
-            this.posterName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.posterName_LinkClicked);
-            // 
-            // posterHandle
-            // 
-            this.posterHandle.AutoSize = true;
-            this.posterHandle.ForeColor = System.Drawing.Color.Black;
-            this.posterHandle.Location = new System.Drawing.Point(63, 0);
-            this.posterHandle.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.posterHandle.Name = "posterHandle";
-            this.posterHandle.Size = new System.Drawing.Size(110, 13);
-            this.posterHandle.TabIndex = 20;
-            this.posterHandle.Text = "@fantasia.bsky.social";
-            // 
-            // replyLabel
-            // 
-            this.replyLabel.AutoSize = true;
-            this.replyLabel.Enabled = false;
-            this.replyLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.replyLabel.Location = new System.Drawing.Point(245, 0);
-            this.replyLabel.Name = "replyLabel";
-            this.replyLabel.Size = new System.Drawing.Size(152, 13);
-            this.replyLabel.TabIndex = 19;
-            this.replyLabel.Text = "(replying to historia.bsky.social)";
-            this.replyLabel.Visible = false;
-            // 
             // expandImageButton
             // 
             this.expandImageButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
@@ -423,6 +444,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.Controls.Add(this.depthPanel);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.actionsPanel);
             this.Controls.Add(this.postImage);
@@ -471,5 +493,7 @@
         private LinkButton lessLink;
         private LinkButton moreLink;
         private LinkButton deleteLink;
+        private System.Windows.Forms.Label depthLabel;
+        private System.Windows.Forms.Panel depthPanel;
     }
 }

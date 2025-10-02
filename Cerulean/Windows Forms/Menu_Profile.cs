@@ -14,15 +14,6 @@ namespace Cerulean
 {
     public partial class Menu_Profile : Form
     {
-        /* ===== Constants ===== */
-        private const string LABEL_YES = "yes";
-        private const string LABEL_OFFLINEUSER = "Offline User";
-        private const string BUTTON_UNMUTE = "Unmute";
-        private const string BUTTON_UNFOLLOW = "Unfollow";
-        private const string BUTTON_FOLLOW = "Follow";
-        private const string BUTTON_UNBLOCK = "Unblock";
-        private const string LABEL_VERIFIER = "Trusted Verifier";
-
         private bool following = false;
 
         private JObject response;
@@ -86,7 +77,7 @@ namespace Cerulean
 
                 if (response["viewer"]["followedBy"] != null)
                 {
-                    followsYouLabel.Text = LABEL_YES;
+                    followsYouLabel.Text = LangPack.GLOBAL_YES.ToLower();
                     followsYou = true;
                 }
 
@@ -99,24 +90,24 @@ namespace Cerulean
 
                 if (response["viewer"]["muted"].ToString() == "true")
                 {
-                    reportButton.Text = BUTTON_UNMUTE;
+                    reportButton.Text = LangPack.PROFILE_BUTTON_UNMUTE;
                 }
 
                 if (response["viewer"]["following"] != null)
                 {
                     following = true;
-                    followButton.Text = BUTTON_UNFOLLOW;
+                    followButton.Text = LangPack.PROFILE_BUTTON_UNFOLLOW;
                 }
 
                 if (response["viewer"]["blocking"] != null)
                 {
-                    blockedLabel.Text = LABEL_YES;
+                    blockedLabel.Text = LangPack.GLOBAL_YES.ToLower();
                 }
 
                 JToken blockedBy = GetSafeToken(response, "viewer", "blockedBy");
                 if (blockedBy != null && blockedBy.ToString() == "true")
                 {
-                    blockButton.Text = BUTTON_UNBLOCK;
+                    blockButton.Text = LangPack.PROFILE_BUTTON_UNBLOCK;
                 }
 
                 JToken createdAt = GetSafeToken(response, "createdAt");
@@ -140,7 +131,7 @@ namespace Cerulean
                     verifiedLabel.Visible = true;
                     verifiedLabel.ForeColor = Color.Firebrick;
                     nicknameLabel.ForeColor = Color.Firebrick;
-                    verifiedLabel.Text = LABEL_VERIFIER;
+                    verifiedLabel.Text = LangPack.PROFILE_LABEL_VERIFIER;
                 }
 
                 if (response["avatar"] != null)
@@ -195,9 +186,9 @@ namespace Cerulean
         private void SetFollowText(bool following)
         {
             if (!following)
-                followButton.Text = BUTTON_FOLLOW;
+                followButton.Text = LangPack.PROFILE_BUTTON_FOLLOW;
             else if (following)
-                followButton.Text = BUTTON_UNFOLLOW;
+                followButton.Text = LangPack.PROFILE_BUTTON_UNFOLLOW;
         }
 
 

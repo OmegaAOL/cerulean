@@ -13,9 +13,9 @@ This library is currently a static one. This will be changed in the future.
 ===================================================================================*/
 
 using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.ComponentModel;
 using SeasideResearch.LibCurlNet;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -801,7 +801,7 @@ namespace OmegaAOL.SkyBridge
             StringBuilder responseBuilder = new StringBuilder();
 
             Easy easy = new Easy();
-            easy.SetOpt(CURLoption.CURLOPT_URL, "https://bsky.social/xrpc/com.atproto.repo.uploadBlob");
+            easy.SetOpt(CURLoption.CURLOPT_URL, Variables.PDSHost + "/xrpc/com.atproto.repo.uploadBlob");
             easy.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
 
             // POST with binary body

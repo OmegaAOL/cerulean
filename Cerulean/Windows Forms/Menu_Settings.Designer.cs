@@ -38,12 +38,12 @@
             this.dsUseForQuickPost = new System.Windows.Forms.CheckBox();
             this.Settings = new System.Windows.Forms.TabControl();
             this.updatesPage = new System.Windows.Forms.TabPage();
-            this.dsPage = new System.Windows.Forms.TabPage();
-            this.ceruleanButton1 = new Cerulean.CeruleanButton();
-            this.themePage = new System.Windows.Forms.TabPage();
+            this.currentVersion = new System.Windows.Forms.Label();
+            this.latestVersion = new System.Windows.Forms.Label();
             this.updateCheckButton = new System.Windows.Forms.Button();
-            this.versionText = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dsPage = new System.Windows.Forms.TabPage();
+            this.themePage = new System.Windows.Forms.TabPage();
+            this.ceruleanButton1 = new Cerulean.CeruleanButton();
             this.Settings.SuspendLayout();
             this.updatesPage.SuspendLayout();
             this.dsPage.SuspendLayout();
@@ -79,7 +79,6 @@
             // 
             // okButton
             // 
-            this.okButton.AutoEllipsis = true;
             this.okButton.AutoSize = true;
             this.okButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.okButton.BackColor = System.Drawing.Color.Transparent;
@@ -96,7 +95,6 @@
             // 
             // applyButton
             // 
-            this.applyButton.AutoEllipsis = true;
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.BackColor = System.Drawing.Color.Transparent;
@@ -145,17 +143,46 @@
             // 
             // updatesPage
             // 
-            this.updatesPage.Controls.Add(this.label1);
-            this.updatesPage.Controls.Add(this.versionText);
+            this.updatesPage.Controls.Add(this.currentVersion);
+            this.updatesPage.Controls.Add(this.latestVersion);
             this.updatesPage.Controls.Add(this.updateCheckButton);
             this.updatesPage.Location = new System.Drawing.Point(4, 22);
             this.updatesPage.Name = "updatesPage";
             this.updatesPage.Padding = new System.Windows.Forms.Padding(3);
             this.updatesPage.Size = new System.Drawing.Size(316, 301);
             this.updatesPage.TabIndex = 0;
-            this.updatesPage.Text = "Updates";
+            this.updatesPage.Text = "Placeholder text";
             this.updatesPage.UseVisualStyleBackColor = true;
             this.updatesPage.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // currentVersion
+            // 
+            this.currentVersion.AutoSize = true;
+            this.currentVersion.Location = new System.Drawing.Point(18, 18);
+            this.currentVersion.Name = "currentVersion";
+            this.currentVersion.Size = new System.Drawing.Size(124, 13);
+            this.currentVersion.TabIndex = 2;
+            this.currentVersion.Text = "Placeholder text";
+            // 
+            // latestVersion
+            // 
+            this.latestVersion.AutoSize = true;
+            this.latestVersion.Location = new System.Drawing.Point(18, 40);
+            this.latestVersion.Name = "latestVersion";
+            this.latestVersion.Size = new System.Drawing.Size(124, 13);
+            this.latestVersion.TabIndex = 1;
+            this.latestVersion.Text = "Placeholder text";
+            // 
+            // updateCheckButton
+            // 
+            this.updateCheckButton.AutoSize = true;
+            this.updateCheckButton.Location = new System.Drawing.Point(21, 60);
+            this.updateCheckButton.Name = "updateCheckButton";
+            this.updateCheckButton.Size = new System.Drawing.Size(134, 23);
+            this.updateCheckButton.TabIndex = 0;
+            this.updateCheckButton.Text = "Placeholder text";
+            this.updateCheckButton.UseVisualStyleBackColor = true;
+            this.updateCheckButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // dsPage
             // 
@@ -167,8 +194,18 @@
             this.dsPage.Padding = new System.Windows.Forms.Padding(3);
             this.dsPage.Size = new System.Drawing.Size(316, 301);
             this.dsPage.TabIndex = 1;
-            this.dsPage.Text = "Digital Signature";
+            this.dsPage.Text = "Placeholder text";
             this.dsPage.UseVisualStyleBackColor = true;
+            // 
+            // themePage
+            // 
+            this.themePage.Location = new System.Drawing.Point(4, 22);
+            this.themePage.Name = "themePage";
+            this.themePage.Padding = new System.Windows.Forms.Padding(3);
+            this.themePage.Size = new System.Drawing.Size(316, 301);
+            this.themePage.TabIndex = 2;
+            this.themePage.Text = "Placeholder text";
+            this.themePage.UseVisualStyleBackColor = true;
             // 
             // ceruleanButton1
             // 
@@ -185,44 +222,6 @@
             this.ceruleanButton1.Text = "Cancel";
             this.ceruleanButton1.UseVisualStyleBackColor = false;
             // 
-            // themePage
-            // 
-            this.themePage.Location = new System.Drawing.Point(4, 22);
-            this.themePage.Name = "themePage";
-            this.themePage.Padding = new System.Windows.Forms.Padding(3);
-            this.themePage.Size = new System.Drawing.Size(316, 301);
-            this.themePage.TabIndex = 2;
-            this.themePage.Text = "Theme";
-            this.themePage.UseVisualStyleBackColor = true;
-            // 
-            // updateCheckButton
-            // 
-            this.updateCheckButton.Location = new System.Drawing.Point(21, 60);
-            this.updateCheckButton.Name = "updateCheckButton";
-            this.updateCheckButton.Size = new System.Drawing.Size(119, 23);
-            this.updateCheckButton.TabIndex = 0;
-            this.updateCheckButton.Text = "Check for updates";
-            this.updateCheckButton.UseVisualStyleBackColor = true;
-            this.updateCheckButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // versionText
-            // 
-            this.versionText.AutoSize = true;
-            this.versionText.Location = new System.Drawing.Point(18, 40);
-            this.versionText.Name = "versionText";
-            this.versionText.Size = new System.Drawing.Size(94, 13);
-            this.versionText.TabIndex = 1;
-            this.versionText.Text = "Latest version: 1.8";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "You are running version 1.7";
-            // 
             // Menu_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,7 +236,7 @@
             this.Controls.Add(this.regInstallUpdate);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_Settings";
-            this.Text = "Cerulean Preferences";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.Menu_Settings_Load);
             this.Settings.ResumeLayout(false);
             this.updatesPage.ResumeLayout(false);
@@ -264,7 +263,7 @@
         private CeruleanButton ceruleanButton1;
         private System.Windows.Forms.TabPage themePage;
         private System.Windows.Forms.Button updateCheckButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label versionText;
+        private System.Windows.Forms.Label currentVersion;
+        private System.Windows.Forms.Label latestVersion;
     }
 }

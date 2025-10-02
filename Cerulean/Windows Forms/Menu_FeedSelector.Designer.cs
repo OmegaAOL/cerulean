@@ -133,7 +133,7 @@
             this.MaximumSize = new System.Drawing.Size(652, 300);
             this.MinimumSize = new System.Drawing.Size(652, 300);
             this.Name = "Menu_FeedSelector";
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.Menu_FeedSelector_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

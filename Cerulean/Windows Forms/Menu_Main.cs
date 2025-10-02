@@ -271,17 +271,17 @@ namespace Cerulean
 
         private void menuItemGotoGitRepo_Click(object sender, EventArgs e)
         {
-            Process.Start(LangPack.MAIN_URL_CERULEANGITREPO);
+            Process.Start(WebResources.REPOSITORY);
         }
 
         private void menuItemGotoCeruleanCom_Click(object sender, EventArgs e)
         {
-            Process.Start(LangPack.MAIN_URL_CERULEANWEB);
+            Process.Start(WebResources.HOMEPAGE);
         }
 
         private void menuItemBugGitFile_Click(object sender, EventArgs e)
         {
-            Process.Start((LangPack.MAIN_URL_CERULEANGITREPO + LangPack.MAIN_URL_CERULEANGITERRPATH));
+            Process.Start((WebResources.REPOSITORY + WebResources.GIT_ERROR_PATH));
         }
 
         private void Menu_Main_Close(object sender, FormClosedEventArgs e)

@@ -62,7 +62,7 @@
             this.applyButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.applyButton.Size = new System.Drawing.Size(81, 23);
             this.applyButton.TabIndex = 1;
-            this.applyButton.Text = "Cerulean.Placeholder";
+            this.applyButton.Text = "Placeholder text";
             this.applyButton.UseVisualStyleBackColor = false;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
@@ -81,7 +81,7 @@
             this.resetButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.resetButton.Size = new System.Drawing.Size(81, 23);
             this.resetButton.TabIndex = 2;
-            this.resetButton.Text = "Cerulean.Placeholder";
+            this.resetButton.Text = "Placeholder text";
             this.resetButton.UseVisualStyleBackColor = false;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
@@ -94,7 +94,7 @@
             this.description.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
             this.description.Size = new System.Drawing.Size(322, 115);
             this.description.TabIndex = 3;
-            this.description.Text = "Cerulean.Placeholder";
+            this.description.Text = "Placeholder text";
             this.description.Click += new System.EventHandler(this.label1_Click);
             // 
             // chkStatus
@@ -112,7 +112,7 @@
             this.chkStatus.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.chkStatus.Size = new System.Drawing.Size(149, 23);
             this.chkStatus.TabIndex = 5;
-            this.chkStatus.Text = "Cerulean.Placeholder";
+            this.chkStatus.Text = "Placeholder text";
             this.chkStatus.UseVisualStyleBackColor = false;
             this.chkStatus.Click += new System.EventHandler(this.chkStatus_Click);
             // 
@@ -155,7 +155,7 @@
             this.MaximumSize = new System.Drawing.Size(2000, 235);
             this.MinimumSize = new System.Drawing.Size(16, 235);
             this.Name = "Menu_ChangePDS";
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.Menu_ChangePDS_Load);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();

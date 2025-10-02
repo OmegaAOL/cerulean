@@ -140,6 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons_Classic.resx</DependentUpon>
     </Compile>
+    <Compile Include="LangPacks\WebResources.Designer.cs">
+      <DependentUpon>WebResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="LangPacks\LangPack1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -249,6 +254,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Icons_Aero.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangPacks\WebResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WebResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Cerulean.LangPacks</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="LangPacks\LangPack.resx">
       <Generator>ResXFileCodeGenerator</Generator>

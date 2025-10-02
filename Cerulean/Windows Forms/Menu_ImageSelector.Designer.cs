@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_ImageSelector));
-            this.label1 = new System.Windows.Forms.Label();
+            this.addPictureText = new System.Windows.Forms.Label();
             this.okButton = new Cerulean.CeruleanButton();
             this.cancelButton = new Cerulean.CeruleanButton();
             this.detailsLabel = new System.Windows.Forms.Label();
@@ -38,23 +38,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // addPictureText
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Do you want to add this picture to your post?";
+            this.addPictureText.AutoSize = true;
+            this.addPictureText.BackColor = System.Drawing.Color.Transparent;
+            this.addPictureText.Location = new System.Drawing.Point(12, 12);
+            this.addPictureText.Margin = new System.Windows.Forms.Padding(0);
+            this.addPictureText.Name = "addPictureText";
+            this.addPictureText.Size = new System.Drawing.Size(124, 13);
+            this.addPictureText.TabIndex = 0;
+            this.addPictureText.Text = "Placeholder text";
             // 
             // okButton
             // 
+            this.okButton.AutoEllipsis = true;
+            this.okButton.AutoSize = true;
+            this.okButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.okButton.BackColor = System.Drawing.Color.Transparent;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.okButton.Location = new System.Drawing.Point(255, 279);
+            this.okButton.MinimumSize = new System.Drawing.Size(75, 23);
             this.okButton.Name = "okButton";
+            this.okButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 1;
             this.okButton.Text = "OK";
@@ -63,10 +68,15 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.AutoEllipsis = true;
+            this.cancelButton.AutoSize = true;
+            this.cancelButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cancelButton.BackColor = System.Drawing.Color.Transparent;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cancelButton.Location = new System.Drawing.Point(174, 279);
+            this.cancelButton.MinimumSize = new System.Drawing.Size(75, 23);
             this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
@@ -91,7 +101,7 @@
             this.altTextBox.Name = "altTextBox";
             this.altTextBox.Size = new System.Drawing.Size(318, 20);
             this.altTextBox.TabIndex = 6;
-            this.altTextBox.Text = "Add a description?";
+            this.altTextBox.Text = "Placeholder text";
             this.altTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.altTextBox.Enter += new System.EventHandler(this.atbEnter);
             this.altTextBox.Leave += new System.EventHandler(this.atbLeave);
@@ -119,10 +129,10 @@
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addPictureText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_ImageSelector";
-            this.Text = "Choose an image";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.Menu_ImageSelector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);
@@ -132,7 +142,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label addPictureText;
         private Cerulean.CeruleanButton okButton;
         private Cerulean.CeruleanButton cancelButton;
         private Cerulean.BorderPicBox picBox;

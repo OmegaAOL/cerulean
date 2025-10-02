@@ -54,7 +54,7 @@
             this.Controls.Add(this.tweetBoard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ThreadViewer";
-            this.Text = "localized string not found";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.ThreadViewer_Load);
             this.ResumeLayout(false);
 

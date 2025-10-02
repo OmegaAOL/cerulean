@@ -21,6 +21,7 @@ namespace Cerulean
         private string repostUri = null;
         private string permalink = String.Empty;
         private string atUri = String.Empty;
+        private string embedType = null;
         private string handle = String.Empty;
         private string did = String.Empty;
         private string cid = String.Empty;
@@ -57,12 +58,11 @@ namespace Cerulean
             }
         }
 
-        public void LoadTweetContent(JObject tweetPackage) // load and set all content in TweetControl from tweetPackage
+        public void LoadTweetContent(JObject tweetPackage, int depth = -1) // load and set all content in TweetControl from tweetPackage
         {
             tweet = tweetPackage["post"] as JObject;  // this is a global variable because it needs to be accessed from outside this function
             reply = tweetPackage["reply"] as JObject; // this is a global variable because it needs to be accessed from outside this function
 
-            string embedType = null;
             string embedThumbURL = null;
             string embedURL = null;
 
@@ -187,6 +187,11 @@ namespace Cerulean
                 }
 
                 expandImageButton.Text = GetExpandButtonText(embedType);
+            }
+
+            if (depth != -1)
+            {
+                AddDepth(depth);
             }
 
         }
@@ -368,7 +373,7 @@ namespace Cerulean
 
             string[] sections = atUri.Substring(5).Split('/');
             if (sections.Length >= 3)
-                return Global.bskyUrl + "/profile/" + sections[0] + "/post/" + sections[2];
+                return WebResources.HOMEPAGE_BLUESKY + "/profile/" + sections[0] + "/post/" + sections[2];
             return String.Empty;
         }
 
@@ -565,7 +570,7 @@ namespace Cerulean
                 if (components != null)
                 {
                     components.Dispose();
-                }
+                } 
             }
             base.Dispose(disposing);
         }
@@ -575,12 +580,57 @@ namespace Cerulean
 
         }
 
+        private void AddDepth(int depth)
+        {
+            viewThreadButton.Visible = false;
+            depthLabel.Visible = true;
+            depthPanel.Visible = true;
+
+            switch (depth)
+            {
+                case 0:
+                    depthLabel.Text = LangPack.TC_LABEL_DEPTH_0;
+                    break;
+                case 1: 
+                    depthLabel.Text = LangPack.TC_LABEL_DEPTH_1;
+                    break;
+                default:
+                    depthLabel.Text = depth++.ToString() + " " + LangPack.TC_LABEL_DEPTH;
+                    break;
+            }
+
+            Color baseColor = ColorTranslator.FromHtml("#00B3FF");
+            depthLabel.ForeColor = DarkenColor(baseColor, depth);
+            depthPanel.BackColor = DarkenColor(baseColor, depth);
+        }
+
+        static Color DarkenColor(Color color, int depth)
+        {
+            float factor = depth / 7f;
+            int r = (int)(color.R * (1 - factor));
+            int g = (int)(color.G * (1 - factor));
+            int b = (int)(color.B * (1 - factor));
+            return Color.FromArgb(color.A, r, g, b);
+        }
+
         private void expandImageButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Image img = null;
-            Async.SkyWorker(
-                delegate { /*CeruleanBox.Display(embedURL);*/ img = Media.Image.Load(embedURL); },
-                delegate { new ImageViewer(img).ShowDialog(); });
+            switch (embedType)
+            {
+                case EmbedType.Image:
+                    Image img = null;
+                    Async.SkyWorker(
+                        delegate { /*CeruleanBox.Display(embedURL);*/ img = Media.Image.Load(embedURL); },
+                        delegate { new ImageViewer(img).ShowDialog(); }
+                        );
+                    break;
+                case EmbedType.Video:
+                    Global.featureAbsent("Video playback");
+                    break;
+                default:
+                    CeruleanBox.Display("Unknown media type. Cannot expand.");
+                    break;
+            }
         }
 
         private void postImage_Click(object sender, EventArgs e)
@@ -604,7 +654,7 @@ namespace Cerulean
             if (link.StartsWith("#"))
             {
                 link = link.Replace("#", String.Empty); // THIS IS JUST TEMPORARY!!!!!!!
-                System.Diagnostics.Process.Start(Global.bskyUrl + "/hashtag/" + link);
+                System.Diagnostics.Process.Start(WebResources.HOMEPAGE_BLUESKY + "/hashtag/" + link);
             }
 
             else

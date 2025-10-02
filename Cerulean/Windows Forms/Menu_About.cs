@@ -8,12 +8,6 @@ namespace Cerulean
 {
     public partial class Menu_About : Form
     {
-        /* ===== Constants ===== */
-        private const string CBOX_ABSENT_FOLLOW = "Follow users";
-        private const string CBOX_THANKS = "Thank you!";
-        private const string TXT_PROMO = "I use Cerulean, a Bluesky client for Windows 98 - 11. Try it at https://ceruleanweb.neocities.org";
-        private const string CBOX_ABSENT_DONATIONS = "Donations";
-
         public Menu_About()
         {
             InitializeComponent();
@@ -44,11 +38,10 @@ namespace Cerulean
             Async.SkyWorker(
                 delegate 
                 {
-                    // Hardcodes DIDs instead of handles. Do not change this behavior. Handles can change while a DID is permanent.
-                    Profile.Follow.Add("did:plc:3eu7dl4zieh66ufh5374dsmw"); // @ceruleanweb.neocities.org (as of Sep 1, 2025)
-                    Profile.Follow.Add("did:plc:lcjzu6ssrwr2ifdvpckvdwew"); // @gigggity.bsky.social (as of Sep 1, 2025)
+                    Profile.Follow.Add(WebResources.DID_CERULEAN); // @ceruleanweb.neocities.org (as of Sep 1, 2025)
+                    Profile.Follow.Add(WebResources.DID_MAINTAINER); // @gigggity.bsky.social (as of Sep 1, 2025)
                 },
-                delegate { CeruleanBox.Display(CBOX_THANKS); }
+                delegate { CeruleanBox.Display(LangPack.ABOUT_CBOX_THANKS); }
             );
         }
 
@@ -56,11 +49,11 @@ namespace Cerulean
         {
             postAbtCerulean.Enabled = false;
             Async.SkyWorker(
-                delegate { Tweet.Create(TXT_PROMO); },
+                delegate { Tweet.Create(LangPack.ABOUT_TXT_PROMO + " " + WebResources.HOMEPAGE); },
                 delegate
                 {
                     postAbtCerulean.Enabled = true;
-                    CeruleanBox.Display(CBOX_THANKS);
+                    CeruleanBox.Display(LangPack.ABOUT_CBOX_THANKS);
                 }
             );
         }
@@ -68,7 +61,7 @@ namespace Cerulean
         private void donateButton_Click(object sender, EventArgs e)
         {
             donateButton.Enabled = false;
-            Global.featureAbsent(CBOX_ABSENT_DONATIONS);
+            Global.featureAbsent(LangPack.ABOUT_CBOX_FEATUREABSENT_DONATIONS);
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

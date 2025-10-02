@@ -72,7 +72,7 @@
             this.nicknameLabel.Name = "nicknameLabel";
             this.nicknameLabel.Size = new System.Drawing.Size(222, 22);
             this.nicknameLabel.TabIndex = 0;
-            this.nicknameLabel.Text = "localized string not found";
+            this.nicknameLabel.Text = "Placeholder text";
             this.nicknameLabel.Visible = false;
             // 
             // handleLabel

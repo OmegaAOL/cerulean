@@ -7,18 +7,12 @@ using OmegaAOL.SkyBridge;
 using System.Text.RegularExpressions;
 using NetSpell.SpellChecker;
 using NetSpell.SpellChecker.Dictionary;
+using Cerulean.LangPacks;
 
 namespace Cerulean
 {
     public partial class Menu_Tweet : Form
     {
-        /* ===== Constants ===== */
-        private const string LABEL_CHARCOUNT_REMAINING = "{0} characters left";
-        private const string LABEL_CHARCOUNT_ONECHAR = "1 character left";
-        private const string WINTITLE_REPLYTO_PRE = "Reply to";
-        private const string WINTITLE_QUOTE_PRE = "Quote";
-        private const string TEXTBOX_QUOTE_PRE = "Quoting";
-
         JObject parent = null, root = null;
         private static Spelling content;
         Tweet.Type type = Tweet.Type.Normal;
@@ -64,12 +58,12 @@ namespace Cerulean
 
         private void SetControlsReply(JObject parent)
         {
-            this.Text = WINTITLE_REPLYTO_PRE + " " + parent["author"]["handle"].ToString();
+            this.Text = LangPack.TWEET_WINTITLE_REPLYTO_PRE + " " + parent["author"]["handle"].ToString();
         }
 
         private void SetControlsQuote(JObject parent)
         {
-            this.Text = WINTITLE_QUOTE_PRE + " " + parent["author"]["handle"].ToString();
+            this.Text = LangPack.TWEET_WINTITLE_QUOTE_PRE + " " + parent["author"]["handle"].ToString();
         }
 
         private void Menu_Tweet_Load(object sender, EventArgs e)
@@ -103,7 +97,7 @@ namespace Cerulean
             progressBar1.Value = tweetBox.TextLength;
             if (tweetBox.TextLength != 299)
             {
-                ccText.Text = (String.Format(LABEL_CHARCOUNT_REMAINING, (300 - tweetBox.TextLength).ToString()));
+                ccText.Text = (String.Format(LangPack.TWEET_LABEL_CHARCOUNT_REMAINING, (300 - tweetBox.TextLength).ToString()));
                 if (tweetBox.TextLength > 290)
                 {
                     ccText.ForeColor = Color.Red;
@@ -119,7 +113,7 @@ namespace Cerulean
             }
             else
             {
-                ccText.Text = LABEL_CHARCOUNT_ONECHAR;
+                ccText.Text = LangPack.TWEET_LABEL_CHARCOUNT_ONECHAR;
                 ccText.ForeColor = Color.Red;
             }
         }

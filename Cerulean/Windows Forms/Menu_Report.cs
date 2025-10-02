@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using OmegaAOL.SkyBridge;
+using Cerulean.LangPacks;
 
 namespace Cerulean
 {
@@ -15,13 +16,13 @@ namespace Cerulean
         /* ===== Constants ===== */
         private static readonly string[] COMBOBOX_REASONS_REPORT = new string[]
         {
-            "Spam: frequent unwanted promotion, replies, mentions",
-            "Violation: Direct violation of server rules, laws, terms of service",
-            "Misleading: Misleading identity, affiliation, or content",
-            "Sexual: Unwanted or mislabeled sexual content",
-            "Rude: Harassing, explicit, or otherwise unwelcoming behavior",
-            "Other: reports not falling under another report category",
-            "Appeal: appeal a previously taken moderation action"
+            "Spam: " + LangPack.REPORT_SPAM,
+            "Violation: " + LangPack.REPORT_VIOLATION,
+            "Misleading: " + LangPack.REPORT_MISLEADING,
+            "Sexual: " + LangPack.REPORT_SEXUAL,
+            "Rude: " + LangPack.REPORT_RUDE,
+            "Other: " + LangPack.REPORT_OTHER,
+            "Appeal: " + LangPack.REPORT_APPEAL
         };
 
         private string uriOrDid, cid;
@@ -68,7 +69,7 @@ namespace Cerulean
                  if (WEH.ErrHandler(response)[2] != "true")
                  {
                      okButton.Enabled = true;
-                     CeruleanBox.Display("Filed as Report #" + response["id"].ToString() + ".");
+                     CeruleanBox.Display(LangPack.REPORT_CBOX_FILED + response["id"].ToString() + ".");
                  }
              }
             );

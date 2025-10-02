@@ -53,7 +53,7 @@
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(500, 13);
             this.description.TabIndex = 1;
-            this.description.Text = "Cerulean.Placeholder";
+            this.description.Text = "Placeholder text";
             this.description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -81,7 +81,7 @@
             this.postAbtCerulean.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.postAbtCerulean.Size = new System.Drawing.Size(133, 23);
             this.postAbtCerulean.TabIndex = 3;
-            this.postAbtCerulean.Text = "Cerulean.Placeholder";
+            this.postAbtCerulean.Text = "Placeholder text";
             this.postAbtCerulean.UseVisualStyleBackColor = true;
             this.postAbtCerulean.Click += new System.EventHandler(this.postAbtCerulean_Click);
             // 
@@ -99,7 +99,7 @@
             this.donateButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.donateButton.Size = new System.Drawing.Size(133, 23);
             this.donateButton.TabIndex = 4;
-            this.donateButton.Text = "Cerulean.Placeholder";
+            this.donateButton.Text = "Placeholder text";
             this.donateButton.UseVisualStyleBackColor = true;
             this.donateButton.Click += new System.EventHandler(this.donateButton_Click);
             // 
@@ -139,7 +139,7 @@
             this.followOmegaButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
             this.followOmegaButton.Size = new System.Drawing.Size(133, 23);
             this.followOmegaButton.TabIndex = 2;
-            this.followOmegaButton.Text = "Cerulean.Placeholder";
+            this.followOmegaButton.Text = "Placeholder text";
             this.followOmegaButton.UseVisualStyleBackColor = true;
             this.followOmegaButton.Click += new System.EventHandler(this.followOmegaButton_Click);
             // 
@@ -176,7 +176,7 @@
             this.MaximumSize = new System.Drawing.Size(571, 3000);
             this.MinimumSize = new System.Drawing.Size(571, 38);
             this.Name = "Menu_About";
-            this.Text = "Cerulean.Placeholder";
+            this.Text = "Placeholder text";
             this.Load += new System.EventHandler(this.Menu_About_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
