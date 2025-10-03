@@ -72,49 +72,56 @@ namespace Cerulean
             this.AcceptButton = tweetButton;
             tweetBox.MaxLength = 300;
             ccText.ForeColor = Color.Green;
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
         }
 
+        private void SpellingHighLighter()
+        {
+            if (spellingCheckBox.Checked)
+            {
+                string[] words = Regex.Split(tweetBox.Text, @"[^A-Za-z'-]+");
+                bool issue = false;
+                foreach (string wordc in words)
+                {
+                    if ((!content.TestWord(wordc)) && wordc.Length > 1 && (wordc.ToUpper() != wordc))
+                        issue = true;
+                }
+                if (issue)
+                    tweetBox.ForeColor = ThemeDefinitions.TextError;
+                else
+                    tweetBox.ForeColor = ThemeDefinitions.Foreground;
+            }
+
+            else
+            {
+                tweetBox.ForeColor = ThemeDefinitions.Foreground;
+            }
+        }
 
         private void tweetBoxActiveChecker(object sender, EventArgs e)
         {
-
-            string[] words = Regex.Split(tweetBox.Text, @"[^A-Za-z'-]+");
-            bool issue = false;
-            foreach (string wordc in words)
-            {
-                if ((!content.TestWord(wordc)) && wordc.Length > 1 && (wordc.ToUpper() != wordc))
-                    issue = true;
-            }
-            if (issue)
-                tweetBox.ForeColor = Color.Firebrick;
-            else
-                tweetBox.ForeColor = Color.Black;
-
-
-
-
+            SpellingHighLighter();
             progressBar1.Value = tweetBox.TextLength;
             if (tweetBox.TextLength != 299)
             {
                 ccText.Text = (String.Format(LangPack.TWEET_LABEL_CHARCOUNT_REMAINING, (300 - tweetBox.TextLength).ToString()));
                 if (tweetBox.TextLength > 290)
                 {
-                    ccText.ForeColor = Color.Red;
+                    ccText.ForeColor = ThemeDefinitions.TextImportant;
                 }
                 else if (tweetBox.TextLength > 250)
                 {
-                    ccText.ForeColor = Color.OrangeRed;
+                    ccText.ForeColor = ThemeDefinitions.TextSemiImportant;
                 }
                 else
                 {
-                    ccText.ForeColor = Color.Green;
+                    ccText.ForeColor = ThemeDefinitions.TextSuccess;
                 }
             }
             else
             {
                 ccText.Text = LangPack.TWEET_LABEL_CHARCOUNT_ONECHAR;
-                ccText.ForeColor = Color.Red;
+                ccText.ForeColor = ThemeDefinitions.TextImportant;
             }
         }
 
@@ -163,6 +170,8 @@ namespace Cerulean
                     progressBar1.Style = ProgressBarStyle.Continuous;
                     tweetButton.Enabled = true;
                     Variables.BlobArray = null;
+                    this.Close();
+                    this.Dispose();
                 }
             );
         }
@@ -195,6 +204,11 @@ namespace Cerulean
                     e.SuppressKeyPress = true; // prevent pasting raw text fallback
                 }
             }
+        }
+
+        private void scBox_CheckedToggled(object sender, EventArgs e)
+        {
+            SpellingHighLighter();
         }
 
     }

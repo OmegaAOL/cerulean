@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(1047, 551);
             this.Controls.Add(this.tweetBoard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

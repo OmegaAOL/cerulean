@@ -23,7 +23,7 @@ namespace Cerulean
             emailBox.Focus();
             CenterToParent();
             LocalizeControls();
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
         }
 
         private void LocalizeControls()
@@ -44,13 +44,13 @@ namespace Cerulean
         {
             if (!(emailBox.Text.Contains("@")))
             {
-                infoLabel.ForeColor = Color.Red;
+                infoLabel.ForeColor = ThemeDefinitions.TextError;
                 infoLabel.Text = LangPack.RESETPW_INFOLABEL_EMAIL_INVALID;
             }
 
             else
             {
-                infoLabel.ForeColor = Color.Blue;
+                infoLabel.ForeColor = ThemeDefinitions.TextAccented;
                 infoLabel.Text = LangPack.RESETPW_INFOLABEL_STRONG_PASSWORD;
                 sendEmButton.Enabled = false;
                 Async.SkyWorker(
@@ -69,13 +69,13 @@ namespace Cerulean
         {
             if (codeBox.Text == String.Empty || passBox.Text == String.Empty)
             {
-                infoLabel.ForeColor = Color.Red;
+                infoLabel.ForeColor = ThemeDefinitions.TextError;
                 infoLabel.Text = LangPack.GLOBAL_INFOLABEL_EMPTY_FIELDS;
             }
 
             else
             {
-                infoLabel.ForeColor = Color.Blue;
+                infoLabel.ForeColor = ThemeDefinitions.TextAccented;
                 infoLabel.Text = LangPack.RESETPW_INFOLABEL_STRONG_PASSWORD;
                 applyButton.Enabled = false;
                 Async.SkyWorker(

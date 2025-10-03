@@ -295,7 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(356, 273);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);

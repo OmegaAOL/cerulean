@@ -27,10 +27,8 @@ namespace Cerulean
         {
             InitializeComponent();
             EnableDoubleBuffer(tweetBoard);
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
-                  ControlStyles.UserPaint |
-                  ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
+
+            //NotificationFetcher(); // TODO async for notifs
             Instance = this;
             _debounceTimer = new Timer();
             _debounceTimer.Interval = 300; // 600 ms debounce delay
@@ -45,7 +43,7 @@ namespace Cerulean
             this.Text = LangPack.MAIN_WINTITLE;
             handleLabel.Text = Variables.Handle;
             connStatusLabel.Text = Global.connectionStatus;
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
             newPostButton.Text = LangPack.MAIN_TBUTTON_NEW_POST;
             newDmButton.Text = LangPack.MAIN_TBUTTON_NEW_DM;
             feedSelectorButton.Text = LangPack.MAIN_TBUTTON_SELECT_FEED;
@@ -128,7 +126,7 @@ namespace Cerulean
         {
             if (quickPostBox.Text == LangPack.MAIN_QTBOX_PLACEHOLDER)
             {
-                quickPostBox.ForeColor = Color.Black;
+                quickPostBox.ForeColor = ThemeDefinitions.Foreground;
                 quickPostBox.Text = String.Empty;
             }
         }
@@ -162,7 +160,7 @@ namespace Cerulean
 
             if (searchBox.Text == LangPack.MAIN_SEARCHBOX_PLACEHOLDER)
             {
-                searchBox.ForeColor = Color.Black;
+                searchBox.ForeColor = ThemeDefinitions.Foreground;
                 searchBox.Text = String.Empty;
             }
         }
@@ -310,7 +308,6 @@ namespace Cerulean
                         {
                             string did = predictionResponse["actors"][0]["did"].ToString();
                             new Menu_Profile(did).ShowDialog();
-
                         }
                     }
                     catch { MessageBox.Show(predictionResponse.ToString()); }
@@ -407,11 +404,14 @@ namespace Cerulean
 
         private void NotificationFetcher()
         {
+            mainTree.Nodes.Clear();
+            mainTree.Nodes.Add("Fetching information...");
             JArray notifications = new JArray();
             Async.SkyWorker(
                 delegate { notifications = Notifications.Fetch(); },
                 delegate
                 {
+                    mainTree.Nodes.Clear();
                     TreeNode parent = mainTree.Nodes.Add("Notifications");
                     //parent.Nodes.Clear();
                     foreach (JObject notification in notifications)
@@ -420,7 +420,7 @@ namespace Cerulean
                         parent.Nodes.Add(text);
                     }
                     parent.ExpandAll();
-                    ChatListFetcher();
+                    FollowerFetcher();
                 }
             );
         }

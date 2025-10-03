@@ -70,6 +70,7 @@
             this.spellingCheckBox.TabIndex = 7;
             this.spellingCheckBox.Text = "Check spelling";
             this.spellingCheckBox.UseVisualStyleBackColor = false;
+            this.spellingCheckBox.CheckedChanged += new System.EventHandler(this.scBox_CheckedToggled);
             // 
             // ccText
             // 

@@ -22,16 +22,7 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using OmegaAOL.OAuth; 
-
-/*====================IMPORTANT! IMPORTANT! IMPORTANT! IMPORTANT!=========================
- 
- =============================//DEAR PATRICK\\====================================
-I know the code here is pretty messy and there is a hell of a lot of repetition, I havent
-got around to cleaning it up yet. I will.
- 
-======================IMPORTANT! IMPORTANT! IMPORTANT! IMPORTANT!=========================*/
-
+using OmegaAOL.OAuth;
 
 namespace OmegaAOL.SkyBridge
 {
@@ -94,37 +85,21 @@ namespace OmegaAOL.SkyBridge
     internal static class Http
     {
         public enum Method { Post, Get, PostRaw };
-        private static Easy CurlRequest;
+        private static Multi CurlRequestPool;
 
         static Http()
         {
-            Curl.GlobalInit(3); // Curl.GlobalInit accepts multiple ints. 0 is no network-related stuff, 1 is SSL only, 2 is WinSock only and 3 is everything. ONLY USE 0 AND 3
-            CurlRequest = new Easy();
-            // You may also want to enable connection reuse
-            CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
-            CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
+            Curl.GlobalInit((int)CURLinitFlag.CURL_GLOBAL_DEFAULT);
+            CurlRequestPool = new Multi();
         }
 
         public static JObject Request(string endPoint, object parameters, string[] headers, Method reqType, string alternateBase = null) // Handles all requests Cerulean makes to the API.
         {
-            //CurlRequest.Reset();
+            Easy CurlRequest = new Easy();
+            JObject response = new JObject();
+            string url = (alternateBase ?? Variables.PDSHost) + "/xrpc/" + endPoint;
 
-            bool silent = false;
-            bool curlErrorThrown = false;
-            string url, urlparameters = String.Empty;
             StringBuilder jsonBuilder = new StringBuilder(); // the stringbuilder is because large messages are downloaded in chunks
-            JObject invalidJson = new JObject(), curlerror = new JObject(), response = new JObject();
-            string baseUrl;
-            if (alternateBase != null)
-                baseUrl = alternateBase;
-            else
-                baseUrl = Variables.PDSHost;
-            invalidJson["error"] = "Invalid response from server";
-            invalidJson["message"] = "The PDS returned a response that Cerulean cannot process.";
-
-            if (reqType == Http.Method.Get) { urlparameters = "?" + parameters; }
-            url = baseUrl + "/xrpc/" + endPoint + urlparameters;
-
             Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData) // Downloads the server response
             {
                 int realSize = size * nmemb;
@@ -132,96 +107,77 @@ namespace OmegaAOL.SkyBridge
                 return realSize;
             };
 
-            Slist headerList = new Slist(); // For headers
+            Slist headerList = new Slist(); 
             foreach (string header in headers)
             {
                 headerList.Append(header);
             }
 
-            CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, headerList);
-            CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url); // Easy mode - setting options for upload
-            CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-            CurlRequest.SetOpt(CURLoption.CURLOPT_TIMEOUT, 10);
-            CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
-            //CurlRequest.SetOpt(CURLoption.CURLOPT_VERBOSE, true);
-            CurlRequest.SetOpt(CURLoption.CURLOPT_DEBUGFUNCTION, new Easy.DebugFunction(OnDebug));
-
-            if (reqType != Method.Get)
+            switch (reqType)
             {
-                CurlRequest.SetOpt(CURLoption.CURLOPT_POST, true);
-
-                if (reqType == Method.PostRaw)
-                {
+                case Method.Get:
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
+                    url = url + "?" + parameters;
+                    break;
+                case Method.Post:
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_POST, true);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_POSTFIELDS, parameters);
+                    break;
+                case Method.PostRaw:
                     CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, new Easy.WriteFunction((data, size, nmemb, extraData) =>
                     {
                         string responsse = Encoding.UTF8.GetString(data, 0, size * nmemb);
                         Console.WriteLine(responsse);
                         return size * nmemb;
                     }));
-                }
-
-                else if (reqType == Method.Post)
-                {
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_POSTFIELDS, parameters);
-                }
+                    break;
             }
 
-            else 
-            {
-                CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
-            }
+            CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, headerList);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+            CurlRequest.SetOpt(CURLoption.CURLOPT_TIMEOUT, 10);
+            CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+            //CurlRequest.SetOpt(CURLoption.CURLOPT_VERBOSE, true);
+            //CurlRequest.SetOpt(CURLoption.CURLOPT_DEBUGFUNCTION, new Easy.DebugFunction(OnDebug));
 
             try
             {
-                CURLcode code = CurlRequest.Perform();
-                if (code != CURLcode.CURLE_OK)
-                {
-                    if (!silent)
-                    {
-                        // Error.Throw(CurlRequest, code);
-                        curlerror["error"] = code.ToString();
-                        curlerror["message"] = code.ToString();
-                    }
+                CurlRequestPool.AddHandle(CurlRequest);
 
-                    response = curlerror;
-                    curlErrorThrown = true;
+                int stillRunning = 0;
+                CURLMcode code;
+
+                do
+                {
+                    code = CurlRequestPool.Perform(ref stillRunning);
+                }
+                while (stillRunning > 0);
+
+                CurlRequestPool.RemoveHandle(CurlRequest);
+                CurlRequest.Cleanup();
+
+                if (code != CURLMcode.CURLM_OK)
+                {
+                    response["error"] = code.ToString();
+                    response["message"] = code.ToString();
                 }
             }
 
             catch (Exception ex)
             {
-                if (!silent)
-                {
-                    Display.Text(ex.Message);
-                }
+                Display.Text(ex.Message);
             }
 
             try
             {
-                if (!curlErrorThrown)
-                {
-                    response = JObject.Parse(jsonBuilder.ToString());
-                }
-                else
-                {
-                    response = curlerror;
-                }
+                response = JObject.Parse(jsonBuilder.ToString());
             }
-            catch (Exception ex) { Display.Text(ex.Message); response = invalidJson; }
 
-            try
+            catch 
             {
-                //CurlRequest.Cleanup(); // Clean up residue               
-            }
-            catch { }
-
-            // Display.Text("Prereturn"); // DEBUG
-            // return JObject.Parse(response);
-            // Display.Text(response);
-
-            if (response == null)
-            {
-                response["error"] = "noResponse";
+                response["error"] = "Invalid response from server";
+                response["message"] = "The PDS returned a response that Cerulean cannot process.";
             }
 
             return response;
@@ -379,7 +335,7 @@ namespace OmegaAOL.SkyBridge
             {
                 string endPoint = "com.atproto.server.refreshSession";
                 string postFields = String.Empty;
-                string[] headers = new string[2] { "Authorization: Bearer " + Variables.RefreshToken, "Accept: application/json"};
+                string[] headers = new string[2] { "Authorization: Bearer " + Variables.RefreshToken, "Accept: application/json" };
                 JObject refreshBody = Http.Request(endPoint, postFields, headers, Http.Method.Post);
                 //WEH.ErrHandler(refreshBody);
                 //Display.Text("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
@@ -649,8 +605,8 @@ namespace OmegaAOL.SkyBridge
 
             JToken result = Http.Request(endPoint, getParam, headers, Http.Method.Get);
             MessageBox.Show(result.ToString());
-                return result.SelectToken(tokenName).ToString();
-            
+            return result.SelectToken(tokenName).ToString();
+
         }
 
         public static class Search

@@ -8,12 +8,8 @@ namespace Cerulean
 {
     public class BorderPanel : FlowLayoutPanel
     {
-        private const int ScrollStep = 150;
-
         public BorderPanel()
         {
-            this.DoubleBuffered = true;
-            this.ResizeRedraw = true;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -23,30 +19,6 @@ namespace Cerulean
             {
                 e.Graphics.DrawRectangle(p, 0, 0, this.Width - 1, this.Height - 1);
             }
-        }
-
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            // Clear properly so no "lines" remain after scrolling
-            e.Graphics.Clear(this.BackColor);
-            base.OnPaintBackground(e);
-        }
-
-        protected override void OnMouseWheel(MouseEventArgs e)
-        {
-            if (this.VerticalScroll.Visible)
-            {
-                int newValue = this.VerticalScroll.Value - Math.Sign(e.Delta) * ScrollStep;
-
-                // Clamp to min/max
-                if (newValue < this.VerticalScroll.Minimum) newValue = this.VerticalScroll.Minimum;
-                if (newValue > this.VerticalScroll.Maximum) newValue = this.VerticalScroll.Maximum;
-
-                this.VerticalScroll.Value = newValue;
-                this.PerformLayout(); // forces scroll update
-            }
-
-            base.OnMouseWheel(e);
         }
     }
 

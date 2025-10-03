@@ -64,7 +64,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.Firebrick;
+            this.label2.ForeColor = ThemeDefinitions.TextImportant;
             this.label2.Location = new System.Drawing.Point(14, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
@@ -75,7 +75,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label3.ForeColor = ThemeDefinitions.TextSemiImportant;
             this.label3.Location = new System.Drawing.Point(14, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
@@ -87,7 +87,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label4.ForeColor = ThemeDefinitions.TextSemiImportant;
             this.label4.Location = new System.Drawing.Point(14, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
@@ -110,7 +110,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.ForeColor = ThemeDefinitions.TextLowContrast;
             this.label6.Location = new System.Drawing.Point(14, 357);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
@@ -157,7 +157,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.ForeColor = ThemeDefinitions.TextLowContrast;
             this.label7.Location = new System.Drawing.Point(15, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 13);
@@ -177,7 +177,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.ForeColor = ThemeDefinitions.TextLowContrast;
             this.label8.Location = new System.Drawing.Point(15, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
@@ -243,7 +243,7 @@
             this.viewTOSButton.ActiveLinkColor = System.Drawing.SystemColors.HotTrack;
             this.viewTOSButton.AutoSize = true;
             this.viewTOSButton.BackColor = System.Drawing.Color.Transparent;
-            this.viewTOSButton.LinkColor = System.Drawing.Color.SteelBlue;
+            this.viewTOSButton.LinkColor = ThemeDefinitions.TextAccented;
             this.viewTOSButton.Location = new System.Drawing.Point(91, 389);
             this.viewTOSButton.Name = "viewTOSButton";
             this.viewTOSButton.Size = new System.Drawing.Size(76, 13);
@@ -256,7 +256,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(368, 423);
             this.Controls.Add(this.viewTOSButton);
             this.Controls.Add(this.tosBox);

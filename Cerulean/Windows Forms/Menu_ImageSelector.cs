@@ -32,7 +32,7 @@ namespace Cerulean
 
         private void Menu_ImageSelector_Load(object sender, EventArgs e)
         {
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
             picBox.Image = pic;
             CenterToParent();
             this.AcceptButton = okButton;
@@ -124,7 +124,7 @@ namespace Cerulean
             }
         }
 
-        private void atbEnter(object sender, EventArgs e) { atbFocusText("Add a description?", String.Empty, Color.Black); }
+        private void atbEnter(object sender, EventArgs e) { atbFocusText("Add a description?", String.Empty, ThemeDefinitions.Foreground); }
         private void atbLeave(object sender, EventArgs e) { atbFocusText(String.Empty, "Add a description?", Color.DarkGray); }
         
     }

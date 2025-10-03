@@ -20,7 +20,7 @@ namespace Cerulean
         {
             CenterToParent();
             this.AcceptButton = postAbtCerulean;
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
             LocalizeControls();
         }
 
