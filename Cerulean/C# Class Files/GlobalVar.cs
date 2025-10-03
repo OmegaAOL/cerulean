@@ -16,17 +16,26 @@ namespace Cerulean
         }
     }
 
-    public static class ResDef
+    public static class ThemeDefinitions
     {
-        public static readonly Color ForeDefault = Color.SteelBlue;
-        public static readonly Color ForeAlternate = Color.DarkCyan;
-        public static readonly Color ForeEsteemed = Color.DarkGoldenrod;
-        public static readonly Color ForeError = Color.Firebrick;
-        public static readonly Color TextHard = Color.Black;
-        public static readonly Color TextSoft = Color.DimGray;
-        public static readonly Color BgHard = Color.White;
-        public static readonly Color BgSoft = Color.Gainsboro;
-        public static readonly Color Border = Color.DarkGray;
-        public static readonly Image BgImage = CeruleanArt.pinstripesblue;
+        public static readonly Color TextLowContrast = Color.DimGray;
+        public static readonly Color TextHighContrast = Color.DarkGray;
+        public static readonly Color TextAccented = Color.SteelBlue;
+        public static readonly Color TextVerified = Color.DarkGoldenrod;
+        public static readonly Color TextSuperVerified = Color.Firebrick;
+        public static readonly Color TextSuccess = Color.ForestGreen;
+        public static readonly Color TextError = Color.Firebrick;
+        public static readonly Color TextImportant = Color.Firebrick;
+        public static readonly Color TextSemiImportant = Color.OrangeRed;
+
+        public static readonly Color Foreground = Color.Black;
+        public static readonly Color Border = Color.Gainsboro;
+        public static readonly Image Background = CeruleanArt.pinstripesblue;
+        public static readonly Color BackgroundColor = Color.LightGray;
+        public static readonly Color BackgroundPanel = Color.WhiteSmoke;
+        public static readonly Color BackgroundBoxes = Color.White;
+
+        public static readonly Color DepthIndicatorBase = ColorTranslator.FromHtml("#00B3FF");
+        public static readonly Color TransparencySubstitute = Color.Magenta;
     }
 }

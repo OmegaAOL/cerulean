@@ -67,7 +67,7 @@
             this.nicknameLabel.AutoEllipsis = true;
             this.nicknameLabel.BackColor = System.Drawing.Color.Transparent;
             this.nicknameLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nicknameLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.nicknameLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.nicknameLabel.Location = new System.Drawing.Point(13, 14);
             this.nicknameLabel.Name = "nicknameLabel";
             this.nicknameLabel.Size = new System.Drawing.Size(222, 22);
@@ -79,7 +79,7 @@
             // 
             this.handleLabel.AutoEllipsis = true;
             this.handleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.handleLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.handleLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.handleLabel.Location = new System.Drawing.Point(15, 38);
             this.handleLabel.Name = "handleLabel";
             this.handleLabel.Size = new System.Drawing.Size(220, 13);
@@ -119,7 +119,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label4.Location = new System.Drawing.Point(15, 60);
             this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.label4.Name = "label4";
@@ -132,7 +132,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label5.Location = new System.Drawing.Point(15, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
@@ -144,7 +144,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label6.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label6.Location = new System.Drawing.Point(133, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
@@ -156,7 +156,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label7.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label7.Location = new System.Drawing.Point(15, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
@@ -168,7 +168,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label8.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label8.Location = new System.Drawing.Point(15, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 13);
@@ -180,7 +180,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label9.Location = new System.Drawing.Point(133, 90);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 13);
@@ -217,7 +217,7 @@
             // 
             this.followersLabel.AutoSize = true;
             this.followersLabel.BackColor = System.Drawing.Color.Transparent;
-            this.followersLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.followersLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.followersLabel.Location = new System.Drawing.Point(64, 60);
             this.followersLabel.Margin = new System.Windows.Forms.Padding(0);
             this.followersLabel.Name = "followersLabel";
@@ -230,7 +230,7 @@
             // 
             this.followingLabel.AutoSize = true;
             this.followingLabel.BackColor = System.Drawing.Color.Transparent;
-            this.followingLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.followingLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.followingLabel.Location = new System.Drawing.Point(64, 75);
             this.followingLabel.Margin = new System.Windows.Forms.Padding(0);
             this.followingLabel.Name = "followingLabel";
@@ -243,7 +243,7 @@
             // 
             this.mutualsLabel.AutoSize = true;
             this.mutualsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.mutualsLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.mutualsLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.mutualsLabel.Location = new System.Drawing.Point(96, 90);
             this.mutualsLabel.Margin = new System.Windows.Forms.Padding(0);
             this.mutualsLabel.Name = "mutualsLabel";
@@ -256,7 +256,7 @@
             // 
             this.postsLabel.AutoSize = true;
             this.postsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.postsLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.postsLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.postsLabel.Location = new System.Drawing.Point(164, 60);
             this.postsLabel.Margin = new System.Windows.Forms.Padding(0);
             this.postsLabel.Name = "postsLabel";
@@ -269,7 +269,7 @@
             // 
             this.joinedLabel.AutoSize = true;
             this.joinedLabel.BackColor = System.Drawing.Color.Transparent;
-            this.joinedLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.joinedLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.joinedLabel.Location = new System.Drawing.Point(52, 105);
             this.joinedLabel.Margin = new System.Windows.Forms.Padding(0);
             this.joinedLabel.Name = "joinedLabel";
@@ -282,7 +282,7 @@
             // 
             this.blockedLabel.AutoSize = true;
             this.blockedLabel.BackColor = System.Drawing.Color.Transparent;
-            this.blockedLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.blockedLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.blockedLabel.Location = new System.Drawing.Point(191, 90);
             this.blockedLabel.Margin = new System.Windows.Forms.Padding(0);
             this.blockedLabel.Name = "blockedLabel";
@@ -314,7 +314,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label23.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label23.Location = new System.Drawing.Point(133, 105);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(65, 13);
@@ -326,7 +326,7 @@
             // 
             this.followsYouLabel.AutoSize = true;
             this.followsYouLabel.BackColor = System.Drawing.Color.Transparent;
-            this.followsYouLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.followsYouLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.followsYouLabel.Location = new System.Drawing.Point(194, 105);
             this.followsYouLabel.Margin = new System.Windows.Forms.Padding(0);
             this.followsYouLabel.Name = "followsYouLabel";
@@ -339,7 +339,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.ForeColor = ThemeDefinitions.TextHighContrast;
             this.label1.Location = new System.Drawing.Point(133, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
@@ -351,7 +351,7 @@
             // 
             this.allowChatLabel.AutoSize = true;
             this.allowChatLabel.BackColor = System.Drawing.Color.Transparent;
-            this.allowChatLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.allowChatLabel.ForeColor = ThemeDefinitions.TextAccented;
             this.allowChatLabel.Location = new System.Drawing.Point(188, 75);
             this.allowChatLabel.Margin = new System.Windows.Forms.Padding(0);
             this.allowChatLabel.Name = "allowChatLabel";
@@ -365,8 +365,8 @@
             this.expandLabel.ActiveLinkColor = System.Drawing.Color.Maroon;
             this.expandLabel.BackColor = System.Drawing.Color.Transparent;
             this.expandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expandLabel.ForeColor = System.Drawing.Color.SteelBlue;
-            this.expandLabel.LinkColor = System.Drawing.Color.SteelBlue;
+            this.expandLabel.ForeColor = ThemeDefinitions.TextAccented;
+            this.expandLabel.LinkColor = ThemeDefinitions.TextAccented;
             this.expandLabel.Location = new System.Drawing.Point(241, 101);
             this.expandLabel.Name = "expandLabel";
             this.expandLabel.Size = new System.Drawing.Size(89, 13);
@@ -444,7 +444,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(342, 267);
             this.Controls.Add(this.expandLabel);
             this.Controls.Add(this.bioPanel);

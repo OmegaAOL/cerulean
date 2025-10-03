@@ -226,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(351, 380);
             this.Controls.Add(this.ceruleanButton1);
             this.Controls.Add(this.Settings);

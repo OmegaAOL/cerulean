@@ -21,7 +21,7 @@ namespace Cerulean
         {
             CenterToParent();
             LocalizeControlText();
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
             this.AcceptButton = applyButton;
             pdshostbox.Text = RegKit.Read.String("API", "PDSHost");
         }

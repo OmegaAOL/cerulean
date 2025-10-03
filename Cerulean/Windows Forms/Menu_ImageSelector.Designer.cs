@@ -87,7 +87,7 @@
             // 
             this.detailsLabel.AutoSize = true;
             this.detailsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.detailsLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.detailsLabel.ForeColor = ThemeDefinitions.TextHighContrast;
             this.detailsLabel.Location = new System.Drawing.Point(12, 219);
             this.detailsLabel.Name = "detailsLabel";
             this.detailsLabel.Size = new System.Drawing.Size(124, 13);
@@ -96,7 +96,7 @@
             // 
             // altTextBox
             // 
-            this.altTextBox.ForeColor = System.Drawing.Color.DarkGray;
+            this.altTextBox.ForeColor = ThemeDefinitions.TextHighContrast;
             this.altTextBox.Location = new System.Drawing.Point(12, 246);
             this.altTextBox.Name = "altTextBox";
             this.altTextBox.Size = new System.Drawing.Size(318, 20);
@@ -108,7 +108,7 @@
             // 
             // picBox
             // 
-            this.picBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.picBox.BackColor = ThemeDefinitions.BackgroundBoxes;
             this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.picBox.Location = new System.Drawing.Point(12, 37);
             this.picBox.Name = "picBox";

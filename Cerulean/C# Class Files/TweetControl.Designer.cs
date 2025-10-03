@@ -64,11 +64,10 @@
             // 
             // postText
             // 
-            this.postText.ActiveLinkColor = System.Drawing.Color.DodgerBlue;
             this.postText.BackColor = System.Drawing.Color.Transparent;
             this.postText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postText.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
-            this.postText.LinkColor = System.Drawing.Color.SteelBlue;
+            this.postText.LinkColor = ThemeDefinitions.TextAccented;
             this.postText.Location = new System.Drawing.Point(80, 22);
             this.postText.MaximumSize = new System.Drawing.Size(815, 45);
             this.postText.MinimumSize = new System.Drawing.Size(815, 45);
@@ -81,6 +80,7 @@
             // likeButton
             // 
             this.likeButton.BackColor = System.Drawing.Color.Transparent;
+            this.likeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.likeButton.Image = global::Cerulean.CeruleanArt.upInactive;
             this.likeButton.Location = new System.Drawing.Point(12, 10);
             this.likeButton.Name = "likeButton";
@@ -106,7 +106,7 @@
             // 
             this.timeAgo.AutoSize = true;
             this.timeAgo.BackColor = System.Drawing.Color.Transparent;
-            this.timeAgo.ForeColor = System.Drawing.Color.DimGray;
+            this.timeAgo.ForeColor = ThemeDefinitions.TextLowContrast;
             this.timeAgo.Location = new System.Drawing.Point(176, 0);
             this.timeAgo.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.timeAgo.Name = "timeAgo";
@@ -164,7 +164,7 @@
             // posterHandle
             // 
             this.posterHandle.AutoSize = true;
-            this.posterHandle.ForeColor = System.Drawing.Color.Black;
+            this.posterHandle.ForeColor = ThemeDefinitions.Foreground;
             this.posterHandle.Location = new System.Drawing.Point(63, 0);
             this.posterHandle.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.posterHandle.Name = "posterHandle";
@@ -175,7 +175,7 @@
             // replyLabel
             // 
             this.replyLabel.AutoSize = true;
-            this.replyLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.replyLabel.ForeColor = ThemeDefinitions.TextLowContrast;
             this.replyLabel.Location = new System.Drawing.Point(245, 0);
             this.replyLabel.Name = "replyLabel";
             this.replyLabel.Size = new System.Drawing.Size(152, 13);
@@ -186,7 +186,7 @@
             // depthLabel
             // 
             this.depthLabel.AutoSize = true;
-            this.depthLabel.ForeColor = System.Drawing.Color.SeaGreen;
+            this.depthLabel.ForeColor = ThemeDefinitions.Foreground;
             this.depthLabel.Location = new System.Drawing.Point(403, 0);
             this.depthLabel.Name = "depthLabel";
             this.depthLabel.Size = new System.Drawing.Size(43, 13);
@@ -196,18 +196,20 @@
             // 
             // depthPanel
             // 
+            this.depthPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.depthPanel.Location = new System.Drawing.Point(0, 0);
             this.depthPanel.Name = "depthPanel";
             this.depthPanel.Size = new System.Drawing.Size(6, 98);
             this.depthPanel.TabIndex = 21;
             this.depthPanel.Visible = false;
+            this.depthPanel.Click += new System.EventHandler(this.dp_Click);
             // 
             // posterName
             // 
-            this.posterName.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.posterName.AutoSize = true;
             this.posterName.BackColor = System.Drawing.Color.Transparent;
-            this.posterName.LinkColor = System.Drawing.Color.SteelBlue;
+            this.posterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.posterName.LinkColor = ThemeDefinitions.TextAccented;
             this.posterName.Location = new System.Drawing.Point(3, 0);
             this.posterName.Name = "posterName";
             this.posterName.Size = new System.Drawing.Size(57, 13);
@@ -218,10 +220,9 @@
             // 
             // replyClickCount
             // 
-            this.replyClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.replyClickCount.AutoSize = true;
             this.replyClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.replyClickCount.LinkColor = System.Drawing.Color.DimGray;
+            this.replyClickCount.LinkColor = ThemeDefinitions.TextLowContrast;
             this.replyClickCount.Location = new System.Drawing.Point(3, 0);
             this.replyClickCount.Name = "replyClickCount";
             this.replyClickCount.Size = new System.Drawing.Size(29, 13);
@@ -232,10 +233,9 @@
             // 
             // repostClickCount
             // 
-            this.repostClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.repostClickCount.AutoSize = true;
             this.repostClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.repostClickCount.LinkColor = System.Drawing.Color.DimGray;
+            this.repostClickCount.LinkColor = ThemeDefinitions.TextLowContrast;
             this.repostClickCount.Location = new System.Drawing.Point(38, 0);
             this.repostClickCount.Name = "repostClickCount";
             this.repostClickCount.Size = new System.Drawing.Size(36, 13);
@@ -246,10 +246,9 @@
             // 
             // quoteClickCount
             // 
-            this.quoteClickCount.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.quoteClickCount.AutoSize = true;
             this.quoteClickCount.BackColor = System.Drawing.Color.Transparent;
-            this.quoteClickCount.LinkColor = System.Drawing.Color.DimGray;
+            this.quoteClickCount.LinkColor = ThemeDefinitions.TextLowContrast;
             this.quoteClickCount.Location = new System.Drawing.Point(80, 0);
             this.quoteClickCount.Name = "quoteClickCount";
             this.quoteClickCount.Size = new System.Drawing.Size(34, 13);
@@ -260,10 +259,9 @@
             // 
             // viewThreadButton
             // 
-            this.viewThreadButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.viewThreadButton.AutoSize = true;
             this.viewThreadButton.BackColor = System.Drawing.Color.Transparent;
-            this.viewThreadButton.LinkColor = System.Drawing.Color.DimGray;
+            this.viewThreadButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.viewThreadButton.Location = new System.Drawing.Point(120, 0);
             this.viewThreadButton.Name = "viewThreadButton";
             this.viewThreadButton.Size = new System.Drawing.Size(62, 13);
@@ -274,10 +272,9 @@
             // 
             // deleteLink
             // 
-            this.deleteLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.deleteLink.AutoSize = true;
             this.deleteLink.BackColor = System.Drawing.Color.Transparent;
-            this.deleteLink.LinkColor = System.Drawing.Color.Firebrick;
+            this.deleteLink.LinkColor = ThemeDefinitions.TextImportant;
             this.deleteLink.Location = new System.Drawing.Point(188, 0);
             this.deleteLink.Name = "deleteLink";
             this.deleteLink.Size = new System.Drawing.Size(36, 13);
@@ -285,15 +282,14 @@
             this.deleteLink.TabStop = true;
             this.deleteLink.Text = "delete";
             this.deleteLink.Visible = false;
-            this.deleteLink.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            this.deleteLink.VisitedLinkColor = ThemeDefinitions.TextImportant;
             this.deleteLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.deleteLink_LinkClicked);
             // 
             // muteButton
             // 
-            this.muteButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.muteButton.AutoSize = true;
             this.muteButton.BackColor = System.Drawing.Color.Transparent;
-            this.muteButton.LinkColor = System.Drawing.Color.DimGray;
+            this.muteButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.muteButton.Location = new System.Drawing.Point(230, 0);
             this.muteButton.Name = "muteButton";
             this.muteButton.Size = new System.Drawing.Size(63, 13);
@@ -305,10 +301,9 @@
             // 
             // copyTextButton
             // 
-            this.copyTextButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.copyTextButton.AutoSize = true;
             this.copyTextButton.BackColor = System.Drawing.Color.Transparent;
-            this.copyTextButton.LinkColor = System.Drawing.Color.DimGray;
+            this.copyTextButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.copyTextButton.Location = new System.Drawing.Point(299, 0);
             this.copyTextButton.Name = "copyTextButton";
             this.copyTextButton.Size = new System.Drawing.Size(50, 13);
@@ -320,10 +315,9 @@
             // 
             // shareButton
             // 
-            this.shareButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.shareButton.AutoSize = true;
             this.shareButton.BackColor = System.Drawing.Color.Transparent;
-            this.shareButton.LinkColor = System.Drawing.Color.DimGray;
+            this.shareButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.shareButton.Location = new System.Drawing.Point(355, 0);
             this.shareButton.Name = "shareButton";
             this.shareButton.Size = new System.Drawing.Size(33, 13);
@@ -335,10 +329,9 @@
             // 
             // permalinkButton
             // 
-            this.permalinkButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.permalinkButton.AutoSize = true;
             this.permalinkButton.BackColor = System.Drawing.Color.Transparent;
-            this.permalinkButton.LinkColor = System.Drawing.Color.DimGray;
+            this.permalinkButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.permalinkButton.Location = new System.Drawing.Point(394, 0);
             this.permalinkButton.Name = "permalinkButton";
             this.permalinkButton.Size = new System.Drawing.Size(52, 13);
@@ -350,10 +343,9 @@
             // 
             // openInBrowserButton
             // 
-            this.openInBrowserButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.openInBrowserButton.AutoSize = true;
             this.openInBrowserButton.BackColor = System.Drawing.Color.Transparent;
-            this.openInBrowserButton.LinkColor = System.Drawing.Color.DimGray;
+            this.openInBrowserButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.openInBrowserButton.Location = new System.Drawing.Point(452, 0);
             this.openInBrowserButton.Name = "openInBrowserButton";
             this.openInBrowserButton.Size = new System.Drawing.Size(82, 13);
@@ -361,15 +353,15 @@
             this.openInBrowserButton.TabStop = true;
             this.openInBrowserButton.Text = "open in browser";
             this.openInBrowserButton.Visible = false;
-            this.openInBrowserButton.VisitedLinkColor = System.Drawing.Color.SteelBlue;
+            this.openInBrowserButton.VisitedLinkColor = ThemeDefinitions.TextAccented;
             this.openInBrowserButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.openInBrowserButton_LinkClicked);
             // 
             // reportButton
             // 
-            this.reportButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+    
             this.reportButton.AutoSize = true;
             this.reportButton.BackColor = System.Drawing.Color.Transparent;
-            this.reportButton.LinkColor = System.Drawing.Color.DimGray;
+            this.reportButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.reportButton.Location = new System.Drawing.Point(540, 0);
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(34, 13);
@@ -380,11 +372,10 @@
             this.reportButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.reportButton_LinkClicked);
             // 
             // collapseButton
-            // 
-            this.collapseButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
+            //
             this.collapseButton.AutoSize = true;
             this.collapseButton.BackColor = System.Drawing.Color.Transparent;
-            this.collapseButton.LinkColor = System.Drawing.Color.DimGray;
+            this.collapseButton.LinkColor = ThemeDefinitions.TextLowContrast;
             this.collapseButton.Location = new System.Drawing.Point(580, 0);
             this.collapseButton.Name = "collapseButton";
             this.collapseButton.Size = new System.Drawing.Size(69, 13);
@@ -396,10 +387,9 @@
             // 
             // lessLink
             // 
-            this.lessLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.lessLink.AutoSize = true;
             this.lessLink.BackColor = System.Drawing.Color.Transparent;
-            this.lessLink.LinkColor = System.Drawing.Color.DimGray;
+            this.lessLink.LinkColor = ThemeDefinitions.TextLowContrast;
             this.lessLink.Location = new System.Drawing.Point(655, 0);
             this.lessLink.Name = "lessLink";
             this.lessLink.Size = new System.Drawing.Size(25, 13);
@@ -411,10 +401,9 @@
             // 
             // moreLink
             // 
-            this.moreLink.ActiveLinkColor = System.Drawing.Color.DarkCyan;
             this.moreLink.AutoSize = true;
             this.moreLink.BackColor = System.Drawing.Color.Transparent;
-            this.moreLink.LinkColor = System.Drawing.Color.DimGray;
+            this.moreLink.LinkColor = ThemeDefinitions.TextLowContrast;
             this.moreLink.Location = new System.Drawing.Point(686, 0);
             this.moreLink.Name = "moreLink";
             this.moreLink.Size = new System.Drawing.Size(30, 13);
@@ -425,9 +414,8 @@
             // 
             // expandImageButton
             // 
-            this.expandImageButton.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(153)))));
             this.expandImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.expandImageButton.LinkColor = System.Drawing.Color.SteelBlue;
+            this.expandImageButton.LinkColor = ThemeDefinitions.TextAccented;
             this.expandImageButton.Location = new System.Drawing.Point(905, 76);
             this.expandImageButton.Name = "expandImageButton";
             this.expandImageButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -443,7 +431,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.Controls.Add(this.depthPanel);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.actionsPanel);

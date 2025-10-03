@@ -25,7 +25,7 @@ namespace Cerulean
             timelineButton.Enabled = false;
             selectFeedButton.Enabled = false;
             this.AcceptButton = timelineButton;
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
 
             InitFeedList();
 

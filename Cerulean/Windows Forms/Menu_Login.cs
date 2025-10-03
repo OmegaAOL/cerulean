@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Threading;
 using Cerulean.LangPacks;
 using Newtonsoft.Json.Linq;
+using LibPurple;
 using OmegaAOL.SkyBridge;
 
 namespace Cerulean
@@ -51,7 +52,7 @@ namespace Cerulean
             LocalizeControlText();
             CheckSavedCred();
             this.AcceptButton = loginButton;
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
             Variables.PDSHost = RegKit.Read.String("API", "PDSHost");
         }
 
@@ -61,7 +62,7 @@ namespace Cerulean
             timeOutBar.Invalidate();
             header.Text = strArray[0];
             descriptor.Text = strArray[1];
-            header.ForeColor = Color.Firebrick;
+            header.ForeColor = ThemeDefinitions.TextError;
             timeOutBar.Value = 0;
             ToggleControls(true);
         }
@@ -113,7 +114,7 @@ namespace Cerulean
             timeOutBar.MarqueeAnimationSpeed = 10;
 
             header.Text = LOCALMSG_CONNECTING_TO_PDS[0];
-            header.ForeColor = Color.ForestGreen;
+            header.ForeColor = ThemeDefinitions.TextSuccess;
             descriptor.Text = LOCALMSG_CONNECTING_TO_PDS[1];
 
             /*Async.SkyWorker(
@@ -224,7 +225,10 @@ namespace Cerulean
 
         private void forgotPasswordButton_Click(object sender, EventArgs e)
         {
-            new Menu_ResetPass().ShowDialog();
+            Purple.purple_core_init("dummy-ui");
+            string version = Purple.GetVersion();
+            MessageBox.Show("Libpurple version: " + version);
+            //new Menu_ResetPass().ShowDialog();
             //OAuth.Test();
         }
 

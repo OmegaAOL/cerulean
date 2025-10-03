@@ -111,9 +111,9 @@ namespace Cerulean
 
             // verified color
             if (verificationStatus == Profile.Verification.Verified)
-                posterName.LinkColor = Color.DarkGoldenrod;
+                posterName.LinkColor = ThemeDefinitions.TextVerified;
             else if (verificationStatus == Profile.Verification.TrustedVerifier)
-                posterName.LinkColor = Color.Firebrick;
+                posterName.LinkColor = ThemeDefinitions.TextSuperVerified;
 
             // Format counts
 
@@ -302,7 +302,7 @@ namespace Cerulean
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            using (Pen p = new Pen(Color.Gainsboro))
+            using (Pen p = new Pen(ThemeDefinitions.Border))
             {
                 e.Graphics.DrawRectangle(p, 0, 0, this.Width - 1, this.Height - 1);
             }
@@ -483,7 +483,7 @@ namespace Cerulean
 
         private void RepostLabelSetter(bool reposted)
         {
-            repostClickCount.LinkColor = (reposted ? Color.ForestGreen : ResDef.TextSoft); // set label color
+            repostClickCount.LinkColor = (reposted ? ThemeDefinitions.TextSuccess : ThemeDefinitions.TextLowContrast); // set label color
             numberStringFormatter(repostClickCount, (reposted ? LangPack.TC_LINKLABEL_REPOSTED : LangPack.TC_LINKLABEL_REPOST), repostCount); // set text
         }
 
@@ -599,9 +599,8 @@ namespace Cerulean
                     break;
             }
 
-            Color baseColor = ColorTranslator.FromHtml("#00B3FF");
-            depthLabel.ForeColor = DarkenColor(baseColor, depth);
-            depthPanel.BackColor = DarkenColor(baseColor, depth);
+            depthLabel.ForeColor = DarkenColor(ThemeDefinitions.DepthIndicatorBase, depth);
+            depthPanel.BackColor = DarkenColor(ThemeDefinitions.DepthIndicatorBase, depth);
         }
 
         static Color DarkenColor(Color color, int depth)
@@ -663,9 +662,9 @@ namespace Cerulean
             }
         }
 
-        private void likeCountLabel_Click(object sender, EventArgs e)
+        private void dp_Click(object sender, EventArgs e)
         {
-
+            this.Dispose();
         }
     }
 }

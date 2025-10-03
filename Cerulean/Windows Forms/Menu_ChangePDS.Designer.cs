@@ -144,8 +144,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.BackColor = ThemeDefinitions.BackgroundColor;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(354, 197);
             this.Controls.Add(this.pdshostbox);
             this.Controls.Add(this.flowLayoutPanel1);

@@ -64,7 +64,7 @@ namespace Cerulean
             this.header.AutoSize = true;
             this.header.BackColor = System.Drawing.Color.Transparent;
             this.header.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.header.ForeColor = System.Drawing.Color.SteelBlue;
+            this.header.ForeColor = ThemeDefinitions.TextAccented;
             this.header.Location = new System.Drawing.Point(16, 160);
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(158, 18);
@@ -77,7 +77,7 @@ namespace Cerulean
             this.descriptor.AutoSize = true;
             this.descriptor.BackColor = System.Drawing.Color.Transparent;
             this.descriptor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptor.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.descriptor.ForeColor = ThemeDefinitions.Foreground;
             this.descriptor.Location = new System.Drawing.Point(0, 0);
             this.descriptor.Margin = new System.Windows.Forms.Padding(0);
             this.descriptor.Name = "descriptor";
@@ -92,7 +92,7 @@ namespace Cerulean
             this.handleLabel.AutoSize = true;
             this.handleLabel.BackColor = System.Drawing.Color.Transparent;
             this.handleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.handleLabel.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.handleLabel.ForeColor = ThemeDefinitions.Foreground;
             this.handleLabel.Location = new System.Drawing.Point(9, 3);
             this.handleLabel.Margin = new System.Windows.Forms.Padding(0);
             this.handleLabel.MaximumSize = new System.Drawing.Size(100, 13);
@@ -108,7 +108,7 @@ namespace Cerulean
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.BackColor = System.Drawing.Color.Transparent;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.passwordLabel.ForeColor = ThemeDefinitions.Foreground;
             this.passwordLabel.Location = new System.Drawing.Point(9, 3);
             this.passwordLabel.Margin = new System.Windows.Forms.Padding(0);
             this.passwordLabel.MaximumSize = new System.Drawing.Size(100, 13);
@@ -179,12 +179,11 @@ namespace Cerulean
             // 
             // newAccountButton
             // 
-            this.newAccountButton.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
             this.newAccountButton.AutoSize = true;
             this.newAccountButton.BackColor = System.Drawing.Color.Transparent;
             this.newAccountButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.SetFlowBreak(this.newAccountButton, true);
-            this.newAccountButton.LinkColor = System.Drawing.Color.SteelBlue;
+            this.newAccountButton.LinkColor = ThemeDefinitions.TextAccented;
             this.newAccountButton.Location = new System.Drawing.Point(108, 0);
             this.newAccountButton.Margin = new System.Windows.Forms.Padding(0);
             this.newAccountButton.Name = "newAccountButton";
@@ -310,8 +309,8 @@ namespace Cerulean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.BackColor = ThemeDefinitions.BackgroundColor;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(600, 346);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel6);

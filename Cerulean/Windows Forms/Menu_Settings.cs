@@ -29,7 +29,7 @@ namespace Cerulean
         private void Menu_Settings_Load(object sender, EventArgs e)
         {
             CenterToParent();
-            BackgroundImage = Global.bgImage;
+            BackgroundImage = ThemeDefinitions.Background;
         }
 
         private void dsApplyButton_Click(object sender, EventArgs e)

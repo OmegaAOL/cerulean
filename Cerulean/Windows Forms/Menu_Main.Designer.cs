@@ -479,7 +479,7 @@
             // 
             // quickPostBox
             // 
-            this.quickPostBox.ForeColor = System.Drawing.Color.DarkGray;
+            this.quickPostBox.ForeColor = ThemeDefinitions.TextHighContrast;
             this.quickPostBox.Location = new System.Drawing.Point(276, 648);
             this.quickPostBox.Name = "quickPostBox";
             this.quickPostBox.Size = new System.Drawing.Size(960, 20);
@@ -513,7 +513,7 @@
             // newPostButton
             // 
             this.newPostButton.Image = global::Cerulean.Icons_Aero.imageres_158_10;
-            this.newPostButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.newPostButton.ImageTransparentColor = ThemeDefinitions.Foreground;
             this.newPostButton.Name = "newPostButton";
             this.newPostButton.Size = new System.Drawing.Size(139, 22);
             this.newPostButton.Text = "Placeholder text";
@@ -522,7 +522,7 @@
             // newDmButton
             // 
             this.newDmButton.Image = global::Cerulean.Icons_Aero.imageres_128_10;
-            this.newDmButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.newDmButton.ImageTransparentColor = ThemeDefinitions.Foreground;
             this.newDmButton.Name = "newDmButton";
             this.newDmButton.Size = new System.Drawing.Size(139, 22);
             this.newDmButton.Text = "Placeholder text";
@@ -536,7 +536,7 @@
             // feedSelectorButton
             // 
             this.feedSelectorButton.Image = global::Cerulean.Icons_Aero.imageres_25_10;
-            this.feedSelectorButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.feedSelectorButton.ImageTransparentColor = ThemeDefinitions.Foreground;
             this.feedSelectorButton.Name = "feedSelectorButton";
             this.feedSelectorButton.Size = new System.Drawing.Size(139, 22);
             this.feedSelectorButton.Text = "Placeholder text";
@@ -545,7 +545,7 @@
             // notificationsButton
             // 
             this.notificationsButton.Image = global::Cerulean.CeruleanArt.globe_16;
-            this.notificationsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.notificationsButton.ImageTransparentColor = ThemeDefinitions.TransparencySubstitute;
             this.notificationsButton.Name = "notificationsButton";
             this.notificationsButton.Size = new System.Drawing.Size(139, 22);
             this.notificationsButton.Text = "Placeholder text";
@@ -560,7 +560,7 @@
             // reauthButton
             // 
             this.reauthButton.Image = global::Cerulean.Icons_Aero.imageres_82_10;
-            this.reauthButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.reauthButton.ImageTransparentColor = ThemeDefinitions.TransparencySubstitute;
             this.reauthButton.Name = "reauthButton";
             this.reauthButton.Size = new System.Drawing.Size(139, 22);
             this.reauthButton.Text = "Placeholder text";
@@ -568,9 +568,9 @@
             // 
             // logoutButton
             // 
-            this.logoutButton.ForeColor = System.Drawing.Color.Black;
+            this.logoutButton.ForeColor = ThemeDefinitions.Foreground;
             this.logoutButton.Image = global::Cerulean.Icons_Aero.imageres_59_10;
-            this.logoutButton.ImageTransparentColor = System.Drawing.Color.Black;
+            this.logoutButton.ImageTransparentColor = ThemeDefinitions.Foreground;
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(139, 22);
             this.logoutButton.Text = "Placeholder text";
@@ -579,7 +579,7 @@
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.ForeColor = System.Drawing.Color.DarkGray;
+            this.searchBox.ForeColor = ThemeDefinitions.TextHighContrast;
             this.searchBox.Location = new System.Drawing.Point(1107, 1);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 20);
@@ -594,7 +594,7 @@
             // 
             this.quickPostButton.AutoSize = true;
             this.quickPostButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.quickPostButton.BackColor = System.Drawing.SystemColors.Control;
+            this.quickPostButton.BackColor = ThemeDefinitions.BackgroundColor;
             this.quickPostButton.Enabled = false;
             this.quickPostButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.quickPostButton.Location = new System.Drawing.Point(1248, 646);
@@ -610,7 +610,7 @@
             // 
             // mainTree
             // 
-            this.mainTree.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.mainTree.BackColor = ThemeDefinitions.BackgroundPanel;
             this.mainTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mainTree.Location = new System.Drawing.Point(27, 38);
             this.mainTree.Name = "mainTree";
@@ -646,7 +646,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cerulean.CeruleanArt.pinstripesblue;
+            this.BackgroundImage = ThemeDefinitions.Background;
             this.ClientSize = new System.Drawing.Size(1350, 732);
             this.Controls.Add(this.mainTree);
             this.Controls.Add(this.predictionBox);
