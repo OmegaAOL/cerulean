@@ -37,7 +37,7 @@ namespace Cerulean
         [STAThread]
         static void Main()
         {
-            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException); // for global error catching/handling
+            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
             Application.EnableVisualStyles();
@@ -68,7 +68,7 @@ namespace Cerulean
             ShowError((Exception)e.ExceptionObject);
             MessageBox.Show("Fatal error: " + ((Exception)e.ExceptionObject).Message);
         }
-
+         
         private static void ShowError(Exception ex) 
         {
             CeruleanBox.Display(LangPack.GLOBAL_ERROR_MESSAGE + "\n\n" + "(" + ex.ToString() + ")");

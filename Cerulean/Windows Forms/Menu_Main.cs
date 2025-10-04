@@ -26,16 +26,14 @@ namespace Cerulean
         public Menu_Main()
         {
             InitializeComponent();
-            EnableDoubleBuffer(tweetBoard);
 
-            //NotificationFetcher(); // TODO async for notifs
+            NotificationFetcher(); // TODO async for notifs
             Instance = this;
             _debounceTimer = new Timer();
             _debounceTimer.Interval = 300; // 600 ms debounce delay
             _debounceTimer.Tick += DebounceTimer_Tick;
 
             searchBox.TextChanged += searchBox_TextChanged;
-
         }
 
         private void LocalizeControls()
@@ -398,8 +396,7 @@ namespace Cerulean
 
         private void notificationsButton_Click(object sender, EventArgs e)
         {
-            NotificationFetcher();
-            
+            NotificationFetcher();           
         }
 
         private void NotificationFetcher()
@@ -452,10 +449,9 @@ namespace Cerulean
         private void FollowerFetcher()
         {
             JArray followers = new JArray();
-            MessageBox.Show(Profile.GetDid(Variables.Handle).ToString());
             Async.SkyWorker(
 
-                delegate { followers = Profile.FetchData.Followers(Profile.GetDid(Variables.Handle)); },
+                delegate { followers = Profile.FetchData.Followers(Variables.Handle); },
                 delegate
                 {
                     TreeNode parent = mainTree.Nodes.Add("Followers");
@@ -469,15 +465,5 @@ namespace Cerulean
                 }
             );
         }
-
-        public static void EnableDoubleBuffer(Control control)
-        {
-            control.GetType().InvokeMember("DoubleBuffered",
-                System.Reflection.BindingFlags.SetProperty |
-                System.Reflection.BindingFlags.Instance |
-                System.Reflection.BindingFlags.NonPublic,
-                null, control, new object[] { true });
-        }
-
     }
 }
