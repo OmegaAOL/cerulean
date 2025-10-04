@@ -79,7 +79,7 @@
             this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel2.Controls.Add(this.OKButton);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(16, 94);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(16, 86);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(310, 23);
             this.flowLayoutPanel2.TabIndex = 1;
@@ -102,7 +102,7 @@
             // 
             // CodeBox
             // 
-            this.CodeBox.Location = new System.Drawing.Point(16, 66);
+            this.CodeBox.Location = new System.Drawing.Point(16, 56);
             this.CodeBox.Name = "CodeBox";
             this.CodeBox.Size = new System.Drawing.Size(310, 20);
             this.CodeBox.TabIndex = 3;
@@ -113,7 +113,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(341, 129);
+            this.ClientSize = new System.Drawing.Size(341, 121);
             this.Controls.Add(this.CodeBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel2);

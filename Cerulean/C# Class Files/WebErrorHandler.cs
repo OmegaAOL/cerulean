@@ -12,22 +12,14 @@ namespace Cerulean
     {
         public static void ErrThrower(bool localHandling, string title, string subtitle = "")
         {
-            /*if (title == "Connection failed")
-            {
-                CeruleanBox.Display(Global.cantConnect);
-            }*/
-
             if (localHandling == false)
             {
-
-
-
                 if (subtitle != String.Empty)
                 {
-                    title += String.Format("\nDESCRIPTION: {0}", subtitle);
+                    title += String.Format("\n" + LangPack.ERR_DESC, subtitle);
                 }
 
-                CeruleanBox.Display("ERROR: " + title);
+                CeruleanBox.Display(LangPack.ERR_PREFIX.ToUpper() + " " + title);
 
             }
         }
@@ -42,42 +34,54 @@ namespace Cerulean
             {
                 switch ((string)input["error"])
                 {
-                    case "AuthFactorTokenRequired":
-                        title = "Email 2FA token required; use app password";
-                        subtitle = "The server requires two-factor authentication. Cerulean does not support legacy 2FA, so use an app password instead.";
-                        break;
                     case "RateLimitExceeded":
-                        title = "Rate limit exceeded";
-                        subtitle = "The PDS is rate limiting your account. Try again later, or contact your PDS administrator.";
+                        title = LangPack.ERR_RATELIMIT_HEAD;
+                        subtitle = LangPack.ERR_RATELIMIT_SUB;
+                        break;
+                    case "AccountTakedown":
+                        title = LangPack.ERR_RATELIMIT_HEAD;
+                        subtitle = LangPack.ERR_RATELIMIT_SUB;
                         break;
                     case "AuthenticationRequired":
-                        title = "Invalid login details";
-                        subtitle = "The login credentials you have provided are invalid. If you used your email to log in, use your handle instead.";
+                        title = LangPack.ERR_BADCRED_HEAD;
+                        subtitle = LangPack.ERR_BADCRED_SUB;
+                        break;
+                    case "AuthFactorTokenRequired":
+                        title = LangPack.ERR_TWOFA_HEAD;
+                        subtitle = LangPack.ERR_TWOFA_SUB;
                         break;
                     case "ExpiredToken":
                         Auth.Refresher.Start(Auth.Refresher.Mode.Auto);
                         return errfalse;
                     case "InvalidToken":
-                        title = "Invalid 2FA code";
-                        subtitle = "You have entered an invalid, or expired, two-factor authentication code. Please log in again with a valid code.";
+                        title = LangPack.ERR_BADTWOFA_HEAD;
+                        subtitle = LangPack.ERR_BADTWOFA_SUB;
                         break;
                     case "noResponse":
-                        title = "Empty response from server";
-                        subtitle = "Blank response received from the server.";
+                        title = LangPack.ERR_NORESPONSE_HEAD;
+                        subtitle = LangPack.ERR_NORESPONSE_SUB;
                         break;
                     case "CURLE_COULDNT_RESOLVE_HOST":
-                        title = "Couldn't connect to server";
-                        subtitle = "Cerulean could not reach the server. Check your internet connection and PDS host settings.";
+                        title = LangPack.ERR_CANTRESOLVEHOST_HEAD;
+                        subtitle = LangPack.ERR_CANTRESOLVEHOST_SUB;
+                        break;
+                    case "SKY_UNEXPECTED":
+                        title = LangPack.ERR_SKY_HEAD;
+                        subtitle = LangPack.ERR_SKY_SUB;
+                        break;
+                    case "SKY_INVALID":
+                        title = LangPack.ERR_SKY_INVALID_HEAD;
+                        subtitle = LangPack.ERR_SKY_INVALID_SUB;
                         break;
                     default:
-                        title = "Error: " + (string)input["error"];
+                        title = LangPack.ERR_PREFIX + " " + (string)input["error"];
                         if (input.ContainsKey("message"))
                         {
                             subtitle = (string)input["message"];
                         }
                         else
                         {
-                            subtitle = "This error is unhandled by Cerulean (it's server-side). Report this on GitHub.";
+                            subtitle = LangPack.ERR_SERVER_SUB;
                         }
                         break;
 
