@@ -17,7 +17,7 @@ namespace Cerulean
         {
             InitializeComponent();
 
-            NotificationFetcher(); // TODO async for notifs
+            NotificationFetcher();
             Instance = this;
             _debounceTimer = new Timer();
             _debounceTimer.Interval = 300; // 600 ms debounce delay
@@ -50,32 +50,10 @@ namespace Cerulean
             predictionBox.Height = 0;
 
             quickPostButton.Enabled = false;
-            //NotificationFetcher();
-
-
-            //mainTree.Nodes.
-
-
-            /*JObject response = new JObject();
-            BarGo();
-
-            SkyBridge.SkyWorker(
-                delegate { response = SkyBridge.Timeline(); },
-                delegate
-                {
-                    tweetBoardHandler(response);
-                    BarStop();
-                    statusLabel.Text = "Connected";
-                }
-             * 
-             * 
-            );*/
         }
 
         private void tweetBoardHandler(JObject response)
         {
-            //File.WriteAllText("feedDebug.txt", response.ToString()); // debug
-
             if (WEH.ErrHandler(response)[2] != "true")
             {
                 if (!response.ContainsKey("feed"))
@@ -192,29 +170,19 @@ namespace Cerulean
             JObject response = new JObject();
             BarGo();
 
-            if (timeline)
+            Async.SkyWorker(
+            delegate
             {
-                Async.SkyWorker(
-                delegate { response = Feeds.Load.Timeline(); },
-                delegate
-                {
-                    tweetBoardHandler(response);
-                    BarStop();
-                }
-            );
+                if (timeline) { response = Feeds.Load.Timeline(); }
+                else { response = Feeds.Load.Custom(uri); }
+            },
+            delegate
+            {
+                tweetBoardHandler(response);
+                BarStop();
             }
+           );
 
-            else
-            {
-                Async.SkyWorker(
-                delegate { response = Feeds.Load.Custom(uri); },
-                delegate
-                {
-                    tweetBoardHandler(response);
-                    BarStop();
-                }
-            );
-            }
         }
 
         private void menuItemLogout_Click(object sender, EventArgs e)
@@ -294,9 +262,9 @@ namespace Cerulean
         {
             if (e.KeyCode == Keys.Enter)
             {
-               new Menu_Profile(predictionBox.Items[0].ToString()).Show();
-               e.Handled = true;
-               e.SuppressKeyPress = true;
+                new Menu_Profile(predictionBox.Items[0].ToString()).Show();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -322,8 +290,6 @@ namespace Cerulean
         private void DebounceTimer_Tick(object sender, EventArgs e)
         {
             _debounceTimer.Stop();
-
-
 
             // Only search if text hasn't changed since timer started
             if (searchBox.Text == _lastInput && !string.IsNullOrEmpty(_lastInput))
@@ -383,7 +349,7 @@ namespace Cerulean
 
         private void notificationsButton_Click(object sender, EventArgs e)
         {
-            NotificationFetcher();           
+            NotificationFetcher();
         }
 
         private void NotificationFetcher()

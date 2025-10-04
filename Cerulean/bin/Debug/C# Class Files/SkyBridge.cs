@@ -133,7 +133,6 @@ namespace OmegaAOL.SkyBridge
                 {
                     if (availableHandles.Count < maxHandles)
                     {
-                        //handle.Reset();
                         availableHandles.Enqueue(handle);
                     }
                     else
@@ -318,13 +317,14 @@ namespace OmegaAOL.SkyBridge
 
     public static class Auth // Authentication, password reset and token refresh through the legacy (non-OAuth) authorization pipeline.
     {
-        public static JObject Login(string handle, string password) // Logs in, returns accessJwt and refreshJwt
+        public static JObject Login(string handle, string password, string code = null) // Logs in, returns accessJwt and refreshJwt
         {
             Variables.Handle = handle;
 
             var postJson = new JObject();
             postJson["identifier"] = handle;
             postJson["password"] = password;
+            if (code != null) { postJson["authFactorToken"] = code; }
 
             string endPoint = "com.atproto.server.createSession";
             string postFields = postJson.ToString(Formatting.None);

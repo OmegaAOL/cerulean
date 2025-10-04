@@ -57,6 +57,10 @@ namespace Cerulean
                     case "ExpiredToken":
                         Auth.Refresher.Start(Auth.Refresher.Mode.Auto);
                         return errfalse;
+                    case "InvalidToken":
+                        title = "Invalid 2FA code";
+                        subtitle = "You have entered an invalid, or expired, two-factor authentication code. Please log in again with a valid code.";
+                        break;
                     case "noResponse":
                         title = "Empty response from server";
                         subtitle = "Blank response received from the server.";
