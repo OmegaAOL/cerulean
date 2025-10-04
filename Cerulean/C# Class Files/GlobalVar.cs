@@ -32,6 +32,7 @@ namespace Cerulean
         public static readonly Color Border = Color.Gainsboro;
         public static readonly Image Background = CeruleanArt.pinstripesblue;
         public static readonly Color BackgroundColor = Color.LightGray;
+        public static readonly Color BackgroundColorTransparent = Color.FromArgb(210, Color.White);
         public static readonly Color BackgroundPanel = Color.WhiteSmoke;
         public static readonly Color BackgroundBoxes = Color.White;
 

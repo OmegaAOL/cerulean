@@ -15,6 +15,7 @@ namespace Cerulean
     public partial class Menu_Profile : Form
     {
         private bool following = false;
+        private Image _backgroundImg;
 
         private JObject response;
 
@@ -24,7 +25,32 @@ namespace Cerulean
             InitializeComponent();
             did_cw = did;
             GetProfileData(did);
+            this.Paint += MyForm_Paint;
         }
+
+        private void MyForm_Paint(object sender, PaintEventArgs e)
+        {
+            if (_backgroundImg == null)
+                return;
+
+            float imgWidth = _backgroundImg.Width;
+            float imgHeight = _backgroundImg.Height;
+            float formWidth = this.ClientSize.Width;
+            float formHeight = this.ClientSize.Height;
+
+            // scale factor to fill vertically
+            float scale = formHeight / imgHeight;
+
+            float drawWidth = (imgWidth * scale);
+            float drawHeight = (imgHeight * scale);
+
+            // center horizontally
+            int x = (int)((formWidth - drawWidth) / 2);
+            int y = 0;
+
+            e.Graphics.DrawImage(_backgroundImg, x, y, drawWidth, drawHeight);
+        }
+
 
         private void Menu_Profile_Load(object sender, EventArgs e)
         {
@@ -45,7 +71,6 @@ namespace Cerulean
         {
             if (WEH.ErrHandler(response)[2] != "true")
             {
-                File.WriteAllText("profile.txt", response.ToString());
                 foreach (Control item in this.Controls)
                 {
                     item.Visible = true;
@@ -138,12 +163,52 @@ namespace Cerulean
                 {
                     ImageFetcher.QueueImage(response["avatar"].ToString().Replace("avatar", "avatar_thumbnail"), avatarBox);
                 }
-
-                /*if (response["banner"] != null)
+                else
                 {
-                    ImageFetcher.QueueImage(response["banner"].ToString(), bannerBox);
-                }*/
+                    expandLabel.Visible = false;
+                }
+
+                if (response["banner"] != null)
+                {
+                    PictureBox bannerBoxTemp = new PictureBox();
+                    bannerBoxTemp.BackgroundImageChanged += (s, e) =>
+                    {
+                        _backgroundImg = bannerBoxTemp.BackgroundImage;
+                        panel1.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+                        panel1.Visible = true;
+                        BackChangerLabels();
+                        this.Invalidate();
+                    };
+                    ImageFetcher.QueueImage(response["banner"].ToString(), bannerBoxTemp, true);
+                }
+
             }
+        }
+
+        private void BackChangerLabels()
+        {
+            nicknameLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            handleLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label1.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label23.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label4.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label5.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label6.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label7.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label8.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            label9.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            followingLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            followersLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            joinedLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            followsYouLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            expandLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            blockedLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            allowChatLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            bioLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            mutualsLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            nicknameLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            postsLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
+            verifiedLabel.BackColor = ThemeDefinitions.BackgroundColorTransparent;
         }
 
         private void SetIfNotNull(Label label, JToken token)
@@ -178,7 +243,10 @@ namespace Cerulean
         private void expandLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Async.SkyWorker(
-                delegate { new ImageViewer(Media.Image.Load(response["avatar"].ToString())).ShowDialog(); },
+                delegate 
+                { 
+                    new ImageViewer(Media.Image.Load(response["avatar"].ToString())).ShowDialog(); 
+                },
                 delegate { }
             );
         }
