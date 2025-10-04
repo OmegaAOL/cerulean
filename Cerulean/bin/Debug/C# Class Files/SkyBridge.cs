@@ -29,9 +29,10 @@ namespace OmegaAOL.SkyBridge
 {
     public static class EmbedType
     {
-        public const string Image = "app.bsky.embed.images#view";
-        public const string Video = "app.bsky.embed.video#view";
-        public const string Record = "app.bsky.embed.record#view";
+        private const string suffix = "#view";
+        public const string Image = "app.bsky.embed.images" + suffix;
+        public const string Video = "app.bsky.embed.video" + suffix;
+        public const string Record = "app.bsky.embed.record" + suffix;
     }
 
     internal static class Variables
@@ -69,7 +70,7 @@ namespace OmegaAOL.SkyBridge
             }
         }
 
-        public static string DateToBsky() // Gets ISO 8601 + RFC 3339 compatible local date and time for certain Bluesky functions.
+        public static string GetBlueskyDateTime() // Gets ISO 8601 + RFC 3339 compatible local date and time for certain Bluesky functions.
         {
             return DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssZ");
         }
@@ -220,16 +221,14 @@ namespace OmegaAOL.SkyBridge
 
                     catch
                     {
-                        response["error"] = "Invalid response from server";
-                        response["message"] = "The PDS returned a response that Cerulean cannot process.";
+                        response["error"] = "SKY_INVALID";
                     }
 
                 }
 
-                catch (Exception ex)
+                catch 
                 {
-                    response["error"] = "Unexpected error in SkyBridge";
-                    response["message"] = "SkyBridge encountered internal problems when attempting to communicate with the server, namely: " + ex.Message;
+                    response["error"] = "SKY_UNEXPECTED";
                 }
 
                 finally
@@ -335,6 +334,19 @@ namespace OmegaAOL.SkyBridge
             return authResponse;
         }
 
+        public static JObject LoginWithRefreshToken(string refreshToken, bool silenceRefresher = false) 
+        {
+            string endPoint = "com.atproto.server.refreshSession";
+            string[] headers = new string[2] { "Authorization: Bearer " + refreshToken, "Accept: application/json" };
+
+            JObject authResponse = new Http.Request().Perform(endPoint, String.Empty, headers, Http.Method.Post);
+            if (!silenceRefresher)
+            {
+                Refresher.Start(Refresher.Mode.Auto);
+            }
+            return authResponse;
+        }
+
 
         public static class Reset
         {
@@ -395,12 +407,9 @@ namespace OmegaAOL.SkyBridge
 
             private static void RefreshAccessToken(object state) // function that actually gets refresh
             {
-                string endPoint = "com.atproto.server.refreshSession";
-                string postFields = String.Empty;
-                string[] headers = new string[2] { "Authorization: Bearer " + Variables.RefreshToken, "Accept: application/json" };
-                JObject refreshBody = new Http.Request().Perform(endPoint, postFields, headers, Http.Method.Post);
+                JObject refreshBody = LoginWithRefreshToken(Variables.RefreshToken, true);
                 //WEH.ErrHandler(refreshBody);
-                //Display.Text("[DEBUG] REFRESH RESPONSE:\n\n" + serverRefreshResponse); // Refresh token obtained debug
+                Display.Text("[DEBUG] REFRESH RESPONSE:\n\n" + refreshBody.ToString()); // Refresh token obtained debug
 
 
                 Variables.Token = (string)refreshBody["accessJwt"];
@@ -523,14 +532,14 @@ namespace OmegaAOL.SkyBridge
             if (type == Type.Repost)
             {
                 record["subject"] = parent;
-                record["createdAt"] = Tools.DateToBsky();
+                record["createdAt"] = Tools.GetBlueskyDateTime();
             }
 
             else
             {
                 record["$type"] = "app.bsky.feed.post";
                 record["text"] = text;
-                record["createdAt"] = Tools.DateToBsky();
+                record["createdAt"] = Tools.GetBlueskyDateTime();
 
                 if (Variables.BlobArray != null)
                 {
@@ -638,7 +647,7 @@ namespace OmegaAOL.SkyBridge
             {
                 JObject record = new JObject();
                 record["subject"] = did;
-                record["createdAt"] = Tools.DateToBsky();
+                record["createdAt"] = Tools.GetBlueskyDateTime();
                 Record.Create("app.bsky.graph.follow", record).ToString();
             }
 

@@ -154,6 +154,69 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="CBOX_WINTITLE" xml:space="preserve">
     <value>Cerulean</value>
   </data>
+  <data name="ERR_ACCTAKEDOWN_HEAD" xml:space="preserve">
+    <value>Account suspended or banned</value>
+  </data>
+  <data name="ERR_ACCTAKEDOWN_SUB" xml:space="preserve">
+    <value>The server has taken down your account temporarily or permanently. If in doubt, contact your PDS administrator.</value>
+  </data>
+  <data name="ERR_BADCRED_HEAD" xml:space="preserve">
+    <value>Invalid login details</value>
+  </data>
+  <data name="ERR_BADCRED_SUB" xml:space="preserve">
+    <value>The login credentials you have provided are invalid. If you used your email to log in, use your handle instead.</value>
+  </data>
+  <data name="ERR_BADTWOFA_HEAD" xml:space="preserve">
+    <value>Invalid 2FA code</value>
+  </data>
+  <data name="ERR_BADTWOFA_SUB" xml:space="preserve">
+    <value>You have entered an invalid, or expired, two-factor authentication code. Please log in again with a valid code.</value>
+  </data>
+  <data name="ERR_CANTRESOLVEHOST_HEAD" xml:space="preserve">
+    <value>Couldn't connect to server</value>
+  </data>
+  <data name="ERR_CANTRESOLVEHOST_SUB" xml:space="preserve">
+    <value>Cerulean could not reach the server. Check your internet connection and PDS host settings.</value>
+  </data>
+  <data name="ERR_DESC" xml:space="preserve">
+    <value>DESCRIPTION: {0}</value>
+  </data>
+  <data name="ERR_NORESPONSE_HEAD" xml:space="preserve">
+    <value>Empty response from server</value>
+  </data>
+  <data name="ERR_NORESPONSE_SUB" xml:space="preserve">
+    <value>Null, empty, or blank response received from the server.</value>
+  </data>
+  <data name="ERR_PREFIX" xml:space="preserve">
+    <value>Error:</value>
+  </data>
+  <data name="ERR_RATELIMIT_HEAD" xml:space="preserve">
+    <value>Rate limit exceeded</value>
+  </data>
+  <data name="ERR_RATELIMIT_SUB" xml:space="preserve">
+    <value>The server is rate limiting your account. Try again later, or contact Bluesky/your PDS administrator.</value>
+  </data>
+  <data name="ERR_SERVER_SUB" xml:space="preserve">
+    <value>This error is unhandled by Cerulean (it's server-side). Report this on GitHub.</value>
+  </data>
+  <data name="ERR_SKY_HEAD" xml:space="preserve">
+    <value>Unexpected error in SkyBridge</value>
+  </data>
+  <data name="ERR_SKY_INVALID_HEAD" xml:space="preserve">
+    <value>Invalid response from server</value>
+  </data>
+  <data name="ERR_SKY_INVALID_SUB" xml:space="preserve">
+    <value>The server returned a response that Cerulean cannot process.</value>
+  </data>
+  <data name="ERR_SKY_SUB" xml:space="preserve">
+    <value>SkyBridge encountered internal problems when attempting to communicate with the server, namely:</value>
+  </data>
+  <data name="ERR_TWOFA_HEAD" xml:space="preserve">
+    <value>Two-factor authentication required</value>
+  </data>
+  <data name="ERR_TWOFA_SUB" xml:space="preserve">
+    <value>You must provide an authentication code to log in; if you do not want to, use an app password or disable 2FA.</value>
+  </data>
   <data name="EXTERN_EMAIL_BODY" xml:space="preserve">
     <value>Also, I use Cerulean, a client for Bluesky. Try it out at https://ceruleanweb.neocities.org/</value>
   </data>
@@ -555,7 +618,7 @@ reset code that you received in the mail:</value>
     <value>Please enter a valid two-factor code.</value>
   </data>
   <data name="TWOFA_LABEL_CONTENT" xml:space="preserve">
-    <value>The server has requested that you provide a two-factor authentication code to log in. This was probably sent to your email. Please enter it here:</value>
+    <value>The server has requested that you provide a two-factor authentication code to log in. Please enter it here:</value>
   </data>
   <data name="TWOFA_WINTITLE" xml:space="preserve">
     <value>Enter your 2FA code</value>

@@ -150,6 +150,195 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account suspended or banned.
+        /// </summary>
+        internal static string ERR_ACCTAKEDOWN_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_ACCTAKEDOWN_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server has taken down your account temporarily or permanently. If in doubt, contact your PDS administrator..
+        /// </summary>
+        internal static string ERR_ACCTAKEDOWN_SUB {
+            get {
+                return ResourceManager.GetString("ERR_ACCTAKEDOWN_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid login details.
+        /// </summary>
+        internal static string ERR_BADCRED_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_BADCRED_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The login credentials you have provided are invalid. If you used your email to log in, use your handle instead..
+        /// </summary>
+        internal static string ERR_BADCRED_SUB {
+            get {
+                return ResourceManager.GetString("ERR_BADCRED_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid 2FA code.
+        /// </summary>
+        internal static string ERR_BADTWOFA_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_BADTWOFA_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have entered an invalid, or expired, two-factor authentication code. Please log in again with a valid code..
+        /// </summary>
+        internal static string ERR_BADTWOFA_SUB {
+            get {
+                return ResourceManager.GetString("ERR_BADTWOFA_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t connect to server.
+        /// </summary>
+        internal static string ERR_CANTRESOLVEHOST_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_CANTRESOLVEHOST_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cerulean could not reach the server. Check your internet connection and PDS host settings..
+        /// </summary>
+        internal static string ERR_CANTRESOLVEHOST_SUB {
+            get {
+                return ResourceManager.GetString("ERR_CANTRESOLVEHOST_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DESCRIPTION: {0}.
+        /// </summary>
+        internal static string ERR_DESC {
+            get {
+                return ResourceManager.GetString("ERR_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty response from server.
+        /// </summary>
+        internal static string ERR_NORESPONSE_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_NORESPONSE_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Null, empty, or blank response received from the server..
+        /// </summary>
+        internal static string ERR_NORESPONSE_SUB {
+            get {
+                return ResourceManager.GetString("ERR_NORESPONSE_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error:.
+        /// </summary>
+        internal static string ERR_PREFIX {
+            get {
+                return ResourceManager.GetString("ERR_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate limit exceeded.
+        /// </summary>
+        internal static string ERR_RATELIMIT_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_RATELIMIT_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server is rate limiting your account. Try again later, or contact Bluesky/your PDS administrator..
+        /// </summary>
+        internal static string ERR_RATELIMIT_SUB {
+            get {
+                return ResourceManager.GetString("ERR_RATELIMIT_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This error is unhandled by Cerulean (it&apos;s server-side). Report this on GitHub..
+        /// </summary>
+        internal static string ERR_SERVER_SUB {
+            get {
+                return ResourceManager.GetString("ERR_SERVER_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected error in SkyBridge.
+        /// </summary>
+        internal static string ERR_SKY_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_SKY_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid response from server.
+        /// </summary>
+        internal static string ERR_SKY_INVALID_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_SKY_INVALID_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server returned a response that Cerulean cannot process..
+        /// </summary>
+        internal static string ERR_SKY_INVALID_SUB {
+            get {
+                return ResourceManager.GetString("ERR_SKY_INVALID_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SkyBridge encountered internal problems when attempting to communicate with the server, namely:.
+        /// </summary>
+        internal static string ERR_SKY_SUB {
+            get {
+                return ResourceManager.GetString("ERR_SKY_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two-factor authentication required.
+        /// </summary>
+        internal static string ERR_TWOFA_HEAD {
+            get {
+                return ResourceManager.GetString("ERR_TWOFA_HEAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must provide an authentication code to log in; if you do not want to, use an app password or disable 2FA..
+        /// </summary>
+        internal static string ERR_TWOFA_SUB {
+            get {
+                return ResourceManager.GetString("ERR_TWOFA_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Also, I use Cerulean, a client for Bluesky. Try it out at https://ceruleanweb.neocities.org/.
         /// </summary>
         internal static string EXTERN_EMAIL_BODY {
@@ -1330,7 +1519,7 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The server has requested that you provide a two-factor authentication code to log in. This was probably sent to your email. Please enter it here:.
+        ///   Looks up a localized string similar to The server has requested that you provide a two-factor authentication code to log in. Please enter it here:.
         /// </summary>
         internal static string TWOFA_LABEL_CONTENT {
             get {
