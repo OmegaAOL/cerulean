@@ -1,4 +1,4 @@
-# Cerulean
+# Cerulean for Bluesky
 
 <img width="1402" height="792" alt="image" src="https://github.com/user-attachments/assets/bd13c309-8684-41c2-9606-6d63280ac2c4" />
 
