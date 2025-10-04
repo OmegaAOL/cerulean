@@ -244,6 +244,9 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="FEEDSEL_LIST_NO_NAME" xml:space="preserve">
     <value>No feed name</value>
   </data>
+  <data name="FEEDSEL_TIMELINE" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
   <data name="FEEDSEL_WINTITLE" xml:space="preserve">
     <value>Feed Selector</value>
   </data>
@@ -357,6 +360,12 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   </data>
   <data name="MAIN_SEARCHLIST_SEARCHING" xml:space="preserve">
     <value>Searching for users...</value>
+  </data>
+  <data name="MAIN_TABS_NO_CONTENT" xml:space="preserve">
+    <value>No content</value>
+  </data>
+  <data name="MAIN_TAB_NEW" xml:space="preserve">
+    <value>add feed (+)</value>
   </data>
   <data name="MAIN_TBUTTON_LOGOUT" xml:space="preserve">
     <value>Log Out</value>

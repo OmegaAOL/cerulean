@@ -420,6 +420,15 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Timeline.
+        /// </summary>
+        internal static string FEEDSEL_TIMELINE {
+            get {
+                return ResourceManager.GetString("FEEDSEL_TIMELINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feed Selector.
         /// </summary>
         internal static string FEEDSEL_WINTITLE {
@@ -758,6 +767,24 @@ namespace Cerulean.LangPacks {
         internal static string MAIN_SEARCHLIST_SEARCHING {
             get {
                 return ResourceManager.GetString("MAIN_SEARCHLIST_SEARCHING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to add feed (+).
+        /// </summary>
+        internal static string MAIN_TAB_NEW {
+            get {
+                return ResourceManager.GetString("MAIN_TAB_NEW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No content.
+        /// </summary>
+        internal static string MAIN_TABS_NO_CONTENT {
+            get {
+                return ResourceManager.GetString("MAIN_TABS_NO_CONTENT", resourceCulture);
             }
         }
         

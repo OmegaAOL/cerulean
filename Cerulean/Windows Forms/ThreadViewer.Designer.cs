@@ -36,8 +36,8 @@
             // 
             this.tweetBoard.AutoScroll = true;
             this.tweetBoard.AutoScrollMargin = new System.Drawing.Size(0, 1);
-            this.tweetBoard.BackColor = System.Drawing.Color.Transparent;
-            this.tweetBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tweetBoard.BackColor = System.Drawing.SystemColors.Control;
+            this.tweetBoard.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
             this.tweetBoard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tweetBoard.Location = new System.Drawing.Point(0, 0);
             this.tweetBoard.Margin = new System.Windows.Forms.Padding(0);
@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ThemeDefinitions.Background;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1047, 551);
             this.Controls.Add(this.tweetBoard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

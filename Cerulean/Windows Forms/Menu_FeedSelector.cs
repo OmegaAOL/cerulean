@@ -10,13 +10,14 @@ namespace Cerulean
 {
     public partial class Menu_FeedSelector : Form
     {
-        public static Menu_FeedSelector Instance;
-
         public Menu_FeedSelector()
         {
             InitializeComponent();
-            Instance = this;
         }
+
+        public string SelectedFeedUri { get; private set; }
+        public string SelectedFeedName { get; private set; }
+        public bool SelectedTimeline { get; private set; }
 
         private void Menu_FeedSelector_Load(object sender, EventArgs e)
         {
@@ -64,8 +65,9 @@ namespace Cerulean
 
         private void buttonFollowingFeed_Click(object sender, EventArgs e)
         {
-            Menu_Main.Instance.FetchFeed(true);
-            this.Close();
+            this.DialogResult = DialogResult.OK;
+            SelectedFeedName = LangPack.FEEDSEL_TIMELINE;
+            SelectedTimeline = true;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -103,12 +105,11 @@ namespace Cerulean
                 return;
             }
 
-            this.Hide();
-
             ListViewItem selectedItem = feedList.SelectedItems[0];
-            string atUri = selectedItem.Tag.ToString();
 
-            Menu_Main.Instance.FetchFeed(false, atUri.Trim());
+            this.DialogResult = DialogResult.OK;
+            SelectedFeedUri = selectedItem.Tag.ToString().Trim();
+            SelectedFeedName = selectedItem.Text;
         }
 
         private void feedList_DoubleClick(object sender, EventArgs e)

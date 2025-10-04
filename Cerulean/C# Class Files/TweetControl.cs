@@ -252,14 +252,12 @@ namespace Cerulean
             {
                 JObject verification = (JObject)tweet["author"]["verification"];
 
-                if (verification["verifiedStatus"] != null &&
-                    verification["verifiedStatus"].ToString() == "valid")
+                if (JsonTools.GetString(verification, "verifiedStatus") == "valid")
                 {
                     verified = Profile.Verification.Verified;
                 }
 
-                if (verification["trustedVerifierStatus"] != null &&
-                    verification["trustedVerifierStatus"].ToString() == "valid")
+                if (JsonTools.GetString(verification, "trustedVerifierStatus") == "valid")
                 {
                     verified = Profile.Verification.TrustedVerifier;
                 }

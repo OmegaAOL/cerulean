@@ -36,7 +36,7 @@ namespace Cerulean
         public static readonly Color BackgroundPanel = Color.WhiteSmoke;
         public static readonly Color BackgroundBoxes = Color.White;
 
-        public static readonly Color DepthIndicatorBase = ColorTranslator.FromHtml("#00B3FF");
+        public static readonly Color DepthIndicatorBase = ColorTranslator.FromHtml("#00a1e6");
         public static readonly Color TransparencySubstitute = Color.Magenta;
     }
 }

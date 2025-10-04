@@ -94,12 +94,16 @@
             this.reauthButton = new System.Windows.Forms.ToolStripButton();
             this.logoutButton = new System.Windows.Forms.ToolStripButton();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.tbTabControl = new System.Windows.Forms.TabControl();
+            this.mainTab = new System.Windows.Forms.TabPage();
+            this.tweetBoard = new Cerulean.BorderPanel();
             this.mainTree = new Cerulean.BorderTreeView();
             this.predictionBox = new Cerulean.TypeaheadBox();
-            this.tweetBoard = new Cerulean.BorderPanel();
             this.quickPostButton = new Cerulean.CeruleanButton();
             this.statusStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tbTabControl.SuspendLayout();
+            this.mainTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -590,6 +594,46 @@
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_keyDown);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
+            // tbTabControl
+            // 
+            this.tbTabControl.Controls.Add(this.mainTab);
+            this.tbTabControl.Location = new System.Drawing.Point(276, 38);
+            this.tbTabControl.Name = "tbTabControl";
+            this.tbTabControl.SelectedIndex = 0;
+            this.tbTabControl.Size = new System.Drawing.Size(1047, 589);
+            this.tbTabControl.TabIndex = 12;
+            this.tbTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbTabControl_Selecting);
+            this.tbTabControl.TabIndexChanged += new System.EventHandler(this.tb_TabIndexChanged);
+            this.tbTabControl.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.tbc_Add);
+            this.tbTabControl.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tbc_Remove);
+            // 
+            // mainTab
+            // 
+            this.mainTab.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.mainTab.Controls.Add(this.tweetBoard);
+            this.mainTab.Location = new System.Drawing.Point(4, 22);
+            this.mainTab.Name = "mainTab";
+            this.mainTab.Padding = new System.Windows.Forms.Padding(3);
+            this.mainTab.Size = new System.Drawing.Size(1039, 563);
+            this.mainTab.TabIndex = 1;
+            this.mainTab.Text = "Placeholder text";
+            this.mainTab.UseVisualStyleBackColor = true;
+            // 
+            // tweetBoard
+            // 
+            this.tweetBoard.AutoScroll = true;
+            this.tweetBoard.AutoScrollMargin = new System.Drawing.Size(0, 1);
+            this.tweetBoard.AutoSize = true;
+            this.tweetBoard.BackColor = System.Drawing.SystemColors.Control;
+            this.tweetBoard.BackgroundImage = global::Cerulean.CeruleanArt.bdStripes;
+            this.tweetBoard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tweetBoard.Location = new System.Drawing.Point(3, 3);
+            this.tweetBoard.Margin = new System.Windows.Forms.Padding(0);
+            this.tweetBoard.Name = "tweetBoard";
+            this.tweetBoard.Size = new System.Drawing.Size(1033, 557);
+            this.tweetBoard.TabIndex = 10;
+            this.tweetBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
             // mainTree
             // 
             this.mainTree.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -612,19 +656,6 @@
             this.predictionBox.Visible = false;
             this.predictionBox.Click += new System.EventHandler(this.listView_Click);
             this.predictionBox.SelectedIndexChanged += new System.EventHandler(this.predictionBox_SelectedIndexChanged);
-            // 
-            // tweetBoard
-            // 
-            this.tweetBoard.AutoScroll = true;
-            this.tweetBoard.AutoScrollMargin = new System.Drawing.Size(0, 1);
-            this.tweetBoard.BackColor = System.Drawing.Color.Transparent;
-            this.tweetBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tweetBoard.Location = new System.Drawing.Point(276, 38);
-            this.tweetBoard.Margin = new System.Windows.Forms.Padding(0);
-            this.tweetBoard.Name = "tweetBoard";
-            this.tweetBoard.Size = new System.Drawing.Size(1047, 589);
-            this.tweetBoard.TabIndex = 10;
-            this.tweetBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // quickPostButton
             // 
@@ -652,12 +683,12 @@
             this.ClientSize = new System.Drawing.Size(1350, 732);
             this.Controls.Add(this.mainTree);
             this.Controls.Add(this.predictionBox);
-            this.Controls.Add(this.tweetBoard);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.quickPostButton);
             this.Controls.Add(this.quickPostBox);
             this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.tbTabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1366, 770);
@@ -674,6 +705,9 @@
             this.statusStrip.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tbTabControl.ResumeLayout(false);
+            this.mainTab.ResumeLayout(false);
+            this.mainTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -741,7 +775,6 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton reauthButton;
-        private BorderPanel tweetBoard;
         private System.Windows.Forms.MenuItem menuItemBugGitFile;
         private System.Windows.Forms.MenuItem menuItem17;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -749,5 +782,8 @@
         private Cerulean.TypeaheadBox predictionBox;
         private System.Windows.Forms.ToolStripButton notificationsButton;
         private Cerulean.BorderTreeView mainTree;
+        private System.Windows.Forms.TabControl tbTabControl;
+        private System.Windows.Forms.TabPage mainTab;
+        private BorderPanel tweetBoard;
     }
 }

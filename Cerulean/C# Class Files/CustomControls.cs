@@ -15,10 +15,10 @@ namespace Cerulean
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            using (Pen p = new Pen(Color.LightGray))
+            /*using (Pen p = new Pen(Color.LightGray))
             {
                 e.Graphics.DrawRectangle(p, 0, 0, this.Width - 1, this.Height - 1);
-            }
+            }*/
         }
     }
 

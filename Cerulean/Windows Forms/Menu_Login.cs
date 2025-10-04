@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using System.Threading;
 using Cerulean.LangPacks;
 using Newtonsoft.Json.Linq;
-using LibPurple;
 using OmegaAOL.SkyBridge;
 
 namespace Cerulean
@@ -220,10 +219,7 @@ namespace Cerulean
 
         private void forgotPasswordButton_Click(object sender, EventArgs e)
         {
-            Purple.purple_core_init("dummy-ui");
-            string version = Purple.GetVersion();
-            MessageBox.Show("Libpurple version: " + version);
-            //new Menu_ResetPass().ShowDialog();
+            new Menu_ResetPass().ShowDialog();
             //OAuth.Test();
         }
 

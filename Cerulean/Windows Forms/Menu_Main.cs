@@ -11,20 +11,19 @@ namespace Cerulean
 {
     public partial class Menu_Main : Form
     {
-        public static Menu_Main Instance { get; private set; }
-
         public Menu_Main()
         {
             InitializeComponent();
 
             NotificationFetcher();
-            Instance = this;
             _debounceTimer = new Timer();
             _debounceTimer.Interval = 300; // 600 ms debounce delay
             _debounceTimer.Tick += DebounceTimer_Tick;
 
             searchBox.TextChanged += searchBox_TextChanged;
         }
+
+
 
         private void LocalizeControls()
         {
@@ -41,31 +40,49 @@ namespace Cerulean
             quickPostBox.Text = LangPack.MAIN_QTBOX_PLACEHOLDER;
             quickPostButton.Text = LangPack.MAIN_BUTTON_POST;
             notificationsButton.Text = LangPack.MAIN_TBUTTON_NOTIFICATIONS;
+            tbTabControl.TabPages[0].Text = LangPack.MAIN_TABS_NO_CONTENT;
         }
+
+        public static TabPage newTabButton;
 
         private void Menu_Main_Load(object sender, EventArgs e)
         {
             CenterToParent();
             LocalizeControls();
             predictionBox.Height = 0;
-
+            tbTabControl.TabPages.Add("newTabButton", LangPack.MAIN_TAB_NEW);
+            newTabButton = tbTabControl.TabPages["newTabButton"];
             quickPostButton.Enabled = false;
         }
 
-        private void tweetBoardHandler(JObject response)
+        private void tweetBoardHandler(JObject response, BorderPanel board = null)
         {
+            if (board == null)
+            {
+                board = tweetBoard;
+            }
+
             if (WEH.ErrHandler(response)[2] != "true")
             {
                 if (!response.ContainsKey("feed"))
                     return;
 
                 JArray tweetArray = (JArray)response["feed"];
+                bool postsExist = false;
                 foreach (JObject tweetPackage in tweetArray)
                 {
                     JObject tweet = (JObject)tweetPackage["post"];
                     TweetControl t = new TweetControl();
                     t.LoadTweetContent(tweetPackage);
-                    tweetBoard.Controls.Add(t);
+                    board.Controls.Add(t);
+                    if (!postsExist)
+                    {
+                        postsExist = true;
+                    }
+                }
+                if (!postsExist)
+                {
+                    tweetBoard.Controls.Add(makeLabel(LangPack.TVIEW_NOPOSTS));
                 }
             }
         }
@@ -149,7 +166,7 @@ namespace Cerulean
 
         private void menuItemReload_Click(object sender, EventArgs e)
         {
-            new Menu_FeedSelector().ShowDialog();
+            FetchFeed();
         }
 
         private void BarGo()
@@ -163,26 +180,70 @@ namespace Cerulean
             proBar.Invalidate();
         }
 
-        public void FetchFeed(bool timeline, string uri = null)
+        private Label makeLabel(string text)
         {
-            Menu_FeedSelector.Instance.Close();
-            tweetBoard.Controls.Clear();
-            JObject response = new JObject();
-            BarGo();
+            Label label = new Label();
+            label.Text = text;
+            label.AutoSize = true;
+            label.ForeColor = System.Drawing.Color.Red;
+            label.Location = new System.Drawing.Point(20, 20);
+            return label;
+        }
 
-            Async.SkyWorker(
-            delegate
+        public void FetchFeed(bool inNewTab = false)
+        {
+            Menu_FeedSelector fs = new Menu_FeedSelector();
+            if (fs.ShowDialog() == DialogResult.OK)
             {
-                if (timeline) { response = Feeds.Load.Timeline(); }
-                else { response = Feeds.Load.Custom(uri); }
-            },
-            delegate
-            {
-                tweetBoardHandler(response);
-                BarStop();
+                if (!inNewTab) { tweetBoard.Controls.Clear(); }
+                JObject response = new JObject();
+                BarGo();
+
+                Async.SkyWorker(
+                delegate
+                {
+                    if (fs.SelectedTimeline) { response = Feeds.Load.Timeline(); }
+                    else { response = Feeds.Load.Custom(fs.SelectedFeedUri); }
+                },
+                delegate
+                {
+                    if (inNewTab)
+                    {
+                        TabPage newTab = new TabPage(fs.SelectedFeedName);
+
+                        BorderPanel newTweetBoard = new BorderPanel();
+                        newTweetBoard.AutoScroll = true;
+                        newTweetBoard.AutoScrollMargin = new System.Drawing.Size(0, 1);
+                        newTweetBoard.AutoSize = true;
+                        newTweetBoard.BackgroundImage = CeruleanArt.bdStripes;
+                        newTweetBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Tile;
+                        newTweetBoard.Dock = System.Windows.Forms.DockStyle.Fill;
+                        newTweetBoard.Location = new System.Drawing.Point(3, 3);
+                        newTweetBoard.Margin = new System.Windows.Forms.Padding(0);
+                        newTweetBoard.Name = "newTweetBoard";
+                        newTweetBoard.Size = new System.Drawing.Size(1033, 557);
+                        newTweetBoard.TabIndex = 10;
+                        newTweetBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+
+                        newTab.Controls.Add(newTweetBoard);
+
+                        int insertIndex = tbTabControl.TabPages.IndexOf(newTabButton);
+                        tbTabControl.TabPages.Insert(insertIndex, newTab);
+
+                        tbTabControl.SelectedTab = newTab;
+
+                        tweetBoardHandler(response, newTweetBoard);
+                    }
+                    else
+                    {
+                        tbTabControl.TabPages[tbTabControl.SelectedIndex].Text = fs.SelectedFeedName;
+                        tweetBoardHandler(response);
+                    }
+
+                    BarStop();
+                }
+       );
             }
-           );
-
         }
 
         private void menuItemLogout_Click(object sender, EventArgs e)
@@ -344,7 +405,7 @@ namespace Cerulean
 
         private void Menu_Main_Shown(object sender, EventArgs e)
         {
-            new Menu_FeedSelector().ShowDialog();
+            FetchFeed();
         }
 
         private void notificationsButton_Click(object sender, EventArgs e)
@@ -415,6 +476,12 @@ namespace Cerulean
                         parent.Nodes.Add(follower["handle"].ToString());
                     }
                     parent.ExpandAll();
+
+                    mainTree.SelectedNode = null;
+                    if (mainTree.Nodes.Count > 0)
+                    {
+                        mainTree.TopNode = mainTree.Nodes[0];
+                    }
                 }
             );
         }
@@ -432,6 +499,43 @@ namespace Cerulean
         private void Menu_MouseDown(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void tb_TabIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbc_Add(object sender, ControlEventArgs e)
+        {
+            //LastAlignNewTabButton();
+        }
+
+        private void tbc_Remove(object sender, ControlEventArgs e)
+        {
+            //LastAlignNewTabButton();
+        }
+
+        private void LastAlignNewTabButton()
+        {
+            bool locks = false;
+            if (newTabButton != null && locks == false)
+            {
+                locks = true;
+                tbTabControl.TabPages.Remove(newTabButton);
+                tbTabControl.TabPages.Add(newTabButton);
+
+            }
+            locks = false;
+        }
+
+        private void tbTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage.Name == "newTabButton")
+            {
+                e.Cancel = true;
+                FetchFeed(true);
+            }
         }
 
     }

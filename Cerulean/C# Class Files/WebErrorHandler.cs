@@ -65,6 +65,7 @@ namespace Cerulean
                         title = LangPack.ERR_CANTRESOLVEHOST_HEAD;
                         subtitle = LangPack.ERR_CANTRESOLVEHOST_SUB;
                         break;
+                    case "CURLE_FAILED_INIT":
                     case "SKY_UNEXPECTED":
                         title = LangPack.ERR_SKY_HEAD;
                         subtitle = LangPack.ERR_SKY_SUB;
