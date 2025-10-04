@@ -18,6 +18,7 @@ using System.Security.Cryptography;
 using System.ComponentModel;
 using SeasideResearch.LibCurlNet;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json.Linq;
@@ -86,102 +87,157 @@ namespace OmegaAOL.SkyBridge
     {
         public enum Method { Post, Get, PostRaw };
         private static bool initDone;
-        private static Share ConnectionPool;
+        private static Share ConnectionDataPool;
+        private static EasyPool CurlRequestPool;
 
         private static void Initalize()
         {
             Curl.GlobalInit((int)CURLinitFlag.CURL_GLOBAL_DEFAULT);
-            ConnectionPool = new Share();
-            ConnectionPool.SetOpt(CURLSHoption.CURLSHOPT_SHARE, CURLlockData.CURL_LOCK_DATA_CONNECT);
-            ConnectionPool.SetOpt(CURLSHoption.CURLSHOPT_SHARE, CURLlockData.CURL_LOCK_DATA_COOKIE);
-            ConnectionPool.SetOpt(CURLSHoption.CURLSHOPT_SHARE, CURLlockData.CURL_LOCK_DATA_DNS);
+            CurlRequestPool = new EasyPool(10);
+            ConnectionDataPool = new Share();
+            ConnectionDataPool.SetOpt(CURLSHoption.CURLSHOPT_SHARE, CURLlockData.CURL_LOCK_DATA_CONNECT);
+            ConnectionDataPool.SetOpt(CURLSHoption.CURLSHOPT_SHARE, CURLlockData.CURL_LOCK_DATA_COOKIE);
+            ConnectionDataPool.SetOpt(CURLSHoption.CURLSHOPT_SHARE, CURLlockData.CURL_LOCK_DATA_DNS);
             initDone = true;
+        }
+
+        private class EasyPool
+        {
+            private readonly Queue<Easy> availableHandles;
+            private readonly object lockObj = new object();
+            private readonly int maxHandles;
+
+            public EasyPool(int maxHandles)
+            {
+                this.maxHandles = maxHandles;
+                availableHandles = new Queue<Easy>(maxHandles);
+            }
+
+            public Easy GetHandle()
+            {
+                lock (lockObj)
+                {
+                    if (availableHandles.Count > 0)
+                    {
+                        return availableHandles.Dequeue();
+                    }
+                }
+                return new Easy(); // when no handles in queue
+            }
+
+            public void ReturnHandle(Easy handle)
+            {
+                if (handle == null) return;
+
+                lock (lockObj)
+                {
+                    if (availableHandles.Count < maxHandles)
+                    {
+                        availableHandles.Enqueue(handle);
+                    }
+                    else
+                    {
+                        handle.Cleanup();
+                    }
+                }
+            }
         }
 
         public class Request
         {
             public JObject Perform(string endPoint, object parameters, string[] headers, Method reqType, string alternateBase = null) // Handles all requests Cerulean makes to the API.
             {
-                if (!initDone)
-                {
-                    Initalize();
-                }
-
-                Easy CurlRequest = new Easy();
+                Easy CurlRequest = null;
                 JObject response = new JObject();
-                string url = (alternateBase ?? Variables.PDSHost) + "/xrpc/" + endPoint;
-
-                StringBuilder jsonBuilder = new StringBuilder(); // the stringbuilder is because large messages are downloaded in chunks
-                Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData) // Downloads the server response
-                {
-                    int realSize = size * nmemb;
-                    jsonBuilder.Append(System.Text.Encoding.UTF8.GetString(buf, 0, realSize));
-                    return realSize;
-                };
-
-                Slist headerList = new Slist();
-                foreach (string header in headers)
-                {
-                    headerList.Append(header);
-                }
-
-                switch (reqType)
-                {
-                    case Method.Get:
-                        CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
-                        url = url + "?" + parameters;
-                        break;
-                    case Method.Post:
-                        CurlRequest.SetOpt(CURLoption.CURLOPT_POST, true);
-                        CurlRequest.SetOpt(CURLoption.CURLOPT_POSTFIELDS, parameters);
-                        break;
-                    case Method.PostRaw:
-                        CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, new Easy.WriteFunction((data, size, nmemb, extraData) =>
-                        {
-                            string responsse = Encoding.UTF8.GetString(data, 0, size * nmemb);
-                            Console.WriteLine(responsse);
-                            return size * nmemb;
-                        }));
-                        break;
-                }
-
-                CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, headerList);
-                CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url);
-                CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-                CurlRequest.SetOpt(CURLoption.CURLOPT_TIMEOUT, 10);
-                CurlRequest.SetOpt(CURLoption.CURLOPT_SHARE, ConnectionPool);
-                CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
-                CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
-                CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
-                //CurlRequest.SetOpt(CURLoption.CURLOPT_VERBOSE, true);
-                //CurlRequest.SetOpt(CURLoption.CURLOPT_DEBUGFUNCTION, new Easy.DebugFunction(OnDebug));
-
                 try
                 {
+                    if (!initDone)
+                    {
+                        Initalize();
+                    }
+
+                    CurlRequest = CurlRequestPool.GetHandle(); // fetch from pool                   
+                    string url = (alternateBase ?? Variables.PDSHost) + "/xrpc/" + endPoint;
+
+                    StringBuilder jsonBuilder = new StringBuilder(); // the stringbuilder is because large messages are downloaded in chunks
+                    Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData) // downloads the server response
+                    {
+                        int realSize = size * nmemb;
+                        jsonBuilder.Append(System.Text.Encoding.UTF8.GetString(buf, 0, realSize));
+                        return realSize;
+                    };
+
+                    Slist headerList = new Slist();
+                    foreach (string header in headers)
+                    {
+                        headerList.Append(header);
+                    }
+
+                    switch (reqType)
+                    {
+                        case Method.Get:
+                            CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPGET, true);
+                            url = url + "?" + parameters;
+                            break;
+                        case Method.Post:
+                            CurlRequest.SetOpt(CURLoption.CURLOPT_POST, true);
+                            CurlRequest.SetOpt(CURLoption.CURLOPT_POSTFIELDS, parameters);
+                            break;
+                        case Method.PostRaw:
+                            CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, new Easy.WriteFunction((data, size, nmemb, extraData) =>
+                            {
+                                string responsse = Encoding.UTF8.GetString(data, 0, size * nmemb);
+                                Console.WriteLine(responsse);
+                                return size * nmemb;
+                            }));
+                            break;
+                    }
+
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_HTTPHEADER, headerList);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_TIMEOUT, 10);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_SHARE, ConnectionDataPool);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+                    //CurlRequest.SetOpt(CURLoption.CURLOPT_VERBOSE, true);
+                    //CurlRequest.SetOpt(CURLoption.CURLOPT_DEBUGFUNCTION, new Easy.DebugFunction(OnDebug));
+
+
                     CURLcode code = CurlRequest.Perform();
-                    CurlRequest.Cleanup();
 
                     if (code != CURLcode.CURLE_OK)
                     {
                         response["error"] = code.ToString();
                         response["message"] = code.ToString();
                     }
+
+                    try
+                    {
+                        response = JObject.Parse(jsonBuilder.ToString());
+                    }
+
+                    catch
+                    {
+                        response["error"] = "Invalid response from server";
+                        response["message"] = "The PDS returned a response that Cerulean cannot process.";
+                    }
+
                 }
 
                 catch (Exception ex)
                 {
-                    Display.Text(ex.Message);
+                    response["error"] = "Unexpected error in SkyBridge";
+                    response["message"] = "SkyBridge encountered internal problems when attempting to communicate with the server, namely: " + ex.Message;
                 }
 
-                try
+                finally
                 {
-                    response = JObject.Parse(jsonBuilder.ToString());
-                }
-
-                catch
-                {
-                    response["error"] = "Invalid response from server";
-                    response["message"] = "The PDS returned a response that Cerulean cannot process.";
+                    if (CurlRequest != null)
+                    {
+                        CurlRequestPool.ReturnHandle(CurlRequest);
+                    }
                 }
 
                 return response;
