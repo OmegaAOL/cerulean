@@ -27,8 +27,11 @@ echo                            *      ****     **
 echo(%ESC%[0m
 
 git pull
-echo %ESC%[31mPulled repository%ESC%[0m
+echo %ESC%[92mPulled repository%ESC%[0m
 
-echo %ESC%[92mFinished%ESC%[0m
+git push
+echo %ESC%[92mPushed to GitHub%ESC%[0m
+
+echo %ESC%[96mFinished%ESC%[0m
 
 pause
