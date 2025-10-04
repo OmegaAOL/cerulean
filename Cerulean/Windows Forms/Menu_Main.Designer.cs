@@ -94,10 +94,10 @@
             this.reauthButton = new System.Windows.Forms.ToolStripButton();
             this.logoutButton = new System.Windows.Forms.ToolStripButton();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.quickPostButton = new Cerulean.CeruleanButton();
             this.mainTree = new Cerulean.BorderTreeView();
             this.predictionBox = new Cerulean.TypeaheadBox();
             this.tweetBoard = new Cerulean.BorderPanel();
+            this.quickPostButton = new Cerulean.CeruleanButton();
             this.statusStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -450,7 +450,7 @@
             this.connStatusLabel.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
             this.connStatusLabel.Name = "connStatusLabel";
             this.connStatusLabel.Padding = new System.Windows.Forms.Padding(6, 0, 5, 0);
-            this.connStatusLabel.Size = new System.Drawing.Size(130, 17);
+            this.connStatusLabel.Size = new System.Drawing.Size(102, 17);
             this.connStatusLabel.Text = "Placeholder text";
             this.connStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -465,7 +465,7 @@
             // 
             this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(954, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1010, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "    ";
             // 
@@ -473,13 +473,13 @@
             // 
             this.handleLabel.BackColor = System.Drawing.Color.Transparent;
             this.handleLabel.Name = "handleLabel";
-            this.handleLabel.Size = new System.Drawing.Size(119, 17);
+            this.handleLabel.Size = new System.Drawing.Size(91, 17);
             this.handleLabel.Text = "Placeholder text";
             this.handleLabel.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // quickPostBox
             // 
-            this.quickPostBox.ForeColor = ThemeDefinitions.TextHighContrast;
+            this.quickPostBox.ForeColor = System.Drawing.Color.DarkGray;
             this.quickPostBox.Location = new System.Drawing.Point(276, 648);
             this.quickPostBox.Name = "quickPostBox";
             this.quickPostBox.Size = new System.Drawing.Size(960, 20);
@@ -513,18 +513,18 @@
             // newPostButton
             // 
             this.newPostButton.Image = global::Cerulean.Icons_Aero.imageres_158_10;
-            this.newPostButton.ImageTransparentColor = ThemeDefinitions.Foreground;
+            this.newPostButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newPostButton.Name = "newPostButton";
-            this.newPostButton.Size = new System.Drawing.Size(139, 22);
+            this.newPostButton.Size = new System.Drawing.Size(111, 22);
             this.newPostButton.Text = "Placeholder text";
             this.newPostButton.Click += new System.EventHandler(this.menuItemTweet_Click);
             // 
             // newDmButton
             // 
             this.newDmButton.Image = global::Cerulean.Icons_Aero.imageres_128_10;
-            this.newDmButton.ImageTransparentColor = ThemeDefinitions.Foreground;
+            this.newDmButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newDmButton.Name = "newDmButton";
-            this.newDmButton.Size = new System.Drawing.Size(139, 22);
+            this.newDmButton.Size = new System.Drawing.Size(111, 22);
             this.newDmButton.Text = "Placeholder text";
             this.newDmButton.Click += new System.EventHandler(this.menuItemDM_Click);
             // 
@@ -536,18 +536,18 @@
             // feedSelectorButton
             // 
             this.feedSelectorButton.Image = global::Cerulean.Icons_Aero.imageres_25_10;
-            this.feedSelectorButton.ImageTransparentColor = ThemeDefinitions.Foreground;
+            this.feedSelectorButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.feedSelectorButton.Name = "feedSelectorButton";
-            this.feedSelectorButton.Size = new System.Drawing.Size(139, 22);
+            this.feedSelectorButton.Size = new System.Drawing.Size(111, 22);
             this.feedSelectorButton.Text = "Placeholder text";
             this.feedSelectorButton.Click += new System.EventHandler(this.menuItemReload_Click);
             // 
             // notificationsButton
             // 
             this.notificationsButton.Image = global::Cerulean.CeruleanArt.globe_16;
-            this.notificationsButton.ImageTransparentColor = ThemeDefinitions.TransparencySubstitute;
+            this.notificationsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.notificationsButton.Name = "notificationsButton";
-            this.notificationsButton.Size = new System.Drawing.Size(139, 22);
+            this.notificationsButton.Size = new System.Drawing.Size(111, 22);
             this.notificationsButton.Text = "Placeholder text";
             this.notificationsButton.ToolTipText = "Placeholder text";
             this.notificationsButton.Click += new System.EventHandler(this.notificationsButton_Click);
@@ -560,26 +560,26 @@
             // reauthButton
             // 
             this.reauthButton.Image = global::Cerulean.Icons_Aero.imageres_82_10;
-            this.reauthButton.ImageTransparentColor = ThemeDefinitions.TransparencySubstitute;
+            this.reauthButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reauthButton.Name = "reauthButton";
-            this.reauthButton.Size = new System.Drawing.Size(139, 22);
+            this.reauthButton.Size = new System.Drawing.Size(111, 22);
             this.reauthButton.Text = "Placeholder text";
             this.reauthButton.Click += new System.EventHandler(this.menuItemRefreshToken_Click);
             // 
             // logoutButton
             // 
-            this.logoutButton.ForeColor = ThemeDefinitions.Foreground;
+            this.logoutButton.ForeColor = System.Drawing.Color.Black;
             this.logoutButton.Image = global::Cerulean.Icons_Aero.imageres_59_10;
-            this.logoutButton.ImageTransparentColor = ThemeDefinitions.Foreground;
+            this.logoutButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(139, 22);
+            this.logoutButton.Size = new System.Drawing.Size(111, 22);
             this.logoutButton.Text = "Placeholder text";
             this.logoutButton.Click += new System.EventHandler(this.menuItemLogout_Click);
             // 
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.ForeColor = ThemeDefinitions.TextHighContrast;
+            this.searchBox.ForeColor = System.Drawing.Color.DarkGray;
             this.searchBox.Location = new System.Drawing.Point(1107, 1);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 20);
@@ -590,27 +590,9 @@
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_keyDown);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
-            // quickPostButton
-            // 
-            this.quickPostButton.AutoSize = true;
-            this.quickPostButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.quickPostButton.BackColor = ThemeDefinitions.BackgroundColor;
-            this.quickPostButton.Enabled = false;
-            this.quickPostButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.quickPostButton.Location = new System.Drawing.Point(1248, 646);
-            this.quickPostButton.Margin = new System.Windows.Forms.Padding(0);
-            this.quickPostButton.MinimumSize = new System.Drawing.Size(75, 23);
-            this.quickPostButton.Name = "quickPostButton";
-            this.quickPostButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
-            this.quickPostButton.Size = new System.Drawing.Size(75, 23);
-            this.quickPostButton.TabIndex = 4;
-            this.quickPostButton.Text = "Post";
-            this.quickPostButton.UseVisualStyleBackColor = false;
-            this.quickPostButton.Click += new System.EventHandler(this.quickPostButton_Click);
-            // 
             // mainTree
             // 
-            this.mainTree.BackColor = ThemeDefinitions.BackgroundPanel;
+            this.mainTree.BackColor = System.Drawing.Color.WhiteSmoke;
             this.mainTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mainTree.Location = new System.Drawing.Point(27, 38);
             this.mainTree.Name = "mainTree";
@@ -628,6 +610,8 @@
             this.predictionBox.Size = new System.Drawing.Size(229, 91);
             this.predictionBox.TabIndex = 11;
             this.predictionBox.Visible = false;
+            this.predictionBox.Click += new System.EventHandler(this.listView_Click);
+            this.predictionBox.SelectedIndexChanged += new System.EventHandler(this.predictionBox_SelectedIndexChanged);
             // 
             // tweetBoard
             // 
@@ -642,11 +626,29 @@
             this.tweetBoard.TabIndex = 10;
             this.tweetBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // quickPostButton
+            // 
+            this.quickPostButton.AutoSize = true;
+            this.quickPostButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.quickPostButton.BackColor = System.Drawing.Color.LightGray;
+            this.quickPostButton.Enabled = false;
+            this.quickPostButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.quickPostButton.Location = new System.Drawing.Point(1248, 646);
+            this.quickPostButton.Margin = new System.Windows.Forms.Padding(0);
+            this.quickPostButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.quickPostButton.Name = "quickPostButton";
+            this.quickPostButton.Padding = new System.Windows.Forms.Padding(6, 1, 5, 0);
+            this.quickPostButton.Size = new System.Drawing.Size(75, 23);
+            this.quickPostButton.TabIndex = 4;
+            this.quickPostButton.Text = "Post";
+            this.quickPostButton.UseVisualStyleBackColor = false;
+            this.quickPostButton.Click += new System.EventHandler(this.quickPostButton_Click);
+            // 
             // Menu_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ThemeDefinitions.Background;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1350, 732);
             this.Controls.Add(this.mainTree);
             this.Controls.Add(this.predictionBox);
@@ -667,6 +669,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_Main_Close);
             this.Load += new System.EventHandler(this.Menu_Main_Load);
             this.Shown += new System.EventHandler(this.Menu_Main_Shown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Menu_MouseDown);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

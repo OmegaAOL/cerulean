@@ -19,7 +19,6 @@ namespace Cerulean
             this.Height = Screen.GetWorkingArea(this).Height;
             CenterToScreen();
             this.Text = LangPack.TVIEW_WINTITLE_LOADING;
-            File.WriteAllText("thread.txt", thread.ToString()); //debug
 
             string title = thread.SelectToken("thread.post.author.handle").ToString();
             if (String.IsNullOrEmpty(title)) { title = LangPack.GLOBAL_UNKNOWN; }

@@ -13,16 +13,6 @@ namespace Cerulean
     {
         public static Menu_Main Instance { get; private set; }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
-                return cp;
-            }
-        }
-
         public Menu_Main()
         {
             InitializeComponent();
@@ -165,12 +155,19 @@ namespace Cerulean
 
         private void searchBox_Leave(object sender, EventArgs e)
         {
+            Point mousePos = predictionBox.Parent.PointToClient(Cursor.Position);
 
-            searchBox.ForeColor = Color.DarkGray;
-            searchBox.Text = LangPack.MAIN_SEARCHBOX_PLACEHOLDER;
+            // If mouse is outside predictionBox, hide it
+            if (!predictionBox.Bounds.Contains(mousePos))
+            {
+                if (String.IsNullOrEmpty(searchBox.Text))
+                {
+                    searchBox.ForeColor = Color.DarkGray;
+                    searchBox.Text = LangPack.MAIN_SEARCHBOX_PLACEHOLDER;
+                    predictionBox.Height = 0;
+                }
+            }
         }
-
-
 
         private void menuItemReload_Click(object sender, EventArgs e)
         {
@@ -295,32 +292,18 @@ namespace Cerulean
 
         private void searchBox_keyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Enter)
             {
-                if (predictionResponse != null && WEH.ErrHandler(predictionResponse)[2] != "true")
-                {
-                    try
-                    {
-                        if (predictionResponse["actors"].ToString() != "[]")
-                        {
-                            string did = predictionResponse["actors"][0]["did"].ToString();
-                            new Menu_Profile(did).ShowDialog();
-                        }
-                    }
-                    catch { MessageBox.Show(predictionResponse.ToString()); }
-                }
-
-                e.Handled = true;
-                e.SuppressKeyPress = true;
+               new Menu_Profile(predictionBox.Items[0].ToString()).Show();
+               e.Handled = true;
+               e.SuppressKeyPress = true;
             }
         }
 
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            if (searchBox.Text == String.Empty || searchBox.Text == LangPack.MAIN_SEARCHBOX_PLACEHOLDER) { predictionBox.Height = 0; }
-            else
+            if (searchBox.Text != String.Empty && searchBox.Text != LangPack.MAIN_SEARCHBOX_PLACEHOLDER)
             {
                 // Reset the timer every time text changes
                 _debounceTimer.Stop();
@@ -329,6 +312,10 @@ namespace Cerulean
                 // Save the latest input
                 _lastInput = searchBox.Text;
             }
+
+            else
+                predictionBox.Height = 0;
+
         }
 
         public static JObject predictionResponse;
@@ -465,5 +452,21 @@ namespace Cerulean
                 }
             );
         }
+
+        private void predictionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView_Click(object sender, EventArgs e)
+        {
+            new Menu_Profile(predictionBox.SelectedItem.ToString()).Show();
+        }
+
+        private void Menu_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
     }
 }
