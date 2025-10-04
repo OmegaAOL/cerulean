@@ -1,40 +1,39 @@
 # Cerulean
 
-> [!NOTE]
-> Progress has been suspended for the time being. If sufficient interest exists, I will continue.
+<img width="1402" height="792" alt="image" src="https://github.com/user-attachments/assets/bd13c309-8684-41c2-9606-6d63280ac2c4" />
 
-<img width="1403" height="795" alt="image" src="https://github.com/user-attachments/assets/23c3183d-5a9a-464f-96d5-6cd8468b4bc2" />
+*Screenshot of Cerulean Release 1.0 on [Reunion7](https://www.reunion7.com)*
 
-*Screenshot of Cerulean Beta 0.2.0 on [Reunion7](https://www.reunion7.com)*
-
-This is the repository for the open-source Cerulean Bluesky client, currently in the beta stage and pretty usable. It is written in C# and uses  WinForms (fully native) + .NET Framework 2.0. It runs on Windows 98 and up, but I am reasonably confident it can be backported to Windows 95.
+This is the repository for the open-source Cerulean Bluesky client, which recently exited the Beta stage and is now quite usable. It is written in C# and uses  WinForms (fully native) + .NET Framework 2.0. It runs on Windows 98 and up, but I am reasonably confident it can be backported to Windows 95.
 
 <img width="912" height="385" alt="cerulean-git-NEW" src="https://github.com/user-attachments/assets/6d494e83-05fe-4fa0-b967-ceac51333974" />
 
-# What works (so far)
+# What Cerulean can do (so far)
 
-- Logging in, resetting password, changing PDS host
+- Logging in (2FA supported), resetting password, changing PDS host
 - Encryption of handle and password (AES-256 on legacy Windows, DPAPI on Windows 2000 and up)
 - Creating posts, reposts (also undoing reposts), quote posts
+- Tabbed feed browsing
+- Viewing threads
 - Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
 - Liking and unliking posts
 - Viewing your timeline & your other feeds
 - Searching for profiles and viewing profile information
+- Following and unfollowing people
 - Viewing images and avatars
 - Deleting posts
+- Viewing notifications
 
 # What needs to be fixed
 
-- Spawning new anonymous threads. Basically: Don't click buttons too fast/spam-click
 - Uploading images to posts
 - Creating account
 - Reporting users and posts, blocking users
-- Viewing notifications
 
 # What needs to be added 
 
+- Themes (logic exists partly in code)
 - Viewing all posts of a particular user
-- Viewing threads (use more -> open in browser for this rn)
 - Starter packs
 - Chat
 - Lists
