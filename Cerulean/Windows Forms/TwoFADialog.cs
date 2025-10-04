@@ -16,10 +16,8 @@ namespace Cerulean
         public TwoFADialog()
         {
             InitializeComponent();
-            this.MinimizeBox = false;    
+            this.MinimizeBox = false;
             this.MaximizeBox = false;
-
-
         }
 
         private void TwoFADialog_Load(object sender, EventArgs e)
@@ -42,7 +40,6 @@ namespace Cerulean
             {
                 this.DialogResult = DialogResult.OK; 
                 TwoFACode = CodeBox.Text;
-                this.Close();
                 this.Dispose();
             }
             else

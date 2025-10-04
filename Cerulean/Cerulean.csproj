@@ -111,7 +111,7 @@
     <Compile Include="C# Class Files\Encryptor.cs" />
     <Compile Include="C# Class Files\GlobalVar.cs" />
     <Compile Include="C# Class Files\ImageQueue.cs" />
-    <Compile Include="C# Class Files\LibPurple.cs" />
+    <Compile Include="C# Class Files\JsonTools.cs" />
     <Compile Include="C# Class Files\OAuth.cs" />
     <Compile Include="C# Class Files\SkyBridge.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

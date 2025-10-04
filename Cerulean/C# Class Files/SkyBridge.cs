@@ -412,13 +412,13 @@ namespace OmegaAOL.SkyBridge
 
                 if (refreshBody.SelectToken("error") != null)
                 {
-                    switch (refreshBody["message"].ToString())
+                    switch (refreshBody["error"].ToString())
                     {
                         case "ExpiredToken":
                             Display.Text("Your session has expired. Please log in again");
                             break;
                         default:
-                            Display.Text("There was an error refreshing your session. You may be offline.");
+                            Display.Text("There was an error refreshing your session. You may be offline. Message: \n\n" + refreshBody["message"]);
                             break;                    
                     }
                 }

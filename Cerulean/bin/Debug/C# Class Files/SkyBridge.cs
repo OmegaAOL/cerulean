@@ -409,14 +409,27 @@ namespace OmegaAOL.SkyBridge
             {
                 JObject refreshBody = LoginWithRefreshToken(Variables.RefreshToken, true);
                 //WEH.ErrHandler(refreshBody);
-                Display.Text("[DEBUG] REFRESH RESPONSE:\n\n" + refreshBody.ToString()); // Refresh token obtained debug
 
-
-                Variables.Token = (string)refreshBody["accessJwt"];
-                Variables.RefreshToken = (string)refreshBody["refreshJwt"];
-                if (manualRefreshTriggered == true)
+                if (refreshBody.SelectToken("error") != null)
                 {
-                    Display.Text("Reauthenticated with Bluesky successfully.");
+                    switch (refreshBody["error"].ToString())
+                    {
+                        case "ExpiredToken":
+                            Display.Text("Your session has expired. Please log in again");
+                            break;
+                        default:
+                            Display.Text("There was an error refreshing your session. You may be offline. Message: \n\n" + refreshBody["message"]);
+                            break;                    
+                    }
+                }
+                else
+                {
+                    Variables.Token = (string)refreshBody["accessJwt"];
+                    Variables.RefreshToken = (string)refreshBody["refreshJwt"];
+                    if (manualRefreshTriggered == true)
+                    {
+                        Display.Text("Reauthenticated with Bluesky successfully.");
+                    }
                 }
 
                 //Global.reloadCount++; // Timer debug
