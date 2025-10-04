@@ -1319,5 +1319,32 @@ namespace Cerulean.LangPacks {
                 return ResourceManager.GetString("TWEET_WINTITLE_REPLYTO_PRE", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid two-factor code..
+        /// </summary>
+        internal static string TWOFA_CBOX_NOCODE {
+            get {
+                return ResourceManager.GetString("TWOFA_CBOX_NOCODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server has requested that you provide a two-factor authentication code to log in. This was probably sent to your email. Please enter it here:.
+        /// </summary>
+        internal static string TWOFA_LABEL_CONTENT {
+            get {
+                return ResourceManager.GetString("TWOFA_LABEL_CONTENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your 2FA code.
+        /// </summary>
+        internal static string TWOFA_WINTITLE {
+            get {
+                return ResourceManager.GetString("TWOFA_WINTITLE", resourceCulture);
+            }
+        }
     }
 }

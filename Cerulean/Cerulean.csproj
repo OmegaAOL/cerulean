@@ -157,6 +157,12 @@
     <Compile Include="Windows Forms\CeruleanBox.Designer.cs">
       <DependentUpon>CeruleanBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows Forms\TwoFADialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\TwoFADialog.Designer.cs">
+      <DependentUpon>TwoFADialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows Forms\ImageViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\CeruleanBox.resx">
       <DependentUpon>CeruleanBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\TwoFADialog.resx">
+      <DependentUpon>TwoFADialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\ImageViewer.resx">
       <DependentUpon>ImageViewer.cs</DependentUpon>

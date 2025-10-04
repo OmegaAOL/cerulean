@@ -16,7 +16,7 @@ namespace Cerulean
             InitializeComponent();
             this.MinimizeBox = false;    // hide minimize button
             this.MaximizeBox = false;
-            label1.Text = text.ToString();
+            textContent.Text = text.ToString();
         }
 
         private void Form_CeruleanBox_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Cerulean
         private void LocalizeControls()
         {
             this.Text = LangPack.CBOX_WINTITLE;
-            button1.Text = LangPack.GLOBAL_BUTTON_OK;
+            OKButton.Text = LangPack.GLOBAL_BUTTON_OK;
         }
 
         private void button1_Click(object sender, EventArgs e)

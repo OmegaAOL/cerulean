@@ -551,4 +551,13 @@ reset code that you received in the mail:</value>
   <data name="TWEET_WINTITLE_REPLYTO_PRE" xml:space="preserve">
     <value>Reply to</value>
   </data>
+  <data name="TWOFA_CBOX_NOCODE" xml:space="preserve">
+    <value>Please enter a valid two-factor code.</value>
+  </data>
+  <data name="TWOFA_LABEL_CONTENT" xml:space="preserve">
+    <value>The server has requested that you provide a two-factor authentication code to log in. This was probably sent to your email. Please enter it here:</value>
+  </data>
+  <data name="TWOFA_WINTITLE" xml:space="preserve">
+    <value>Enter your 2FA code</value>
+  </data>
 </root>

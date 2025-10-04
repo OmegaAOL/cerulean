@@ -18,6 +18,7 @@ namespace Cerulean
         private const string DEBUGCODE_LEAD = "$";
         private const string REG_PATH_LOGINDATA = "\\LoginData";
         private const string REG_KEY_HANDLE = "handle";
+        private string password;
         private const string REG_KEY_PASSWORD = "password";
         private static readonly string[] LOCALMSG_DEFAULT = new string[2] { LangPack.LOGIN_LOCALMSG_DEFAULT, LangPack.LOGIN_LOCALMSG_DEFAULT_SUB };
         private static readonly string[] LOCALMSG_EMPTY_FIELD = new string[2] { LangPack.GLOBAL_INFOLABEL_EMPTY_FIELDS, LangPack.LOGIN_LOCALMSG_EMPTY_FIELD_SUB };
@@ -50,7 +51,7 @@ namespace Cerulean
         {
             CenterToParent();
             LocalizeControlText();
-            CheckSavedCred();
+            FetchCredentials();
             this.AcceptButton = loginButton;
             BackgroundImage = ThemeDefinitions.Background;
             Variables.PDSHost = RegKit.Read.String("API", "PDSHost");
@@ -58,6 +59,8 @@ namespace Cerulean
 
         public void displayError(string[] strArray) // called to display error message
         {
+            handleBox.Text = Variables.Handle;
+            passwordBox.Text = password;
             timeOutBar.MarqueeAnimationSpeed = 0;
             timeOutBar.Invalidate();
             header.Text = strArray[0];
@@ -83,11 +86,12 @@ namespace Cerulean
             rememberMeBox.Enabled = enabled;
         }
 
-        private void InitLogin(string handle, string password)
+        private void InitLogin(string handle, string passwordTemp, string code = null)
         {
             ToggleControls(false);
 
             Variables.Handle = handle; // set variables to handle and password
+            password = passwordTemp;
 
             if (string.IsNullOrEmpty(Variables.Handle) || string.IsNullOrEmpty(password))
             {
@@ -117,29 +121,10 @@ namespace Cerulean
             header.ForeColor = ThemeDefinitions.TextSuccess;
             descriptor.Text = LOCALMSG_CONNECTING_TO_PDS[1];
 
-            /*Async.SkyWorker(
-                (s, evt) => evt.Result = Auth.Login(Variables.Handle, password),
-                (s, evt) => HandleLoginResponse(evt, password)
-            );*/
-
-            Thread t = new Thread(() => //omega
-            {
-                // Run the login on the background thread
-                object result = Auth.Login(Variables.Handle, password);
-
-                // Marshal back to the UI thread for safe control updates
-                if (this.InvokeRequired)
-                {
-                    this.Invoke((MethodInvoker)(() => HandleLoginResponse(result, password)));
-                }
-                else
-                {
-                    HandleLoginResponse(result, password);
-                }
-            });
-
-            t.Start();
-
+            Async.SkyWorker(
+                (s, evt) => evt.Result = Auth.Login(Variables.Handle, password, code),
+                (s, evt) => HandleLoginResponse(evt.Result, password)
+            );
         }
 
         private void EnterOfflineMode()
@@ -156,14 +141,14 @@ namespace Cerulean
             ToggleControls(true);
         }
 
-        private void WriteHandlePassword(string handle, string password)
+        private void WriteCredentials(string handle, string password)
         {
             RegKit.Write("\\LoginData", "handle", Encryptor.Encrypt(handle));
             RegKit.Write("\\LoginData", "password", Encryptor.Encrypt(password));
             RegKit.Write("\\LoginData", "CredentialsEncrypted", 1);
         }
 
-        private void CheckSavedCred()
+        private void FetchCredentials()
         {
             if (RegKit.Read.Dword("LoginData", "CredentialsEncrypted") == 1)
             {
@@ -183,6 +168,16 @@ namespace Cerulean
             JObject reply = result as JObject;
             string[] errReply = WEH.ErrHandler(reply, true);
 
+            if (reply.SelectToken("error") != null && reply.SelectToken("error").ToString() == "AuthFactorTokenRequired")
+            {
+                TwoFADialog dialog = new TwoFADialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    InitLogin(Variables.Handle, password, dialog.TwoFACode);
+                    return;
+                }
+            }
+
             if (errReply[2] != "false")
             {
                 displayError(errReply);
@@ -198,12 +193,12 @@ namespace Cerulean
 
             if (rememberMeBox.Checked)
             {
-                WriteHandlePassword(Variables.Handle, password);
+                WriteCredentials(Variables.Handle, password);
             }
 
             else
             {
-                WriteHandlePassword(String.Empty, String.Empty);
+                WriteCredentials(String.Empty, String.Empty);
                 RegKit.Write("\\LoginData", "CredentialsEncrypted", "false");
             }
 
