@@ -77,7 +77,7 @@ Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Fi
 
 - [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET Framework 2.x, there is an [updated and greatly enhanced fork](https://github.com/masroore/CurlSharp)
 - [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET Framework 2.x and 4.0, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
-- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - all versions of .NET Framework/Standard/Core supported, but largely superseded by [System.Text.Json] in Core
+- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - all versions of .NET Framework/Standard/Core supported, but largely superseded by [System.Text.Json](https://learn.microsoft.com/en-us/dotnet/api/system.text.json) in Core
 - [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html) - Windows 98+ build [here](https://github.com/OmegaAOL/openssl-windows98)
 - [cURL](https://curl.se/download/) - Windows 98+ build [here](https://github.com/OmegaAOL/curl-windows98)
 - [Microsoft, Windows Vista Icons / Windows 98 Icons.](https://www.microsoft.com) These assets are licensed by Cerulean under the [doctrine of fair use.](https://en.wikipedia.org/wiki/Fair_use?useskin=modern)
