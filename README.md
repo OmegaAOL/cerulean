@@ -1,91 +1,76 @@
-# Cerulean
+# Cerulean for Bluesky
 
-> [!NOTE]
-> Progress has been suspended for the time being. If sufficient interest exists, I will continue.
+<img width="1402" height="792" alt="image" src="https://github.com/user-attachments/assets/bd13c309-8684-41c2-9606-6d63280ac2c4" />
 
-<img width="1403" height="795" alt="image" src="https://github.com/user-attachments/assets/23c3183d-5a9a-464f-96d5-6cd8468b4bc2" />
+*Screenshot of release 1.0 running on [Reunion7](https://www.reunion7.com)*
 
-*Screenshot of Cerulean Beta 0.2.0 on [Reunion7](https://www.reunion7.com)*
-
-This is the repository for the open-source Cerulean Bluesky client, currently in the beta stage and pretty usable. It is written in C# and uses  WinForms (fully native) + .NET Framework 2.0. It runs on Windows 98 and up, but I am reasonably confident it can be backported to Windows 95.
+This is the repository for Cerulean, an open-source Bluesky client. It recently exited beta and is now quite usable. It is written in C# and .NET Framework 2.0, and uses WinForms (fully native). It runs on Windows 98 and up.
 
 <img width="912" height="385" alt="cerulean-git-NEW" src="https://github.com/user-attachments/assets/6d494e83-05fe-4fa0-b967-ceac51333974" />
 
-# What works (so far)
+# OS compatibility
 
-- Logging in, resetting password, changing PDS host
-- Encryption of handle and password (AES-256 on legacy Windows, DPAPI on Windows 2000 and up)
-- Creating posts, reposts (also undoing reposts), quote posts
-- Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
-- Liking and unliking posts
-- Viewing your timeline & your other feeds
-- Searching for profiles and viewing profile information
-- Viewing images and avatars
-- Deleting posts
+**Windows:** Official minimum is **Windows 98**, can run on **Windows 95** with MattKC's backport. **Windows 2000** or higher is recommended as it provides a much better experience.
+
+**Mac OS and Linux:** Supported with **WINE**. No reported problems.
+
+# What Cerulean can do (so far)
+
+- **Accounts:** Logging in (2FA supported), resetting password,
+saving credentials with DPAPI encryption, creation
+- **Tabs:** tabbed feed browsing lets you have multiple different feeds in tabs 
+- **Posts:** viewing, creating, liking, reposting/unreposting, quote posts, deleting posts, viewing embeds, viewing hashtags, sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
+- **Feeds:** timeline, discover, custom feed selection, tabbed feed browsing
+- **Threads:** viewing in Reddit-style UI with custom depth markers
+- **Profiles:** searching for profiles and viewing profile information, following and unfollowing
+- **Notifications:** view notifications, including follows, likes and replies
+- **Chat:** view a list of your current chats
+- **PDSes:** Cerulean is fully compatible with custom PDSes and can also create an account in the PDS if implemented server-side. Both invite-only and public PDSes supported.
 
 # What needs to be fixed
 
-- Spawning new anonymous threads. Basically: Don't click buttons too fast/spam-click
 - Uploading images to posts
-- Creating account
 - Reporting users and posts, blocking users
-- Viewing notifications
 
 # What needs to be added 
 
+- Themes (logic exists partly in code)
+- Multiple account support
 - Viewing all posts of a particular user
-- Viewing threads (use more -> open in browser for this rn)
 - Starter packs
-- Chat
+- Actual functioning chat
 - Lists
 
 # Security
 
-Cerulean stores your handle and password encrypted in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. It is **encrypted**.
+Cerulean stores your handle and password **encrypted** in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. 
 
-On Windows 2000 and up this uses DPAPI encryption. DPAPI is a Windows API that encrypts data for you based on a lot of user account information. It is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is more than fine for you to use your real password (if you don't trust me, check and build from source!)
+On **Windows 2000 and up** this uses **DPAPI** encryption. DPAPI is a Windows API that encrypts data for you; it is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is **more than fine** for you to use your real password (if you don't trust me, check and build from source!)
 
-On Windows 9x/ME/NT4 this uses AES-256, but the encryption key is partly hardcoded and partly derived from basic machine info (Windows did not have DPAPI back then). This is still great for most attackers, but a dedicated attacker combing through the Cerulean source code will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. Recommend using app passwords for these Windows versions.
+On **Windows 9x/ME/Nt4** this uses **AES-256** but the encryption key is basically hardcoded. This is still a great defense against most attackers, but a dedicated attacker combing through source code or using a decompiler will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. I recommend using app passwords for these Windows versions.
 
-Still apprehensive about DPAPI? To show you how confident I am in Cerulean's encryption, here is my encrypted handle and full password. Try what you will.
+# Building Cerulean
 
-<img width="1239" height="281" alt="image" src="https://github.com/user-attachments/assets/87b46189-ae34-4fdb-898d-88b59c4ea557" />
+The project is **open-source**, but licensed under the **GPLv3** - any forks should credit **both me and the Cerulean project.**
 
-# Release information
+This project is built using **Microsoft Visual Studio 2010** and **.NET Framework 2.0.** You can use VS2026/2022/etc, but I **recommend you use VS2010** due to how incredibly lightweight it is and the great improvements in performance you will notice. If you are encountering issues:
 
-Cerulean is in the process of leaving the beta stage. Until the first stable release is published, *Crimson* releases will be uploaded. Consider Crimson the new beta branch now that we're out of beta. These Crimson releases are not production worthy. Do not use them as a daily driver. You have been warned.
+- Enable .NET Framework 2.0 in Windows Features, and check the compile bar & Project Settings to see if you're building for **x86** (not Any CPU or x64).
+- If you've tried that and it still doesn't work, file an issue.
 
-<img width="555" height="147" alt="crimson" src="https://github.com/user-attachments/assets/d6580bfb-ec4c-4acf-a63d-39b5cc28a185" />
-
-Releases get version bumps to the nearest 10 if they are notable. (for instance: alpha 0.0.4 -> 0.1.0, beta 0.1.0 -> 0.2.0)
-
-# Future roadmap
-
-I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
-
-# Open-source details and how to compile
-
-The project is open-source, but licensed under the GPL3 - any forks should credit both me and the Cerulean project.
-
-This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. This *should* work in VS2022, but VS2010 is recommended due to the sheer performance improvement (if you've only used VS2022, try 2010, you won't believe how much better it is)
-
-- FIRST, enable .NET Framework 2.0 in Windows Features, download Visual Studio 2010 Express (free) or Professional (paid, or pirate it), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
-- SECOND, if and ONLY IF you've tried the above and it still doesn't work, file an issue.
-
-cURL and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
-
-The source code is meant to be readable and easily changable, not to be as small as possible. This also means there is a lot of commented-out (or *dead*) code that I may comment in/out at times. **Do not remove dead code!**
+Please stick to the existing code style when submitting pull requests. This includes **not removing commented-out code.**
 
 # Credits
 
-Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Find newer versions for new projects.
+Any libraries linked are .NET 2.0 versions. Some may be **severely out of date.** Find newer versions for new projects.
 
-- [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET 2.0 only, there is an [updated fork](https://github.com/masroore/CurlSharp)
-- [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET 2.0 and .NET 4.x, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
-- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - .NET 2.0 - .NET Core 9
+- [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET Framework 2.x, there is an [updated and greatly enhanced fork](https://github.com/masroore/CurlSharp)
+- [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET Framework 2.x and 4.0, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
+- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - all versions of .NET Framework/Standard/Core supported, but largely superseded by [System.Text.Json](https://learn.microsoft.com/en-us/dotnet/api/system.text.json) in Core
 - [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html) - Windows 98+ build [here](https://github.com/OmegaAOL/openssl-windows98)
 - [cURL](https://curl.se/download/) - Windows 98+ build [here](https://github.com/OmegaAOL/curl-windows98)
-- [Microsoft, Windows Vista Icons / Windows 98 Icons](https://www.microsoft.com)
+- [Microsoft, Windows Vista Icons / Windows 98 Icons.](https://www.microsoft.com) These assets are licensed by Cerulean under the [doctrine of fair use.](https://en.wikipedia.org/wiki/Fair_use?useskin=modern)
+- [NSIS-Dev, Nullsoft Scriptable Install System 2](https://github.com/NSIS-Dev). Formerly owned and developed by [Nullsoft, Inc.](https://en.wikipedia.org/wiki/Nullsoft?useskin=modern)
 
 
 # Thank you!
