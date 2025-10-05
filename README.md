@@ -29,6 +29,7 @@ saving credentials with DPAPI encryption, creation
 # What needs to be added 
 
 - Themes (logic exists partly in code)
+- Multiple account support
 - Viewing all posts of a particular user
 - Starter packs
 - Actual functioning chat
@@ -36,40 +37,26 @@ saving credentials with DPAPI encryption, creation
 
 # Security
 
-Cerulean stores your handle and password encrypted in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. It is **encrypted**.
+Cerulean stores your handle and password encrypted in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. They are **encrypted**. If you are running a version older than Beta 0.2.5, upgrade now because older versions of Cerulean used to store credentials unencrypted. Upgrading will automatically encrypt any stored credentials.
 
 On Windows 2000 and up this uses DPAPI encryption. DPAPI is a Windows API that encrypts data for you based on a lot of user account information. It is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is more than fine for you to use your real password (if you don't trust me, check and build from source!)
 
-On Windows 9x/ME/NT4 this uses AES-256, but the encryption key is partly hardcoded and partly derived from basic machine info (Windows did not have DPAPI back then). This is still a great defense against most attackers, but a dedicated attacker combing through the Cerulean source code will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. Recommend using app passwords for these Windows versions.
+On Windows 9x/ME/Nt4 this uses AES-256 but the encryption key is basically hardcoded. This is still a great defense against most attackers, but a dedicated attacker combing through source code or using a decompiler will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. I recommend using app passwords for these Windows versions.
 
 Still apprehensive about DPAPI? To show you how confident I am in Cerulean's encryption, here is my encrypted handle and full password. Try what you will.
 
 <img width="1239" height="281" alt="image" src="https://github.com/user-attachments/assets/87b46189-ae34-4fdb-898d-88b59c4ea557" />
 
-# Release information
+# Building Cerulean
 
-Cerulean is in the process of leaving the beta stage. Until the first stable release is published, *Crimson* releases will be uploaded. Consider Crimson the new beta branch now that we're out of beta. These Crimson releases are not production worthy. Do not use them as a daily driver. You have been warned.
+The project is open-source, but licensed under the GPLv3 - any forks should credit both me and the Cerulean project.
 
-<img width="555" height="147" alt="crimson" src="https://github.com/user-attachments/assets/d6580bfb-ec4c-4acf-a63d-39b5cc28a185" />
+This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. You can use VS2026/2022/etc, but I recommend you use VS2010 due to how incredibly lightweight it is and the great improvements in performance you will notice. If you are encountering issues:
 
-Releases get version bumps to the nearest 10 if they are notable. (for instance: alpha 0.0.4 -> 0.1.0, beta 0.1.0 -> 0.2.0)
+- Enable .NET Framework 2.0 in Windows Features, and check the compile bar & Project Settings to see if you're building for x86 (not Any CPU or x64).
+- If you've tried that and it still doesn't work, file an issue.
 
-# Future roadmap
-
-I plan to develop Cerulean into a full client that has all the features of Bluesky, and even surpassing it in some cases (write your own scripts for different actions, local TOTP login, tabbed usage)
-
-# Open-source details and how to compile
-
-The project is open-source, but licensed under the GPL3 - any forks should credit both me and the Cerulean project.
-
-This project is built using Microsoft Visual Studio 2010 and .NET Framework 2.0. This *should* work in VS2022, but VS2010 is recommended due to the sheer performance improvement (if you've only used VS2022, try 2010, you won't believe how much better it is)
-
-- FIRST, enable .NET Framework 2.0 in Windows Features, download Visual Studio 2010 Express (free) or Professional (paid, or pirate it), and make sure NET Framework 2.0 is selected in VS2010 Cerulean Project Settings.
-- SECOND, if and ONLY IF you've tried the above and it still doesn't work, file an issue.
-
-cURL and libcurl are built using Microsoft Visual Studio 2005 (Microsoft VC++ 8)
-
-The source code is meant to be readable and easily changable, not to be as small as possible. This also means there is a lot of commented-out (or *dead*) code that I may comment in/out at times. **Do not remove dead code!**
+Please stick to the existing code style when submitting pull requests. This includes not removing commented-out code.
 
 # Credits
 
