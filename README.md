@@ -75,9 +75,9 @@ The source code is meant to be readable and easily changable, not to be as small
 
 Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Find newer versions for new projects.
 
-- [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET 2.0 only, there is an [updated fork](https://github.com/masroore/CurlSharp)
-- [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET 2.0 and .NET 4.x, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
-- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - .NET 2.0 - .NET Core 9
+- [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET Framework 2.x, there is an [updated and greatly enhanced fork](https://github.com/masroore/CurlSharp)
+- [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET Framework 2.x and 4.0, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
+- [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - all versions of .NET Framework/Standard/Core supported
 - [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html) - Windows 98+ build [here](https://github.com/OmegaAOL/openssl-windows98)
 - [cURL](https://curl.se/download/) - Windows 98+ build [here](https://github.com/OmegaAOL/curl-windows98)
 - [Microsoft, Windows Vista Icons / Windows 98 Icons](https://www.microsoft.com)
