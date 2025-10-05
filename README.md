@@ -2,7 +2,7 @@
 
 <img width="1402" height="792" alt="image" src="https://github.com/user-attachments/assets/bd13c309-8684-41c2-9606-6d63280ac2c4" />
 
-*Screenshot of Cerulean Release 1.0 running on [Reunion7](https://www.reunion7.com)*
+*Screenshot of release 1.0 running on [Reunion7](https://www.reunion7.com)*
 
 This is the repository for Cerulean, an open-source Bluesky client. It recently exited beta and is now quite usable. It is written in C# and .NET Framework 2.0, and uses WinForms (fully native). It runs on Windows 98 and up.
 
