@@ -10,19 +10,15 @@ This is the repository for the open-source Cerulean Bluesky client, which recent
 
 # What Cerulean can do (so far)
 
-- Logging in (2FA supported), resetting password, changing PDS host
-- Encryption of handle and password (AES-256 on legacy Windows, DPAPI on Windows 2000 and up)
-- Creating posts, reposts (also undoing reposts), quote posts
-- Tabbed feed browsing
-- Viewing threads
-- Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
-- Liking and unliking posts
-- Viewing your timeline & your other feeds
-- Searching for profiles and viewing profile information
-- Following and unfollowing people
-- Viewing images and avatars
-- Deleting posts
-- Viewing notifications
+- Accounts: Logging in (2FA supported), resetting password, changing PDS host,
+saving credentials with DPAPI encryption, creating accounts
+- Posts: viewing, creating, liking, reposting/unreposting, quote posts, deleting posts, viewing embeds, viewing hashtags
+- Feeds: timeline, discover, custom feed selection, tabbed feed browsing
+- Threads: viewing in Reddit-style UI with custom depth markers
+- Misc: Sharing posts, permalinking to posts, opening posts/threads in browser, collapsing posts
+- Profiles: searching for profiles and viewing profile information, following and unfollowing
+- Notifications: followers, notifs, open chats
+- PDSes: Cerulean is fully compatible with custom PDSes and can also create an account in the PDS if implemented server-side. Both invite-only and public PDSes supported.
 
 # What needs to be fixed
 
