@@ -4,7 +4,7 @@
 
 *Screenshot of Cerulean Release 1.0 running on [Reunion7](https://www.reunion7.com)*
 
-This is the repository for the open-source **Cerulean Bluesky client,** which recently exited the Beta stage and is now quite usable. It is written in **C#** and uses  **WinForms (fully native)** + **.NET Framework 2.0**. It runs on **Windows 98 and up.**
+This is the repository for Cerulean, an open-source Bluesky client. It recently exited beta and is now quite usable. It is written in C# and .NET Framework 2.0, and uses WinForms (fully native). It runs on Windows 98 and up.
 
 <img width="912" height="385" alt="cerulean-git-NEW" src="https://github.com/user-attachments/assets/6d494e83-05fe-4fa0-b967-ceac51333974" />
 
@@ -48,10 +48,6 @@ Cerulean stores your handle and password **encrypted** in the registry *(HKEY_CU
 On **Windows 2000 and up** this uses **DPAPI** encryption. DPAPI is a Windows API that encrypts data for you; it is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is **more than fine** for you to use your real password (if you don't trust me, check and build from source!)
 
 On **Windows 9x/ME/Nt4** this uses **AES-256** but the encryption key is basically hardcoded. This is still a great defense against most attackers, but a dedicated attacker combing through source code or using a decompiler will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. I recommend using app passwords for these Windows versions.
-
-Still apprehensive about DPAPI? To show you how confident I am in Cerulean's encryption, here is my **encrypted handle and full password.** Try what you will.
-
-<img width="1239" height="281" alt="image" src="https://github.com/user-attachments/assets/87b46189-ae34-4fdb-898d-88b59c4ea557" />
 
 # Building Cerulean
 
