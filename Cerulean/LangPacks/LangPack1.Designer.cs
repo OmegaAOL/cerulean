@@ -150,6 +150,15 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve successfully created an account with.
+        /// </summary>
+        internal static string CREATEACCOUNT_SUCCESS {
+            get {
+                return ResourceManager.GetString("CREATEACCOUNT_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account suspended or banned.
         /// </summary>
         internal static string ERR_ACCTAKEDOWN_HEAD {
@@ -501,6 +510,15 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to example.
+        /// </summary>
+        internal static string GLOBAL_EXAMPLE {
+            get {
+                return ResourceManager.GetString("GLOBAL_EXAMPLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill all fields.
         /// </summary>
         internal static string GLOBAL_INFOLABEL_EMPTY_FIELDS {
@@ -771,7 +789,16 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add feed (+).
+        ///   Looks up a localized string similar to close tab (-).
+        /// </summary>
+        internal static string MAIN_TAB_CLOSE {
+            get {
+                return ResourceManager.GetString("MAIN_TAB_CLOSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to new tab (+).
         /// </summary>
         internal static string MAIN_TAB_NEW {
             get {
@@ -866,6 +893,15 @@ namespace Cerulean.LangPacks {
         internal static string MAIN_TLABEL_HANDLE_OFFLINE {
             get {
                 return ResourceManager.GetString("MAIN_TLABEL_HANDLE_OFFLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This feed does not have any posts..
+        /// </summary>
+        internal static string MAIN_TVIEW_NOPOSTS {
+            get {
+                return ResourceManager.GetString("MAIN_TVIEW_NOPOSTS", resourceCulture);
             }
         }
         
@@ -982,6 +1018,15 @@ namespace Cerulean.LangPacks {
         internal static string PROFILE_BUTTON_FOLLOW {
             get {
                 return ResourceManager.GetString("PROFILE_BUTTON_FOLLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow back.
+        /// </summary>
+        internal static string PROFILE_BUTTON_FOLLOW_BACK {
+            get {
+                return ResourceManager.GetString("PROFILE_BUTTON_FOLLOW_BACK", resourceCulture);
             }
         }
         

@@ -45,41 +45,5 @@ namespace Cerulean
             int cchMaxColorChars,
             [Out] System.Text.StringBuilder pszSizeBuff,
             int cchMaxSizeChars);
-
-        private static void NoAero()
-        {
-            CeruleanBox.Display("Your system does not have the Aero theme. Cerulean is Aero-first so it may not look as intended on your system.");
-        }
-
-        public static void IsAeroThemeActive()
-        {
-            if (Environment.OSVersion.Version.Major < 6)
-            {
-                NoAero();
-            }
-
-            try
-            {
-                if (!DwmIsCompositionEnabled())
-                {
-                    NoAero();
-                }
-
-                var themeName = new System.Text.StringBuilder(260);
-                var color = new System.Text.StringBuilder(260);
-                var size = new System.Text.StringBuilder(260);
-                GetCurrentThemeName(themeName, themeName.Capacity, color, color.Capacity, size, size.Capacity);
-
-                if (!(themeName.ToString().ToLower().Contains("aero")))
-                {
-                    NoAero();
-                }
-
-            }
-            catch
-            {
-                NoAero();
-            }
-        }
     }
 }

@@ -43,7 +43,7 @@ namespace Cerulean
             tbTabControl.TabPages[0].Text = LangPack.MAIN_TABS_NO_CONTENT;
         }
 
-        public static TabPage newTabButton;
+        public static TabPage newTabButton, closeTabButton;
 
         private void Menu_Main_Load(object sender, EventArgs e)
         {
@@ -51,8 +51,11 @@ namespace Cerulean
             LocalizeControls();
             predictionBox.Height = 0;
             tbTabControl.TabPages.Add("newTabButton", LangPack.MAIN_TAB_NEW);
+            tbTabControl.TabPages.Add("closeTabButton", LangPack.MAIN_TAB_CLOSE);
             newTabButton = tbTabControl.TabPages["newTabButton"];
+            closeTabButton = tbTabControl.TabPages["closeTabButton"];
             quickPostButton.Enabled = false;
+            LastSelectedTab = tbTabControl.SelectedTab;
         }
 
         private void tweetBoardHandler(JObject response, BorderPanel board = null)
@@ -82,7 +85,7 @@ namespace Cerulean
                 }
                 if (!postsExist)
                 {
-                    tweetBoard.Controls.Add(makeLabel(LangPack.TVIEW_NOPOSTS));
+                    tweetBoard.Controls.Add(makeLabel(LangPack.MAIN_TVIEW_NOPOSTS));
                 }
             }
         }
@@ -362,7 +365,7 @@ namespace Cerulean
                 predictionBox.Visible = true;
 
                 Async.SkyWorker(
-                    delegate { predictionResponse = Profile.Search.Typeahead(_lastInput); },
+                    delegate { predictionResponse = Account.Search.Typeahead(_lastInput); },
                     delegate
                     {
                         if (predictionBox.Items.Count != 1)
@@ -422,16 +425,20 @@ namespace Cerulean
                 delegate { notifications = Notifications.Fetch(); },
                 delegate
                 {
-                    mainTree.Nodes.Clear();
-                    TreeNode parent = mainTree.Nodes.Add("Notifications");
-                    //parent.Nodes.Clear();
-                    foreach (JObject notification in notifications)
+                    if (notifications != null)
                     {
-                        string text = notification.SelectToken("reason").ToString() + " by " + notification.SelectToken("author.handle").ToString();
-                        parent.Nodes.Add(text);
+                        mainTree.Nodes.Clear();
+                        TreeNode parent = mainTree.Nodes.Add("Notifications");
+                        //parent.Nodes.Clear();
+                        foreach (JObject notification in notifications)
+                        {
+                            string text = notification.SelectToken("reason").ToString() + " by " + notification.SelectToken("author.handle").ToString();
+                            parent.Nodes.Add(text);
+                        }
+                        parent.ExpandAll();
+                        
                     }
-                    parent.ExpandAll();
-                    FollowerFetcher();
+                    ChatListFetcher();
                 }
             );
         }
@@ -443,18 +450,21 @@ namespace Cerulean
                 delegate { chats = Chats.ListConversations(); },
                 delegate
                 {
-                    TreeNode parent = mainTree.Nodes.Add("Chats");
-                    //parent.Nodes.Clear();
-                    foreach (JObject chat in chats)
+                    if (chats != null)
                     {
-                        string text = "with " + chat["members"][0]["handle"].ToString();
-                        /*foreach (JObject member in (JArray)chat["members"])
+                        TreeNode parent = mainTree.Nodes.Add("Chats");
+                        //parent.Nodes.Clear();
+                        foreach (JObject chat in chats)
                         {
-                            text = text + member["handle"].ToString() + " with ";
-                        }*/
-                        parent.Nodes.Add(text);
+                            string text = "with " + chat["members"][0]["handle"].ToString();
+                            /*foreach (JObject member in (JArray)chat["members"])
+                            {
+                                text = text + member["handle"].ToString() + " with ";
+                            }*/
+                            parent.Nodes.Add(text);
+                        }
+                        parent.ExpandAll();
                     }
-                    parent.ExpandAll();
                     FollowerFetcher();
                 }
             );
@@ -465,22 +475,25 @@ namespace Cerulean
             JArray followers = new JArray();
             Async.SkyWorker(
 
-                delegate { followers = Profile.FetchData.Followers(Variables.Handle); },
+                delegate { followers = Account.FetchData.Followers(Variables.Handle); },
                 delegate
                 {
-                    TreeNode parent = mainTree.Nodes.Add("Followers");
-                    //parent.Nodes.Clear();
-
-                    foreach (JObject follower in followers)
+                    if (followers != null)
                     {
-                        parent.Nodes.Add(follower["handle"].ToString());
-                    }
-                    parent.ExpandAll();
+                        TreeNode parent = mainTree.Nodes.Add("Followers");
+                        //parent.Nodes.Clear();
 
-                    mainTree.SelectedNode = null;
-                    if (mainTree.Nodes.Count > 0)
-                    {
-                        mainTree.TopNode = mainTree.Nodes[0];
+                        foreach (JObject follower in followers)
+                        {
+                            parent.Nodes.Add(follower["handle"].ToString());
+                        }
+                        parent.ExpandAll();
+
+                        mainTree.SelectedNode = null;
+                        if (mainTree.Nodes.Count > 0)
+                        {
+                            mainTree.TopNode = mainTree.Nodes[0];
+                        }
                     }
                 }
             );
@@ -529,13 +542,33 @@ namespace Cerulean
             locks = false;
         }
 
+        private TabPage LastSelectedTab;
+
         private void tbTabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (e.TabPage.Name == "newTabButton")
+            switch (e.TabPage.Name)
             {
-                e.Cancel = true;
-                FetchFeed(true);
+                case "newTabButton":
+                    e.Cancel = true;
+                    FetchFeed(true);
+                    break;
+                case "closeTabButton":
+                    e.Cancel = true;
+                    if (LastSelectedTab != null &&
+        tbTabControl.TabPages.Count > 3)
+                    {
+                        int index = tbTabControl.TabPages.IndexOf(LastSelectedTab);
+                        tbTabControl.TabPages.Remove(LastSelectedTab);
+                        LastSelectedTab.Dispose();
+                        if (index > 0) { index--; }
+                        tbTabControl.SelectedIndex = 0;
+                    }
+                    break;
+                default:
+                    LastSelectedTab = tbTabControl.SelectedTab;
+                    break;
             }
+
         }
 
     }
