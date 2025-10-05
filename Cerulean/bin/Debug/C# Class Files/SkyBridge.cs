@@ -18,6 +18,7 @@ using System.Security.Cryptography;
 using System.ComponentModel;
 using SeasideResearch.LibCurlNet;
 using System.Runtime.InteropServices;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -616,20 +617,26 @@ namespace OmegaAOL.SkyBridge
         }
     }
 
-    public static class Profile
+    public static class Account
     {
         public enum Verification { None, Verified, TrustedVerifier };
 
-        public static JObject Create(string handle, string email = "", string password = "", string displayName = "", string description = "")
+        public static JObject Create(string handle, string email = null, string password = null, string phoneNum = null, string displayName = null, string description = null, string inviteCode = null, string authCode = null)
         {
             JObject postJson = new JObject();
             postJson["handle"] = handle;
-            postJson["email"] = email;
-            postJson["password"] = password;
-
+            string[] valuesArray = new string[] { email, password, phoneNum, displayName, description, inviteCode, authCode };
+            string[] fieldsArray = new string[] { "email", "password", "verificationPhone", "displayName", "description", "inviteCode", "verificationCode" };
+            for (int i = 0; i < valuesArray.Length; i++)
+            {
+                if (!String.IsNullOrEmpty(valuesArray[i]))
+                {
+                    postJson[fieldsArray[i]] = valuesArray[i]; // this particular request has a TON of optional fields, so just adding this function/array pair here to simplify
+                }
+            }
             string endPoint = "com.atproto.server.createAccount";
             string postFields = postJson.ToString(Formatting.None);
-            string[] headers = new string[2] { "Authorization: Bearer " + Variables.Token, "Content-Type: application/json" };
+            string[] headers = new string[1] { "Content-Type: application/json" };
 
             return new Http.Request().Perform(endPoint, postFields, headers, Http.Method.Post);
         }

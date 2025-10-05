@@ -154,6 +154,9 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="CBOX_WINTITLE" xml:space="preserve">
     <value>Cerulean</value>
   </data>
+  <data name="CREATEACCOUNT_SUCCESS" xml:space="preserve">
+    <value>Congratulations! You've successfully created an account with</value>
+  </data>
   <data name="ERR_ACCTAKEDOWN_HEAD" xml:space="preserve">
     <value>Account suspended or banned</value>
   </data>
@@ -271,6 +274,9 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="GLOBAL_ERROR_MESSAGE" xml:space="preserve">
     <value>Oh no! There was an error in Cerulean. Press OK to continue. </value>
   </data>
+  <data name="GLOBAL_EXAMPLE" xml:space="preserve">
+    <value>example</value>
+  </data>
   <data name="GLOBAL_INFOLABEL_EMPTY_FIELDS" xml:space="preserve">
     <value>Fill all fields</value>
   </data>
@@ -364,8 +370,11 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   <data name="MAIN_TABS_NO_CONTENT" xml:space="preserve">
     <value>No content</value>
   </data>
+  <data name="MAIN_TAB_CLOSE" xml:space="preserve">
+    <value>close tab (-)</value>
+  </data>
   <data name="MAIN_TAB_NEW" xml:space="preserve">
-    <value>add feed (+)</value>
+    <value>new tab (+)</value>
   </data>
   <data name="MAIN_TBUTTON_LOGOUT" xml:space="preserve">
     <value>Log Out</value>
@@ -393,6 +402,9 @@ Cerulean for Bluesky, OmegaAOL 2025. The "Bluesky" trademark is the property of 
   </data>
   <data name="MAIN_TLABEL_HANDLE_OFFLINE" xml:space="preserve">
     <value>DEBUG: Offline User</value>
+  </data>
+  <data name="MAIN_TVIEW_NOPOSTS" xml:space="preserve">
+    <value>This feed does not have any posts.</value>
   </data>
   <data name="MAIN_WINTITLE" xml:space="preserve">
     <value>Cerulean</value>
@@ -437,6 +449,9 @@ There is no official support for alternative microblogging services.</value>
   </data>
   <data name="PROFILE_BUTTON_FOLLOW" xml:space="preserve">
     <value>Follow</value>
+  </data>
+  <data name="PROFILE_BUTTON_FOLLOW_BACK" xml:space="preserve">
+    <value>Follow back</value>
   </data>
   <data name="PROFILE_BUTTON_UNBLOCK" xml:space="preserve">
     <value>Unblock</value>

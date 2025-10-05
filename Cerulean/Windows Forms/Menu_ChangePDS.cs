@@ -43,6 +43,7 @@ namespace Cerulean
             else
             {
                 RegKit.Write("\\API", "PDSHost", pdshostbox.Text);
+                Variables.PDSHost = pdshostbox.Text;
                 CeruleanBox.Display(LangPack.PDS_CBOX_URL_SAVED);
             }
         }
@@ -50,6 +51,7 @@ namespace Cerulean
         private void resetButton_Click(object sender, EventArgs e)
         {
             RegKit.Write("\\API", "PDSHost", WebResources.PDS_BLUESKY);
+            Variables.PDSHost = WebResources.PDS_BLUESKY;
             CeruleanBox.Display(String.Format(LangPack.PDS_CBOX_URL_RESET, WebResources.PDS_BLUESKY));
             pdshostbox.Text = RegKit.Read.String("API", "PDSHost");
         }

@@ -83,7 +83,7 @@ namespace Cerulean
             repostUri = tweet.SelectToken("viewer.repost") != null ? tweet["viewer"]["repost"].ToString() : null;
             likeUri = tweet.SelectToken("viewer.like") != null ? tweet["viewer"]["like"].ToString() : null;
 
-            Profile.Verification verificationStatus = GetVerificationStatus(tweet);
+            Account.Verification verificationStatus = GetVerificationStatus(tweet);
 
             if (tweet.ContainsKey("embed"))
             {
@@ -110,9 +110,9 @@ namespace Cerulean
             postText.Text = text != null ? text : String.Empty;
 
             // verified color
-            if (verificationStatus == Profile.Verification.Verified)
+            if (verificationStatus == Account.Verification.Verified)
                 posterName.LinkColor = ThemeDefinitions.TextVerified;
-            else if (verificationStatus == Profile.Verification.TrustedVerifier)
+            else if (verificationStatus == Account.Verification.TrustedVerifier)
                 posterName.LinkColor = ThemeDefinitions.TextSuperVerified;
 
             // Format counts
@@ -244,9 +244,9 @@ namespace Cerulean
             return substring.Length;
         }
 
-        private Profile.Verification GetVerificationStatus(JObject tweet) // gets verification status for a tweet (none, verified, trusted)
+        private Account.Verification GetVerificationStatus(JObject tweet) // gets verification status for a tweet (none, verified, trusted)
         {
-            Profile.Verification verified = Profile.Verification.None;
+            Account.Verification verified = Account.Verification.None;
 
             if (tweet["author"] != null && tweet["author"]["verification"] != null)
             {
@@ -254,12 +254,12 @@ namespace Cerulean
 
                 if (JsonTools.GetString(verification, "verifiedStatus") == "valid")
                 {
-                    verified = Profile.Verification.Verified;
+                    verified = Account.Verification.Verified;
                 }
 
                 if (JsonTools.GetString(verification, "trustedVerifierStatus") == "valid")
                 {
-                    verified = Profile.Verification.TrustedVerifier;
+                    verified = Account.Verification.TrustedVerifier;
                 }
 
             }

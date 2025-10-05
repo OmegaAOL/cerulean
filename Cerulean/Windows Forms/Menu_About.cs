@@ -38,8 +38,8 @@ namespace Cerulean
             Async.SkyWorker(
                 delegate 
                 {
-                    Profile.Follow.Add(WebResources.DID_CERULEAN); // @ceruleanweb.neocities.org (as of Sep 1, 2025)
-                    Profile.Follow.Add(WebResources.DID_MAINTAINER); // @gigggity.bsky.social (as of Sep 1, 2025)
+                    Account.Follow.Add(WebResources.DID_CERULEAN); // @ceruleanweb.neocities.org (as of Sep 1, 2025)
+                    Account.Follow.Add(WebResources.DID_MAINTAINER); // @gigggity.bsky.social (as of Sep 1, 2025)
                 },
                 delegate { CeruleanBox.Display(LangPack.ABOUT_CBOX_THANKS); }
             );

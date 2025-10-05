@@ -32,3 +32,9 @@ D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\WebSocket4Net
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\WindowsFormsAero.dll
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.LangPacks.LangPack.resources
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.Menu_CreateAccount.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\C# Class Files\SkyBridge.cs
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\BouncyCastle.Crypto.dll
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\NetSpell.SpellChecker.dll
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.LangPacks.WebResources.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.TwoFADialog.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.ThreadViewer.resources

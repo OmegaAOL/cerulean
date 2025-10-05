@@ -43,14 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cerulean.exe" size="772608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="2236416">
+      <assemblyIdentity name="BouncyCastle.Crypto" version="1.8.1.0" publicKeyToken="0E99375E54769942" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>IBbdXhczFJWQEpnq6aXbSMzIlW8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cerulean.exe" size="652800">
       <assemblyIdentity name="Cerulean" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>96W7AP/ZciHN7L/uTH7iADcQX7c=</dsig:DigestValue>
+        <dsig:DigestValue>K/vi5cRSg5PkfDFkuwABGlorvYo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,6 +75,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>y4WhIlpmNEOFlfEc+GDNKyEnMU8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NetSpell.SpellChecker.dll" size="106496">
+      <assemblyIdentity name="NetSpell.SpellChecker" version="2.1.7.41329" publicKeyToken="318B389F0DB66E46" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>2wSKVK3Q/RIG62dGsJWrh4reqLc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,6 +126,15 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="BouncyCastle.Cryptography.dll" size="4695200">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0R0jnQN7CAZbl/Mr+9DoRwBPrvo=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="cer.ico" size="270398">
     <hash>
       <dsig:Transforms>
@@ -145,6 +178,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>cvVIgC71SMwEmdA9DdbKQhqi7VQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="logo256.ico" size="270622">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>mmYtJfJd0W/4f3nH+X51oVgGP3Q=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

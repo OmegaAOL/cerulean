@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using Cerulean.LangPacks;
 using System.Diagnostics;
+using OmegaAOL.SkyBridge;
+using Newtonsoft.Json.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,6 +17,7 @@ namespace Cerulean
         public Menu_CreateAccount()
         {
             InitializeComponent();
+            handleBox.Text = LangPack.GLOBAL_EXAMPLE + "." + Variables.PDSHost.Replace("https://", "").Replace("http://", "");
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -52,7 +55,23 @@ namespace Cerulean
 
         private void createButton_Click(object sender, EventArgs e)
         {
-
+            createButton.Enabled = false;
+            JObject response = new JObject();
+            Async.SkyWorker(
+                 delegate { response = Account.Create(handleBox.Text, emailBox.Text, passwordBox.Text, phoneBox.Text, usernameBox.Text, bioBox.Text, invoteCodeBox.Text); },
+                 delegate 
+                 {
+                     createButton.Enabled = true;
+                     if (response.ContainsKey("error"))
+                     {
+                         CeruleanBox.Display(response.SelectToken("message").ToString());
+                     }
+                     else
+                     {
+                         CeruleanBox.Display(LangPack.CREATEACCOUNT_SUCCESS + " " + Variables.PDSHost.Replace("https://", "").Replace("http://", "") + "!");
+                     }
+                 }
+                );
         }
     }
 }

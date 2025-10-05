@@ -62,7 +62,7 @@ namespace Cerulean
         private void GetProfileData(string did)
         {
             Async.SkyWorker(
-                 delegate { response = Profile.Load(did); },
+                 delegate { response = Account.Load(did); },
                  delegate { SetProfileData(); }
                 );
         }
@@ -100,12 +100,6 @@ namespace Cerulean
                     nicknameLabel.Text = this.Text;
                 }
 
-                if (response["viewer"]["followedBy"] != null)
-                {
-                    followsYouLabel.Text = LangPack.GLOBAL_YES.ToLower();
-                    followsYou = true;
-                }
-
                 if (response["associated"]["chat"] != null)
                 {
                     string chat = response["associated"]["chat"]["allowIncoming"].ToString();
@@ -122,6 +116,16 @@ namespace Cerulean
                 {
                     following = true;
                     followButton.Text = LangPack.PROFILE_BUTTON_UNFOLLOW;
+                }
+
+                if (response["viewer"]["followedBy"] != null)
+                {
+                    if (!following)
+                    {
+                        followButton.Text = LangPack.PROFILE_BUTTON_FOLLOW_BACK;
+                    }
+                    followsYouLabel.Text = LangPack.GLOBAL_YES.ToLower();
+                    followsYou = true;
                 }
 
                 if (response["viewer"]["blocking"] != null)
@@ -267,9 +271,9 @@ namespace Cerulean
                 delegate
                 {
                     if (following)
-                        Profile.Follow.Remove(response["viewer"]["following"].ToString());
+                        Account.Follow.Remove(response["viewer"]["following"].ToString());
                     else if (!following)
-                        Profile.Follow.Add(response["did"].ToString());
+                        Account.Follow.Add(response["did"].ToString());
                 },
                 delegate
                 {
