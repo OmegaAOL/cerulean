@@ -81,6 +81,7 @@ Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Fi
 - [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html) - Windows 98+ build [here](https://github.com/OmegaAOL/openssl-windows98)
 - [cURL](https://curl.se/download/) - Windows 98+ build [here](https://github.com/OmegaAOL/curl-windows98)
 - [Microsoft, Windows Vista Icons / Windows 98 Icons.](https://www.microsoft.com) These assets are licensed by Cerulean under the [doctrine of fair use.](https://en.wikipedia.org/wiki/Fair_use?useskin=modern)
+- [NSIS-Dev, Nullsoft Scriptable Install System 2](https://github.com/NSIS-Dev). Formerly owned and developed by [Nullsoft, Inc.](https://en.wikipedia.org/wiki/Nullsoft?useskin=modern)
 
 
 # Thank you!
