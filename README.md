@@ -10,8 +10,9 @@ This is the repository for the open-source Cerulean Bluesky client, which recent
 
 # OS compatibility
 
-**Windows:** Official minimum is Windows 98, can run on Windows 95 with MattKC's backport. Windows 2000 or higher is recommended as it provides a much better experience.
-**Mac OS and Linux:** Supported with WINE. No reported problems.
+**Windows:** Official minimum is **Windows 98**, can run on **Windows 95** with MattKC's backport. **Windows 2000** or higher is recommended as it provides a much better experience.
+
+**Mac OS and Linux:** Supported with **WINE**. No reported problems.
 
 # What Cerulean can do (so far)
 
