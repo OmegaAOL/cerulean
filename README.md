@@ -40,7 +40,7 @@ Cerulean stores your handle and password encrypted in the registry *(HKEY_CURREN
 
 On Windows 2000 and up this uses DPAPI encryption. DPAPI is a Windows API that encrypts data for you based on a lot of user account information. It is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is more than fine for you to use your real password (if you don't trust me, check and build from source!)
 
-On Windows 9x/ME/NT4 this uses AES-256, but the encryption key is partly hardcoded and partly derived from basic machine info (Windows did not have DPAPI back then). This is still great for most attackers, but a dedicated attacker combing through the Cerulean source code will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. Recommend using app passwords for these Windows versions.
+On Windows 9x/ME/NT4 this uses AES-256, but the encryption key is partly hardcoded and partly derived from basic machine info (Windows did not have DPAPI back then). This is still a great defense against most attackers, but a dedicated attacker combing through the Cerulean source code will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. Recommend using app passwords for these Windows versions.
 
 Still apprehensive about DPAPI? To show you how confident I am in Cerulean's encryption, here is my encrypted handle and full password. Try what you will.
 
