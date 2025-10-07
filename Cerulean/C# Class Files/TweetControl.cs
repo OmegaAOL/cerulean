@@ -183,7 +183,11 @@ namespace Cerulean
 
                 if (!string.IsNullOrEmpty(embedThumbURL))
                 {
-                    ImageFetcher.QueueImage(embedThumbURL, postImage);
+                    Image img = null;
+                    Async.SkyWorker(
+                        delegate { img = Media.Image.Load(embedThumbURL); },
+                        delegate { postImage.Image = img; }
+                    );
                 }
 
                 expandImageButton.Text = GetExpandButtonText(embedType);

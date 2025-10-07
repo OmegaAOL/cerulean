@@ -28,7 +28,6 @@ D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.Menu_Settings.resources
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.Menu_Tweet.resources
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\Newtonsoft.Json.dll
-D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\WebSocket4Net.dll
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Release\WindowsFormsAero.dll
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.LangPacks.LangPack.resources
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Release\Cerulean.Menu_CreateAccount.resources

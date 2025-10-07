@@ -184,6 +184,7 @@ namespace OmegaAOL.SkyBridge
                         case Method.Post:
                             CurlRequest.SetOpt(CURLoption.CURLOPT_POST, true);
                             CurlRequest.SetOpt(CURLoption.CURLOPT_POSTFIELDS, parameters);
+
                             break;
                         case Method.PostRaw:
                             CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, new Easy.WriteFunction((data, size, nmemb, extraData) =>
@@ -227,7 +228,7 @@ namespace OmegaAOL.SkyBridge
 
                 }
 
-                catch 
+                catch
                 {
                     response["error"] = "SKY_UNEXPECTED";
                 }
@@ -241,6 +242,59 @@ namespace OmegaAOL.SkyBridge
                 }
 
                 return response;
+            }
+
+            public MemoryStream PerformDownload(string url, int redirectFollows = 1)
+            {
+                Easy CurlRequest = null;
+                MemoryStream stream = new MemoryStream();
+                try
+                {
+                    if (!initDone)
+                    {
+                        Initalize();
+                    }
+
+                    CurlRequest = CurlRequestPool.GetHandle(); // fetch from pool 
+
+                    Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData)
+                    {
+                        int realSize = size * nmemb;
+                        stream.Write(buf, 0, realSize);
+                        return realSize;
+                    };
+
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_URL, url);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
+                    CurlRequest.SetOpt(CURLoption.CURLOPT_FOLLOWLOCATION, 1L); // follow redirects
+
+                    CURLcode result = CurlRequest.Perform();
+                    if (result != CURLcode.CURLE_OK)
+                    {
+                        Error.Throw(CurlRequest, result);
+                        return null;
+                    }
+
+                    stream.Position = 0;                
+                }
+
+                catch (Exception ex)
+                {
+                    Display.Text("Media download failed: " + ex.Message);
+                    return null;
+                }
+
+                finally
+                {
+                    if (CurlRequest != null)
+                    {
+                        CurlRequestPool.ReturnHandle(CurlRequest);
+                    }                    
+                }
+                return stream;  
             }
         }
 
@@ -335,7 +389,7 @@ namespace OmegaAOL.SkyBridge
             return authResponse;
         }
 
-        public static JObject LoginWithRefreshToken(string refreshToken, bool silenceRefresher = false) 
+        public static JObject LoginWithRefreshToken(string refreshToken, bool silenceRefresher = false)
         {
             string endPoint = "com.atproto.server.refreshSession";
             string[] headers = new string[2] { "Authorization: Bearer " + refreshToken, "Accept: application/json" };
@@ -420,7 +474,7 @@ namespace OmegaAOL.SkyBridge
                             break;
                         default:
                             Display.Text("There was an error refreshing your session. You may be offline. Message: \n\n" + refreshBody["message"]);
-                            break;                    
+                            break;
                     }
                 }
                 else
@@ -875,102 +929,16 @@ namespace OmegaAOL.SkyBridge
                 throw new Exception("cURL error: " + easy.StrError(res));
 
             return JObject.Parse(responseBuilder.ToString());
-
         }
 
         public static class Image
         {
-            private static Easy CurlRequest = new Easy();
-            public static System.Drawing.Image Load(string imageUrl)
+            public static System.Drawing.Image Load(string url)
             {
-                using (MemoryStream imageStream = new MemoryStream())
-                {
-                    Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData)
-                    {
-                        int realSize = size * nmemb;
-                        imageStream.Write(buf, 0, realSize);
-                        return realSize;
-                    };
-
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_URL, imageUrl);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_FOLLOWLOCATION, 1L); // follow redirects
-                    try
-                    {
-
-                        CURLcode result = CurlRequest.Perform();
-                        if (result != CURLcode.CURLE_OK)
-                        {
-                            Error.Throw(CurlRequest, result);
-                            return null;
-                        }
-                    }
-                    catch (Exception ex) { Display.Text(ex.Message); }
-
-                    imageStream.Position = 0; // rewind before reading
-
-                    try
-                    {
-                        return System.Drawing.Image.FromStream(imageStream);
-                    }
-                    catch (Exception ex)
-                    {
-                        Display.Text("Image decode failed: " + ex.Message);
-                        return null;
-                    }
-                }
+                return System.Drawing.Image.FromStream(new Http.Request().PerformDownload(url));
             }
         }
 
-        public static class Video
-        {
-            private static Easy CurlRequest = new Easy();
-            public static System.Drawing.Image Load(string imageUrl)
-            {
-                using (MemoryStream imageStream = new MemoryStream())
-                {
-                    Easy.WriteFunction wf = delegate(byte[] buf, int size, int nmemb, object extraData)
-                    {
-                        int realSize = size * nmemb;
-                        imageStream.Write(buf, 0, realSize);
-                        return realSize;
-                    };
-
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_FORBID_REUSE, false);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_FRESH_CONNECT, false);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_URL, imageUrl);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_CAINFO, "cacert.pem");
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
-                    CurlRequest.SetOpt(CURLoption.CURLOPT_FOLLOWLOCATION, 1L); // follow redirects
-                    try
-                    {
-
-                        CURLcode result = CurlRequest.Perform();
-                        if (result != CURLcode.CURLE_OK)
-                        {
-                            Error.Throw(CurlRequest, result);
-                            return null;
-                        }
-                    }
-                    catch (Exception ex) { Display.Text(ex.Message); }
-
-                    imageStream.Position = 0; // rewind before reading
-
-                    try
-                    {
-                        return System.Drawing.Image.FromStream(imageStream);
-                    }
-                    catch (Exception ex)
-                    {
-                        Display.Text("Image decode failed: " + ex.Message);
-                        return null;
-                    }
-                }
-            }
-        }
     }
 }
 

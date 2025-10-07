@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cerulean.exe" size="664064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cerulean.exe" size="662016">
       <assemblyIdentity name="Cerulean" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ZbUiPHqsZa11JIT8fQAU5CAKKfI=</dsig:DigestValue>
+        <dsig:DigestValue>6OA9baz4MkhpePzygujbKiCBXSc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,18 +99,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>/dSYNig7FpiFm8Tvso0yUyu5L84=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WebSocket4Net.dll" size="105984">
-      <assemblyIdentity name="WebSocket4Net" version="0.14.1.0" publicKeyToken="EB4E154B696BF72A" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>QTm5e9Ueb6ORvch4CtuuCpbqjEg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
