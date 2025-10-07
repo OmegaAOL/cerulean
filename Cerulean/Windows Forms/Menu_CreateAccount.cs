@@ -14,10 +14,11 @@ namespace Cerulean
 {
     public partial class Menu_CreateAccount : Form
     {
+        private string barePds = Variables.PDSHost.Replace("https://", "").Replace("http://", "");
         public Menu_CreateAccount()
         {
             InitializeComponent();
-            handleBox.Text = LangPack.GLOBAL_EXAMPLE + "." + Variables.PDSHost.Replace("https://", "").Replace("http://", "");
+            handleBox.Text = LangPack.GLOBAL_EXAMPLE + "." + barePds;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace Cerulean
                      }
                      else
                      {
-                         CeruleanBox.Display(LangPack.CREATEACCOUNT_SUCCESS + " " + Variables.PDSHost.Replace("https://", "").Replace("http://", "") + "!");
+                         CeruleanBox.Display(LangPack.CREATEACCOUNT_SUCCESS + " " + barePds);
                      }
                  }
                 );

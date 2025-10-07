@@ -94,10 +94,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WebSocket4Net.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsFormsAero, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\WindowsFormsAero.dll</HintPath>
@@ -110,7 +106,6 @@
     </Compile>
     <Compile Include="C# Class Files\Encryptor.cs" />
     <Compile Include="C# Class Files\GlobalVar.cs" />
-    <Compile Include="C# Class Files\ImageQueue.cs" />
     <Compile Include="C# Class Files\JsonTools.cs" />
     <Compile Include="C# Class Files\OAuth.cs" />
     <Compile Include="C# Class Files\SkyBridge.cs">

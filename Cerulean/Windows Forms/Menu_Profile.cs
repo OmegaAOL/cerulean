@@ -165,7 +165,11 @@ namespace Cerulean
 
                 if (response["avatar"] != null)
                 {
-                    ImageFetcher.QueueImage(response["avatar"].ToString().Replace("avatar", "avatar_thumbnail"), avatarBox);
+                    Image avatarImg = null;
+                    Async.SkyWorker(
+                        delegate { avatarImg = Media.Image.Load(response["avatar"].ToString().Replace("avatar", "avatar_thumbnail")); },
+                        delegate { avatarBox.Image = avatarImg; }
+                    );
                 }
                 else
                 {
@@ -183,7 +187,12 @@ namespace Cerulean
                         BackChangerLabels();
                         this.Invalidate();
                     };
-                    ImageFetcher.QueueImage(response["banner"].ToString(), bannerBoxTemp, true);
+
+                    Image bannerImg = null;
+                    Async.SkyWorker(
+                        delegate { bannerImg = Media.Image.Load(response["banner"].ToString()); },
+                        delegate { bannerBoxTemp.BackgroundImage = bannerImg; }
+                    );
                 }
 
             }
