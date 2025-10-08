@@ -26,6 +26,7 @@ saving credentials with DPAPI encryption, creation
 - **Notifications:** view notifications, including follows, likes and replies
 - **Chat:** view a list of your current chats
 - **PDSes:** Cerulean is fully compatible with custom PDSes and can also create an account in the PDS if implemented server-side. Both invite-only and public PDSes supported.
+- **Themes:** There is experimental theme support starting from Release 0.3 beta 2. It is not fully complete and may look broken.
 
 # What needs to be fixed
 
