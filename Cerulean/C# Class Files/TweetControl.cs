@@ -629,25 +629,7 @@ namespace Cerulean
                         );
                     break;
                 case EmbedType.Video:
-                    string programFiles = Environment.GetEnvironmentVariable("ProgramFiles");
-                    string vlcPath = Path.Combine(programFiles, @"VideoLAN\VLC\vlc.exe");
-
-                    if (!File.Exists(vlcPath))
-                    {
-                        vlcPath = @"C:\Program Files\VideoLAN\VLC\vlc.exe";
-                        if (!File.Exists(vlcPath))
-                        {
-                            MessageBox.Show(LangPack.TC_NOVLC);
-                        }
-                        else
-                        {
-                            Process.Start(vlcPath, embedURL);
-                        }
-                    }
-                    else
-                    {
-                        Process.Start(vlcPath, embedURL);
-                    }
+                    new VideoViewer(embedURL).Show();
                     break;
                 default:
                     CeruleanBox.Display("Unknown media type. Cannot expand.");
