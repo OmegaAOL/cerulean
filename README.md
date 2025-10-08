@@ -49,6 +49,8 @@ Releases follow a decimalized numbering system. The syntax is [major version].[m
 Beta releases are not decimalized. For example, the second beta of release 1.3 would be release 1.3 beta 2, not release 1.3.1 or release 1.3b0.1.
 The first release was **Release 1.0.**
 
+_Beta_ here represents a pre-release and is not related to the historical Beta stage. 
+
 **Historical**
 
 - **Alpha** 0.0.1 - 0.0.4 followed iterative decimalization. The first Alpha release was **Alpha 0.0.1.**
