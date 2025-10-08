@@ -292,7 +292,7 @@ namespace OmegaAOL.SkyBridge
                     if (CurlRequest != null)
                     {
                         CurlRequestPool.ReturnHandle(CurlRequest);
-                    }                    
+                    }
                 }
                 return stream;  
             }
@@ -322,37 +322,27 @@ namespace OmegaAOL.SkyBridge
         }
     }
 
-    public static class Async // Backgroundworkers to simulate async in .NET 2 - 4.5. Temporary
+    public static class Async // Backgroundworker to simulate async in .NET 2 - 4.5
     {
         public static BackgroundWorker skyWorker = null;
         public static void SkyWorker(DoWorkEventHandler workHandler, RunWorkerCompletedEventHandler completedHandler)
         {
-
-            // Dispose and null any existing worker
             if (skyWorker != null)
             {
                 skyWorker.Dispose();
                 skyWorker = null;
             }
 
-            // Create and configure a new BackgroundWorker
-            skyWorker = new BackgroundWorker
-            {
-                WorkerSupportsCancellation = true
-            };
-
+            skyWorker = new BackgroundWorker { WorkerSupportsCancellation = true };
             skyWorker.DoWork += workHandler;
             skyWorker.RunWorkerCompleted += (s, evt) =>
             {
                 completedHandler(s, evt);
-
-                // Optional cleanup after the run
                 skyWorker.Dispose();
-                //skyWorker = null;
             };
-
             skyWorker.RunWorkerAsync();
         }
+
 
     }
 
@@ -939,6 +929,14 @@ namespace OmegaAOL.SkyBridge
             }
         }
 
+        public static class Video
+        {
+            public static string Load(string url)
+            {
+                Display.Text(url); return url;
+                //return System.Drawing.Image.FromStream(new Http.Request().PerformDownload(url));
+            }
+        }
     }
 }
 

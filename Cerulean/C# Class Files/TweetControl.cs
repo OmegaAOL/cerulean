@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using Cerulean.LangPacks;
@@ -183,10 +185,12 @@ namespace Cerulean
 
                 if (!string.IsNullOrEmpty(embedThumbURL))
                 {
-                    Image img = null;
                     Async.SkyWorker(
-                        delegate { img = Media.Image.Load(embedThumbURL); },
-                        delegate { postImage.Image = img; }
+                        (s, evt) => { evt.Result = Media.Image.Load(embedThumbURL); },
+                        (s, evt) => 
+                        {
+                            postImage.Image = (Image)evt.Result; 
+                        }
                     );
                 }
 
@@ -619,14 +623,31 @@ namespace Cerulean
             switch (embedType)
             {
                 case EmbedType.Image:
-                    Image img = null;
                     Async.SkyWorker(
-                        delegate { /*CeruleanBox.Display(embedURL);*/ img = Media.Image.Load(embedURL); },
-                        delegate { new ImageViewer(img).ShowDialog(); }
+                        (s, evt) => { evt.Result = Media.Image.Load(embedURL); },
+                        (s, evt) => { new ImageViewer((Image)evt.Result).ShowDialog(); }
                         );
                     break;
                 case EmbedType.Video:
-                    Global.featureAbsent("Video playback");
+                    string programFiles = Environment.GetEnvironmentVariable("ProgramFiles");
+                    string vlcPath = Path.Combine(programFiles, @"VideoLAN\VLC\vlc.exe");
+
+                    if (!File.Exists(vlcPath))
+                    {
+                        vlcPath = @"C:\Program Files\VideoLAN\VLC\vlc.exe";
+                        if (!File.Exists(vlcPath))
+                        {
+                            MessageBox.Show(LangPack.TC_NOVLC);
+                        }
+                        else
+                        {
+                            Process.Start(vlcPath, embedURL);
+                        }
+                    }
+                    else
+                    {
+                        Process.Start(vlcPath, embedURL);
+                    }
                     break;
                 default:
                     CeruleanBox.Display("Unknown media type. Cannot expand.");

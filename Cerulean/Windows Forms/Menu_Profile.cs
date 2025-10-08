@@ -257,7 +257,7 @@ namespace Cerulean
         {
             Async.SkyWorker(
                 delegate 
-                { 
+                {
                     new ImageViewer(Media.Image.Load(response["avatar"].ToString())).ShowDialog(); 
                 },
                 delegate { }

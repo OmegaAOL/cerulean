@@ -94,6 +94,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Vlc.DotNet.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Vlc.DotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core.Interops, Version=1.2.0.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Vlc.DotNet.Core.Interops.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Forms, Version=1.2.0.0, Culture=neutral, PublicKeyToken=84529da31f4eb963, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Vlc.DotNet.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsFormsAero, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\WindowsFormsAero.dll</HintPath>
@@ -106,6 +118,7 @@
     </Compile>
     <Compile Include="C# Class Files\Encryptor.cs" />
     <Compile Include="C# Class Files\GlobalVar.cs" />
+    <Compile Include="C# Class Files\ImageQueue.cs" />
     <Compile Include="C# Class Files\JsonTools.cs" />
     <Compile Include="C# Class Files\OAuth.cs" />
     <Compile Include="C# Class Files\SkyBridge.cs">
@@ -244,6 +257,12 @@
     <Compile Include="Windows Forms\ThreadViewer.Designer.cs">
       <DependentUpon>ThreadViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows Forms\VideoViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Forms\VideoViewer.Designer.cs">
+      <DependentUpon>VideoViewer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="C# Class Files\TweetControl.resx">
       <DependentUpon>TweetControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Forms\ThreadViewer.resx">
       <DependentUpon>ThreadViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Forms\VideoViewer.resx">
+      <DependentUpon>VideoViewer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Cerulean_TemporaryKey.pfx" />

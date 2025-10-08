@@ -1510,6 +1510,24 @@ namespace Cerulean.LangPacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You need VLC media player installed in order to play videos..
+        /// </summary>
+        internal static string TC_NOVLC {
+            get {
+                return ResourceManager.GetString("TC_NOVLC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember to press Play after VLC launches..
+        /// </summary>
+        internal static string TC_VLCMSG {
+            get {
+                return ResourceManager.GetString("TC_VLCMSG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This post does not have any replies..
         /// </summary>
         internal static string TVIEW_NOPOSTS {
@@ -1605,6 +1623,15 @@ namespace Cerulean.LangPacks {
         internal static string TWOFA_WINTITLE {
             get {
                 return ResourceManager.GetString("TWOFA_WINTITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: Video playback is only supported on Windows 2000 and up due to VLC limitations, so it may not work properly on your machine. If you have KernelEx installed, it will probably work..
+        /// </summary>
+        internal static string VPLAYER_MINWIN2K {
+            get {
+                return ResourceManager.GetString("VPLAYER_MINWIN2K", resourceCulture);
             }
         }
     }

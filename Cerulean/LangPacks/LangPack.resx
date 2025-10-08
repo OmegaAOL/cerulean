@@ -614,6 +614,12 @@ reset code that you received in the mail:</value>
   <data name="TC_LINKLABEL_REPOSTED" xml:space="preserve">
     <value>reposted</value>
   </data>
+  <data name="TC_NOVLC" xml:space="preserve">
+    <value>You need VLC media player installed in order to play videos.</value>
+  </data>
+  <data name="TC_VLCMSG" xml:space="preserve">
+    <value>Remember to press Play after VLC launches.</value>
+  </data>
   <data name="TVIEW_NOPOSTS" xml:space="preserve">
     <value>This post does not have any replies.</value>
   </data>
@@ -646,5 +652,8 @@ reset code that you received in the mail:</value>
   </data>
   <data name="TWOFA_WINTITLE" xml:space="preserve">
     <value>Enter your 2FA code</value>
+  </data>
+  <data name="VPLAYER_MINWIN2K" xml:space="preserve">
+    <value>Warning: Video playback is only supported on Windows 2000 and up due to VLC limitations, so it may not work properly on your machine. If you have KernelEx installed, it will probably work.</value>
   </data>
 </root>
