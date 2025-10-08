@@ -43,8 +43,18 @@ saving credentials with DPAPI encryption, creation
 
 # Release nomenclature
 
+**Current** 
+
 Releases follow a decimalized numbering system. The syntax is [major version].[minor version] (for example 1.2).
 Beta releases are not decimalized. For example, the second beta of release 1.3 would be release 1.3 beta 2, not release 1.3.1 or release 1.3b0.1.
+The first release was **Release 1.0.**
+
+**Historical**
+
+- **Alpha** 0.0.1 - 0.0.4 followed iterative decimalization. The first Alpha release was **Alpha 0.0.1.**
+- **Alpha** 0.10 - 0.20 dropped the second decimal and added release jumping (e.g. jump 5-10 places if important release).
+- **Beta** releases added the second decimal back. The first Beta release was **Beta 0.1.0.** (this was a counting reset from Alpha)
+- **Crimson** releases stopped release jumping, and incremented by 1 major version for every 10 minor. The first Crimson release was **Crimson 0.2.9c** and picked up from Beta.
 
 # Building Cerulean
 
