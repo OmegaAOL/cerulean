@@ -96,3 +96,4 @@ D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\bin\Debug\C# Class Files\
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.ThreadViewer.resources
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.LangPacks.WebResources.resources
 D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.TwoFADialog.resources
+D:\Visual Studio Projects\Ceruleanvs10-netfx2\Cerulean\obj\x86\Debug\Cerulean.VideoViewer.resources

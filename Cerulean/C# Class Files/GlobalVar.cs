@@ -6,7 +6,8 @@ namespace Cerulean
 {
     public static class Global
     {
-        public const string version = "Crimson 0.3"; // this is the only string that should be hardcoded into the program binary!
+        public const string version = "Release 1.0.3";
+        public const int versionInt = 4;
         public static string connectionStatus;    
         public static string[] stringArray;
         public static Image bgImage = CeruleanArt.pinstripesblue;
