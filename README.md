@@ -35,7 +35,6 @@ saving credentials with DPAPI encryption, creation
 
 # What needs to be added 
 
-- Themes (logic exists partly in code)
 - Multiple account support
 - Viewing all posts of a particular user
 - Starter packs
