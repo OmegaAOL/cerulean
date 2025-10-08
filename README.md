@@ -36,6 +36,7 @@ saving credentials with DPAPI encryption, creation
 # What needs to be added 
 
 - Multiple account support
+- Searching for posts
 - Viewing all posts of a particular user
 - Starter packs
 - Actual functioning chat
