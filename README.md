@@ -75,7 +75,7 @@ Please stick to the existing code style when submitting pull requests. This incl
 Any libraries linked are .NET 2.0 versions. Some may be **severely out of date.** Find newer versions for new projects.
 
 - [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET Framework 2.x, there is an [updated and greatly enhanced fork](https://github.com/masroore/CurlSharp)
-- [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET Framework 2.x and 4.0, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
+- [Legion of the Bouncy Castle, BouncyCastle.Cryptography](https://www.bouncycastle.org/download/bouncy-castle-c/#latest) - .NET Framework 2.x, there is a newer version for modern .NET
 - [James Newton King, Newtonsoft.Json](https://www.newtonsoft.com/json) - all versions of .NET Framework/Standard/Core supported, but largely superseded by [System.Text.Json](https://learn.microsoft.com/en-us/dotnet/api/system.text.json) in Core
 - [OpenSSL Library, OpenSSL](https://openssl-library.org/source/old/1.0.2/index.html) - Windows 98+ build [here](https://github.com/OmegaAOL/openssl-windows98)
 - [cURL](https://curl.se/download/) - Windows 98+ build [here](https://github.com/OmegaAOL/curl-windows98)
