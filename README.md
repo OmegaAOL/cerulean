@@ -10,9 +10,9 @@ This is the repository for Cerulean, an open-source Bluesky client. It recently 
 
 # OS compatibility
 
-**Windows:** Official minimum is **Windows 98**, can run on **Windows 95** with MattKC's backport. **Windows 2000** or higher is recommended as it provides a much better experience.
+**Windows:** Official minimum is Windows 98, can run on Windows 95 with MattKC's backport. Windows 2000 or higher is recommended as it provides a much better experience.
 
-**Mac OS and Linux:** Supported with **WINE**. No reported problems.
+**Mac OS and Linux:** Supported with WINE. No reported problems.
 
 # What Cerulean can do (so far)
 
@@ -43,26 +43,26 @@ saving credentials with DPAPI encryption, creation
 
 # Security
 
-Cerulean stores your handle and password **encrypted** in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. 
+Cerulean stores your handle and password encrypted in the registry *(HKEY_CURRENT_USER\Software\Cerulean\LoginData)*. 
 
-On **Windows 2000 and up** this uses **DPAPI** encryption. DPAPI is a Windows API that encrypts data for you; it is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is **more than fine** for you to use your real password (if you don't trust me, check and build from source!)
+On **Windows 2000 and up** this uses DPAPI encryption. DPAPI is a Windows API that encrypts data for you; it is widely considered best-in-class for passwordless encryption and programs like Chrome, Edge, KeePassXC and KeePass use it. It is totally fine for you to use your real password (if you don't trust me, check and build from source!)
 
-On **Windows 9x/ME/Nt4** this uses **AES-256** but the encryption key is basically hardcoded. This is still a great defense against most attackers, but a dedicated attacker combing through source code or using a decompiler will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. I recommend using app passwords for these Windows versions.
+On **Windows 9x/ME/Nt4** this uses AES-256 but the encryption key is basically hardcoded. This is still a great defense against most attackers, but a dedicated attacker combing through source code or using a decompiler will be able to quite easily decrypt your key and info. There is literally nothing that can be done about this. I recommend using app passwords for these Windows versions.
 
 # Building Cerulean
 
-The project is **open-source**, but licensed under the **GPLv3** - any forks should credit **both me and the Cerulean project.**
+The project is open-source, but licensed under the GPLv3, meaning any forks should credit both me and the Cerulean project.
 
-This project is built using **Microsoft Visual Studio 2010** and **.NET Framework 2.0.** You can use VS2026/2022/etc, but I **recommend you use VS2010** due to how incredibly lightweight it is and the great improvements in performance you will notice. If you are encountering issues:
+This project is built using Microsoft Visual Studio 2010 and runs on .NET Framework 2.0. You can use VS2026/2022/etc, but I recommend you use VS2010 due to how incredibly lightweight it is and the great improvements in performance you will notice. If you are encountering issues:
 
 - Enable .NET Framework 2.0 in Windows Features, and check the compile bar & Project Settings to see if you're building for **x86** (not Any CPU or x64).
 - If you've tried that and it still doesn't work, file an issue.
 
-Please stick to the existing code style when submitting pull requests. This includes **not removing commented-out code.**
+Please stick to the existing code style when submitting pull requests. This includes not removing commented-out code.
 
 # Credits
 
-Any libraries linked are .NET 2.0 versions. Some may be **severely out of date.** Find newer versions for new projects.
+Any libraries linked are .NET 2.0 versions. Some may be severely out of date. Find newer versions for new projects.
 
 - [Jeffrey Phillips, LibCurl.NET](https://sourceforge.net/projects/libcurl-net/) - .NET Framework 2.x, there is an [updated and greatly enhanced fork](https://github.com/masroore/CurlSharp)
 - [Lorenz Cuno Klopfenstein, WindowsFormsAero](https://codeplexarchive.org/project/windowsformsaero) - .NET Framework 2.x and 4.0, there is an [updated version by the same maintainer](https://github.com/LorenzCK/WindowsFormsAero)
